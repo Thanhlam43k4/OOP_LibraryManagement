@@ -27,6 +27,12 @@ CREATE TABLE users (
 CREATE TABLE documents (
     documentId INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
-    year int NOT NULL,
-    genre VARCHAR(255) NOT NULL
+    year INT NOT NULL,
+    genre VARCHAR(255) NOT NULL,
+    ISBN VARCHAR(20),
+    content TEXT,
+    author VARCHAR(255),
+    urlImage VARCHAR(255),
+    amount INT,
+    ready INT
 );
