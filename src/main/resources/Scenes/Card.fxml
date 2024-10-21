@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="card" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#selectCard" prefHeight="250.0" prefWidth="170.0" styleClass="primary-anchor-card" stylesheets="@../CSS_Setup/card.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.CardController">
+   <children>
+      <AnchorPane prefHeight="206.0" prefWidth="150.0">
+         <children>
+            <ImageView fx:id="docCover" fitHeight="167.0" fitWidth="115.0" layoutX="29.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../DocCover_url/programing%20python.jpg" />
+               </image></ImageView>
+         </children>
+      </AnchorPane>
+      <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="200.0" spacing="8.0">
+         <children>
+            <FontAwesomeIconView glyphName="INFO" size="16" style="-fx-fill: #3c373a;" />
+            <Label fx:id="name" text="python programing" textFill="#3c373a" underline="true">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets left="20.0" right="7.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="70.0" prefWidth="160.0" spacing="5.0">
+         <children>
+            <FontAwesomeIconView glyphName="FILTER" size="16" style="-fx-fill: #3c373a;" />
+            <Label fx:id="genre" text="Doc type" textFill="#3c373a">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="18.0" />
+         </padding></HBox>
+   </children>
+</VBox>

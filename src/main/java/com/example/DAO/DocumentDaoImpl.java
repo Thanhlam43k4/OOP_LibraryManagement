@@ -1,0 +1,95 @@
+package com.example.DAO;
+
+import com.example.Interface.DocumentDao;
+import com.example.Model.Document;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class DocumentDaoImpl implements DocumentDao {
+    private Connection con;
+
+    public DocumentDaoImpl(Connection con) {
+        this.con = con;
+
+    }
+
+    @Override
+    public void addDocument(Document doc) {
+        String query = "INSERT INTO documents (title, year, genre) VALUES (?, ?, ?)";
+        try (PreparedStatement pstmt = con.prepareStatement(query)) {
+            pstmt.setString(1, doc.getTitle());
+            pstmt.setInt(2, doc.getYear());
+            pstmt.setString(3, doc.getGenre());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public Document getDocumentById(int documentId) {
+        String query = "SELECT * FROM documents WHERE documentId = ?";
+        try (PreparedStatement pstmt = con.prepareStatement(query)) {
+            pstmt.setInt(1, documentId);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return new Document(
+                        rs.getInt("documentId"),
+                        rs.getString("title"),
+                        rs.getInt("year"),
+                        rs.getString("genre"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<Document> getAllDocuments() {
+        List<Document> documents = new ArrayList<>();
+        String query = "SELECT * FROM documents";
+        try (Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(query)) {
+            while (rs.next()) {
+                Document doc = new Document(
+                        rs.getInt("documentId"),
+                        rs.getString("title"),
+                        rs.getInt("year"),
+                        rs.getString("genre"));
+                documents.add(doc);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return documents;
+    }
+
+    @Override
+    public void updateDocument(Document doc) {
+        String query = "UPDATE documents SET title = ?, year = ?, genre = ? WHERE documentId = ?";
+        try (PreparedStatement pstmt = con.prepareStatement(query)) {
+            pstmt.setString(1, doc.getTitle());
+            pstmt.setInt(2, doc.getYear());
+            pstmt.setString(3, doc.getGenre());
+            pstmt.setInt(4, doc.getDocumentId());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteDocument(int documentId) {
+        String query = "DELETE FROM documents WHERE documentId = ?";
+        try (PreparedStatement pstmt = con.prepareStatement(query)) {
+            pstmt.setInt(1, documentId);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+}

@@ -1,0 +1,26 @@
+.primary-table-view
+{
+    -fx-background-color: rgb(238, 231, 231);
+}
+
+.primary-table-view .table-row-cell 
+{
+    -fx-background-color:  rgb(211, 204, 204);
+    -fx-border-color: #797577;
+    -fx-background-radius: 10px;
+    -fx-pref-height: 40px;
+}
+
+.primary-table-view .column-header {
+    -fx-background-color:   transparent;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-width: 0 1px 0 0;
+    -fx-border-color: #797577;
+}
+
+.primary-table-view .column-header-background {
+    -fx-background-color:   rgb(211, 204, 204);
+    -fx-border-color: #797577;
+    -fx-pref-height: 40px;
+}

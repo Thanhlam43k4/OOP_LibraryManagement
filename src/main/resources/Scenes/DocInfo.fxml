@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: rgb(238, 231, 231);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.DocInfoController">
+   <children>
+      <AnchorPane layoutX="224.0" layoutY="42.0" prefHeight="60.0" prefWidth="526.0" stylesheets="@../CSS_Setup/anchorpane.css" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER_RIGHT" layoutX="401.0" layoutY="10.0" prefHeight="40.0" prefWidth="297.0" spacing="7.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="19.0" prefWidth="161.0" text="Trong anh" textFill="#3c3a3a">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <MenuButton mnemonicParsing="false" prefHeight="35.0" prefWidth="36.0" style="-fx-border-radius: 16px; -fx-background-radius: 16px;" styleClass="primary-menubutton" stylesheets="@../CSS_Setup/menubutton.css">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Profile" />
+                      <MenuItem mnemonicParsing="false" onAction="#signOut" text="Sign out" />
+                    </items>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="USER" size="20" styleClass="fontawesome-icon" wrappingWidth="1.0" />
+                     </graphic>
+                  </MenuButton>
+               </children>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="500.0" prefWidth="223.0" style="-fx-background-color: linear-gradient(to right bottom, rgb(224, 46, 22), rgb(216, 116, 22));" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backMain" prefHeight="35.0" prefWidth="36.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="12.0">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee7e7" glyphName="ARROW_RIGHT" size="18" />
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <ScrollPane fx:id="docScroll" layoutX="341.0" layoutY="115.0" prefHeight="385.0" prefWidth="409.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="341.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0">
+         <content>
+            <AnchorPane prefHeight="506.0" prefWidth="364.0">
+               <children>
+                  <Label layoutY="10.0" text="Description:" underline="true">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="description" alignment="TOP_LEFT" layoutY="34.0" prefHeight="472.0" prefWidth="364.0" text="this is document description" textFill="#6b6767" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="34.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </content>
+         <padding>
+            <Insets left="20.0" />
+         </padding></ScrollPane>
+      <Label fx:id="title" text="DOC NAME" textFill="#3c3a3a" wrapText="true" AnchorPane.leftAnchor="360.0" AnchorPane.topAnchor="60.0">
+         <font>
+            <Font name="Georgia Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="author" text="Author:" AnchorPane.leftAnchor="370.0" AnchorPane.topAnchor="100.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <HBox prefHeight="127.0" prefWidth="393.0" spacing="15.0" style="-fx-background-color: rgb(238, 231, 231);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="345.0" AnchorPane.rightAnchor="12.0">
+         <children>
+            <Button fx:id="borrowBut" mnemonicParsing="false" onAction="#borrowDoc" prefHeight="50.0" prefWidth="120.0" styleClass="second-button" stylesheets="@../CSS_Setup/button.css" text=" Borrow">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="SHOPPING_CART" size="15" styleClass="fontawesome-icon" />
+               </graphic>
+            </Button>
+         </children>
+         <padding>
+            <Insets left="40.0" right="40.0" top="15.0" />
+         </padding>
+      </HBox>
+      <Label fx:id="stateText" text="You are borrowing this book" textFill="#7c7575" visible="false" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="390.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <StackPane prefHeight="370.0" prefWidth="250.0" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="65.0">
+         <children>
+            <Rectangle fx:id="shadow" arcHeight="5.0" arcWidth="5.0" fill="#3a3b3c" height="343.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="238.0">
+               <effect>
+                  <Shadow color="#655b5b" height="29.9" radius="16.6725" width="38.79" />
+               </effect>
+               <StackPane.margin>
+                  <Insets bottom="15.0" left="15.0" />
+               </StackPane.margin>
+            </Rectangle>
+            <ImageView fx:id="docCover" fitHeight="355.0" fitWidth="242.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../DocCover_url/programing%20python.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

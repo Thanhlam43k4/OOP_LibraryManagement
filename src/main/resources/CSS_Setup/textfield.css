@@ -1,0 +1,7 @@
+.primary-text-field {
+    -fx-background-color:  rgb(238, 231, 231);
+    -fx-text-fill:  #222020;
+    -fx-border-color:  #3c373a;
+    -fx-border-radius:  8px;
+    -fx-background-radius: 8px;
+}

@@ -1,0 +1,32 @@
+CREATE TABLE transactions (
+    transaction_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    document_id INT,
+    borrowed_date DATE,
+    return_date DATE,
+    actual_return_date DATE,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (document_id) REFERENCES documents(documentId)
+);
+
+
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,  -- Tự động tăng giá trị id
+    email VARCHAR(20) NOT NULL,
+    username VARCHAR(100) ,     -- Tên người dùng
+    age INT,                            -- Tuổi
+    password VARCHAR(255) NOT NULL,     -- Mật khẩu
+    phoneNumber VARCHAR(20),            -- Số điện thoại
+    dob DATE,                           -- Ngày sinh
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Thời điểm tạo tài khoản
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP  -- Thời điểm cập nhật cuối cùng
+);
+
+
+CREATE TABLE documents (
+    documentId INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    year int NOT NULL,
+    genre VARCHAR(255) NOT NULL
+);

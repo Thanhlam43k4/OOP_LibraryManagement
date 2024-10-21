@@ -1,0 +1,66 @@
+package com.example.DAO;
+import com.example.Interface.TransactionDao;
+import com.example.Model.Transaction;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class TransactionDaoImpl implements TransactionDao {
+    private Connection con;
+
+    public TransactionDaoImpl(Connection con){
+        this.con = con;
+    }
+
+    @Override
+    public void addTransaction(Transaction transaction){
+        String sql = "INSERT INTO transactions (user_id,document_id,borrowed_date,return_date) " +
+                "VALUES (?, ?, ?, ?)";
+        try(PreparedStatement pstmt = con.prepareStatement(sql)){
+            pstmt.setInt(1,transaction.getUserId());
+            pstmt.setInt(2,transaction.getDocumentId());
+            pstmt.setDate(3,transaction.getBorrowedDate());
+            pstmt.setDate(4,transaction.getReturnDate());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public List<Transaction> getTransactionsByUserId(int userId){
+        List<Transaction> transactions = new ArrayList<>();
+        String sql = "SELECT * FROM transactions WHERE user_id = ?";
+        try(PreparedStatement pstmt = con.prepareStatement(sql)){
+            pstmt.setInt(1,userId);
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                Transaction transaction = new Transaction(
+                        rs.getInt("transaction_id"),
+                        rs.getInt("user_id"),
+                        rs.getInt("document_id"),
+                        rs.getDate("borrowed_date"),
+                        rs.getDate("return_date")
+                );
+                transactions.add(transaction);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return transactions;
+    }
+
+    @Override
+    public void deleteTransaction(int transactionId){
+        String sql = "DELETE FROM transactions WHERE transaction_id = ?";
+        try(PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setInt(1, transactionId);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
