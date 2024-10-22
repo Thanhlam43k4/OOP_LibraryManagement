@@ -1,8 +1,16 @@
-To do:
-Controller:
+#To do:
+**Controller:**
     Client: cần userId để query đến transaction trong hàm addDocElementNodes, load username
     DocInfo: query doc description và check doc đã được mượn chưa ở hàm setInfo
     TransCard: thiếu full
     Admin: thiếu
     Profile: chưa load Info
     SignInUp: thiếu username
+    
+**Class:**
+    Admin && Client: Add 2 class
+        
+
+**Database Model**
+    
+    
