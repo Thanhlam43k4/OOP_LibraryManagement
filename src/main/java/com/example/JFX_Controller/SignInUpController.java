@@ -33,8 +33,8 @@ public class SignInUpController extends Controller {
 
     @FXML
     void signIn(ActionEvent event) {
-        loadScene("Admin.fxml");
-        //be_signIn();
+        // loadScene("Admin.fxml");
+        be_signIn();
     }
 
     @FXML
@@ -67,7 +67,7 @@ public class SignInUpController extends Controller {
         } else if (Objects.equals(password, confirmpassword)) {
             User user = new User(email, password);
             UserService.instance.createUser(user);
-            ErrorHandler.showAlert(Alert.AlertType.INFORMATION, "Register Successful", "Please Login Again!");
+            ErrorHandler.showAlert(Alert.AlertType.INFORMATION, "Register Successful", "Please Login!");
             loadScene("Login.fxml");
         } else {
             ErrorHandler.showAlert(Alert.AlertType.INFORMATION, "Wrong Password Matching", "Please register again!");
