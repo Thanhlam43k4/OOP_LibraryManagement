@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
 
-public class User {
+public abstract class User {
     private int id;
     private String username;
     private String email;
     private int age;
     private String password;
     private String phoneNumber;
-    private  List<Transaction> transactions = new ArrayList<>();
     private Date dob;
 
     public int getAge() {
@@ -30,13 +29,6 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<Transaction> getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(List<Transaction> transactions) {
-        this.transactions = transactions;
-    }
 
     public Date getDob() {
         return dob;

@@ -36,3 +36,20 @@ CREATE TABLE documents (
     amount INT,
     amount_avail INT
 );
+
+
+CREATE TABLE books (
+    book_id INT PRIMARY KEY AUTO_INCREMENT,
+    document_id INT,
+    publisher VARCHAR(255),
+    FOREIGN KEY (document_id) REFERENCES documents(document_id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE theses (
+    thesis_id INT PRIMARY KEY AUTO_INCREMENT,
+    document_id INT,
+    advisor VARCHAR(255),
+    university VARCHAR(255),
+    FOREIGN KEY (document_id) REFERENCES documents(document_id) ON DELETE CASCADE
+);

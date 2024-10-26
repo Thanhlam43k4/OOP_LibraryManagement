@@ -39,6 +39,7 @@ public class UserService {
     public boolean isMatchAccount(String email, String password){
         return userDao.isMatchAccount(email,password);
     }
+
     public void deleteUser(int id) {
         userDao.deleteUser(id);
     }

@@ -1,4 +1,24 @@
-*To do List*
+#  To do List OOP Library Mangement App
+
+@Thành Viên Nhóm:
+
++ 22022212: Nguyễn Thành Lâm
++ 220221a
+
+**Frontend**
+
+    
+    Thiết kế thêm admin load database 
+
+    Thiết kế thêm phần thêm sửa xóa admin , Thêm Info ISBN ở phần add
+
+    User Management Borrow thành book_borrowed
+    
+    * Update phần mượn trả sách trong User Management TAB.
+
+    Update Status mượn trả sách với actual Date UserName trong bản transaction
+    
+    Viết thêm panel khi click vào document ở admin dashboard hiện thêm list copy 
 
 **Controller:**
 
@@ -18,8 +38,19 @@
 **Class:**
 
     Admin && Client: Add 2 class
+     + Client thì có borrowed_book
+     
         
+    Client Click Borrow để mượn sách 
 
+    Tách Thesis vs Books
+    
 **Database Model**
     
+    Bỏ Amount Ready của database documents thêm vào copies (Int) là tổng số copy
+
+    Thêm phần copies_document
+
+**Service**
     
+    Tao thêm service xử lý session manager để query 

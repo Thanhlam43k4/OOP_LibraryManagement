@@ -33,16 +33,14 @@ public class SignInUpController extends Controller {
 
     @FXML
     void signIn(ActionEvent event) {
-        // loadScene("Admin.fxml");
-        be_signIn();
+         loadScene("Admin.fxml");
+       //  be_signIn();
     }
 
     @FXML
     void signUp(ActionEvent event) {
         be_signUp();
     }
-
-
     private void be_signIn() {
         String email = emailField.getText();
         String password = passwordField.getText();
