@@ -48,7 +48,6 @@
 **Database Model**
 
     Bỏ Amount Ready của database documents thêm vào copies (Int) là tổng số copy.
-
     Thêm phần copies_document.
 
     Upload Database Model và kiểm tra kỹ lại các query injection trong db.
@@ -61,4 +60,6 @@
 
     Xử lý transaction Service mỗi khi User Borrow Book.
 
-    Viết add User, Email Username, PhoneNumber , Age.
+    Viết add User, Email Username, PhoneNumber , Age.   
+
+    Add service Transaction ở admin Dashboard
