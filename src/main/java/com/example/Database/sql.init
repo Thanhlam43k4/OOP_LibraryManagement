@@ -53,3 +53,29 @@ CREATE TABLE theses (
     university VARCHAR(255),
     FOREIGN KEY (document_id) REFERENCES documents(document_id) ON DELETE CASCADE
 );
+
+
+CREATE TABLE copies (
+    copy_id INT PRIMARY KEY AUTO_INCREMENT,
+    document_id INT,
+    copy_ISBN VARCHAR(20),
+    status ENUM('Available', 'Checked Out', 'Reserved', 'Damaged', 'Lost') DEFAULT 'Available',
+    FOREIGN KEY (document_id) REFERENCES documents(documentId) ON DELETE CASCADE
+);
+
+
+
+CREATE TABLE client (
+    client_id INT AUTO_INCREMENT PRIMARY KEY,    -- Khóa chính tự động tăng cho client
+    user_id INT,                                 -- Khóa ngoại tham chiếu đến users
+    borrowed_books INT DEFAULT 0,                -- Số sách mượn
+    FOREIGN KEY (user_id) REFERENCES users(id)   -- Khóa ngoại tham chiếu đến users
+);
+
+-- Bảng admin với admin_id là AUTO_INCREMENT
+CREATE TABLE admin (
+    admin_id INT AUTO_INCREMENT PRIMARY KEY,     -- Khóa chính tự động tăng cho admin
+    user_id INT,                                 -- Khóa ngoại tham chiếu đến users
+    -- Có thể thêm các thuộc tính riêng của admin tại đây
+    FOREIGN KEY (user_id) REFERENCES users(id)   -- Khóa ngoại tham chiếu đến users
+);
