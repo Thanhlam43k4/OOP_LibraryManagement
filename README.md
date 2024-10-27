@@ -51,6 +51,8 @@
 
     Thêm phần copies_document.
 
+    Upload Database Model và kiểm tra kỹ lại các query injection trong db.
+
     Sửa lại các khóa chính của các bảng copies với admin và client.
 
 **Service**
