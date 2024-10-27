@@ -9,7 +9,7 @@ import java.util.List;
 
 public class TransactionService {
     public static TransactionService instance;
-    private TransactionDao transactionDao;
+    private final TransactionDao transactionDao;
 
     public TransactionService(Connection con){
         transactionDao = new TransactionDaoImpl(con);

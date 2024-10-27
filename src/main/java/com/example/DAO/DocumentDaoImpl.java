@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DocumentDaoImpl implements DocumentDao {
-    private Connection con;
+    private final Connection con;
 
     public DocumentDaoImpl(Connection con) {
         this.con = con;

@@ -66,7 +66,6 @@ CREATE TABLE copies (
 
 
 CREATE TABLE client (
-    client_id INT AUTO_INCREMENT PRIMARY KEY,    -- Khóa chính tự động tăng cho client
     user_id INT,                                 -- Khóa ngoại tham chiếu đến users
     borrowed_books INT DEFAULT 0,                -- Số sách mượn
     FOREIGN KEY (user_id) REFERENCES users(id)   -- Khóa ngoại tham chiếu đến users
@@ -74,8 +73,20 @@ CREATE TABLE client (
 
 -- Bảng admin với admin_id là AUTO_INCREMENT
 CREATE TABLE admin (
-    admin_id INT AUTO_INCREMENT PRIMARY KEY,     -- Khóa chính tự động tăng cho admin
     user_id INT,                                 -- Khóa ngoại tham chiếu đến users
     -- Có thể thêm các thuộc tính riêng của admin tại đây
     FOREIGN KEY (user_id) REFERENCES users(id)   -- Khóa ngoại tham chiếu đến users
 );
+
+
+DELIMITER //
+
+CREATE TRIGGER after_user_insert
+AFTER INSERT ON users
+FOR EACH ROW
+BEGIN
+    INSERT INTO client (user_id, borrowed_books)
+    VALUES (NEW.id, 0); -- Khởi tạo borrowed_books với giá trị 0
+END; //
+
+DELIMITER ;

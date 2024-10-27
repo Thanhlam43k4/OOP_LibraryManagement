@@ -9,7 +9,7 @@ import java.util.List;
 
 public class UserService {
     public static UserService instance;
-    private UserDao userDao;
+    private final UserDao userDao;
 
     public UserService(Connection connection) {
         userDao = new UserDaoImpl(connection);
@@ -30,7 +30,6 @@ public class UserService {
     public void updateUser(User user) {
         userDao.updateUser(user);
     }
-
 
     public boolean isEmailExists(String email){
         return userDao.isEmailExists(email);

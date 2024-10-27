@@ -32,7 +32,7 @@ public class MainUI extends Application {
 
         // Create Scene
         primaryStage = stage;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin.fxml"));
         Parent root = loader.load();
 
         Scene scene = new Scene(root, 1400, 900);
