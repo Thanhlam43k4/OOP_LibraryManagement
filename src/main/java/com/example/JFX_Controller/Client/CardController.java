@@ -1,4 +1,4 @@
-package com.example.JFX_Controller;
+package com.example.JFX_Controller.Client;
 
 //#region Lib
 import javafx.scene.Parent;
@@ -12,6 +12,8 @@ import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 import java.io.IOException;
+
+import com.example.JFX_Controller.Controller;
 
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;

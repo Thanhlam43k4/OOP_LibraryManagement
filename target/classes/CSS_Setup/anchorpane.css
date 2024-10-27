@@ -1,0 +1,5 @@
+.primary-anchor-pane {
+    -fx-background-color: rgb(238, 231, 231);
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-color: #3c373a;
+}

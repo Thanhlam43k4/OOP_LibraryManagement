@@ -1,4 +1,4 @@
-package com.example.JFX_Controller;
+package com.example.JFX_Controller.Client;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,7 +14,7 @@ public class TransCardController {
     @FXML private Label genre;
     @FXML private Label returnDate;
 
-    private int id;
+    private int docId;
 
     @FXML
     void goReadDoc(ActionEvent event) {
@@ -27,7 +27,7 @@ public class TransCardController {
 
     // set thông tin cho các UI element
     public void setInfo(int id, String imageUrl, String title, String author, String genre, Date returnDate) {
-        this.id = id;
+        this.docId = id;
         this.docCover.setImage(new Image(imageUrl));
         this.title.setText(title);
         this.author.setText(author);

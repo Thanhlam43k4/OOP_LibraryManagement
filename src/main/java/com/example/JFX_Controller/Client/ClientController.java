@@ -1,4 +1,4 @@
-package com.example.JFX_Controller;
+package com.example.JFX_Controller.Client;
 
 //#region Lib
 import java.io.IOException;
@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import com.example.MainUI;
+import com.example.JFX_Controller.Controller;
 import com.example.Model.Document;
 import com.example.Model.Transaction;
 import com.example.Service.DocumentService;

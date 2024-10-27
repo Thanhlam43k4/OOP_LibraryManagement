@@ -1,4 +1,4 @@
-package com.example.JFX_Controller;
+package com.example.JFX_Controller.Client;
 //#region Lib
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,6 +15,8 @@ import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.example.JFX_Controller.Controller;
 
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
