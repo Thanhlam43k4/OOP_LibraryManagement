@@ -35,7 +35,7 @@ public class MainUI extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Login.fxml"));
         Parent root = loader.load();
 
-        Scene scene = new Scene(root, 1400, 900);
+        Scene scene = new Scene(root, 1100, 600);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Book Management Application");
         primaryStage.show();

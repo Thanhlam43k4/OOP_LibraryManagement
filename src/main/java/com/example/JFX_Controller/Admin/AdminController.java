@@ -35,12 +35,14 @@ public class AdminController extends Controller implements Initializable {
     @FXML private HBox usersBut;
     @FXML private HBox tranBut;
     // Docs
+    @FXML private AnchorPane docPane;
     @FXML private StackPane addDocPane;
     @FXML private StackPane copiesDocPane;
-    @FXML private AnchorPane docPane;
+    @FXML private VBox docCopyVbox;
     @FXML private VBox docVBox;
     // Users
     @FXML private AnchorPane userPane;
+    @FXML private StackPane addUserPane;
     @FXML private VBox userVBox;
     // Transaction
     @FXML private AnchorPane tranPane;
@@ -52,7 +54,7 @@ public class AdminController extends Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if (userList.isEmpty()) {
-            addNodes(userList, "UserElement.fxml");
+            addNodes(userList, "UserRow.fxml");
             addDocNodes();
         }
         setPane(docPane, docsBut);
@@ -77,6 +79,10 @@ public class AdminController extends Controller implements Initializable {
         loadScene("Profile.fxml");
     }
     @FXML
+    void closeDocCopy(ActionEvent event) {
+        copiesDocPane.setVisible(false);
+    }
+    @FXML
     void signOut(ActionEvent event) {
         loadScene("Login.fxml");
     }
@@ -87,6 +93,14 @@ public class AdminController extends Controller implements Initializable {
     @FXML
     void cancelAddDoc(ActionEvent event) {
         addDocPane.setVisible(false);
+    }
+    @FXML
+    void openAddUser(ActionEvent event) {
+        addUserPane.setVisible(true);
+    }
+    @FXML
+    void cancelAddUser(ActionEvent event) {
+        addUserPane.setVisible(false);
     }
 
     //#region fe_func
@@ -116,7 +130,7 @@ public class AdminController extends Controller implements Initializable {
         UIlist.clear();
         for (int i = 0; i < 10; i++) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/" + fxml));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/" + fxml));
                 Node bookNode = loader.load();
                 // AnchorPane pane = (AnchorPane) bookNode;
                 // pane.getHeight();
@@ -131,10 +145,10 @@ public class AdminController extends Controller implements Initializable {
         List<Document> docs = DocumentService.instance.getAllDocument();
         for (Document d : docs) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/DocElement2.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/DocRow.fxml"));
                 Node bookNode = loader.load();
                 DocRowController docRowController = (DocRowController) loader.getController();
-                docRowController.setInfo(d.getDocumentId(), d.getTitle(), d.getTitle(), d.getGenre(), 10, copiesDocPane);
+                docRowController.setInfo(d.getDocumentId(), d.getTitle(), d.getTitle(), d.getGenre(), 10, copiesDocPane, docCopyVbox);
                 docList.add(bookNode);
             } catch (IOException e) {
                 e.printStackTrace();

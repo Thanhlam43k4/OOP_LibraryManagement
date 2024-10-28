@@ -23,6 +23,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 //#endregion
 
+// Controller của từng thẻ Doc trong tab Browse
 public class CardController extends Controller {
     @FXML private VBox card;
     @FXML private ImageView docCover;

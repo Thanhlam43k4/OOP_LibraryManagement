@@ -1,8 +1,6 @@
 package com.example.Model;
 
-import java.util.ArrayList;
 import java.sql.Date;
-import java.util.List;
 
 public class User {
     private int id;

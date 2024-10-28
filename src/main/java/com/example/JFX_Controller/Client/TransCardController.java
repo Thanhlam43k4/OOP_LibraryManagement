@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.sql.Date;
 
+// Controller của từng thẻ Doc đang mượn ở tab MyDoc
 public class TransCardController {
     @FXML private ImageView docCover;
     @FXML private Label title;

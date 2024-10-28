@@ -23,7 +23,7 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="224.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="61.0">
          <children>
-            <AnchorPane fx:id="docPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="docPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <HBox alignment="TOP_RIGHT" prefHeight="40.0" prefWidth="200.0" spacing="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -63,7 +63,7 @@
                                           <Font name="System Bold" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="10.0" layoutY="28.0" prefHeight="25.0" prefWidth="191.0" text="Title" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                    <Label layoutX="10.0" layoutY="28.0" prefHeight="25.0" prefWidth="220.0" text="Title" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>
@@ -71,7 +71,7 @@
                                           <Insets left="10.0" />
                                        </padding>
                                     </Label>
-                                    <Label layoutX="25.0" layoutY="28.0" prefHeight="25.0" prefWidth="178.0" text="Author" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                    <Label layoutX="25.0" layoutY="28.0" prefHeight="25.0" prefWidth="201.0" text="Author" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>
@@ -79,7 +79,7 @@
                                           <Insets left="10.0" />
                                        </padding>
                                     </Label>
-                                    <Label layoutX="101.0" layoutY="28.0" prefHeight="25.0" prefWidth="114.0" text="Genre" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                    <Label layoutX="101.0" layoutY="28.0" prefHeight="25.0" prefWidth="143.0" text="Genre" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>
@@ -87,15 +87,7 @@
                                           <Insets left="10.0" />
                                        </padding>
                                     </Label>
-                                    <Label layoutX="462.0" layoutY="28.0" prefHeight="25.0" prefWidth="93.0" text="Amount" textFill="#3c3a3a">
-                                       <font>
-                                          <Font name="System Bold" size="16.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label layoutX="549.0" layoutY="28.0" prefHeight="25.0" prefWidth="70.0" text="Ready" textFill="#3c3a3a">
+                                    <Label layoutX="462.0" layoutY="28.0" prefHeight="25.0" prefWidth="93.0" text="Copies" textFill="#3c3a3a">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>
@@ -274,13 +266,13 @@
                               </HBox>
                               <ScrollPane maxHeight="413.0" maxWidth="718.0" prefHeight="413.0" prefWidth="718.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
                                  <content>
-                                    <VBox prefHeight="434.0" prefWidth="692.0" spacing="10.0" />
+                                    <VBox fx:id="docCopyVbox" prefHeight="434.0" prefWidth="692.0" spacing="10.0" />
                                  </content>
                                  <padding>
-                                    <Insets left="10.0" top="5.0" />
+                                    <Insets left="10.0" top="10.0" />
                                  </padding>
                               </ScrollPane>
-                              <Button layoutX="665.0" layoutY="2.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent;" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                              <Button layoutX="665.0" layoutY="2.0" mnemonicParsing="false" onAction="#closeDocCopy" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent;" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                                  <graphic>
                                     <FontAwesomeIconView fill="#4d4b4b" glyphName="TIMES" size="17" />
                                  </graphic>
@@ -293,7 +285,19 @@
             </AnchorPane>
             <AnchorPane fx:id="userPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ScrollPane prefHeight="419.0" prefWidth="758.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                  <HBox alignment="TOP_RIGHT" prefHeight="40.0" prefWidth="200.0" spacing="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#openAddUser" styleClass="primary-button" stylesheets="@../CSS_Setup/button.css" text=" Add User">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="PLUS" styleClass="fontawesome-icon" />
+                           </graphic>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </HBox>
+                  <ScrollPane prefHeight="419.0" prefWidth="758.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
                      <padding>
                         <Insets left="20.0" />
                      </padding>
@@ -353,6 +357,103 @@
                         </VBox>
                      </content>
                   </ScrollPane>
+                  <StackPane fx:id="addUserPane" prefHeight="150.0" prefWidth="776.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Pane prefHeight="412.0" prefWidth="776.0" style="-fx-background-color: #504b4b; -fx-opacity: 0.8;" />
+                        <AnchorPane maxHeight="413.0" maxWidth="718.0" style="-fx-background-color: #d3cccc; -fx-border-color: #8d8888; -fx-background-radius: 15; -fx-border-radius: 15;">
+                           <children>
+                              <Label layoutX="35.0" layoutY="10.0" text="Add User">
+                                 <font>
+                                    <Font name="Comic Sans MS Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <VBox layoutX="1.0" layoutY="44.0" prefHeight="225.0" prefWidth="368.0">
+                                 <children>
+                                    <VBox prefHeight="73.0" prefWidth="405.0">
+                                       <children>
+                                          <Label text="Email *">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField maxWidth="-Infinity" prefHeight="35.0" prefWidth="326.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="10.0" layoutY="83.0" prefHeight="73.0" prefWidth="405.0">
+                                       <children>
+                                          <Label text="Phone number *">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField maxWidth="-Infinity" prefHeight="35.0" prefWidth="326.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets left="35.0" />
+                                 </padding>
+                              </VBox>
+                              <Button layoutX="680.0" layoutY="3.0" mnemonicParsing="false" onAction="#cancelAddUser" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: transparent;" textFill="#e4e0e0">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="TIMES" size="22" style="-fx-fill: #3c373a;" />
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="18.0" layoutY="362.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="682.0" style="-fx-background-color: linear-gradient(to right bottom, rgb(19, 168, 57), rgb(115, 160, 12)); -fx-background-radius: 10;" text="Add" textFill="#f2ebeb">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Button>
+                              <VBox layoutX="340.0" layoutY="44.0" prefHeight="225.0" prefWidth="368.0">
+                                 <children>
+                                    <VBox prefHeight="73.0" prefWidth="405.0">
+                                       <children>
+                                          <Label text="Username *">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField maxWidth="-Infinity" prefHeight="35.0" prefWidth="326.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="73.0" prefWidth="405.0">
+                                       <children>
+                                          <Label text="Age *">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField maxWidth="-Infinity" prefHeight="35.0" prefWidth="172.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets left="35.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </StackPane>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="tranPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
