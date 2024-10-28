@@ -2,7 +2,7 @@ package com.example.Model;
 
 import java.sql.Date;
 
-public class User {
+public  class User {
     private int id;
     private String username;
     private String email;
@@ -10,7 +10,22 @@ public class User {
     private String password;
     private String phoneNumber;
     private Date dob;
+    public User(int id, String username, String password){
+        this.id = id;
+        this.username = username;
+        this.password = password;
+    }
+    public User(String email, String password){
+        this.email = email;
+        this.password = password;
+    }
+    public User(String email, String username, String phoneNumber,int age){
+        this.email = email;
+        this.username = username;
+        this.phoneNumber = phoneNumber;
+        this.age = age;
 
+    }
     public int getAge() {
         return age;
     }
@@ -34,16 +49,6 @@ public class User {
 
     public void setDob(Date dob) {
         this.dob = dob;
-    }
-
-    public User(int id, String username, String password){
-        this.id = id;
-        this.username = username;
-        this.password = password;
-    }
-    public User(String email, String password){
-        this.email = email;
-        this.password = password;
     }
 
     public String getEmail() {

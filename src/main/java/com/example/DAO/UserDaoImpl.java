@@ -22,7 +22,6 @@ public class UserDaoImpl implements UserDao {
                 System.out.println("Connection to mysql is failed.");
                 return;
             }
-
             // Tạo một Statement
             Statement stmt = con.createStatement();
             // Thực thi câu lệnh SQL
@@ -33,7 +32,6 @@ public class UserDaoImpl implements UserDao {
             } else {
                 System.out.println("No user was created.");
             }
-
             // Đóng Statement
             stmt.close();
         } catch (SQLException e) {
@@ -49,6 +47,7 @@ public class UserDaoImpl implements UserDao {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
+
                 return new User(rs.getInt("id"), rs.getString("username"), rs.getString("password"));
             }
         } catch (SQLException e) {
