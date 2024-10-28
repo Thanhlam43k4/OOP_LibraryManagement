@@ -1,0 +1,41 @@
+/* .primary-table-view
+{
+    -fx-background-color: rgb(238, 231, 231);
+    -fx-border-radius: 20px;
+} */
+
+.primary-table-view .table-row-cell 
+{
+    -fx-pref-height: 40px;
+}
+
+.primary-table-view .table-row-cell:hover {
+    -fx-background-color: rgb(208, 214, 208);
+}
+
+/* Khi chọn một hàng */
+.primary-table-view .table-row-cell:filled:selected {
+    -fx-background-color: rgb(165, 170, 165);
+}
+
+.primary-table-view .table-cell {
+    -fx-padding: 10px;
+    -fx-text-fill: #3c3a3a;
+    -fx-font-size: 14px;
+    -fx-border-color: #797577;
+    -fx-border-width: 0.5px;
+}
+
+.primary-table-view .column-header {
+    -fx-background-color:   transparent;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-border-width: 0 1px 0 0;
+    -fx-border-color: #797577;
+}
+
+.primary-table-view .column-header-background {
+    -fx-background-color:   rgb(211, 204, 204);
+    -fx-border-color: #797577;
+    -fx-pref-height: 50px;
+}

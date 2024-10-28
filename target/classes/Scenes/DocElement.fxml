@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="500.0" styleClass="second-anchor-card" stylesheets="@../CSS_Setup/card.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Client.TransCardController">
+   <children>
+      <ImageView fx:id="docCover" fitHeight="110.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
+         <HBox.margin>
+            <Insets left="20.0" top="10.0" />
+         </HBox.margin>
+         <image>
+            <Image url="@../DocCover_url/programing%20python.jpg" />
+         </image>
+      </ImageView>
+      <VBox prefHeight="130.0" prefWidth="250.0">
+         <children>
+            <HBox prefHeight="30.0" prefWidth="264.0" spacing="10.0">
+               <children>
+                  <FontAwesomeIconView fill="#3c373a" glyphName="INFO" size="17" />
+                  <Label fx:id="title" text="Document name" textFill="#3c373a">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox layoutX="15.0" layoutY="20.0" prefHeight="30.0" prefWidth="264.0" spacing="10.0">
+               <children>
+                  <FontAwesomeIconView fill="#3c373a" glyphName="PENCIL" size="13" />
+                  <Label fx:id="author" text="Author" textFill="#3c373a">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox layoutX="15.0" layoutY="47.0" prefHeight="30.0" prefWidth="259.0" spacing="10.0">
+               <children>
+                  <FontAwesomeIconView fill="#3c373a" glyphName="FILTER" size="13" />
+                  <Label fx:id="genre" text="Document type" textFill="#3c373a">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+         <padding>
+            <Insets left="15.0" top="25.0" />
+         </padding>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+      <VBox alignment="TOP_RIGHT" prefHeight="130.0" prefWidth="156.0">
+         <children>
+            <MenuButton mnemonicParsing="false" style="-fx-border-width: 0px;" styleClass="primary-menubutton" stylesheets="@../CSS_Setup/menubutton.css">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#goReadDoc" text="read" />
+                <MenuItem mnemonicParsing="false" onAction="#returnDoc" text="return" />
+              </items>
+               <graphic>
+                  <FontAwesomeIconView glyphName="LIST" styleClass="fontawesome-icon" wrappingWidth="3.0" />
+               </graphic>
+               <VBox.margin>
+                  <Insets right="15.0" />
+               </VBox.margin>
+            </MenuButton>
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="91.0" prefWidth="157.0" spacing="5.0">
+               <children>
+                  <FontAwesomeIconView fill="#0749bf" glyphName="HOURGLASS_HALF" size="11">
+                     <HBox.margin>
+                        <Insets bottom="2.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+                  <Label fx:id="returnDate" prefHeight="17.0" prefWidth="108.0" text="Expired: 2024-10-30" textFill="#0749bf" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" right="12.0" />
+               </padding>
+            </HBox>
+         </children>
+         <padding>
+            <Insets top="15.0" />
+         </padding>
+      </VBox>
+   </children>
+</HBox>

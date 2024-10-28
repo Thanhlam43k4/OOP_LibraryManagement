@@ -1,0 +1,22 @@
+.primary-anchor-card {
+    -fx-background-color: rgb(238, 231, 231);
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    /* -fx-border-color: linear-gradient(to right bottom, rgb(57, 170, 85), rgb(146, 197, 27)); */
+}
+
+.primary-anchor-card:hover {
+    -fx-background-color: #d1d1da;
+}
+
+.second-anchor-card {
+    -fx-background-color: rgb(216, 208, 208);
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    /* -fx-border-color: linear-gradient(to right bottom, rgb(218, 29, 16), rgb(216, 96, 17)); */
+    /* -fx-border-color:   rgb(165, 157, 157); */
+}
+
+.second-anchor-card:hover {
+    -fx-background-color: #e6dcdb;
+}

@@ -1,0 +1,97 @@
+.primary-menubutton .arrow {
+    -fx-padding: 0;
+}
+
+.primary-menubutton {
+    -fx-background-color:  rgb(238, 231, 231);
+    -fx-border-color: linear-gradient(to right bottom, rgb(224, 46, 22), rgb(216, 116, 22));
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
+
+.primary-menubutton .label {
+    -fx-text-fill: #3c373a;
+}
+
+.primary-menubutton .fontawesome-icon {
+    -fx-fill: linear-gradient(to right bottom, rgb(224, 46, 22), rgb(216, 116, 22));
+}
+
+.primary-menubutton:hover {
+    -fx-background-color: linear-gradient(to right bottom, rgb(224, 46, 22), rgb(216, 116, 22));
+}
+
+.primary-menubutton:hover .fontawesome-icon {
+    -fx-fill: #ebebeb;
+}
+
+.primary-menubutton .menu-item:hover {
+    -fx-background-color: #a0a0a8;
+}
+
+.primary-menubutton .menu-item {
+    -fx-background-color:  rgb(238, 231, 231);
+    -fx-padding: 7px;   
+}
+
+.primary-menubutton .menu-item .label {
+    -fx-font-weight: bold;
+    -fx-text-fill: rgb(39, 37, 37);
+}
+
+.primary-menubutton .menu-item:hover .label {
+    -fx-text-fill: linear-gradient(to right bottom, rgb(224, 46, 22), rgb(216, 116, 22));
+}
+
+.primary-menubutton .context-menu {
+    -fx-background-color: rgb(238, 231, 231);
+    -fx-border-color: linear-gradient(to right bottom, rgb(224, 46, 22), rgb(216, 116, 22));
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+
+
+.second-menubutton .arrow {
+    -fx-padding: 0;
+}
+.second-menubutton {
+    -fx-background-color:  rgb(238, 231, 231);
+    -fx-border-color: #3c373a;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
+.second-menubutton .label {
+    -fx-text-fill: #3c373a;
+}
+.second-menubutton .fontawesome-icon {
+    -fx-fill: #3c373a;
+}
+.second-menubutton .menu-item {
+    -fx-background-color:  rgb(238, 231, 231);
+    -fx-padding: 7px;   
+}
+.second-menubutton:hover {
+    -fx-background-color: #3c373a;
+}
+.second-menubutton:hover .fontawesome-icon {
+    -fx-fill: rgb(238, 231, 231);
+}
+.second-menubutton:hover .label {
+    -fx-text-fill: rgb(238, 231, 231);
+}
+.second-menubutton .menu-item:hover {
+    -fx-background-color: #a0a0a8;
+}
+.second-menubutton .menu-item .label {
+    -fx-font-weight: bold;
+    -fx-text-fill: rgb(39, 37, 37);
+}
+.second-menubutton .context-menu {
+    -fx-background-color: rgb(238, 231, 231);
+    -fx-border-color: #3c373a;
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}

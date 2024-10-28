@@ -1,0 +1,14 @@
+.scroll-bar .thumb,
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button
+{
+    -fx-background-color: rgb(150, 143, 143);
+}
+
+.scroll-pane,
+.scroll-pane .viewport,
+.scroll-pane .corner,
+.scroll-bar
+{
+    -fx-background-color:  rgb(238, 231, 231);
+}

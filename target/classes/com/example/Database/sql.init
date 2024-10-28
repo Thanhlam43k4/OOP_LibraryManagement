@@ -1,0 +1,92 @@
+CREATE TABLE transactions (
+    transaction_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    document_id INT,
+    borrowed_date DATE,
+    return_date DATE,
+    actual_return_date DATE,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (document_id) REFERENCES documents(documentId)
+);
+
+
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,  -- Tự động tăng giá trị id
+    email VARCHAR(40) NOT NULL,
+    username VARCHAR(100) ,     -- Tên người dùng
+    age INT,                            -- Tuổi
+    password VARCHAR(255) NOT NULL,     -- Mật khẩu
+    phoneNumber VARCHAR(20),            -- Số điện thoại
+    dob DATE,                           -- Ngày sinh
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Thời điểm tạo tài khoản
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP  -- Thời điểm cập nhật cuối cùng
+);
+
+
+CREATE TABLE documents (
+    documentId INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    year INT NOT NULL,
+    genre VARCHAR(255) NOT NULL,
+    ISBN VARCHAR(20),
+    content TEXT,
+    author VARCHAR(255),
+    urlImage VARCHAR(255),
+    amount INT,
+    amount_avail INT
+);
+
+
+CREATE TABLE books (
+    book_id INT PRIMARY KEY AUTO_INCREMENT,
+    document_id INT,
+    publisher VARCHAR(255),
+    FOREIGN KEY (document_id) REFERENCES documents(document_id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE theses (
+    thesis_id INT PRIMARY KEY AUTO_INCREMENT,
+    document_id INT,
+    advisor VARCHAR(255),
+    university VARCHAR(255),
+    FOREIGN KEY (document_id) REFERENCES documents(document_id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE copies (
+    copy_id INT PRIMARY KEY AUTO_INCREMENT,
+    document_id INT,
+    copy_ISBN VARCHAR(20),
+    status ENUM('Available', 'Checked Out', 'Reserved', 'Damaged', 'Lost') DEFAULT 'Available',
+    FOREIGN KEY (document_id) REFERENCES documents(documentId) ON DELETE CASCADE
+);
+
+
+
+CREATE TABLE client (
+    user_id INT,                                 -- Khóa ngoại tham chiếu đến users
+    borrowed_books INT DEFAULT 0,                -- Số sách mượn
+    FOREIGN KEY (user_id) REFERENCES users(id)   -- Khóa ngoại tham chiếu đến users
+);
+
+-- Bảng admin với admin_id là AUTO_INCREMENT
+CREATE TABLE admin (
+    user_id INT,                                 -- Khóa ngoại tham chiếu đến users
+    -- Có thể thêm các thuộc tính riêng của admin tại đây
+    FOREIGN KEY (user_id) REFERENCES users(id)   -- Khóa ngoại tham chiếu đến users
+);
+
+
+DELIMITER //
+
+CREATE TRIGGER after_user_insert
+AFTER INSERT ON users
+FOR EACH ROW
+BEGIN
+    INSERT INTO client (user_id, borrowed_books)
+    VALUES (NEW.id, 0); -- Khởi tạo borrowed_books với giá trị 0
+END; //
+
+DELIMITER ;
