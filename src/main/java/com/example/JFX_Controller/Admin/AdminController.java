@@ -17,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -36,7 +37,6 @@ public class AdminController extends Controller implements Initializable {
     @FXML private HBox tranBut;
     // Docs
     @FXML private AnchorPane docPane;
-    @FXML private StackPane addDocPane;
     @FXML private StackPane copiesDocPane;
     @FXML private VBox docCopyVbox;
     @FXML private VBox docVBox;
@@ -79,20 +79,16 @@ public class AdminController extends Controller implements Initializable {
         loadScene("Profile.fxml");
     }
     @FXML
-    void closeDocCopy(ActionEvent event) {
-        copiesDocPane.setVisible(false);
-    }
-    @FXML
     void signOut(ActionEvent event) {
         loadScene("Login.fxml");
     }
     @FXML
-    void openAddDoc(ActionEvent event) {
-        addDocPane.setVisible(true);
+    void closeDocCopy(ActionEvent event) {
+        copiesDocPane.setVisible(false);
     }
     @FXML
-    void cancelAddDoc(ActionEvent event) {
-        addDocPane.setVisible(false);
+    void openAddDoc(ActionEvent event) {
+        loadAddDoc();
     }
     @FXML
     void openAddUser(ActionEvent event) {
@@ -184,6 +180,26 @@ public class AdminController extends Controller implements Initializable {
         );
 
         tranTable.setItems(books);
+    }
+    
+    // mở pane add document
+    private void loadAddDoc() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/AddDoc.fxml"));
+            Parent addDocPane = loader.load();
+
+            docPane.getChildren().add(addDocPane);
+            // chỉnh stretch
+            AnchorPane.setBottomAnchor(addDocPane, 0.0);
+            AnchorPane.setLeftAnchor(addDocPane, 0.0);
+            AnchorPane.setRightAnchor(addDocPane, 0.0);
+            AnchorPane.setTopAnchor(addDocPane, 0.0);
+            
+            AddDocController addDocController = loader.getController();
+            addDocController.setInfo(docPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     //#endregion
 }
