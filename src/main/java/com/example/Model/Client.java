@@ -1,8 +1,6 @@
 package com.example.Model;
 
 public class Client extends User {
-
-    private int ClientId;
     private int borrowedBook;
 
 
