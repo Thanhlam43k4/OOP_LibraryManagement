@@ -92,11 +92,7 @@ public class AdminController extends Controller implements Initializable {
     }
     @FXML
     void openAddUser(ActionEvent event) {
-        addUserPane.setVisible(true);
-    }
-    @FXML
-    void cancelAddUser(ActionEvent event) {
-        addUserPane.setVisible(false);
+        loadAddUser();
     }
 
     //#region fe_func
@@ -197,6 +193,24 @@ public class AdminController extends Controller implements Initializable {
             
             AddDocController addDocController = loader.getController();
             addDocController.setInfo(docPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void loadAddUser() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/AddUser.fxml"));
+            Parent addUserPane = loader.load();
+
+            userPane.getChildren().add(addUserPane);
+            // chỉnh stretch
+            AnchorPane.setBottomAnchor(addUserPane, 0.0);
+            AnchorPane.setLeftAnchor(addUserPane, 0.0);
+            AnchorPane.setRightAnchor(addUserPane, 0.0);
+            AnchorPane.setTopAnchor(addUserPane, 0.0);
+            
+            AddUserController addUserController = loader.getController();
+            addUserController.setInfo(userPane);
         } catch (IOException e) {
             e.printStackTrace();
         }
