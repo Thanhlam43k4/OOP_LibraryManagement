@@ -8,14 +8,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="650.0" style="-fx-background-radius: 20;" styleClass="second-anchor-card" stylesheets="@../../CSS_Setup/card.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="800.0" style="-fx-background-radius: 20;" styleClass="second-anchor-card" stylesheets="@../../CSS_Setup/card.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.UserRowController">
    <children>
-      <Label alignment="CENTER" prefHeight="20.0" prefWidth="84.0" text="#123" textFill="#3c3a3a">
+      <Label fx:id="userId" alignment="CENTER" prefHeight="20.0" prefWidth="80.0" text="#123" textFill="#3c3a3a">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="10.0" layoutY="30.0" prefHeight="20.0" prefWidth="181.0" text="Trong Anh" textFill="#3c3a3a">
+      <Label fx:id="userName" layoutX="10.0" layoutY="30.0" prefHeight="20.0" prefWidth="184.0" text="Trong Anh" textFill="#3c3a3a">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -23,7 +23,7 @@
             <Insets left="10.0" />
          </padding>
       </Label>
-      <Label layoutX="94.0" layoutY="30.0" prefHeight="20.0" prefWidth="205.0" text="latgoto@gmail.com" textFill="#3c3a3a">
+      <Label fx:id="email" layoutX="94.0" layoutY="30.0" prefHeight="20.0" prefWidth="203.0" text="latgoto@gmail.com" textFill="#3c3a3a">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -31,7 +31,15 @@
             <Insets left="10.0" />
          </padding>
       </Label>
-      <Label layoutX="10.0" layoutY="30.0" prefHeight="20.0" prefWidth="61.0" text="15" textFill="#3c3a3a">
+      <Label fx:id="age" layoutX="10.0" layoutY="30.0" prefHeight="20.0" prefWidth="65.0" text="15" textFill="#3c3a3a">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <padding>
+            <Insets left="12.0" />
+         </padding>
+      </Label>
+      <Label fx:id="phone" layoutX="480.0" layoutY="30.0" prefHeight="20.0" prefWidth="114.0" text="0983242439" textFill="#3c3a3a">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -39,26 +47,19 @@
             <Insets left="10.0" />
          </padding>
       </Label>
-      <Label layoutX="480.0" layoutY="30.0" prefHeight="20.0" prefWidth="114.0" text="0983242439" textFill="#3c3a3a">
+      <Label fx:id="borrowed" layoutX="480.0" layoutY="30.0" prefHeight="20.0" prefWidth="107.0" text="15" textFill="#3c3a3a">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
          <padding>
-            <Insets left="10.0" />
-         </padding>
-      </Label>
-      <Label layoutX="480.0" layoutY="30.0" prefHeight="20.0" prefWidth="52.0" text="15" textFill="#3c3a3a">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-         <padding>
-            <Insets left="10.0" />
+            <Insets left="25.0" />
          </padding>
       </Label>
       <MenuButton mnemonicParsing="false" style="-fx-border-width: 0;" styleClass="second-menubutton" stylesheets="@../../CSS_Setup/menubutton.css">
          <items>
-            <MenuItem mnemonicParsing="false" text="Action 1" />
-            <MenuItem mnemonicParsing="false" text="Action 2" />
+            <MenuItem mnemonicParsing="false" onAction="#showInfo" text="info" />
+            <MenuItem mnemonicParsing="false" onAction="#borrowDoc" text="borrow" />
+            <MenuItem mnemonicParsing="false" onAction="#returnDoc" text="return" />
          </items>
          <graphic>
             <FontAwesomeIconView glyphName="ELLIPSIS_V" size="15" styleClass="fontawesome-icon" wrappingWidth="1.0" />

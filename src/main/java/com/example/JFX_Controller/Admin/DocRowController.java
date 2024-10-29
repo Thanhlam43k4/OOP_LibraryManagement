@@ -32,6 +32,10 @@ public class DocRowController {
     void openDocModify(ActionEvent event) {
         loadDocModify();
     }
+    @FXML
+    void deleteDoc(ActionEvent event) {
+
+    }
 
     public void setInfo(int docId, String title, String author, String genre, int amount, StackPane copiesDocPane, VBox docCopyVBox) {
         this.docId.setText(String.valueOf(docId));

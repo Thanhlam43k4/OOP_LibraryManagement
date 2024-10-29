@@ -177,9 +177,9 @@
                         <Insets left="20.0" />
                      </padding>
                      <content>
-                        <VBox fx:id="userVBox" prefHeight="224.0" prefWidth="751.0" spacing="10.0">
+                        <VBox fx:id="userVBox" prefHeight="224.0" prefWidth="800.0" spacing="10.0">
                            <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="426.0" style="-fx-background-color: rgb(211, 204, 204); -fx-background-radius: 20; -fx-border-color: #797577; -fx-border-radius: 20;">
+                              <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="751.0" style="-fx-background-color: rgb(211, 204, 204); -fx-background-radius: 20; -fx-border-color: #797577; -fx-border-radius: 20;">
                                  <children>
                                     <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Id" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
                                        <font>
@@ -210,7 +210,7 @@
                                           <Insets left="10.0" />
                                        </padding>
                                     </Label>
-                                    <Label layoutX="478.0" layoutY="28.0" prefHeight="25.0" prefWidth="97.0" text="Phone" textFill="#3c3a3a">
+                                    <Label layoutX="478.0" layoutY="28.0" prefHeight="25.0" prefWidth="114.0" text="Phone" textFill="#3c3a3a">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>

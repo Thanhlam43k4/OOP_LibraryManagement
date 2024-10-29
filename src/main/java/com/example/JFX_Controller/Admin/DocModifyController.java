@@ -19,14 +19,14 @@ public class DocModifyController {
     @FXML private AnchorPane docPane;
     @FXML
     void cancelModifyDoc(ActionEvent event) {
-        docPane.getChildren().remove(docModifyRoot);
-        docModifyRoot = null;
+        docPane.getChildren().remove(this.docModifyRoot);
+        this.docModifyRoot = null;
     }
 
     @FXML
     void saveModifyDoc(ActionEvent event) {
-        docPane.getChildren().remove(docModifyRoot);
-        docModifyRoot = null;
+        docPane.getChildren().remove(this.docModifyRoot);
+        this.docModifyRoot = null;
     }
 
     public void setInfo(int docId, String title, String author, String genre, int quantity, AnchorPane docPane) {
