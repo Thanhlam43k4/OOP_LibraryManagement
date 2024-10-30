@@ -5,22 +5,36 @@ public class Document {
     private String title;
     private int year;
     private String genre;
+    private String ISBN;
+    private String content;
+    private String author;
+    private String urlImage;  // Thêm thuộc tính urlImage
+    private int numberCopy;
 
     public Document() {
 
     }
 
-    public Document(int documentId, String title, int year, String genre) {
+    public Document(int documentId, String title, String ISBN, String author, String genre, int numberCopy) {
         this.documentId = documentId;
         this.title = title;
-        this.year = year;
+        this.ISBN = ISBN;
+        this.author = author;
         this.genre = genre;
+        this.numberCopy = numberCopy;
     }
 
     public Document(String title, int year, String gener) {
         this.title = title;
         this.year = year;
         this.genre = gener;
+    }
+
+    public Document(int documentId,String title,String author, String genre) {
+        this.documentId = documentId;
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
     }
 
     public int getDocumentId() {
@@ -49,6 +63,51 @@ public class Document {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+
+    public void setDocumentId(int documentId) {
+        this.documentId = documentId;
+    }
+
+    public String getISBN() {
+        return ISBN;
+    }
+
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
+    }
+
+    public int getNumberCopy() {
+        return numberCopy;
+    }
+
+    public void setNumberCopy(int numberCopy) {
+        this.numberCopy = numberCopy;
     }
 
     public void getDetails() {

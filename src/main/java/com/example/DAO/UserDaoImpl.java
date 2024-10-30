@@ -1,5 +1,6 @@
 package com.example.DAO;
 import com.example.Interface.UserDao;
+import com.example.Model.Client;
 import com.example.Model.User;
 
 import java.sql.*;
@@ -57,17 +58,26 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<User> getAllUsers() {
-        List<User> users = new ArrayList<>();
-        String sql = "SELECT * FROM users";
+    public List<Client> getAllUsers() {
+        List<Client> clients = new ArrayList<>();
+        String sql = "SELECT users.id, users.username,users.email, users.age, " +
+                "users.phoneNumber,client.borrowed_books " +
+                "FROM users " +
+                "LEFT JOIN client ON users.id = client.user_id";
+
         try (Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                users.add(new User(rs.getInt("id"), rs.getString("username"), rs.getString("password")));
+                clients.add(new Client(rs.getInt("id"),
+                        rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getInt("age"),
+                        rs.getString("phoneNumber"),
+                        rs.getInt("borrowed_books")));
             }
         }catch (SQLException e) {
             e.printStackTrace();
         }
-        return users;
+        return clients;
     }
 
     @Override

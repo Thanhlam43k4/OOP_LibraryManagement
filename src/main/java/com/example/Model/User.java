@@ -15,6 +15,13 @@ public  class User {
         this.username = username;
         this.password = password;
     }
+    public User(int id,String email,String username,int age,String phoneNumber){
+        this.id = id;
+        this.email = email;
+        this.username = username;
+        this.age = age;
+        this.phoneNumber = phoneNumber;
+    }
     public User(String email, String password){
         this.email = email;
         this.password = password;
@@ -24,7 +31,6 @@ public  class User {
         this.username = username;
         this.phoneNumber = phoneNumber;
         this.age = age;
-
     }
     public int getAge() {
         return age;
@@ -84,4 +90,6 @@ public  class User {
     {
         System.out.println("UserName: " +  username +  " " + "Password: "+ password);
     }
+
+
 }

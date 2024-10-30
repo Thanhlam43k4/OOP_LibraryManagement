@@ -2,6 +2,7 @@ package com.example.Service;
 
 import com.example.Interface.UserDao;
 import com.example.DAO.UserDaoImpl;
+import com.example.Model.Client;
 import com.example.Model.User;
 
 import java.sql.Connection;
@@ -23,7 +24,7 @@ public class UserService {
         return userDao.getUserById(id);
     }
 
-    public List<User> getAllUsers() {
+    public List<Client> getAllUsers() {
         return userDao.getAllUsers();
     }
 

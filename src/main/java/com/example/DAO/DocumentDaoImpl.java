@@ -38,7 +38,7 @@ public class DocumentDaoImpl implements DocumentDao {
                 return new Document(
                         rs.getInt("documentId"),
                         rs.getString("title"),
-                        rs.getInt("year"),
+                        rs.getString("author"),
                         rs.getString("genre"));
             }
         } catch (SQLException e) {
@@ -57,8 +57,10 @@ public class DocumentDaoImpl implements DocumentDao {
                 Document doc = new Document(
                         rs.getInt("documentId"),
                         rs.getString("title"),
-                        rs.getInt("year"),
-                        rs.getString("genre"));
+                        rs.getString("ISBN"),
+                        rs.getString("author"),
+                        rs.getString("genre"),
+                        rs.getInt("numberCopy"));
                 documents.add(doc);
             }
         } catch (SQLException e) {

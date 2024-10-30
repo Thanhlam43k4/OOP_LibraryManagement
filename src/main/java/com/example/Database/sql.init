@@ -13,7 +13,7 @@ CREATE TABLE transactions (
 
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,  -- Tự động tăng giá trị id
-    email VARCHAR(40) NOT NULL,
+    email VARCHAR(50) NOT NULL,
     username VARCHAR(100) ,     -- Tên người dùng
     age INT,                            -- Tuổi
     password VARCHAR(255) NOT NULL,     -- Mật khẩu
@@ -56,10 +56,9 @@ CREATE TABLE theses (
 
 
 CREATE TABLE copies (
-    copy_id INT PRIMARY KEY AUTO_INCREMENT,
     document_id INT,
     copy_ISBN VARCHAR(20),
-    status ENUM('Available', 'Checked Out', 'Reserved', 'Damaged', 'Lost') DEFAULT 'Available',
+    status ENUM('Available', 'Checked Out') DEFAULT 'Available',
     FOREIGN KEY (document_id) REFERENCES documents(documentId) ON DELETE CASCADE
 );
 
@@ -79,6 +78,8 @@ CREATE TABLE admin (
 );
 
 
+### This Trigger is used for whenever user is created, it auto create client with this user_id.
+
 DELIMITER //
 
 CREATE TRIGGER after_user_insert
@@ -88,5 +89,33 @@ BEGIN
     INSERT INTO client (user_id, borrowed_books)
     VALUES (NEW.id, 0); -- Khởi tạo borrowed_books với giá trị 0
 END; //
+
+DELIMITER ;
+
+
+### This Trigger is used for whenever Document is insert . it generate automatically 5 copies of document.
+### ISBN has postprefix -1 -2 -3 -4 -5
+
+DELIMITER //
+
+CREATE TRIGGER after_document_insert
+AFTER INSERT ON documents
+FOR EACH ROW
+BEGIN
+    DECLARE i INT DEFAULT 1;
+    DECLARE new_isbn VARCHAR(20);
+
+    WHILE i <= 5 DO
+        -- Tạo một ISBN ngẫu nhiên (hoặc bạn có thể sử dụng một quy tắc tạo ISBN cụ thể)
+        SET new_isbn = CONCAT(NEW.ISBN, '-', i);  -- Ví dụ: 'ISBN-1', 'ISBN-2', ...
+
+        INSERT INTO copies_document (document_id, copy_ISBN)
+        VALUES (NEW.documentId, new_isbn);
+
+        SET i = i + 1;
+    END WHILE;
+END;
+
+//
 
 DELIMITER ;
