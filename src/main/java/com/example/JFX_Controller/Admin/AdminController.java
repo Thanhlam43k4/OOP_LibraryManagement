@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import com.example.JFX_Controller.Controller;
+import com.example.Model.Client;
 import com.example.Model.Document;
 import com.example.Model.Transaction;
 import com.example.Service.DocumentService;
@@ -54,7 +55,7 @@ public class AdminController extends Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if (userList.isEmpty()) {
-            addNodes(userList, "UserRow.fxml");
+            addUserNodes();
             addDocNodes();
         }
         setPane(docPane, docsBut);
@@ -118,15 +119,17 @@ public class AdminController extends Controller implements Initializable {
     }
     
     // tạo list
-    private void addNodes(List<Node> UIlist, String fxml) {
-        UIlist.clear();
+    private void addUserNodes() {
+        userList.clear();
         for (int i = 0; i < 10; i++) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/" + fxml));
-                Node bookNode = loader.load();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/UserRow.fxml"));
+                Node userNode = loader.load();
                 // AnchorPane pane = (AnchorPane) bookNode;
                 // pane.getHeight();
-                UIlist.add(bookNode);
+                UserRowController userRowController = loader.getController();
+                userRowController.setInfo(new Client("123@", "tanh", "01234", 12), userPane);
+                userList.add(userNode);
             } catch (IOException e) {
                 e.printStackTrace();
             }
