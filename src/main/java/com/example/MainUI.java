@@ -3,9 +3,12 @@ package com.example;
 //#region Lib
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.List;
 
 import com.example.Database.DatabaseConnection;
 
+import com.example.Model.Client;
+import com.example.Model.User;
 import com.example.Service.DocumentService;
 import com.example.Service.TransactionService;
 import com.example.Service.UserService;
@@ -39,6 +42,7 @@ public class MainUI extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("Book Management Application");
         primaryStage.show();
+
     }
 
     void createServices(Connection con) {
@@ -46,6 +50,8 @@ public class MainUI extends Application {
         DocumentService.instance = new DocumentService(con);
         TransactionService.instance = new TransactionService(con);
     }
+
+
 
     public static void main(String[] args) {
         launch(args);
