@@ -49,7 +49,7 @@ public class UserRowController {
             UserInfoController userInfoController = loader.getController();
             Client client = new Client(email.getText(), userName.getText(), phone.getText(), Integer.parseInt(age.getText()));
             client.setId(Integer.parseInt(userId.getText()));
-            client.setBorrowed_book(Integer.parseInt(borrowed.getText()));
+            client.setBorrowedBook(Integer.parseInt(borrowed.getText()));
 
             userInfoController.setInfo(client, userPane);
         } catch (IOException e) {
@@ -63,7 +63,7 @@ public class UserRowController {
         this.email.setText(client.getEmail());
         this.phone.setText(client.getPhoneNumber());
         this.age.setText(String.valueOf(client.getAge()));
-        this.borrowed.setText(String.valueOf(client.getBorrowed_book()));
+        this.borrowed.setText(String.valueOf(client.getBorrowedBook()));
         this.userPane = userPane;
     }
 }

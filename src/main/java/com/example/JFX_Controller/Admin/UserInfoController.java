@@ -32,7 +32,7 @@ public class UserInfoController {
         this.email.setText(client.getEmail());
         this.phone.setText(client.getPhoneNumber());
         this.age.setText(String.valueOf(client.getAge()));
-        this.borrowed.setText(String.valueOf(client.getBorrowed_book()));
+        this.borrowed.setText(String.valueOf(client.getBorrowedBook()));
         this.userPane = userPane;
     }
 }
