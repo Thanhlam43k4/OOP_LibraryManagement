@@ -19,11 +19,11 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: rgb(238, 231, 231);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.AdminController">
+<AnchorPane prefHeight="500.0" prefWidth="1100.0" style="-fx-background-color: rgb(238, 231, 231);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.AdminController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="224.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="61.0">
          <children>
-            <AnchorPane fx:id="docPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="docPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <HBox alignment="TOP_RIGHT" prefHeight="40.0" prefWidth="200.0" spacing="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -54,16 +54,16 @@
                         <Insets left="25.0" />
                      </padding>
                      <content>
-                        <VBox fx:id="docVBox" prefHeight="215.0" prefWidth="766.0" spacing="10.0">
+                        <VBox fx:id="docVBox" prefHeight="215.0" prefWidth="828.0" spacing="10.0">
                            <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="426.0" style="-fx-background-color: rgb(211, 204, 204); -fx-background-radius: 20; -fx-border-color: #797577; -fx-border-radius: 20;">
+                              <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="766.0" style="-fx-background-color: rgb(211, 204, 204); -fx-background-radius: 20; -fx-border-color: #797577; -fx-border-radius: 20;">
                                  <children>
-                                    <Label alignment="CENTER" prefHeight="25.0" prefWidth="73.0" text="Id" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                    <Label alignment="CENTER" prefHeight="25.0" prefWidth="73.0" text="Id" textFill="#3c3a3a">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="10.0" layoutY="28.0" prefHeight="25.0" prefWidth="220.0" text="Title" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                    <Label layoutX="10.0" layoutY="28.0" prefHeight="25.0" prefWidth="285.0" text="Title" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>
@@ -158,7 +158,7 @@
                   </StackPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="userPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="userPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <HBox alignment="TOP_RIGHT" prefHeight="40.0" prefWidth="200.0" spacing="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -275,7 +275,7 @@
                </opaqueInsets>
                <children>
                   <TextField fx:id="searchField" prefHeight="27.0" prefWidth="173.0" promptText="Search..." styleClass="primary-text-field" stylesheets="@../CSS_Setup/textfield.css" />
-                  <Label alignment="CENTER_RIGHT" text="Trong anh" textFill="#3c3a3a">
+                  <Label fx:id="userName" alignment="CENTER_RIGHT" text="Trong anh" textFill="#3c3a3a">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>

@@ -4,6 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+
+import com.example.Model.Document;
+
 import javafx.event.ActionEvent;
 
 public class DocModifyController {
@@ -29,11 +32,13 @@ public class DocModifyController {
         this.docModifyRoot = null;
     }
 
-    public void setInfo(int docId, String title, String author, String genre, int quantity, AnchorPane docPane) {
-        this.title.setText(title);
-        this.author.setText(author);
-        this.genre.setText(genre);
-        this.quantity.setText(String.valueOf(quantity));
+    public void setInfo(Document d, AnchorPane docPane) {
+        this.title.setText(d.getTitle());
+        this.author.setText(d.getAuthor());
+        this.genre.setText(d.getGenre());
+        this.imageUrl.setText(d.getUrlImage());
+        this.isbn.setText(d.getISBN());
+        this.quantity.setText(String.valueOf(d.getNumberCopy()));
         this.docPane = docPane;
     }
 }

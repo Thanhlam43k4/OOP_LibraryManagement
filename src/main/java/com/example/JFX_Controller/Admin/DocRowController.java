@@ -2,6 +2,8 @@ package com.example.JFX_Controller.Admin;
 
 import java.io.IOException;
 
+import com.example.Model.Document;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +26,8 @@ public class DocRowController {
     @FXML private StackPane copiesDocPane;
     @FXML private VBox docCopyVbox;
     
+    private Document doc;
+
     @FXML
     void showAllCopy(MouseEvent event) {
         addCopyNodes();
@@ -37,12 +41,13 @@ public class DocRowController {
 
     }
 
-    public void setInfo(int docId, String title, String author, String genre, int amount, StackPane copiesDocPane, VBox docCopyVBox) {
-        this.docId.setText(String.valueOf(docId));
-        this.title.setText(title);
-        this.author.setText(author);
-        this.genre.setText(genre);
-        this.amount.setText(String.valueOf(amount));
+    public void setInfo(Document d, StackPane copiesDocPane, VBox docCopyVBox) {
+        doc = d;
+        this.docId.setText(String.valueOf(d.getDocumentId()));
+        this.title.setText(d.getTitle());
+        this.author.setText(d.getAuthor());
+        this.genre.setText(d.getGenre());
+        this.amount.setText(String.valueOf(d.getNumberCopy()));
         this.copiesDocPane = copiesDocPane;
         this.docCopyVbox = docCopyVBox;
     }
@@ -78,7 +83,7 @@ public class DocRowController {
             AnchorPane.setTopAnchor(modifyDocPane, 0.0);
             
             DocModifyController modifyController = loader.getController();
-            modifyController.setInfo(Integer.parseInt(docId.getText()), title.getText(), author.getText(), genre.getText(), Integer.parseInt(amount.getText()), docPane);
+            modifyController.setInfo(doc, docPane);
         } catch (IOException e) {
             e.printStackTrace();
         }

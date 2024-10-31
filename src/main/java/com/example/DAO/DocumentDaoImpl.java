@@ -59,8 +59,9 @@ public class DocumentDaoImpl implements DocumentDao {
                         rs.getString("title"),
                         rs.getString("ISBN"),
                         rs.getString("author"),
+                        rs.getString("urlImage"),
                         rs.getString("genre"),
-                        rs.getInt("numberCopy"));
+                        rs.getInt("amount"));
                 documents.add(doc);
             }
         } catch (SQLException e) {

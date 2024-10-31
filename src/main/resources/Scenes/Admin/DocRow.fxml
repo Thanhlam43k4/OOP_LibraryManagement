@@ -8,14 +8,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER_LEFT" onMouseClicked="#showAllCopy" prefHeight="60.0" prefWidth="759.0" style="-fx-background-radius: 20;" styleClass="second-anchor-card" stylesheets="@../../CSS_Setup/card.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.DocRowController">
+<HBox alignment="CENTER_LEFT" onMouseClicked="#showAllCopy" prefHeight="60.0" prefWidth="828.0" style="-fx-background-radius: 20;" styleClass="second-anchor-card" stylesheets="@../../CSS_Setup/card.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.DocRowController">
    <children>
       <Label fx:id="docId" alignment="CENTER" prefHeight="20.0" prefWidth="74.0" text="#123" textFill="#3c3a3a">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="title" layoutX="10.0" layoutY="30.0" prefHeight="20.0" prefWidth="222.0" text="One Piece" textFill="#3c3a3a">
+      <Label fx:id="title" layoutX="10.0" layoutY="30.0" prefHeight="20.0" prefWidth="284.0" text="One Piece" textFill="#3c3a3a">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -23,7 +23,7 @@
             <Insets left="10.0" />
          </padding>
       </Label>
-      <Label fx:id="author" layoutX="94.0" layoutY="30.0" prefHeight="20.0" prefWidth="198.0" text="Oda" textFill="#3c3a3a">
+      <Label fx:id="author" layoutX="94.0" layoutY="30.0" prefHeight="20.0" prefWidth="201.0" text="Oda" textFill="#3c3a3a">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

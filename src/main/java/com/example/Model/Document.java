@@ -15,11 +15,12 @@ public class Document {
 
     }
 
-    public Document(int documentId, String title, String ISBN, String author, String genre, int numberCopy) {
+    public Document(int documentId, String title, String ISBN, String author, String urlImage, String genre, int numberCopy) {
         this.documentId = documentId;
         this.title = title;
         this.ISBN = ISBN;
         this.author = author;
+        this.urlImage = urlImage;
         this.genre = genre;
         this.numberCopy = numberCopy;
     }

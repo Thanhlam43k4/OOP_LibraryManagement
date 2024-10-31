@@ -27,12 +27,15 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.Initializable;
 //#endregion
 
 public class AdminController extends Controller implements Initializable {
+    @FXML private Label userName;
     @FXML private TextField searchField;
+    // Tab button
     @FXML private HBox docsBut;
     @FXML private HBox usersBut;
     @FXML private HBox tranBut;
@@ -43,7 +46,6 @@ public class AdminController extends Controller implements Initializable {
     @FXML private VBox docVBox;
     // Users
     @FXML private AnchorPane userPane;
-    @FXML private StackPane addUserPane;
     @FXML private VBox userVBox;
     // Transaction
     @FXML private AnchorPane tranPane;
@@ -64,38 +66,27 @@ public class AdminController extends Controller implements Initializable {
         setVBox(docVBox, docList);
         setTranTable();
     }
-
+    //#region event handle
     @FXML
-    void docsTab(MouseEvent event) { setPane(docPane, docsBut); }
+    void docsTab(MouseEvent event)       { setPane(docPane, docsBut); }
     @FXML
-    void usersTab(MouseEvent event) { setPane(userPane, usersBut); }
+    void usersTab(MouseEvent event)      { setPane(userPane, usersBut); }
     @FXML
-    void transTab(MouseEvent event) { setPane(tranPane, tranBut); }
+    void transTab(MouseEvent event)      { setPane(tranPane, tranBut); }
     @FXML
-    void showSetting(ActionEvent event) {
-
-    }
+    void showSetting(ActionEvent event)  { }
     @FXML
-    void goToProfile(ActionEvent event) {
-        loadScene("Profile.fxml");
-    }
+    void goToProfile(ActionEvent event)  { loadScene("Profile.fxml"); }
     @FXML
-    void signOut(ActionEvent event) {
-        loadScene("Login.fxml");
-    }
+    void signOut(ActionEvent event)      { loadScene("Login.fxml"); }
     @FXML
-    void closeDocCopy(ActionEvent event) {
-        copiesDocPane.setVisible(false);
-    }
+    void closeDocCopy(ActionEvent event) { copiesDocPane.setVisible(false); }
     @FXML
-    void openAddDoc(ActionEvent event) {
-        loadAddDoc();
-    }
+    void openAddDoc(ActionEvent event)   { loadAddDoc(); }
     @FXML
-    void openAddUser(ActionEvent event) {
-        loadAddUser();
-    }
-
+    void openAddUser(ActionEvent event)  { loadAddUser(); }
+    //#endregion
+    
     //#region fe_func
     // bật/tắt Pane
     private void setPane(AnchorPane pane, HBox tabBut) {
@@ -118,7 +109,7 @@ public class AdminController extends Controller implements Initializable {
         selectedBut.getStyleClass().add("hbox-style-selected");
     }
     
-    // tạo list
+    // load Data
     private void addUserNodes() {
         userList.clear();
         for (int i = 0; i < 10; i++) {
@@ -141,17 +132,17 @@ public class AdminController extends Controller implements Initializable {
         for (Document d : docs) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/DocRow.fxml"));
-                Node bookNode = loader.load();
+                Node docNode = loader.load();
                 DocRowController docRowController = (DocRowController) loader.getController();
-                docRowController.setInfo(d.getDocumentId(), d.getTitle(), d.getTitle(), d.getGenre(), 10, copiesDocPane, docCopyVbox);
-                docList.add(bookNode);
+                docRowController.setInfo(d, copiesDocPane, docCopyVbox);
+                docList.add(docNode);
             } catch (IOException e) {
                 e.printStackTrace();
             }   
         }
     }
 
-    // cập nhật VBox
+    // thêm data vào UI
     private void setVBox(VBox vbox, List<Node> list) {
         //vbox.getChildren().clear();
         vbox.setPrefHeight(list.size() * 70 + 70);
@@ -181,7 +172,7 @@ public class AdminController extends Controller implements Initializable {
         tranTable.setItems(books);
     }
     
-    // mở pane add document
+    // mở pane add document và add user
     private void loadAddDoc() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/AddDoc.fxml"));

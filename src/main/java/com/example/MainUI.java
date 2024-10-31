@@ -3,12 +3,9 @@ package com.example;
 //#region Lib
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.List;
 
 import com.example.Database.DatabaseConnection;
 
-import com.example.Model.Client;
-import com.example.Model.User;
 import com.example.Service.DocumentService;
 import com.example.Service.TransactionService;
 import com.example.Service.UserService;
