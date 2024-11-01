@@ -15,8 +15,6 @@ public class TransCardController {
     @FXML private Label genre;
     @FXML private Label returnDate;
 
-    private int docId;
-
     @FXML
     void goReadDoc(ActionEvent event) {
 
@@ -28,7 +26,6 @@ public class TransCardController {
 
     // set thông tin cho các UI element
     public void setInfo(int id, String imageUrl, String title, String author, String genre, Date returnDate) {
-        this.docId = id;
         this.docCover.setImage(new Image(imageUrl));
         this.title.setText(title);
         this.author.setText(author);

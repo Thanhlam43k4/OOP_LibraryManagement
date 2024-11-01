@@ -3,6 +3,7 @@ package com.example.Service;
 import com.example.Interface.DocumentDao;
 import com.example.DAO.DocumentDaoImpl;
 import com.example.Model.Document;
+import com.example.Model.Copies;
 
 import java.sql.Connection;
 import java.util.List;
@@ -33,5 +34,8 @@ public class DocumentService {
     public void deleteDocument(int documentId){
         documentDao.deleteDocument(documentId);
 
+    }
+    public List<Copies> getAllCopies(int docId) {
+        return documentDao.getAllCopies(docId);
     }
 }

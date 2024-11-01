@@ -36,7 +36,7 @@
                </opaqueInsets>
                <children>
                   <TextField prefHeight="27.0" prefWidth="173.0" promptText="Search..." styleClass="primary-text-field" stylesheets="@../CSS_Setup/textfield.css" />
-                  <Label alignment="CENTER_RIGHT" text="Trong anh" textFill="#3c3a3a">
+                  <Label fx:id="userName" alignment="CENTER_RIGHT" text="Trong anh" textFill="#3c3a3a">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -114,34 +114,39 @@
             </Label>
          </children>
       </AnchorPane>
-      <ScrollPane fx:id="browseScroll" layoutX="224.0" layoutY="137.0" prefHeight="439.0" prefWidth="526.0" stylesheets="@../CSS_Setup/scrollpane.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="224.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="61.0">
-         <content>
-            <GridPane fx:id="browseGrid" alignment="CENTER" hgap="15.0" vgap="25.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="ALWAYS" minWidth="100.0" prefWidth="170.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="150.0" prefHeight="250.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <padding>
-                  <Insets bottom="20.0" left="20.0" top="20.0" />
-               </padding>
-            </GridPane>
-         </content></ScrollPane>
-      <ScrollPane fx:id="mydocScroll" layoutX="234.0" layoutY="71.0" prefHeight="439.0" prefWidth="526.0" stylesheets="@../CSS_Setup/scrollpane.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="224.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="61.0">
-         <content>
-            <GridPane fx:id="mydocGrid" alignment="CENTER" hgap="15.0" vgap="25.0">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="ALWAYS" minWidth="500.0" prefWidth="500.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="130.0" prefHeight="130.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <padding>
-                  <Insets bottom="20.0" left="20.0" top="20.0" />
-               </padding>
-            </GridPane>
-         </content>
-      </ScrollPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="224.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="61.0">
+         <children>
+            <ScrollPane fx:id="browseScroll" prefHeight="439.0" prefWidth="526.0" stylesheets="@../CSS_Setup/scrollpane.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <content>
+                  <GridPane fx:id="browseGrid" alignment="CENTER" hgap="15.0" vgap="25.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="ALWAYS" minWidth="100.0" prefWidth="170.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="150.0" prefHeight="250.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" top="20.0" />
+                     </padding>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+            <ScrollPane fx:id="mydocScroll" prefHeight="439.0" prefWidth="526.0" stylesheets="@../CSS_Setup/scrollpane.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <content>
+                  <GridPane fx:id="mydocGrid" alignment="CENTER" hgap="15.0" vgap="25.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="500.0" prefWidth="500.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="130.0" prefHeight="130.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" top="20.0" />
+                     </padding>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

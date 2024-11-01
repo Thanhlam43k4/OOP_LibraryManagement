@@ -1,5 +1,7 @@
 package com.example.JFX_Controller.Admin;
 
+import com.example.Model.Copies;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -10,10 +12,10 @@ public class DocCopyController {
     @FXML private Label isbn;
     @FXML private Label state;
 
-    public void setInfo(int docId, String title, String isbn, String state) {
-        this.docId.setText(String.valueOf(docId));
-        this.title.setText(title);
-        this.isbn.setText(isbn);
-        this.state.setText(state);
+    public void setInfo(Copies c) {
+        this.docId.setText(String.valueOf(c.getDocumentId()));
+        this.title.setText(c.getTitle());
+        this.isbn.setText(c.getISBN());
+        this.state.setText(c.getStatus());
     }
 }

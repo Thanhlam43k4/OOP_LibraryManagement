@@ -89,7 +89,7 @@ public class AdminController extends Controller implements Initializable {
     
     //#region fe_func
     // bật/tắt Pane
-    private void setPane(AnchorPane pane, HBox tabBut) {
+    private void setPane(Parent pane, HBox tabBut) {
         AnchorPane anchorPane = (AnchorPane) pane.getParent();
         for (Node child : anchorPane.getChildren()) {
             child.setVisible(false);

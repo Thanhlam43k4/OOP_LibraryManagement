@@ -21,6 +21,7 @@ public class UserRowController {
 
     @FXML private AnchorPane userPane;
 
+    private Client client;
     @FXML
     void showInfo(ActionEvent event) {
         loadInfoPane();
@@ -47,10 +48,6 @@ public class UserRowController {
             AnchorPane.setTopAnchor(userInfoPane, 0.0);
             
             UserInfoController userInfoController = loader.getController();
-            Client client = new Client(email.getText(), userName.getText(), phone.getText(), Integer.parseInt(age.getText()));
-            client.setId(Integer.parseInt(userId.getText()));
-            client.setBorrowedBook(Integer.parseInt(borrowed.getText()));
-
             userInfoController.setInfo(client, userPane);
         } catch (IOException e) {
             e.printStackTrace();
@@ -58,6 +55,7 @@ public class UserRowController {
     }
 
     public void setInfo(Client client, AnchorPane userPane) {
+        this.client = client;
         this.userId.setText(String.valueOf(client.getId()));
         this.userName.setText(client.getUsername());
         this.email.setText(client.getEmail());

@@ -17,6 +17,7 @@ import com.example.Service.TransactionService;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +28,8 @@ import javafx.scene.control.ScrollPane;
 
 public class ClientController extends Controller implements Initializable{
 //UI
+    @FXML private Label userName;
+    // Tab button
     @FXML private HBox browseBut;
     @FXML private HBox mydocBut;
     // Browse Tab
@@ -48,13 +51,13 @@ public class ClientController extends Controller implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if(cardList.isEmpty()) {
-            System.out.println("add nodes");
             addCardNodes();
             addDocElementNodes();
         }
 
         setBrowse(true);
         setMyDoc(false);
+        
         widthListener(); 
     }
 
@@ -69,17 +72,11 @@ public class ClientController extends Controller implements Initializable{
         setMyDoc(true);
     }
     @FXML
-    void showSetting(ActionEvent event) {
-        
-    }
+    void showSetting(ActionEvent event) { }
     @FXML
-    void profile(ActionEvent event) {
-        loadScene("Profile.fxml");
-    }
+    void profile(ActionEvent event) { loadScene("Profile.fxml"); }
     @FXML
-    void signOut(ActionEvent event) {
-        loadScene("Login.fxml");
-    }
+    void signOut(ActionEvent event) { loadScene("Login.fxml"); }
     //#region fe_func
 
     // catch SceneWidth change

@@ -1,8 +1,11 @@
 package com.example.JFX_Controller.Admin;
 
 import java.io.IOException;
+import java.util.List;
 
+import com.example.Model.Copies;
 import com.example.Model.Document;
+import com.example.Service.DocumentService;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -56,15 +59,19 @@ public class DocRowController {
     void addCopyNodes() {
         copiesDocPane.setVisible(true);
         docCopyVbox.getChildren().clear();
-        docCopyVbox.setPrefHeight(8 * 70);
-        for (int i=0; i<8; i++) {
+        List<Copies> copies = DocumentService.instance.getAllCopies(doc.getDocumentId());
+        docCopyVbox.setPrefHeight(copies.size() * 70);
+        for (Copies c : copies) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/DocCopyRow.fxml"));
                 Node node = loader.load();
+
+                DocCopyController docCopyController = loader.getController();
+                docCopyController.setInfo(c);
                 docCopyVbox.getChildren().add(node);
             } catch (IOException e) {
                 e.printStackTrace();
-            }   
+            } 
         }
     }
     
