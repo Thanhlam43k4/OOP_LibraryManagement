@@ -24,8 +24,8 @@ public class UserService {
         return userDao.getUserById(id);
     }
 
-    public List<Client> getAllUsers() {
-        return userDao.getAllUsers();
+    public List<Client> getAllClients() {
+        return userDao.getAllClients();
     }
 
     public void updateUser(User user) {

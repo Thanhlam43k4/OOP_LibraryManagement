@@ -8,7 +8,7 @@ import java.util.List;
 public interface UserDao {
     void createUser(User user);
     User getUserById(int id);
-    List<Client> getAllUsers();
+    List<Client> getAllClients();
     void updateUser(User user);
     void deleteUser(int id);
     boolean isEmailExists(String email);

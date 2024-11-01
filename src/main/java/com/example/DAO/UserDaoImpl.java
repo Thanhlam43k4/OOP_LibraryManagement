@@ -58,7 +58,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<Client> getAllUsers() {
+    public List<Client> getAllClients() {
         List<Client> clients = new ArrayList<>();
         String sql = "SELECT users.id, users.username,users.email, users.age, " +
                 "users.phoneNumber,client.borrowed_books " +
