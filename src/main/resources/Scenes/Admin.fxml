@@ -275,7 +275,7 @@
                </opaqueInsets>
                <children>
                   <TextField fx:id="searchField" prefHeight="27.0" prefWidth="173.0" promptText="Search..." styleClass="primary-text-field" stylesheets="@../CSS_Setup/textfield.css" />
-                  <Label fx:id="userName" alignment="CENTER_RIGHT" text="Trong anh" textFill="#3c3a3a">
+                  <Label fx:id="userName" alignment="CENTER_RIGHT" text="Admin" textFill="#3c3a3a">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>

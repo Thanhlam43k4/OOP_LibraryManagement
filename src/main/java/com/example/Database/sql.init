@@ -93,7 +93,7 @@ BEGIN
         -- Tạo một ISBN ngẫu nhiên (hoặc bạn có thể sử dụng một quy tắc tạo ISBN cụ thể)
         SET new_isbn = CONCAT(NEW.ISBN, '-', i);  -- Ví dụ: 'ISBN-1', 'ISBN-2', ...
 
-        INSERT INTO copies_document (document_id, copy_ISBN)
+        INSERT INTO copies (document_id, copy_ISBN)
         VALUES (NEW.documentId, new_isbn);
 
         SET i = i + 1;

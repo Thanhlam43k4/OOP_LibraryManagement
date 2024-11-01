@@ -11,7 +11,6 @@ public class Copies extends Document{
         super(documentId,title);
         this.copies_ISBN = copies_ISBN;
         this.status = status;
-
     }
 
     public String getCopies_ISBN() {
@@ -28,5 +27,15 @@ public class Copies extends Document{
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Copies{" +
+                "documentId=" + super.getDocumentId() +
+                ", title='" + super.getTitle() + '\'' +
+                ", copyISBN='" + copies_ISBN + '\'' +
+                ", status='" + status + '\'' +
+                '}';
     }
 }

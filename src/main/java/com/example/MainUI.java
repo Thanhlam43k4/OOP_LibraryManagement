@@ -3,9 +3,12 @@ package com.example;
 //#region Lib
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.List;
 
 import com.example.Database.DatabaseConnection;
 
+import com.example.Model.Client;
+import com.example.Model.Copies;
 import com.example.Service.DocumentService;
 import com.example.Service.TransactionService;
 import com.example.Service.UserService;
@@ -34,6 +37,9 @@ public class MainUI extends Application {
         primaryStage = stage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin.fxml"));
         Parent root = loader.load();
+        List<Copies> copies = DocumentService.instance.getAllCopies(12);
+
+        System.out.println(copies);
 
         Scene scene = new Scene(root, 1100, 600);
         primaryStage.setScene(scene);

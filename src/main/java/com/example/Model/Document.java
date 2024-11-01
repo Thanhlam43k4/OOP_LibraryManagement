@@ -31,6 +31,14 @@ public class Document {
         this.title = title;
     }
 
+    public Document(int documentId,String title,String author, String genre) {
+        this.documentId = documentId;
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+    }
+
+
     public String getDescription() {
         return description;
     }
@@ -39,18 +47,8 @@ public class Document {
         this.description = description;
     }
 
-    public Document(String title, int year, String gener) {
-        this.title = title;
-        this.year = year;
-        this.genre = gener;
-    }
 
-    public Document(int documentId,String title,String author, String genre) {
-        this.documentId = documentId;
-        this.title = title;
-        this.author = author;
-        this.genre = genre;
-    }
+
 
     public int getDocumentId() {
         return documentId;

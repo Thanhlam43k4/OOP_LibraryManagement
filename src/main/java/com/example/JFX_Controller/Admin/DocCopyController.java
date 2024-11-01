@@ -15,7 +15,7 @@ public class DocCopyController {
     public void setInfo(Copies c) {
         this.docId.setText(String.valueOf(c.getDocumentId()));
         this.title.setText(c.getTitle());
-        this.isbn.setText(c.getISBN());
+        this.isbn.setText(c.getCopies_ISBN());
         this.state.setText(c.getStatus());
     }
 }

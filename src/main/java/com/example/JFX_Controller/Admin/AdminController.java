@@ -108,7 +108,6 @@ public class AdminController extends Controller implements Initializable {
 
         selectedBut.getStyleClass().add("hbox-style-selected");
     }
-    
     // load Data
     private void addUserNodes() {
         userList.clear();

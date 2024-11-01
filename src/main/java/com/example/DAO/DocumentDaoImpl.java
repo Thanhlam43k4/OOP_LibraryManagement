@@ -75,19 +75,24 @@ public class DocumentDaoImpl implements DocumentDao {
     @Override
     public List<Copies> getAllCopies(int documentId) {
         List<Copies> copies = new ArrayList<>();
-        String query = "SELECT c.*, d.title " +
+        String query = "SELECT c.document_id, d.title, c.copy_ISBN ,c.status " +
                 "FROM copies c " +
                 "JOIN documents d ON c.document_id = d.documentId " +
                 "WHERE c.document_id = ?";
-        try (Statement stmt = con.createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
-            while (rs.next()) {
-                Copies copy = new Copies(
-                        rs.getInt("documentId"),
-                        rs.getString("title"),
-                        rs.getString("copies_ISBN"),
-                        rs.getString("status"));
-                copies.add(copy);
+        try (PreparedStatement pstmt = con.prepareStatement(query)) {
+            pstmt.setInt(1, documentId);  // Thiết lập giá trị cho tham số đầu tiên (documentId)
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    Copies copy = new Copies(
+                            rs.getInt("document_id"), // Giả sử bạn có getter cho documentId
+                            rs.getString("title"),
+                            rs.getString("copy_ISBN"),  // Sửa lỗi chính tả từ "copies_ISBN" thành "copy_ISBN"
+                            rs.getString("status")
+                    );
+                    System.out.println(copy);
+                    copies.add(copy);
+                }
             }
 
         } catch (SQLException e) {

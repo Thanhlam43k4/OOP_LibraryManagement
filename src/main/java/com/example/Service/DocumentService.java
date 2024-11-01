@@ -2,6 +2,7 @@ package com.example.Service;
 
 import com.example.Interface.DocumentDao;
 import com.example.DAO.DocumentDaoImpl;
+import com.example.Model.Copies;
 import com.example.Model.Document;
 import com.example.Model.Copies;
 
@@ -35,7 +36,9 @@ public class DocumentService {
         documentDao.deleteDocument(documentId);
 
     }
-    public List<Copies> getAllCopies(int docId) {
-        return documentDao.getAllCopies(docId);
+
+    public List<Copies> getAllCopies(int documentId){
+        return documentDao.getAllCopies(documentId);
+
     }
 }
