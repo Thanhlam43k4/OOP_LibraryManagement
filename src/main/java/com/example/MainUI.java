@@ -16,6 +16,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 //#endregion
 
@@ -37,6 +40,9 @@ public class MainUI extends Application {
         primaryStage = stage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin.fxml"));
         Parent root = loader.load();
+        Image logoImage = new Image(getClass().getResourceAsStream("/Image/logo.jpg")); // Đảm bảo đường dẫn đúng
+        primaryStage.getIcons().add(logoImage); // Thêm biểu tượng vào cửa sổ
+
         List<Copies> copies = DocumentService.instance.getAllCopies(12);
 
         System.out.println(copies);
