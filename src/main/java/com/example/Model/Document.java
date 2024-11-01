@@ -10,12 +10,12 @@ public class Document {
     private String author;
     private String urlImage;  // Thêm thuộc tính urlImage
     private int numberCopy;
-
+    private String description;
     public Document() {
 
     }
 
-    public Document(int documentId, String title, String ISBN, String author, String urlImage, String genre, int numberCopy) {
+    public Document(int documentId, String title, String ISBN, String author, String urlImage, String genre, int numberCopy, String description) {
         this.documentId = documentId;
         this.title = title;
         this.ISBN = ISBN;
@@ -23,6 +23,7 @@ public class Document {
         this.urlImage = urlImage;
         this.genre = genre;
         this.numberCopy = numberCopy;
+        this.description = description;
     }
 
     public Document(String title, int year, String gener) {
