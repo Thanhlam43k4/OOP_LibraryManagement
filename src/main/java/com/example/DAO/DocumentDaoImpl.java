@@ -1,6 +1,7 @@
 package com.example.DAO;
 
 import com.example.Interface.DocumentDao;
+import com.example.Model.Copies;
 import com.example.Model.Document;
 
 import java.sql.*;
@@ -71,6 +72,29 @@ public class DocumentDaoImpl implements DocumentDao {
         return documents;
     }
 
+    @Override
+    public List<Copies> getAllCopies(int documentId) {
+        List<Copies> copies = new ArrayList<>();
+        String query = "SELECT c.*, d.title " +
+                "FROM copies c " +
+                "JOIN documents d ON c.document_id = d.documentId " +
+                "WHERE c.document_id = ?";
+        try (Statement stmt = con.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+            while (rs.next()) {
+                Copies copy = new Copies(
+                        rs.getInt("documentId"),
+                        rs.getString("title"),
+                        rs.getString("copies_ISBN"),
+                        rs.getString("status"));
+                copies.add(copy);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return copies;
+    }
     @Override
     public void updateDocument(Document doc) {
         String query = "UPDATE documents SET title = ?, year = ?, genre = ? WHERE documentId = ?";

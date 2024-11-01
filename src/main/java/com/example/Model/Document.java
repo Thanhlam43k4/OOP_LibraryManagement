@@ -26,6 +26,19 @@ public class Document {
         this.description = description;
     }
 
+    public Document(int documentId, String title) {
+        this.documentId = documentId;
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Document(String title, int year, String gener) {
         this.title = title;
         this.year = year;
