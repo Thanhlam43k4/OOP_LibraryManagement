@@ -27,7 +27,7 @@ CREATE TABLE users (
 CREATE TABLE documents (
     documentId INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
-    year INT NOT NULL,
+    year INT,
     genre VARCHAR(255) NOT NULL,
     ISBN VARCHAR(20),
     content TEXT,
@@ -89,7 +89,7 @@ BEGIN
     DECLARE i INT DEFAULT 1;
     DECLARE new_isbn VARCHAR(20);
 
-    WHILE i <= 5 DO
+    WHILE i <= NEW.number_of_copies DO
         -- Tạo một ISBN ngẫu nhiên (hoặc bạn có thể sử dụng một quy tắc tạo ISBN cụ thể)
         SET new_isbn = CONCAT(NEW.ISBN, '-', i);  -- Ví dụ: 'ISBN-1', 'ISBN-2', ...
 

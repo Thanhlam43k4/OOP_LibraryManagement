@@ -11,17 +11,16 @@ public class TransactionService {
     public static TransactionService instance;
     private final TransactionDao transactionDao;
 
-    public TransactionService(Connection con){
+    public TransactionService(Connection con) {
         transactionDao = new TransactionDaoImpl(con);
     }
-    public void borrowBook(Transaction transaction){
+    public void borrowBook(Transaction transaction) {
         transactionDao.addTransaction(transaction);
     }
-    public List<Transaction> getTransactionsByUserId(int userId){
+    public List<Transaction> getTransactionsByUserId(int userId) {
         return  transactionDao.getTransactionsByUserId(userId);
     }
-
-    public void returnBook(int transactionId){
+    public void returnBook(int transactionId) {
         transactionDao.deleteTransaction(transactionId);
     }
 }

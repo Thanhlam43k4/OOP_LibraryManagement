@@ -3,6 +3,7 @@ package com.example;
 //#region Lib
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.Objects;
 
 import com.example.Database.DatabaseConnection;
 
@@ -35,10 +36,10 @@ public class MainUI extends Application {
         primaryStage = stage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin.fxml"));
         Parent root = loader.load();
-        Image logoImage = new Image(getClass().getResourceAsStream("/Image/logo.jpg")); // Đảm bảo đường dẫn đúng
+        Image logoImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Image/logo.jpg"))); // Đảm bảo đường dẫn đúng
         primaryStage.getIcons().add(logoImage); // Thêm biểu tượng vào cửa sổ
 
-        Scene scene = new Scene(root, 1100, 600);
+        Scene scene = new Scene(root, 1400, 1000);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Book Management Application");
         primaryStage.show();
