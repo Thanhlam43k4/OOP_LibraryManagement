@@ -19,6 +19,7 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL,     -- Mật khẩu
     phoneNumber VARCHAR(20),            -- Số điện thoại
     dob DATE,                           -- Ngày sinh
+    role ENUM('admin', 'client') NOT NULL DEFAULT 'client';
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Thời điểm tạo tài khoản
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP  -- Thời điểm cập nhật cuối cùng
 );
@@ -27,7 +28,7 @@ CREATE TABLE users (
 CREATE TABLE documents (
     documentId INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
-    year INT NOT NULL,
+    year INT,
     genre VARCHAR(255) NOT NULL,
     ISBN VARCHAR(20),
     content TEXT,
@@ -76,6 +77,21 @@ END; //
 
 DELIMITER ;
 
+DELIMITER //
+
+CREATE TRIGGER after_user_insert_admin
+AFTER INSERT ON users
+FOR EACH ROW
+BEGIN
+    -- Kiểm tra xem role của người dùng mới thêm vào có phải là 'admin' không
+    IF NEW.role = 'admin' THEN
+        INSERT INTO admin (user_id) VALUES (NEW.id);
+    END IF;
+END;
+
+//
+
+DELIMITER ;
 
 ### This Trigger is used for whenever Document is insert . it generate automatically 5 copies of document.
 ### ISBN has postprefix -1 -2 -3 -4 -5
@@ -89,7 +105,7 @@ BEGIN
     DECLARE i INT DEFAULT 1;
     DECLARE new_isbn VARCHAR(20);
 
-    WHILE i <= 5 DO
+    WHILE i <= NEW.number_of_copies DO
         -- Tạo một ISBN ngẫu nhiên (hoặc bạn có thể sử dụng một quy tắc tạo ISBN cụ thể)
         SET new_isbn = CONCAT(NEW.ISBN, '-', i);  -- Ví dụ: 'ISBN-1', 'ISBN-2', ...
 

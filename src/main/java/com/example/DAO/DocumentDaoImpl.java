@@ -18,12 +18,17 @@ public class DocumentDaoImpl implements DocumentDao {
 
     @Override
     public void addDocument(Document doc) {
-        String query = "INSERT INTO documents (title, year, genre) VALUES (?, ?, ?)";
+        String query = "INSERT INTO documents (title,author,genre,ISBN,number_of_copies,urlImage) " +
+                "VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = con.prepareStatement(query)) {
             pstmt.setString(1, doc.getTitle());
-            pstmt.setInt(2, doc.getYear());
+            pstmt.setString(2, doc.getAuthor());
             pstmt.setString(3, doc.getGenre());
+            pstmt.setString(4, doc.getISBN());
+            pstmt.setInt(5, doc.getNumberCopy());
+            pstmt.setString(6,doc.getUrlImage());
             pstmt.executeUpdate();
+            System.out.println("Add Document Successfully!!!!");
         } catch (SQLException e) {
             e.printStackTrace();
         }

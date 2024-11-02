@@ -10,6 +10,9 @@ public  class User {
     private String password;
     private String phoneNumber;
     private Date dob;
+    private String role;
+
+
     public User(int id, String username, String password){
         this.id = id;
         this.username = username;
@@ -22,16 +25,27 @@ public  class User {
         this.age = age;
         this.phoneNumber = phoneNumber;
     }
+
     public User(String email, String password){
         this.email = email;
         this.password = password;
     }
-    public User(String email, String username, String phoneNumber,int age){
+    public User(int id,String email, String username, String role){
+        this.id = id;
+        this.email = email;
+        this.username = username;
+        this.role = role;
+
+    }
+    public User(String email,String username, String phoneNumber,int age){
         this.email = email;
         this.username = username;
         this.phoneNumber = phoneNumber;
-        this.age = age;
+        this.age =  age;
     }
+
+
+
     public int getAge() {
         return age;
     }
@@ -47,8 +61,6 @@ public  class User {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
-
     public Date getDob() {
         return dob;
     }
@@ -89,6 +101,13 @@ public  class User {
     public void display()
     {
         System.out.println("UserName: " +  username +  " " + "Password: "+ password);
+    }
+    public String getRole() // Phương thức trừu tượng để lấy vai trò
+    {
+        return role;
+    }
+    public void setRole(String role) {
+        this.role = role;
     }
 
 

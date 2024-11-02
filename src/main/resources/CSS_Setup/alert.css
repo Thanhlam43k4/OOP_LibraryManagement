@@ -1,0 +1,35 @@
+/* alert.css */
+
+/* Tùy chỉnh nền và viền của cửa sổ thông báo */
+.alert {
+    -fx-background-color: #f9f9f9;
+    -fx-border-color: #d3d3d3;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+/* Tiêu đề */
+.dialog-pane .header-panel .label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+/* Nội dung */
+.dialog-pane .content.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #666666;
+}
+
+/* Nút */
+.dialog-pane .button-bar .button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+}
+
+.dialog-pane .button-bar .button:hover {
+    -fx-background-color: #45A049;
+}

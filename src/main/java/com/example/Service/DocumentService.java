@@ -12,14 +12,14 @@ public class DocumentService {
     public static DocumentService instance;
     private DocumentDao  documentDao;
 
-    public DocumentService(Connection con){
+    public DocumentService(Connection con) {
         documentDao = new DocumentDaoImpl(con);
     }
 
-    public void addDocument(Document document){
+    public void addDocument(Document document) {
         documentDao.addDocument(document);
     }
-    public Document getDocumentById(int documentId){
+    public Document getDocumentById(int documentId) {
         return  documentDao.getDocumentById(documentId);
     }
     public List<Document> getAllDocument(){
@@ -32,6 +32,7 @@ public class DocumentService {
 
     }
     public void deleteDocument(int documentId){
+
         documentDao.deleteDocument(documentId);
 
     }
