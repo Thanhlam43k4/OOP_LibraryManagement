@@ -49,8 +49,8 @@
       </Label>
       <MenuButton mnemonicParsing="false" style="-fx-border-width: 0;" styleClass="second-menubutton" stylesheets="@../../CSS_Setup/menubutton.css">
          <items>
-            <MenuItem mnemonicParsing="false" onAction="#openDocModify" text="modify" />
-            <MenuItem mnemonicParsing="false" onAction="#deleteDoc" text="delete" />
+            <MenuItem mnemonicParsing="false" onAction="#openDocModify" style="-fx-font-size: 12;" text="modify" />
+            <MenuItem mnemonicParsing="false" onAction="#deleteDoc" style="-fx-font-size: 12;" text="delete" />
          </items>
          <graphic>
             <FontAwesomeIconView glyphName="ELLIPSIS_V" size="15" styleClass="fontawesome-icon" wrappingWidth="1.0" />

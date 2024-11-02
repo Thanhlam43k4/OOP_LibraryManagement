@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="800.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="second-anchor-card" stylesheets="@../../CSS_Setup/card.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.UserRowController">
+<HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="800.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: white;" styleClass="second-anchor-card" stylesheets="@../../CSS_Setup/card.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.UserRowController">
    <children>
       <Label fx:id="userId" alignment="CENTER" prefHeight="20.0" prefWidth="80.0" text="#123" textFill="#396c8c">
          <font>
@@ -57,9 +57,9 @@
       </Label>
       <MenuButton mnemonicParsing="false" style="-fx-border-width: 0;" styleClass="second-menubutton" stylesheets="@../../CSS_Setup/menubutton.css">
          <items>
-            <MenuItem mnemonicParsing="false" onAction="#showInfo" text="info" />
-            <MenuItem mnemonicParsing="false" onAction="#borrowDoc" text="borrow" />
-            <MenuItem mnemonicParsing="false" onAction="#returnDoc" text="return" />
+            <MenuItem mnemonicParsing="false" onAction="#showInfo" style="-fx-font-size: 12;" text="info" />
+            <MenuItem mnemonicParsing="false" onAction="#borrowDoc" style="-fx-font-size: 12;" text="borrow" />
+            <MenuItem mnemonicParsing="false" onAction="#returnDoc" style="-fx-font-size: 12;" text="return" />
          </items>
          <graphic>
             <FontAwesomeIconView glyphName="ELLIPSIS_V" size="15" styleClass="fontawesome-icon" wrappingWidth="1.0" />

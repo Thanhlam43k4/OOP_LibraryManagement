@@ -4,7 +4,6 @@ import com.example.Interface.DocumentDao;
 import com.example.DAO.DocumentDaoImpl;
 import com.example.Model.Copies;
 import com.example.Model.Document;
-import com.example.Model.Copies;
 
 import java.sql.Connection;
 import java.util.List;
@@ -39,6 +38,5 @@ public class DocumentService {
 
     public List<Copies> getAllCopies(int documentId){
         return documentDao.getAllCopies(documentId);
-
     }
 }

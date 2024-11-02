@@ -21,3 +21,8 @@
 .second-anchor-card:hover {
     -fx-background-color:  #e8e8e8;
 }
+
+.second-anchor-card:hover .label{
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
