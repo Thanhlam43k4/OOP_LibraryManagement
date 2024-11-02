@@ -1,5 +1,7 @@
 package com.example.Service;
 
+import com.example.Model.Admin;
+import com.example.Model.Client;
 import com.example.Model.User;
 
 public class SessionManager {
@@ -21,7 +23,13 @@ public class SessionManager {
     public User getLoggedInUser() {
         return loggedInUser;
     }
+    public boolean isAdmin() {
+        return loggedInUser instanceof Admin; // Kiểm tra xem người dùng có phải là Admin không
+    }
 
+    public boolean isClient() {
+        return loggedInUser instanceof Client; // Kiểm tra xem người dùng có phải là Client không
+    }
     public void clearSession() {
         loggedInUser = null;
     }

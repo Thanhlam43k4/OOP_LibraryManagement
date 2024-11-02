@@ -4,7 +4,10 @@ package com.example.JFX_Controller;
 import java.util.Objects;
 
 import com.example.Handlers.Notify;
+import com.example.Model.Admin;
+import com.example.Model.Client;
 import com.example.Model.User;
+import com.example.Service.SessionManager;
 import com.example.Service.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,8 +36,8 @@ public class SignInUpController extends Controller {
 
     @FXML
     void signIn(ActionEvent event) {
-        loadScene("Admin.fxml");
-        //be_signIn();
+        // loadScene("Admin.fxml");
+        be_signIn();
     }
 
     @FXML
@@ -48,8 +51,16 @@ public class SignInUpController extends Controller {
         if (!isMatchAccount) {
             Notify.showAlert(Alert.AlertType.INFORMATION, "Email or password is wrong", "Please login again!");
         } else {
-            System.out.println("Login Successfully with email: " + email);
-            loadScene("Client.fxml");
+
+            User user = UserService.instance.getUserByEmail(email);
+            SessionManager.getInstance().setLoggedInUser(user);
+            if (user.getRole().equals("admin")) {
+                System.out.println("Đăng nhập thành công với email: " + email + " với vai trò Admin.");
+                loadScene("Admin.fxml"); // Chuyển đến trang Admin
+            }else if (user.getRole().equals("client")) {
+                System.out.println("Đăng nhập thành công với email: " + email + " với vai trò Client.");
+                loadScene("Client.fxml"); // Chuyển đến trang Clien
+            }
         }
     }
     private void be_signUp() {

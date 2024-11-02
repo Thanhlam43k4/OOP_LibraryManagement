@@ -19,6 +19,7 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL,     -- Mật khẩu
     phoneNumber VARCHAR(20),            -- Số điện thoại
     dob DATE,                           -- Ngày sinh
+    role ENUM('admin', 'client') NOT NULL DEFAULT 'client';
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Thời điểm tạo tài khoản
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP  -- Thời điểm cập nhật cuối cùng
 );
@@ -76,6 +77,21 @@ END; //
 
 DELIMITER ;
 
+DELIMITER //
+
+CREATE TRIGGER after_user_insert_admin
+AFTER INSERT ON users
+FOR EACH ROW
+BEGIN
+    -- Kiểm tra xem role của người dùng mới thêm vào có phải là 'admin' không
+    IF NEW.role = 'admin' THEN
+        INSERT INTO admin (user_id) VALUES (NEW.id);
+    END IF;
+END;
+
+//
+
+DELIMITER ;
 
 ### This Trigger is used for whenever Document is insert . it generate automatically 5 copies of document.
 ### ISBN has postprefix -1 -2 -3 -4 -5

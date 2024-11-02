@@ -2,6 +2,7 @@ package com.example.Service;
 
 import com.example.Interface.UserDao;
 import com.example.DAO.UserDaoImpl;
+import com.example.Model.Admin;
 import com.example.Model.Client;
 import com.example.Model.User;
 
@@ -40,6 +41,19 @@ public class UserService {
         return userDao.isMatchAccount(email,password);
     }
 
+    public User getUserByEmail(String email) {
+        return userDao.getUserByEmail(email);
+    }
+
+    public User authenticateUser(User user){
+        if (user.getRole().equals("admin")) {
+            return new Admin(user.getUsername(), user.getPassword()); // Trả về đối tượng Admin
+        }
+        else if (user.getRole().equals("client")) {
+            return new Client(user.getUsername(), user.getPassword()); // Trả về đối tượng Client
+        }
+        return null;
+    }
     public void deleteUser(int id) {
         userDao.deleteUser(id);
     }

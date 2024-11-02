@@ -9,6 +9,7 @@ public interface UserDao {
     void createUser(User user);
     User getUserById(int id);
     List<Client> getAllClients();
+    User getUserByEmail(String email);
     void updateUser(User user);
     void deleteUser(int id);
     boolean isEmailExists(String email);

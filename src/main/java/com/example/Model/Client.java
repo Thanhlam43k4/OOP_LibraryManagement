@@ -22,7 +22,10 @@ public class Client extends User {
         this.borrowedBook = borrowedBook;
     }
 
-
+    @Override
+    public String getRole() {
+        return "client";
+    }
 
 
 }
