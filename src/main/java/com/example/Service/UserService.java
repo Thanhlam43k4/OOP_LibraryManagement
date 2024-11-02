@@ -45,15 +45,6 @@ public class UserService {
         return userDao.getUserByEmail(email);
     }
 
-    public User authenticateUser(User user){
-        if (user.getRole().equals("admin")) {
-            return new Admin(user.getUsername(), user.getPassword()); // Trả về đối tượng Admin
-        }
-        else if (user.getRole().equals("client")) {
-            return new Client(user.getUsername(), user.getPassword()); // Trả về đối tượng Client
-        }
-        return null;
-    }
     public void deleteUser(int id) {
         userDao.deleteUser(id);
     }
