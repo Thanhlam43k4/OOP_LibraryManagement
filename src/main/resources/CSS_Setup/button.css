@@ -1,6 +1,6 @@
 .primary-button {
-    -fx-background-color:  rgb(238, 231, 231);
-    -fx-border-color: #3c373a;
+    -fx-background-color:   #e8e8e8;
+    -fx-border-color: #777777;
     -fx-background-radius: 10px;
     -fx-border-radius: 10px;
     -fx-font-weight: bold;
@@ -13,6 +13,7 @@
 
 .primary-button:hover {
     -fx-background-color: #3c373a;
+    -fx-border-color: #3c373a;
     -fx-text-fill: #ebebeb;    
 }
 

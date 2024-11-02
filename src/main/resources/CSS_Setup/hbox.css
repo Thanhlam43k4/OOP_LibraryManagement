@@ -1,23 +1,20 @@
 .hbox-style {
-    -fx-background-color: rgb(211, 204, 204); /* Màu nền mặc định */
+    -fx-background-color: rgba(255, 255, 255, 0); /* Màu nền mặc định */
 }
-.hbox-style:hover
+/* hover */
+/* .hbox-style:hover
 {
-    -fx-background-color:  #b1b1a9;
-}
+    -fx-background-color:  #e4e4e3;
+} */
 .hbox-style:hover .label {
-    -fx-font-size: 13px;
+    -fx-font-size: 15px;
     -fx-font-weight: bold;
 }
-
+/* selected */
 .hbox-style-selected {
-    -fx-background-color:  rgb(238, 231, 231); /* Màu nền mặc định */
+    -fx-background-color:  rgb(202, 202, 202); /* Màu nền mặc định */
 }
 .hbox-style-selected .label {
-    -fx-font-size: 13px;
+    -fx-font-size: 14px;
     -fx-font-weight: bold;
-}
-.hbox-style-selected:hover
-{
-    -fx-background-color:  #b1b1a9;
 }

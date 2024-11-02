@@ -19,19 +19,118 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0"  prefWidth="1100.0" style="-fx-background-color: rgb(238, 231, 231);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.AdminController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.AdminController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="224.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="61.0">
+      <AnchorPane prefHeight="439.0" prefWidth="223.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="60.0" layoutY="14.0" text="App name">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="22.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#da3737" />
+                        <Stop color="#d0881b" offset="0.5134099616858235" />
+                        <Stop color="#cf6a1d" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <VBox layoutY="8.0" prefHeight="272.0" prefWidth="223.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="65.0">
+               <children>
+                  <HBox fx:id="docsBut" alignment="CENTER_LEFT" fillHeight="false" onMouseClicked="#docsTab" prefHeight="60.0" prefWidth="225.0" spacing="10.0" style="-fx-background-radius: 15;" styleClass="hbox-style" stylesheets="@../CSS_Setup/hbox.css">
+                     <children>
+                        <FontAwesomeIconView fill="#3c373a" glyphName="FILE_TEXT" size="16">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </FontAwesomeIconView>
+                        <Label text="Doc Manager" textFill="#3c373a">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox fx:id="usersBut" alignment="CENTER_LEFT" fillHeight="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#usersTab" prefHeight="60.0" prefWidth="200.0" spacing="10.0" style="-fx-background-radius: 15;" styleClass="hbox-style" stylesheets="@../CSS_Setup/hbox.css">
+                     <children>
+                        <FontAwesomeIconView fill="#3c373a" glyphName="GROUP" size="16">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </FontAwesomeIconView>
+                        <Label text="Users Manager" textFill="#3c373a">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox fx:id="tranBut" alignment="CENTER_LEFT" fillHeight="false" layoutX="10.0" layoutY="70.0" onMouseClicked="#transTab" prefHeight="60.0" prefWidth="200.0" spacing="10.0" style="-fx-background-radius: 15;" styleClass="hbox-style" stylesheets="@../CSS_Setup/hbox.css">
+                     <children>
+                        <FontAwesomeIconView fill="#3c373a" glyphName="EXCHANGE" size="16">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </FontAwesomeIconView>
+                        <Label text="Transactions" textFill="#3c373a">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="60.0" prefWidth="200.0" style="-fx-border-width: 0; -fx-background-color: transparent;" styleClass="primary-anchor-pane" stylesheets="@../CSS_Setup/anchorpane.css" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TextField fx:id="searchField" layoutX="10.0" layoutY="17.0" prefHeight="32.0" prefWidth="200.0" promptText="Search..." style="-fx-background-color: transparent; -fx-border-color: #b3b2b2; -fx-border-radius: 12;" styleClass="primary-text-field" stylesheets="@../CSS_Setup/textfield.css" />
+            <HBox alignment="CENTER_RIGHT" layoutX="401.0" layoutY="10.0" prefHeight="40.0" prefWidth="260.0" spacing="10.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="10.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <children>
+                  <MenuButton alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="36.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" styleClass="primary-menubutton" stylesheets="@../CSS_Setup/menubutton.css">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#goToProfile" text="Profile" />
+                        <MenuItem mnemonicParsing="false" onAction="#signOut" text="Sign out" />
+                     </items>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="USER_SECRET" size="20" styleClass="fontawesome-icon" wrappingWidth="9.0" />
+                     </graphic>
+                  </MenuButton>
+                  <Label fx:id="userName" alignment="CENTER_RIGHT" text="Trong anh" textFill="#3c3a3a">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff7f7; -fx-background-radius: 30;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="65.0">
          <children>
             <AnchorPane fx:id="docPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <HBox alignment="TOP_RIGHT" prefHeight="40.0" prefWidth="200.0" spacing="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="200.0" spacing="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <MenuButton mnemonicParsing="false" styleClass="second-menubutton" stylesheets="@../CSS_Setup/menubutton.css" text="Type" textFill="#5e5757">
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="All" />
-                            <MenuItem mnemonicParsing="false" text="Book" />
-                          </items>
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="All" />
+                              <MenuItem mnemonicParsing="false" text="Book" />
+                           </items>
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -46,17 +145,17 @@
                         </Button>
                      </children>
                      <padding>
-                        <Insets right="10.0" />
+                        <Insets right="25.0" />
                      </padding>
                   </HBox>
-                  <ScrollPane layoutY="36.0" prefHeight="403.0" prefWidth="526.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
+                  <ScrollPane layoutY="36.0" prefHeight="403.0" prefWidth="526.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
                      <padding>
-                        <Insets left="25.0" />
+                        <Insets left="30.0" />
                      </padding>
                      <content>
-                        <VBox fx:id="docVBox" prefHeight="215.0" prefWidth="828.0" spacing="10.0">
+                        <VBox fx:id="docVBox" prefHeight="326.0" prefWidth="828.0" spacing="10.0">
                            <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="766.0" style="-fx-background-color: rgb(211, 204, 204); -fx-background-radius: 20; -fx-border-color: #797577; -fx-border-radius: 20;">
+                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="766.0" style="-fx-background-color: #e8e8e8; -fx-background-radius: 10; -fx-border-color: #c7c7c7; -fx-border-radius: 10;">
                                  <children>
                                     <Label alignment="CENTER" prefHeight="25.0" prefWidth="73.0" text="Id" textFill="#3c3a3a">
                                        <font>
@@ -160,7 +259,7 @@
             </AnchorPane>
             <AnchorPane fx:id="userPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <HBox alignment="TOP_RIGHT" prefHeight="40.0" prefWidth="200.0" spacing="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="200.0" spacing="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#openAddUser" styleClass="primary-button" stylesheets="@../CSS_Setup/button.css" text=" Add User">
                            <graphic>
@@ -169,17 +268,17 @@
                         </Button>
                      </children>
                      <padding>
-                        <Insets right="10.0" />
+                        <Insets right="25.0" />
                      </padding>
                   </HBox>
-                  <ScrollPane prefHeight="419.0" prefWidth="758.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
+                  <ScrollPane prefHeight="419.0" prefWidth="758.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
                      <padding>
                         <Insets left="20.0" />
                      </padding>
                      <content>
                         <VBox fx:id="userVBox" prefHeight="224.0" prefWidth="800.0" spacing="10.0">
                            <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="751.0" style="-fx-background-color: rgb(211, 204, 204); -fx-background-radius: 20; -fx-border-color: #797577; -fx-border-radius: 20;">
+                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="751.0" style="-fx-background-color: #e8e8e8 #e8e8e8; -fx-background-radius: 10; -fx-border-color: #c7c7c7; -fx-border-radius: 10;">
                                  <children>
                                     <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Id" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
                                        <font>
@@ -236,134 +335,27 @@
             </AnchorPane>
             <AnchorPane fx:id="tranPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ScrollPane prefHeight="400.0" prefWidth="485.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
+                  <ScrollPane prefHeight="400.0" prefWidth="485.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
                      <content>
                         <TableView fx:id="tranTable" prefHeight="200.0" prefWidth="749.0" styleClass="primary-table-view" stylesheets="@../CSS_Setup/tableview.css">
-                          <columns>
-                            <TableColumn prefWidth="130.0" text="Id" />
-                            <TableColumn prefWidth="130.0" text="User Id" />
+                           <columns>
+                              <TableColumn prefWidth="130.0" text="Id" />
+                              <TableColumn prefWidth="130.0" text="User Id" />
                               <TableColumn prefWidth="130.0" text="Doc Id" />
                               <TableColumn prefWidth="180.0" text="Borrowed Date" />
                               <TableColumn prefWidth="180.0" text="Due Date" />
-                          </columns>
+                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
                      </content>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
                   </ScrollPane>
                </children>
             </AnchorPane>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="208.0" layoutY="42.0" prefHeight="60.0" prefWidth="200.0" style="-fx-border-width: 0;" styleClass="primary-anchor-pane" stylesheets="@../CSS_Setup/anchorpane.css" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Button layoutX="648.0" layoutY="20.0" mnemonicParsing="false" onAction="#showSetting" prefHeight="27.0" prefWidth="28.0" styleClass="primary-button" stylesheets="@../CSS_Setup/button.css" textFill="#8ab95b" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="17.0">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="BARS" size="15" styleClass="fontawesome-icon" />
-               </graphic>
-            </Button>
-            <HBox alignment="CENTER_RIGHT" layoutX="401.0" layoutY="10.0" prefHeight="40.0" prefWidth="360.0" spacing="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <children>
-                  <TextField fx:id="searchField" prefHeight="27.0" prefWidth="173.0" promptText="Search..." styleClass="primary-text-field" stylesheets="@../CSS_Setup/textfield.css" />
-                  <Label fx:id="userName" alignment="CENTER_RIGHT" text="Admin" textFill="#3c3a3a">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Label>
-                  <MenuButton mnemonicParsing="false" prefHeight="35.0" prefWidth="36.0" styleClass="primary-menubutton" stylesheets="@../CSS_Setup/menubutton.css">
-                    <items>
-                      <MenuItem mnemonicParsing="false" onAction="#goToProfile" text="Profile" />
-                      <MenuItem mnemonicParsing="false" onAction="#signOut" text="Sign out" />
-                    </items>
-                     <graphic>
-                        <FontAwesomeIconView glyphName="USER_SECRET" size="20" styleClass="fontawesome-icon" wrappingWidth="1.0" />
-                     </graphic>
-                  </MenuButton>
-               </children>
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
-            </HBox>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutY="61.0" prefHeight="439.0" prefWidth="223.0" style="-fx-background-color: rgb(211, 204, 204);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Label layoutX="62.0" layoutY="18.0" text="App name">
-               <font>
-                  <Font name="Comic Sans MS Bold" size="20.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#da3737" />
-                        <Stop color="#d0881b" offset="0.5134099616858235" />
-                        <Stop color="#cf6a1d" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-            <VBox layoutY="8.0" prefHeight="272.0" prefWidth="223.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
-               <children>
-                  <HBox fx:id="docsBut" alignment="CENTER_LEFT" fillHeight="false" onMouseClicked="#docsTab" prefHeight="60.0" prefWidth="225.0" spacing="10.0" styleClass="hbox-style" stylesheets="@../CSS_Setup/hbox.css">
-                     <children>
-                        <FontAwesomeIconView glyphName="FILE_TEXT" size="16" style="-fx-fill: #3c373a;">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </FontAwesomeIconView>
-                        <Label style="-fx-text-fill: #3c373a; -fx-font-weight: bold;" text="Doc Manager">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox fx:id="usersBut" alignment="CENTER_LEFT" fillHeight="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#usersTab" prefHeight="60.0" prefWidth="200.0" spacing="10.0" styleClass="hbox-style" stylesheets="@../CSS_Setup/hbox.css">
-                     <children>
-                        <FontAwesomeIconView glyphName="GROUP" size="16" style="-fx-fill: #3c373a;">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </FontAwesomeIconView>
-                        <Label style="-fx-text-fill: #3c373a; -fx-font-weight: bold;" text="Users Manager">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox fx:id="tranBut" alignment="CENTER_LEFT" fillHeight="false" layoutX="10.0" layoutY="70.0" onMouseClicked="#transTab" prefHeight="60.0" prefWidth="200.0" spacing="10.0" styleClass="hbox-style" stylesheets="@../CSS_Setup/hbox.css">
-                     <children>
-                        <FontAwesomeIconView glyphName="EXCHANGE" size="16" style="-fx-fill: #3c373a;">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </FontAwesomeIconView>
-                        <Label style="-fx-text-fill: #3c373a; -fx-font-weight: bold;" text="Transactions">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
          </children>
       </AnchorPane>
    </children>

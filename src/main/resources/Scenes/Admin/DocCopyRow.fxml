@@ -10,7 +10,7 @@
 
 <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="719.0" style="-fx-background-radius: 20; -fx-background-color: rgb(216, 208, 208);" styleClass="second-anchor-card" stylesheets="@../../CSS_Setup/card.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.DocCopyController">
    <children>
-      <Label fx:id="docId" alignment="CENTER" prefHeight="20.0" prefWidth="89.0" text="#123" textFill="#3c3a3a">
+      <Label fx:id="docId" alignment="CENTER" prefHeight="20.0" prefWidth="89.0" text="#123" textFill="#396c8c">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

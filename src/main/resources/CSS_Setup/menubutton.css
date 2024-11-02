@@ -3,7 +3,7 @@
 }
 
 .primary-menubutton {
-    -fx-background-color:  rgb(238, 231, 231);
+    -fx-background-color:  rgba(238, 231, 231, 0);
     -fx-border-color: linear-gradient(to right bottom, rgb(224, 46, 22), rgb(216, 116, 22));
     -fx-background-radius: 10px;
     -fx-border-radius: 10px;
@@ -57,8 +57,8 @@
     -fx-padding: 0;
 }
 .second-menubutton {
-    -fx-background-color:  rgb(238, 231, 231);
-    -fx-border-color: #3c373a;
+    -fx-background-color:    #e8e8e8;
+    -fx-border-color:  #777777;
     -fx-background-radius: 10px;
     -fx-border-radius: 10px;
 }
@@ -74,6 +74,7 @@
 }
 .second-menubutton:hover {
     -fx-background-color: #3c373a;
+    -fx-border-color:  #3c373a;
 }
 .second-menubutton:hover .fontawesome-icon {
     -fx-fill: rgb(238, 231, 231);

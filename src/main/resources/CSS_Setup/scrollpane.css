@@ -2,7 +2,7 @@
 .scroll-bar .increment-button,
 .scroll-bar .decrement-button
 {
-    -fx-background-color: rgb(150, 143, 143);
+    -fx-background-color:  #c7c7c7;
 }
 
 .scroll-pane,
@@ -10,5 +10,5 @@
 .scroll-pane .corner,
 .scroll-bar
 {
-    -fx-background-color:  rgb(238, 231, 231);
+    -fx-background-color:  rgba(238, 231, 231, 0);
 }
