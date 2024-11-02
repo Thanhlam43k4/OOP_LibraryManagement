@@ -4,8 +4,6 @@ package com.example.JFX_Controller;
 import java.util.Objects;
 
 import com.example.Handlers.Notify;
-import com.example.Model.Admin;
-import com.example.Model.Client;
 import com.example.Model.User;
 import com.example.Service.SessionManager;
 import com.example.Service.UserService;

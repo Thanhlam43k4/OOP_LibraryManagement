@@ -2,7 +2,6 @@ package com.example.Service;
 
 import com.example.Interface.UserDao;
 import com.example.DAO.UserDaoImpl;
-import com.example.Model.Admin;
 import com.example.Model.Client;
 import com.example.Model.User;
 
