@@ -127,7 +127,7 @@
                   <FontAwesomeIconView glyphName="TIMES" size="22" style="-fx-fill: #3c373a;" />
                </graphic>
             </Button>
-            <Button layoutX="18.0" layoutY="362.0" mnemonicParsing="false" onAction="#saveModifyDoc" prefHeight="37.0" prefWidth="682.0" style="-fx-background-color: linear-gradient(to right bottom, rgb(19, 168, 57), rgb(115, 160, 12)); -fx-background-radius: 10; -fx-background-color: linear-gradient(to right bottom, rgb(219, 56, 35), rgb(216, 116, 22));" text="Save" textFill="#f2ebeb">
+            <Button layoutX="18.0" layoutY="362.0" mnemonicParsing="false" onAction="#saveModifyDoc" prefHeight="37.0" prefWidth="682.0" style="-fx-background-color: linear-gradient(to right bottom, rgb(19, 168, 57), rgb(115, 160, 12)); -fx-background-radius: 10; -fx-background-color: #262626;" text="Save" textFill="#f2ebeb">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

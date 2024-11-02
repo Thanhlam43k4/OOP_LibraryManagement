@@ -34,7 +34,7 @@ public class MainUI extends Application {
 
         // Create Scene
         primaryStage = stage;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin.fxml"));
         Parent root = loader.load();
         Image logoImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Image/logo.jpg"))); // Đảm bảo đường dẫn đúng
         primaryStage.getIcons().add(logoImage); // Thêm biểu tượng vào cửa sổ

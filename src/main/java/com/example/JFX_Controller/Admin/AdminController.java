@@ -11,6 +11,7 @@ import com.example.Model.Client;
 import com.example.Model.Document;
 import com.example.Model.Transaction;
 import com.example.Service.DocumentService;
+import com.example.Service.UserService;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -111,14 +112,13 @@ public class AdminController extends Controller implements Initializable {
     // load Data
     private void addUserNodes() {
         userList.clear();
-        for (int i = 0; i < 10; i++) {
+        List<Client> clients = UserService.instance.getAllClients();
+        for (Client c : clients) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/UserRow.fxml"));
                 Node userNode = loader.load();
-                // AnchorPane pane = (AnchorPane) bookNode;
-                // pane.getHeight();
                 UserRowController userRowController = loader.getController();
-                userRowController.setInfo(new Client("123@", "tanh", "01234", 12), userPane);
+                userRowController.setInfo(c, userPane);
                 userList.add(userNode);
             } catch (IOException e) {
                 e.printStackTrace();
