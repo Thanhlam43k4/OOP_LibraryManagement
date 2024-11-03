@@ -8,5 +8,5 @@ public interface TransactionDao {
     public void addTransaction(Transaction transaction);
     public List<Transaction> getTransactionsByUserId(int userId);
     public void deleteTransaction(int transactionId);
-
+    public void addTransaction(int userId, String ISBN);
 }

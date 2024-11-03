@@ -1,10 +1,9 @@
 package com.example.DAO;
 import com.example.Interface.TransactionDao;
 import com.example.Model.Transaction;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +24,33 @@ public class TransactionDaoImpl implements TransactionDao {
             pstmt.setDate(3,transaction.getBorrowedDate());
             pstmt.setDate(4,transaction.getReturnDate());
             pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    @Override
+    public void addTransaction(int userId, String ISBN) {
+        String sql = "INSERT INTO transactions (user_id,copy_ISBN,borrowed_date,return_date)" +
+                "VALUES (?, ?, ?, ?)";
+        String updateStatusSQL = "UPDATE copies SET status = 'Checked Out' WHERE copy_ISBN = ?";
+
+        LocalDate borrowedDate = LocalDate.now();
+        // Cộng thêm 14 ngày để lấy ngày trả
+        LocalDate returnDate = borrowedDate.plusDays(14);
+        try(PreparedStatement pstmt = con.prepareStatement(sql);
+            PreparedStatement updatestmt = con.prepareStatement(updateStatusSQL)) {
+            pstmt.setInt(1,userId);
+            pstmt.setString(2,ISBN);
+            pstmt.setDate(3, Date.valueOf(borrowedDate));
+            pstmt.setDate(4,Date.valueOf(returnDate));
+            pstmt.executeUpdate();
+            System.out.println("Add Transaction Successfully with userId: "+ userId +" ISBN: " +ISBN);
+
+            updatestmt.setString(1,ISBN);
+            updatestmt.executeUpdate();
+
+            System.out.println("Status of Copy with ISBN=" +ISBN + " is changed to Checked Out");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

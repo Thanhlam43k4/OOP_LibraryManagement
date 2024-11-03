@@ -23,4 +23,7 @@ public class TransactionService {
     public void returnBook(int transactionId) {
         transactionDao.deleteTransaction(transactionId);
     }
+    public void borrowBook(int userId, String ISBN) {
+        transactionDao.addTransaction(userId,ISBN);
+    }
 }

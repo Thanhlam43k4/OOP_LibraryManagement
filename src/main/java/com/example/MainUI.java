@@ -29,9 +29,6 @@ public class MainUI extends Application {
             System.out.println("Failed to establish a database connection.");
             return;
         }
-        // Create service
-        createServices(con);
-
         // Create Scene
         primaryStage = stage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Login.fxml"));
