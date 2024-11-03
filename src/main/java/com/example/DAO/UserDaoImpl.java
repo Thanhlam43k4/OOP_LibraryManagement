@@ -29,7 +29,7 @@ public class UserDaoImpl implements UserDao {
             int rowsAffected = stmt.executeUpdate(sql);
 
             if (rowsAffected > 0) {
-                System.out.println("User created successfully.");
+                System.out.println("User: "+  user.getEmail() + "is created successfully.");
             } else {
                 System.out.println("No user was created.");
             }
@@ -153,4 +153,6 @@ public class UserDaoImpl implements UserDao {
             return false;
         }
     }
+
+
 }

@@ -46,9 +46,8 @@ public class SignInUpController extends Controller {
         String password = passwordField.getText();
         boolean isMatchAccount = UserService.instance.isMatchAccount(email, password);
         if (!isMatchAccount) {
-            Notify.showAlert(Alert.AlertType.INFORMATION, "Email or password is wrong", "Please login again!");
+            Notify.showAlert(Alert.AlertType.ERROR, "Email or password is wrong", "Please login again!");
         } else {
-
             User user = UserService.instance.getUserByEmail(email);
             SessionManager.getInstance().setLoggedInUser(user);
             if (user.getRole().equals("admin")) {
@@ -66,17 +65,16 @@ public class SignInUpController extends Controller {
         String confirmpassword = confirmpassField.getText();
         boolean isEmailExists = UserService.instance.isEmailExists(email);
         if (email.isEmpty() || password.isEmpty() || confirmpassword.isEmpty()) {
-            Notify.showAlert(Alert.AlertType.INFORMATION, "Missing Information", "Please fill in all fields!");
+            Notify.showAlert(Alert.AlertType.ERROR, "Missing Information", "Please fill in all fields!");
         } else if (isEmailExists) {
-            Notify.showAlert(Alert.AlertType.INFORMATION, "Email is existed", "Please register with other email!");
-            loadScene("Login.fxml");
+            Notify.showAlert(Alert.AlertType.ERROR, "Email is existed", "Please register with other email!");
         } else if (Objects.equals(password, confirmpassword)) {
             User user = new User(email, password);
             UserService.instance.createUser(user);
             Notify.showAlert(Alert.AlertType.INFORMATION, "Register Successful", "Please Login!");
             loadScene("Login.fxml");
         } else {
-            Notify.showAlert(Alert.AlertType.INFORMATION, "Wrong Password Matching", "Please register again!");
+            Notify.showAlert(Alert.AlertType.ERROR, "Wrong Password Matching", "Please register again!");
         }
     }
 }

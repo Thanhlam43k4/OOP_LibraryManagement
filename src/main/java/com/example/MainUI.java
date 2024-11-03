@@ -32,6 +32,9 @@ public class MainUI extends Application {
         // Create service
         createServices(con);
         // Create Scene
+
+
+
         primaryStage = stage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Login.fxml"));
         Parent root = loader.load();

@@ -155,6 +155,7 @@ public class AdminController extends Controller implements Initializable {
             vbox.getChildren().add(node);
         }
     }
+
     private void setTranTable() {
         TableColumn<Transaction, ?> tranIdCol = tranTable.getColumns().get(0); // Cột đầu tiên
         TableColumn<Transaction, ?> userIdCol = tranTable.getColumns().get(1); // Cột thứ hai
@@ -167,11 +168,11 @@ public class AdminController extends Controller implements Initializable {
         docIdCol.setCellValueFactory(new PropertyValueFactory<>("documentId"));
         borrowedDateCol.setCellValueFactory(new PropertyValueFactory<>("borrowedDate"));
         dueDateCol.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
-    
+
         ObservableList<Transaction> books = FXCollections.observableArrayList(
-            new Transaction(1, 2),
-            new Transaction(2, 5),
-            new Transaction(8, 7)
+            new Transaction(1, "2"),
+            new Transaction(2, "5"),
+            new Transaction(8, "7")
         );
 
         tranTable.setItems(books);

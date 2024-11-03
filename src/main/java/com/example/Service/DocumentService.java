@@ -43,4 +43,7 @@ public class DocumentService {
     public boolean isBookAvailable(String ISBN) {
         return documentDao.isBookAvailable(ISBN);
     }
+    public Document getDocumentByISBN(String ISBN) {
+        return documentDao.getDocumentByISBN(ISBN);
+    }
 }

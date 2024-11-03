@@ -19,4 +19,6 @@ public interface DocumentDao {
     void deleteDocument(int documentId);
 
     boolean isBookAvailable(String ISBN);
+
+    Document getDocumentByISBN(String ISBN);
 }

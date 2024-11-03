@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 public class Transaction {
     private int transactionId;       // transaction_id
     private int userId;              // user_id
-    private int documentId;          // document_id
+    private String ISBN;         // document_id
     private Date borrowedDate;       // borrowed_date
     private Date returnDate;         // return_date
     private Date actualReturnDate;   // actual_return_date
@@ -14,24 +14,24 @@ public class Transaction {
     public Transaction() {
     }
     // Constructor with parameters
-    public Transaction(int transactionId, int userId, int documentId,
+    public Transaction(int transactionId, int userId, String ISBN,
                        Date borrowedDate, Date returnDate) {
         this.transactionId = transactionId;
         this.userId = userId;
-        this.documentId = documentId;
+        this.ISBN = ISBN;
         this.borrowedDate = borrowedDate;
         this.returnDate = returnDate;
     }
 
-    public Transaction( int userId, int documentId, Date borrowedDate, Date returnDate) {
+    public Transaction( int userId, String ISBN , Date borrowedDate, Date returnDate) {
         this.userId = userId;
-        this.documentId = documentId;
+        this.ISBN = ISBN;
         this.borrowedDate = borrowedDate;
         this.returnDate = returnDate;
     }
-    public Transaction(int userId, int documentId) {
+    public Transaction(int userId, String ISBN) {
         this.userId = userId;
-        this.documentId = documentId;
+        this.ISBN = ISBN;
 
         // Lấy thời điểm hiện tại (borrowedDate là thời điểm hiện tại)
         this.borrowedDate = new Date(System.currentTimeMillis());
@@ -57,12 +57,12 @@ public class Transaction {
         this.userId = userId;
     }
 
-    public int getDocumentId() {
-        return documentId;
+    public String getISBN() {
+        return ISBN;
     }
 
-    public void setDocumentId(int documentId) {
-        this.documentId = documentId;
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
     }
 
     public Date getBorrowedDate() {
@@ -95,7 +95,7 @@ public class Transaction {
         return "Transaction{" +
                 "transactionId=" + transactionId +
                 ", userId=" + userId +
-                ", documentId=" + documentId +
+                ", ISBN=" + ISBN +
                 ", borrowedDate=" + borrowedDate +
                 ", returnDate=" + returnDate +
                 ", actualReturnDate=" + actualReturnDate +

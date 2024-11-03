@@ -13,7 +13,7 @@ CREATE TABLE transactions (
 
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,  -- Tự động tăng giá trị id
-    email VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
     username VARCHAR(100) ,     -- Tên người dùng
     age INT,                            -- Tuổi
     password VARCHAR(255) NOT NULL,     -- Mật khẩu

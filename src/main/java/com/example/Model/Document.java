@@ -1,5 +1,7 @@
 package com.example.Model;
 
+import javax.print.Doc;
+
 public class Document {
     private int documentId;
     private String title;
@@ -43,6 +45,12 @@ public class Document {
         this.title = title;
         this.author = author;
         this.genre = genre;
+    }
+    public Document(String title,String author,String genre,String urlImage) {
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+        this.urlImage = urlImage;
     }
 
 

@@ -16,11 +16,11 @@ public class TransactionDaoImpl implements TransactionDao {
 
     @Override
     public void addTransaction(Transaction transaction){
-        String sql = "INSERT INTO transactions (user_id,document_id,borrowed_date,return_date) " +
+        String sql = "INSERT INTO transactions (user_id,copy_ISBN,borrowed_date,return_date) " +
                 "VALUES (?, ?, ?, ?)";
         try(PreparedStatement pstmt = con.prepareStatement(sql)){
             pstmt.setInt(1,transaction.getUserId());
-            pstmt.setInt(2,transaction.getDocumentId());
+            pstmt.setString(2,transaction.getISBN());
             pstmt.setDate(3,transaction.getBorrowedDate());
             pstmt.setDate(4,transaction.getReturnDate());
             pstmt.executeUpdate();
@@ -67,7 +67,7 @@ public class TransactionDaoImpl implements TransactionDao {
                 Transaction transaction = new Transaction(
                         rs.getInt("transaction_id"),
                         rs.getInt("user_id"),
-                        rs.getInt("document_id"),
+                        rs.getString("copy_ISBN"),
                         rs.getDate("borrowed_date"),
                         rs.getDate("return_date")
                 );

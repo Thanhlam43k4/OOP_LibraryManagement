@@ -145,4 +145,30 @@ public class DocumentDaoImpl implements DocumentDao {
         }
         return false;
     }
+
+    @Override
+    public Document getDocumentByISBN(String ISBN) {
+        System.out.println(ISBN);
+        String query = "SELECT * " +
+                "FROM documents d " +
+                "WHERE ISBN = ?";
+        try (PreparedStatement pstmt = con.prepareStatement(query)) {
+            pstmt.setString(1, ISBN); // Set the ISBN parameter in the query
+            ResultSet rs = pstmt.executeQuery(); // Execute the query
+
+            if (rs.next()) {
+                // Assuming Document has a constructor that accepts these fields
+                int documentId = rs.getInt("documentId"); // Adjust based on your Document fields
+                String title = rs.getString("title");
+                String author = rs.getString("author");
+                String genre = rs.getString("genre");
+                // Add other fields as necessary
+
+                return new Document(documentId,title,author,genre); // Return the Document object
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle SQL exceptions
+        }
+        return null; // Return null if no document found
+    }
 }

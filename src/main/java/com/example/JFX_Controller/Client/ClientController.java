@@ -14,7 +14,7 @@ import com.example.Model.Transaction;
 import com.example.Service.DocumentService;
 import com.example.Service.SessionManager;
 import com.example.Service.TransactionService;
-
+import com.example.Handlers.ExtraFunction;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -161,10 +161,11 @@ public class ClientController extends Controller implements Initializable{
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/DocElement.fxml"));
                 Node bookNode = loader.load();
-                
-                Document docInfo = DocumentService.instance.getDocumentById(transaction.getDocumentId());
+                String ISBN = ExtraFunction.extractISBN(transaction.getISBN());
+
+                Document docInfo  = DocumentService.instance.getDocumentByISBN(ISBN);
                 TransCardController transCardController = loader.getController();
-                transCardController.setInfo(transaction.getDocumentId(), "/DocCover_url/1586s.jpg", docInfo.getTitle(), "Bill Gate" ,docInfo.getGenre(), transaction.getReturnDate());
+                transCardController.setInfo(docInfo.getDocumentId(), "/DocCover_url/1586s.jpg", docInfo.getTitle(), "Bill Gate" ,docInfo.getGenre(), transaction.getReturnDate());
                 docelementList.add(bookNode);
             } catch (IOException e) {
                 e.printStackTrace();
