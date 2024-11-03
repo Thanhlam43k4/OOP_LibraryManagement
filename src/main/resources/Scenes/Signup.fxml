@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: rgb(238, 231, 231);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.SignInUpController">
+<StackPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.SignInUpController">
    <children>
       <Label alignment="CENTER" prefHeight="44.0" prefWidth="282.0" style="-fx-text-fill: linear-gradient(to right bottom, rgb(224, 46, 22), rgb(216, 116, 22));" text="Sign up" textFill="#8ab95b">
          <font>
@@ -42,12 +42,12 @@
             <Insets bottom="30.0" right="100.0" />
          </StackPane.margin>
       </Label>
-      <TextField fx:id="emailField" maxWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" promptText="email@example.com" style="-fx-background-color: rgb(238, 231, 231); -fx-text-fill: #222020; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #2a2b29; -fx-border-width: 2;">
+      <TextField fx:id="emailField" maxWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" promptText="email@example.com" style="-fx-background-color: #1f1f1f00; -fx-text-fill: #222020; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #2a2b29; -fx-border-width: 2;">
          <StackPane.margin>
             <Insets bottom="230.0" />
          </StackPane.margin>
       </TextField>
-      <PasswordField fx:id="passwordField" maxWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" promptText="password" style="-fx-background-color: rgb(238, 231, 231); -fx-text-fill: #222020; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #2a2b29; -fx-border-width: 2;">
+      <PasswordField fx:id="passwordField" maxWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" promptText="password" style="-fx-background-color: #1f1f1f00; -fx-text-fill: #222020; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #2a2b29; -fx-border-width: 2;">
          <StackPane.margin>
             <Insets bottom="100.0" />
          </StackPane.margin>
@@ -60,7 +60,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button alignment="CENTER" mnemonicParsing="false" onAction="#returnSignIn" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: rgb(238, 231, 231);" text="Sign in" textFill="#2a80ae" underline="true">
+      <Button alignment="CENTER" mnemonicParsing="false" onAction="#returnSignIn" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #1f1f1f00;" text="Sign in" textFill="#2a80ae" underline="true">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -76,7 +76,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <PasswordField fx:id="confirmpassField" layoutX="265.0" layoutY="223.0" maxWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" promptText="password" style="-fx-background-color: rgb(238, 231, 231); -fx-text-fill: #222020; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #2a2b29; -fx-border-width: 2;">
+      <PasswordField fx:id="confirmpassField" layoutX="265.0" layoutY="223.0" maxWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" promptText="password" style="-fx-background-color: #1f1f1f00; -fx-text-fill: #222020; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #2a2b29; -fx-border-width: 2;">
          <StackPane.margin>
             <Insets top="30.0" />
          </StackPane.margin>

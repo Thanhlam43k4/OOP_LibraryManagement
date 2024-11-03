@@ -9,23 +9,16 @@ import java.util.ResourceBundle;
 import com.example.JFX_Controller.Controller;
 import com.example.Model.Client;
 import com.example.Model.Document;
-import com.example.Model.Transaction;
 import com.example.Service.DocumentService;
 import com.example.Service.SessionManager;
 import com.example.Service.UserService;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -52,7 +45,7 @@ public class AdminController extends Controller implements Initializable {
     @FXML private VBox userVBox;
     // Transaction
     @FXML private AnchorPane tranPane;
-    @FXML private TableView<Transaction> tranTable;
+    @FXML private VBox transVBox;
 
     private static List<Node> docList = new ArrayList<>();
     private static List<Node> userList = new ArrayList<>();
@@ -69,7 +62,6 @@ public class AdminController extends Controller implements Initializable {
         
         setVBox(userVBox, userList);
         setVBox(docVBox, docList);
-        setTranTable();
     }
     //#region event handle
     @FXML
@@ -154,28 +146,6 @@ public class AdminController extends Controller implements Initializable {
         for (Node node : list) {
             vbox.getChildren().add(node);
         }
-    }
-
-    private void setTranTable() {
-        TableColumn<Transaction, ?> tranIdCol = tranTable.getColumns().get(0); // Cột đầu tiên
-        TableColumn<Transaction, ?> userIdCol = tranTable.getColumns().get(1); // Cột thứ hai
-        TableColumn<Transaction, ?> docIdCol = tranTable.getColumns().get(2);
-        TableColumn<Transaction, ?> borrowedDateCol = tranTable.getColumns().get(3);
-        TableColumn<Transaction, ?> dueDateCol = tranTable.getColumns().get(4);
-    
-        tranIdCol.setCellValueFactory(new PropertyValueFactory<>("transactionId"));
-        userIdCol.setCellValueFactory(new PropertyValueFactory<>("userId"));
-        docIdCol.setCellValueFactory(new PropertyValueFactory<>("documentId"));
-        borrowedDateCol.setCellValueFactory(new PropertyValueFactory<>("borrowedDate"));
-        dueDateCol.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
-
-        ObservableList<Transaction> books = FXCollections.observableArrayList(
-            new Transaction(1, "2"),
-            new Transaction(2, "5"),
-            new Transaction(8, "7")
-        );
-
-        tranTable.setItems(books);
     }
     
     // mở pane add document và add user

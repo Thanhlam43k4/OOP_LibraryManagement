@@ -1,7 +1,5 @@
 package com.example.Model;
 
-import javax.print.Doc;
-
 public class Document {
     private int documentId;
     private String title;

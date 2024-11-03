@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: rgb(238, 231, 231);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.SignInUpController">
+<AnchorPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.SignInUpController">
    <children>
       <StackPane layoutX="190.0" layoutY="87.0" prefHeight="393.0" prefWidth="371.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -42,7 +42,7 @@
                   <Insets top="200.0" />
                </StackPane.margin>
             </Label>
-            <TextField fx:id="emailField" maxWidth="-Infinity" prefHeight="40.0" prefWidth="240.0" promptText="Enter your email" style="-fx-background-color: rgb(238, 231, 231); -fx-text-fill: #eaeaea; -fx-border-color: #2a2b29; -fx-border-width: 2; -fx-border-radius: 17; -fx-background-radius: 17; -fx-text-fill: #222020;">
+            <TextField fx:id="emailField" maxWidth="-Infinity" prefHeight="40.0" prefWidth="240.0" promptText="Enter your email" style="-fx-background-color: transparent; -fx-text-fill: #eaeaea; -fx-border-color: #2a2b29; -fx-border-width: 2; -fx-border-radius: 17; -fx-background-radius: 17; -fx-text-fill: #222020;">
                <StackPane.margin>
                   <Insets bottom="170.0" />
                </StackPane.margin>
@@ -50,7 +50,7 @@
                   <Font size="13.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="passwordField" maxWidth="-Infinity" prefHeight="40.0" prefWidth="240.0" promptText="Password" style="-fx-background-color: rgb(238, 231, 231); -fx-border-color: #2a2b29; -fx-border-width: 2; -fx-background-radius: 17; -fx-border-radius: 17; -fx-text-fill: #222020;">
+            <PasswordField fx:id="passwordField" maxWidth="-Infinity" prefHeight="40.0" prefWidth="240.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #2a2b29; -fx-border-width: 2; -fx-background-radius: 17; -fx-border-radius: 17; -fx-text-fill: #222020;">
                <StackPane.margin>
                   <Insets bottom="30.0" />
                </StackPane.margin>
@@ -66,7 +66,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" layoutX="284.0" layoutY="223.0" mnemonicParsing="false" onAction="#goCreateAcc" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #403e3e; -fx-background-radius: 10;" text="Register" textFill="#e4e4e4">
+            <Button alignment="CENTER" layoutX="284.0" layoutY="223.0" mnemonicParsing="false" onAction="#goCreateAcc" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #1f1f1f; -fx-background-radius: 10;" text="Register" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -74,7 +74,7 @@
                   <Insets top="260.0" />
                </StackPane.margin>
             </Button>
-            <Button layoutX="249.0" layoutY="276.0" mnemonicParsing="false" style="-fx-background-color: rgb(238, 231, 231);" text="Forgot Password?" textFill="#464242" underline="true">
+            <Button layoutX="249.0" layoutY="276.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Forgot Password?" textFill="#464242" underline="true">
                <StackPane.margin>
                   <Insets left="130.0" top="40.0" />
                </StackPane.margin>

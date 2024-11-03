@@ -1,41 +1,48 @@
-/* .primary-table-view
+.primary-table-view
 {
-    -fx-background-color: rgb(238, 231, 231);
-    -fx-border-radius: 20px;
-} */
+    -fx-background-color: rgba(255, 255, 255, 0);
+}
+
+.primary-table-view .column-header {
+    -fx-background-color:   rgba(26, 47, 73, 0);
+}
+
+.primary-table-view .column-header-background {
+    -fx-background-color:   rgb(26, 47, 73);
+    -fx-background-radius: 10 10 0 0;
+    -fx-border-radius: 10 10 0 0;
+    -fx-pref-height: 50px;
+}
+
+.primary-table-view .column-header .label{
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 0 0 25px;
+}
 
 .primary-table-view .table-row-cell 
 {
-    -fx-pref-height: 40px;
+    -fx-pref-height: 60px;
+    -fx-border-color: rgb(255, 255, 255);
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
 }
 
 .primary-table-view .table-row-cell:hover {
-    -fx-background-color: rgb(208, 214, 208);
+    -fx-background-color: rgb(229, 234, 255);
 }
 
 /* Khi chọn một hàng */
 .primary-table-view .table-row-cell:filled:selected {
-    -fx-background-color: rgb(165, 170, 165);
+    -fx-background-color: rgb(212, 212, 212);
 }
 
 .primary-table-view .table-cell {
-    -fx-padding: 10px;
-    -fx-text-fill: #3c3a3a;
+    -fx-padding: 22px;
+    -fx-text-fill: #383838;
     -fx-font-size: 14px;
-    -fx-border-color: #797577;
-    -fx-border-width: 0.5px;
-}
-
-.primary-table-view .column-header {
-    -fx-background-color:   transparent;
-    -fx-font-size: 15px;
     -fx-font-weight: bold;
-    -fx-border-width: 0 1px 0 0;
-    -fx-border-color: #797577;
-}
-
-.primary-table-view .column-header-background {
-    -fx-background-color:   rgb(211, 204, 204);
-    -fx-border-color: #797577;
-    -fx-pref-height: 50px;
+    -fx-border-width: 0;
 }
