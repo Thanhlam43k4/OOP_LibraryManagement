@@ -9,23 +9,30 @@ import java.util.ResourceBundle;
 import com.example.JFX_Controller.Controller;
 import com.example.Model.Client;
 import com.example.Model.Document;
+import com.example.Model.Transaction;
 import com.example.Service.DocumentService;
 import com.example.Service.SessionManager;
 import com.example.Service.UserService;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.Initializable;
+import javafx.util.Duration;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 //#endregion
 
 public class AdminController extends Controller implements Initializable {
@@ -45,7 +52,7 @@ public class AdminController extends Controller implements Initializable {
     @FXML private VBox userVBox;
     // Transaction
     @FXML private AnchorPane tranPane;
-    @FXML private VBox transVBox;
+    @FXML private TableView<Transaction> tranTable;
 
     private static List<Node> docList = new ArrayList<>();
     private static List<Node> userList = new ArrayList<>();
@@ -58,10 +65,12 @@ public class AdminController extends Controller implements Initializable {
             addUserNodes();
             addDocNodes();
         }
+        setupSearchFieldListener();
         setPane(docPane, docsBut);
         
         setVBox(userVBox, userList);
         setVBox(docVBox, docList);
+        setTranTable();
     }
     //#region event handle
     @FXML
@@ -84,8 +93,26 @@ public class AdminController extends Controller implements Initializable {
     void openAddDoc(ActionEvent event)   { loadAddDoc(); }
     @FXML
     void openAddUser(ActionEvent event)  { loadAddUser(); }
+    private final ExecutorService executorService = Executors.newSingleThreadExecutor(); // ExecutorService với 1 luồng
+
     //#endregion
-    
+    private void setupSearchFieldListener() {
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Hủy Timeline trước đó nếu có
+            if (searchTimeline != null) {
+                searchTimeline.stop();
+            }
+
+            // Nếu trường tìm kiếm không trống
+            if (!newValue.trim().isEmpty()) {
+                // Tạo một mới Timeline với 2 giây trì hoãn
+                searchTimeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> handleSearch()));
+                searchTimeline.playFromStart(); // Bắt đầu chạy Timeline
+            } else {
+                suggestionsListView.setVisible(false); // Ẩn ListView nếu trường tìm kiếm trống
+            }
+        });
+    }
     //#region fe_func
     // bật/tắt Pane
     private void setPane(Parent pane, HBox tabBut) {
@@ -190,5 +217,58 @@ public class AdminController extends Controller implements Initializable {
         docList.clear();
         userList.clear();
     }
+
+
+
+
+    @FXML
+    private void handleSearch() {
+        try {
+            if (searchField == null || suggestionsListView == null) {
+                System.err.println("searchField or suggestionList is null!");
+                return;
+            }
+
+            String query = searchField.getText().trim();
+
+            // Kiểm tra nếu `query` trống thì ẩn `ListView`
+            if (query.isEmpty()) {
+                suggestionsListView.setVisible(false);
+                return;
+            }
+
+            // Thực hiện tìm kiếm trong một luồng riêng
+            executorService.submit(() -> searchBooks(query));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private void searchBooks(String query) {
+        try {
+            // Gọi API để tìm kiếm sách
+            List<Document> documents = ApiService.searchBooks(query);
+
+            // Chuyển đổi danh sách Document thành ObservableList<String> để hiển thị tiêu đề
+            ObservableList<String> suggestions = FXCollections.observableArrayList();
+            for (Document document : documents) {
+                suggestions.add(document.getTitle());
+            }
+
+            // Cập nhật ListView trên luồng chính
+            Platform.runLater(() -> {
+                // Cập nhật ListView
+                suggestionsListView.setItems(suggestions);
+                suggestionsListView.setVisible(!suggestions.isEmpty());
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void shutdown() {
+        executorService.shutdown(); // Đảm bảo dừng ExecutorService khi không còn sử dụng
+    }
+
     //#endregion
 }
