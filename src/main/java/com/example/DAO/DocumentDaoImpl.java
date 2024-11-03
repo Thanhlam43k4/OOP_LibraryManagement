@@ -130,4 +130,19 @@ public class DocumentDaoImpl implements DocumentDao {
         }
     }
 
+    @Override
+    public boolean isBookAvailable(String ISBN) {
+        String query = "SELECT COUNT(*) > 0 AS is_available FROM copies WHERE copy_ISBN = ? AND status = 'Available'";
+        try(PreparedStatement pstmt = con.prepareStatement(query)) {
+            pstmt.setString(1,ISBN);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getBoolean("is_available"); // Trả về true nếu có sẵn, false nếu không
+            }
+
+        }catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

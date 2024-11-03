@@ -40,4 +40,7 @@ public class DocumentService {
     public List<Copies> getAllCopies(int documentId){
         return documentDao.getAllCopies(documentId);
     }
+    public boolean isBookAvailable(String ISBN) {
+        return documentDao.isBookAvailable(ISBN);
+    }
 }
