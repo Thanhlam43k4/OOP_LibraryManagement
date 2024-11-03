@@ -11,6 +11,7 @@ import com.example.Model.Client;
 import com.example.Model.Document;
 import com.example.Model.Transaction;
 import com.example.Service.DocumentService;
+import com.example.Service.SessionManager;
 import com.example.Service.UserService;
 
 import javafx.collections.FXCollections;
@@ -26,6 +27,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
@@ -57,7 +59,9 @@ public class AdminController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        userName.setText(SessionManager.getInstance().getLoggedInUser().getUsername());
         if (userList.isEmpty()) {
+            System.out.println("Add admin node");
             addUserNodes();
             addDocNodes();
         }
@@ -79,7 +83,9 @@ public class AdminController extends Controller implements Initializable {
     @FXML
     void goToProfile(ActionEvent event)  { loadScene("Profile.fxml"); }
     @FXML
-    void signOut(ActionEvent event)      { loadScene("Login.fxml"); }
+    void signOut(ActionEvent event)      { loadScene("Login.fxml"); 
+                                           clearNode();
+                                           SessionManager.getInstance().clearSession();}
     @FXML
     void closeDocCopy(ActionEvent event) { copiesDocPane.setVisible(false); }
     @FXML
@@ -91,7 +97,7 @@ public class AdminController extends Controller implements Initializable {
     //#region fe_func
     // bật/tắt Pane
     private void setPane(Parent pane, HBox tabBut) {
-        AnchorPane anchorPane = (AnchorPane) pane.getParent();
+        Pane anchorPane = (Pane) pane.getParent();
         for (Node child : anchorPane.getChildren()) {
             child.setVisible(false);
         }
@@ -207,6 +213,11 @@ public class AdminController extends Controller implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    private void clearNode() {
+        docList.clear();
+        userList.clear();
     }
     //#endregion
 }

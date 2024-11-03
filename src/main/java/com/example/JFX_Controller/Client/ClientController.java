@@ -12,6 +12,7 @@ import com.example.JFX_Controller.Controller;
 import com.example.Model.Document;
 import com.example.Model.Transaction;
 import com.example.Service.DocumentService;
+import com.example.Service.SessionManager;
 import com.example.Service.TransactionService;
 
 import javafx.scene.input.MouseEvent;
@@ -50,7 +51,9 @@ public class ClientController extends Controller implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        userName.setText(SessionManager.getInstance().getLoggedInUser().getUsername());
         if(cardList.isEmpty()) {
+            System.out.println("Add client node");
             addCardNodes();
             addDocElementNodes();
         }
@@ -76,7 +79,9 @@ public class ClientController extends Controller implements Initializable{
     @FXML
     void profile(ActionEvent event) { loadScene("Profile.fxml"); }
     @FXML
-    void signOut(ActionEvent event) { loadScene("Login.fxml"); }
+    void signOut(ActionEvent event) { loadScene("Login.fxml"); 
+                                      clearNode(); 
+                                      SessionManager.getInstance().clearSession();}
     //#region fe_func
 
     // catch SceneWidth change
@@ -113,7 +118,7 @@ public class ClientController extends Controller implements Initializable{
             return;
         }
         browseBut.getStyleClass().add("hbox-style-selected");
-        int colCnt = (int) (MainUI.primaryStage.getScene().getWidth() - 223)/cardWidth;
+        int colCnt = (int) (browseScroll.getWidth())/cardWidth;
         updateGrid(browseGrid, cardList, colCnt);
     }
     private void setMyDoc(boolean isActive) {
@@ -163,7 +168,6 @@ public class ClientController extends Controller implements Initializable{
         }
     }
 
-
     // thay đổi cột của grid
     private void updateGrid(GridPane grid, List<Node> list, int colCnt) {
         grid.getChildren().clear();
@@ -176,6 +180,11 @@ public class ClientController extends Controller implements Initializable{
                 row++;
             }
         }
+    }
+    
+    private void clearNode() {
+        docelementList.clear();
+        cardList.clear();
     }
     //#endregion
 }

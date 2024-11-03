@@ -34,7 +34,6 @@ public class SignInUpController extends Controller {
 
     @FXML
     void signIn(ActionEvent event) {
-        // loadScene("Admin.fxml");
         be_signIn();
     }
 

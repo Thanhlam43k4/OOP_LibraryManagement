@@ -1,12 +1,12 @@
 .primary-anchor-card {
-    -fx-background-color: rgb(238, 231, 231);
+    -fx-background-color: rgba(238, 231, 231, 0);
     -fx-border-radius: 20px;
-    -fx-background-radius: 20px;
+    -fx-background-radius: 12px;
     /* -fx-border-color: linear-gradient(to right bottom, rgb(57, 170, 85), rgb(146, 197, 27)); */
 }
 
 .primary-anchor-card:hover {
-    -fx-background-color: #d1d1da;
+    -fx-background-color: #e2e2e2;
 }
 
 .second-anchor-card {

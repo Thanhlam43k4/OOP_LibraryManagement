@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: rgb(238, 231, 231);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Client.DocInfoController">
+<AnchorPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Client.DocInfoController">
    <children>
       <AnchorPane layoutX="224.0" layoutY="42.0" prefHeight="60.0" prefWidth="526.0" stylesheets="@../CSS_Setup/anchorpane.css" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -25,20 +25,20 @@
                   <Insets />
                </opaqueInsets>
                <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="19.0" prefWidth="161.0" text="Trong anh" textFill="#3c3a3a">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Label>
-                  <MenuButton mnemonicParsing="false" prefHeight="35.0" prefWidth="36.0" style="-fx-border-radius: 16px; -fx-background-radius: 16px;" styleClass="primary-menubutton" stylesheets="@../CSS_Setup/menubutton.css">
+                  <MenuButton alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="36.0" style="-fx-border-radius: 16px; -fx-background-radius: 16px;" styleClass="primary-menubutton" stylesheets="@../CSS_Setup/menubutton.css">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Profile" />
                       <MenuItem mnemonicParsing="false" onAction="#signOut" text="Sign out" />
                     </items>
                      <graphic>
-                        <FontAwesomeIconView glyphName="USER" size="20" styleClass="fontawesome-icon" wrappingWidth="1.0" />
+                        <FontAwesomeIconView glyphName="USER" size="20" styleClass="fontawesome-icon" wrappingWidth="8.0" />
                      </graphic>
                   </MenuButton>
+                  <Label maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="71.0" text="Trong anh" textFill="#3c3a3a" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
                </children>
                <padding>
                   <Insets right="10.0" />
@@ -85,7 +85,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <HBox prefHeight="127.0" prefWidth="393.0" spacing="15.0" style="-fx-background-color: rgb(238, 231, 231);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="345.0" AnchorPane.rightAnchor="12.0">
+      <HBox prefHeight="127.0" prefWidth="393.0" spacing="15.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="345.0" AnchorPane.rightAnchor="12.0">
          <children>
             <Button fx:id="borrowBut" mnemonicParsing="false" onAction="#borrowDoc" prefHeight="50.0" prefWidth="120.0" styleClass="second-button" stylesheets="@../CSS_Setup/button.css" text=" Borrow">
                <font>
@@ -105,7 +105,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <StackPane prefHeight="370.0" prefWidth="250.0" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="65.0">
+      <StackPane prefHeight="370.0" prefWidth="250.0" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="80.0">
          <children>
             <Rectangle fx:id="shadow" arcHeight="5.0" arcWidth="5.0" fill="#3a3b3c" height="343.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="238.0">
                <effect>
