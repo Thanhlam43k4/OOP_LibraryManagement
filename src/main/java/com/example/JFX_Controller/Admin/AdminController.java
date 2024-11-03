@@ -21,16 +21,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.Initializable;
 //#endregion
@@ -53,7 +50,7 @@ public class AdminController extends Controller implements Initializable {
     // Transaction
     @FXML private AnchorPane tranPane;
     @FXML private TableView<Transaction> tranTable;
-
+    @FXML private ListView<String> suggestionsListView;
     private static List<Node> docList = new ArrayList<>();
     private static List<Node> userList = new ArrayList<>();
 
@@ -220,5 +217,52 @@ public class AdminController extends Controller implements Initializable {
         docList.clear();
         userList.clear();
     }
+
+
+    private List<String> books; // Danh sách các sách để gợi ý
+
+    public void SearchController() {
+        // Khởi tạo danh sách sách (thay thế bằng cách lấy từ API hoặc cơ sở dữ liệu)
+        books = new ArrayList<>();
+        books.add("Harry Potter");
+        books.add("The Hobbit");
+        books.add("Effective Java");
+        books.add("Java Concurrency in Practice");
+        books.add("Clean Code");
+        books.add("Design Patterns");
+        books.add("The Catcher in the Rye");
+    }
+    @FXML
+    private void handleSearch() {
+        try {
+            if (searchField == null || suggestionsListView == null) {
+                System.err.println("searchField or suggestionList is null!");
+                return;
+            }
+
+            String query = searchField.getText();
+
+            // Kiểm tra nếu `query` trống thì ẩn `ListView`
+            if (query.isEmpty()) {
+                suggestionsListView.setVisible(false);
+                return;
+            }
+
+            // Nếu không trống, hiển thị danh sách gợi ý
+            ObservableList<String> suggestions = FXCollections.observableArrayList(
+                    "Java Programming",
+                    "Python Basics",
+                    "C++ Essentials",
+                    "JavaScript Guide",
+                    "Kotlin for Beginners"
+            );
+
+            suggestionsListView.setItems(suggestions);
+            suggestionsListView.setVisible(true); // Hiện `ListView` khi có gợi ý
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     //#endregion
 }
