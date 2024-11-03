@@ -3,7 +3,7 @@
 }
 
 .primary-menubutton {
-    -fx-background-color:  rgba(238, 231, 231, 0);
+    -fx-background-color:  rgba(255, 255, 255, 0);
     -fx-border-color: linear-gradient(to right bottom, rgb(224, 46, 22), rgb(216, 116, 22));
     -fx-background-radius: 10px;
     -fx-border-radius: 10px;
@@ -26,27 +26,23 @@
 }
 
 .primary-menubutton .menu-item:hover {
-    -fx-background-color: #a0a0a8;
+    -fx-background-color: #cecece;
 }
 
 .primary-menubutton .menu-item {
-    -fx-background-color:  rgb(238, 231, 231);
+    -fx-background-color:  rgb(255, 255, 255);
     -fx-padding: 7px;   
 }
 
 .primary-menubutton .menu-item .label {
     -fx-font-weight: bold;
-    -fx-text-fill: rgb(39, 37, 37);
-}
-
-.primary-menubutton .menu-item:hover .label {
-    -fx-text-fill: linear-gradient(to right bottom, rgb(224, 46, 22), rgb(216, 116, 22));
+    -fx-text-fill: rgb(54, 54, 54);
 }
 
 .primary-menubutton .context-menu {
-    -fx-background-color: rgb(238, 231, 231);
+    -fx-background-color: rgb(255, 255, 255);
     -fx-border-color: linear-gradient(to right bottom, rgb(224, 46, 22), rgb(216, 116, 22));
-    -fx-border-width: 2;
+    -fx-border-width: 1.5;
     -fx-border-radius: 5;
     -fx-background-radius: 5;
 }

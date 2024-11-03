@@ -57,9 +57,9 @@
       </Label>
       <MenuButton mnemonicParsing="false" style="-fx-border-width: 0;" styleClass="second-menubutton" stylesheets="@../../CSS_Setup/menubutton.css">
          <items>
-            <MenuItem mnemonicParsing="false" onAction="#showInfo" style="-fx-font-size: 12;" text="info" />
-            <MenuItem mnemonicParsing="false" onAction="#borrowDoc" style="-fx-font-size: 12;" text="borrow" />
-            <MenuItem mnemonicParsing="false" onAction="#returnDoc" style="-fx-font-size: 12;" text="return" />
+            <MenuItem mnemonicParsing="false" onAction="#showInfo" style="-fx-font-size: 12;" text="Infomation" />
+            <MenuItem mnemonicParsing="false" onAction="#borrowDoc" style="-fx-font-size: 12;" text="Borrow book" />
+            <MenuItem mnemonicParsing="false" onAction="#returnDoc" style="-fx-font-size: 12;" text="Return book" />
          </items>
          <graphic>
             <FontAwesomeIconView glyphName="ELLIPSIS_V" size="15" styleClass="fontawesome-icon" wrappingWidth="1.0" />

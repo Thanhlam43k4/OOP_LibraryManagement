@@ -26,3 +26,15 @@
     -fx-font-size: 15px;
     -fx-font-weight: bold;
 }
+
+
+.third-anchor-card {
+    -fx-background-color:  #fffff3;
+    -fx-border-color:  #b8b8b8;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+}
+
+.third-anchor-card:hover {
+    -fx-pref-height: 170;
+}

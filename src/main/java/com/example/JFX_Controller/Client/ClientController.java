@@ -77,11 +77,15 @@ public class ClientController extends Controller implements Initializable{
     @FXML
     void showSetting(ActionEvent event) { }
     @FXML
-    void profile(ActionEvent event) { loadScene("Profile.fxml"); }
+    void profile(ActionEvent event) { 
+        loadScene("Profile.fxml"); 
+    }
     @FXML
-    void signOut(ActionEvent event) { loadScene("Login.fxml"); 
-                                      clearNode(); 
-                                      SessionManager.getInstance().clearSession();}
+    void signOut(ActionEvent event) { 
+        loadScene("Login.fxml"); 
+        clearNode(); 
+        SessionManager.getInstance().clearSession();
+    }
     //#region fe_func
 
     // catch SceneWidth change
@@ -114,10 +118,10 @@ public class ClientController extends Controller implements Initializable{
         browseScroll.setVisible(isActive);
         browseBut.getStyleClass().clear();
         if(!isActive) {
-            browseBut.getStyleClass().add("hbox-style");
+            browseBut.getStyleClass().add("second-hbox-style");
             return;
         }
-        browseBut.getStyleClass().add("hbox-style-selected");
+        browseBut.getStyleClass().add("second-hbox-style-selected");
         int colCnt = (int) (browseScroll.getWidth())/cardWidth;
         updateGrid(browseGrid, cardList, colCnt);
     }
@@ -125,10 +129,10 @@ public class ClientController extends Controller implements Initializable{
         mydocScroll.setVisible(isActive);        
         mydocBut.getStyleClass().clear();
         if(!isActive) {
-            mydocBut.getStyleClass().add("hbox-style");
+            mydocBut.getStyleClass().add("second-hbox-style");
             return;
         }
-        mydocBut.getStyleClass().add("hbox-style-selected");
+        mydocBut.getStyleClass().add("second-hbox-style-selected");
         int colCnt = (int) (MainUI.primaryStage.getScene().getWidth() - 223)/docElementWidth;
         updateGrid(mydocGrid, docelementList, colCnt);
     }
@@ -152,7 +156,7 @@ public class ClientController extends Controller implements Initializable{
     }
     private void addDocElementNodes() {
         docelementList.clear();
-        List<Transaction> transactions = TransactionService.instance.getTransactionsByUserId(2);
+        List<Transaction> transactions = TransactionService.instance.getTransactionsByUserId(SessionManager.getInstance().getLoggedInUser().getId());
         for (Transaction transaction : transactions) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/DocElement.fxml"));

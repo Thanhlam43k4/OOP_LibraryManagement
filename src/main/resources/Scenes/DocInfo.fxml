@@ -55,7 +55,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <ScrollPane fx:id="docScroll" layoutX="341.0" layoutY="115.0" prefHeight="385.0" prefWidth="409.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="341.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0">
+      <ScrollPane fx:id="docScroll" layoutX="376.0" layoutY="115.0" prefHeight="385.0" prefWidth="374.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="376.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0">
          <content>
             <AnchorPane prefHeight="506.0" prefWidth="364.0">
                <children>
@@ -64,23 +64,20 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="description" alignment="TOP_LEFT" layoutY="34.0" prefHeight="472.0" prefWidth="364.0" text="this is document description" textFill="#6b6767" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="34.0">
+                  <Label fx:id="description" alignment="TOP_LEFT" layoutY="34.0" prefHeight="472.0" prefWidth="354.0" text="this is document description" textFill="#6b6767" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="34.0">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-         </content>
-         <padding>
-            <Insets left="20.0" />
-         </padding></ScrollPane>
-      <Label fx:id="title" text="DOC NAME" textFill="#3c3a3a" wrapText="true" AnchorPane.leftAnchor="360.0" AnchorPane.topAnchor="60.0">
+         </content></ScrollPane>
+      <Label fx:id="title" layoutX="377.0" layoutY="60.0" text="DOC NAME" textFill="#3c3a3a" wrapText="true" AnchorPane.leftAnchor="377.0" AnchorPane.topAnchor="60.0">
          <font>
             <Font name="Georgia Bold" size="36.0" />
          </font>
       </Label>
-      <Label fx:id="author" text="Author:" AnchorPane.leftAnchor="370.0" AnchorPane.topAnchor="100.0">
+      <Label fx:id="author" layoutX="377.0" layoutY="105.0" text="Author:" AnchorPane.leftAnchor="377.0" AnchorPane.topAnchor="105.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

@@ -18,3 +18,16 @@
     -fx-font-size: 14px;
     -fx-font-weight: bold;
 }
+
+
+.second-hbox-style {
+    -fx-background-color: rgba(255, 255, 255, 0); /* Màu nền mặc định */
+}
+.second-hbox-style:hover .label {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.second-hbox-style-selected {
+    -fx-background-color:  rgb(216, 216, 216);
+}
