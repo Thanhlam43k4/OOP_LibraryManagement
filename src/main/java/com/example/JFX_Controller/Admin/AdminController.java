@@ -10,10 +10,14 @@ import com.example.JFX_Controller.Controller;
 import com.example.Model.Client;
 import com.example.Model.Document;
 import com.example.Model.Transaction;
+import com.example.Service.ApiService;
 import com.example.Service.DocumentService;
 import com.example.Service.SessionManager;
 import com.example.Service.UserService;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,6 +25,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -53,9 +60,10 @@ public class AdminController extends Controller implements Initializable {
     // Transaction
     @FXML private AnchorPane tranPane;
     @FXML private TableView<Transaction> tranTable;
-
-    private static List<Node> docList = new ArrayList<>();
-    private static List<Node> userList = new ArrayList<>();
+    @FXML private ListView<String> suggestionsListView;
+    private Timeline searchTimeline;
+    private static final List<Node> docList = new ArrayList<>();
+    private static final List<Node> userList = new ArrayList<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -70,7 +78,7 @@ public class AdminController extends Controller implements Initializable {
         
         setVBox(userVBox, userList);
         setVBox(docVBox, docList);
-        setTranTable();
+  //      setTranTable();
     }
     //#region event handle
     @FXML
@@ -255,11 +263,17 @@ public class AdminController extends Controller implements Initializable {
                 suggestions.add(document.getTitle());
             }
 
-            // Cập nhật ListView trên luồng chính
+
             Platform.runLater(() -> {
-                // Cập nhật ListView
                 suggestionsListView.setItems(suggestions);
                 suggestionsListView.setVisible(!suggestions.isEmpty());
+            });
+
+            suggestionsListView.setOnMouseClicked(event -> {
+                String selectedDocument = suggestionsListView.getSelectionModel().getSelectedItem();
+                if (selectedDocument != null) {
+                    System.out.println(selectedDocument);
+                }
             });
         } catch (Exception e) {
             e.printStackTrace();

@@ -81,7 +81,6 @@
       </AnchorPane>
       <AnchorPane prefHeight="60.0" prefWidth="200.0" style="-fx-border-width: 0; -fx-background-color: transparent;" styleClass="primary-anchor-pane" stylesheets="@../CSS_Setup/anchorpane.css" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField fx:id="searchField" layoutX="10.0" layoutY="17.0" prefHeight="32.0" prefWidth="200.0" promptText="Search..." style="-fx-background-color: transparent; -fx-border-color: #b3b2b2; -fx-border-radius: 12;" styleClass="primary-text-field" stylesheets="@../CSS_Setup/textfield.css" />
             <HBox alignment="CENTER_RIGHT" layoutX="401.0" layoutY="10.0" prefHeight="40.0" prefWidth="260.0" spacing="10.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="10.0">
                <opaqueInsets>
                   <Insets />
@@ -392,34 +391,8 @@
       </StackPane>
       <AnchorPane prefHeight="60.0" prefWidth="200.0" style="-fx-border-width: 0; -fx-background-color: transparent;" styleClass="primary-anchor-pane" stylesheets="@../CSS_Setup/anchorpane.css" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-               <TextField fx:id="searchField" layoutX="10.0" layoutY="17.0" prefHeight="33.0" prefWidth="617.0" promptText="Search..." style="-fx-background-color: transparent; -fx-border-color: #b3b2b2; -fx-border-radius: 12;" styleClass="primary-text-field" stylesheets="@../CSS_Setup/textfield.css"  onKeyReleased="#handleSearch" />
-
-      
-                  <HBox alignment="CENTER_RIGHT" layoutX="401.0" layoutY="10.0" prefHeight="40.0" prefWidth="260.0" spacing="10.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="10.0">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <children>
-                  <MenuButton alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="36.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" styleClass="primary-menubutton" stylesheets="@../CSS_Setup/menubutton.css">
-                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#goToProfile" text="Profile" />
-                        <MenuItem mnemonicParsing="false" onAction="#signOut" text="Sign out" />
-                     </items>
-                     <graphic>
-                        <FontAwesomeIconView glyphName="USER_SECRET" size="20" styleClass="fontawesome-icon" wrappingWidth="9.0" />
-                     </graphic>
-                  </MenuButton>
-                  <Label fx:id="userName" alignment="CENTER_RIGHT" text="Trong anh" textFill="#3c3a3a">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Label>
-               </children>
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
-            </HBox>
-            <ListView fx:id="suggestionsListView" visible="false" layoutX="14.0" layoutY="57.0" prefHeight="200.0" prefWidth="617.0" AnchorPane.leftAnchor="14.0" />
+               <TextField fx:id="searchField" layoutX="10.0" layoutY="17.0" onKeyReleased="#handleSearch" prefHeight="33.0" prefWidth="617.0" promptText="Search..." style="-fx-background-color: transparent; -fx-border-color: #b3b2b2; -fx-border-radius: 12;" styleClass="primary-text-field" stylesheets="@../CSS_Setup/textfield.css" />
+            <ListView fx:id="suggestionsListView" layoutX="14.0" layoutY="57.0" prefHeight="200.0" prefWidth="617.0" visible="false" AnchorPane.leftAnchor="14.0" />
          </children>
       </AnchorPane>
    </children>
