@@ -29,12 +29,10 @@
 
 
 .third-anchor-card {
-    -fx-background-color:  #fffff3;
-    -fx-border-color:  #b8b8b8;
-    -fx-border-radius: 15px;
-    -fx-background-radius: 15px;
+    -fx-background-color:  #ebebeb;
+    -fx-background-radius: 18px;
 }
 
 .third-anchor-card:hover {
-    -fx-pref-height: 170;
+    -fx-background-color:  #dbdbdb;
 }

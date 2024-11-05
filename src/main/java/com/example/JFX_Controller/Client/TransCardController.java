@@ -30,6 +30,6 @@ public class TransCardController {
         this.title.setText(title);
         this.author.setText(author);
         this.genre.setText(genre);
-        this.returnDate.setText("Expired: " + returnDate.toString());
+        this.returnDate.setText(returnDate.toString());
     }
 }

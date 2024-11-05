@@ -24,10 +24,15 @@
     -fx-background-color: rgba(255, 255, 255, 0); /* Màu nền mặc định */
 }
 .second-hbox-style:hover .label {
-    -fx-font-size: 15px;
+    -fx-font-size: 16px;
     -fx-font-weight: bold;
 }
 
+.second-hbox-style-selected .label {
+    -fx-text-fill: linear-gradient(to right bottom, rgb(224, 46, 22), rgb(216, 116, 22));
+}
+
 .second-hbox-style-selected {
-    -fx-background-color:  rgb(231, 231, 231);
+    -fx-border-color: linear-gradient(to right bottom, rgb(224, 46, 22), rgb(216, 116, 22));
+    -fx-border-width: 0 0 0 5;
 }

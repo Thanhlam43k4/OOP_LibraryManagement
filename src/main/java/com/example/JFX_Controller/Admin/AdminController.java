@@ -29,7 +29,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -62,8 +61,8 @@ public class AdminController extends Controller implements Initializable {
     @FXML private TableView<Transaction> tranTable;
     @FXML private ListView<String> suggestionsListView;
     private Timeline searchTimeline;
-    private static final List<Node> docList = new ArrayList<>();
-    private static final List<Node> userList = new ArrayList<>();
+    private static List<Node> docList = new ArrayList<>();
+    private static List<Node> userList = new ArrayList<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -104,6 +103,9 @@ public class AdminController extends Controller implements Initializable {
     private final ExecutorService executorService = Executors.newSingleThreadExecutor(); // ExecutorService với 1 luồng
 
     //#endregion
+    
+    //#region fe_func
+    // catch find textfield change
     private void setupSearchFieldListener() {
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             // Hủy Timeline trước đó nếu có
@@ -121,7 +123,7 @@ public class AdminController extends Controller implements Initializable {
             }
         });
     }
-    //#region fe_func
+
     // bật/tắt Pane
     private void setPane(Parent pane, HBox tabBut) {
         Pane anchorPane = (Pane) pane.getParent();
@@ -225,8 +227,6 @@ public class AdminController extends Controller implements Initializable {
         docList.clear();
         userList.clear();
     }
-
-
 
 
     @FXML

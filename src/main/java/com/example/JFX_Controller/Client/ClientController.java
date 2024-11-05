@@ -41,8 +41,8 @@ public class ClientController extends Controller implements Initializable{
     @FXML private GridPane mydocGrid;
 
 //Prop
-    private static final int cardWidth = 185; // Chiều rộng phần tử sách + Hgap
-    private static final int docElementWidth = 515;
+    private static final int cardWidth = 200; // Chiều rộng phần tử sách + Hgap
+    private static final int docElementWidth = 495;
     
     private static List<Node> cardList = new ArrayList<>();
     private static List<Node> docelementList = new ArrayList<>();
@@ -94,7 +94,7 @@ public class ClientController extends Controller implements Initializable{
         browseBut.sceneProperty().addListener((obs, oldScene, newScene) -> {
             if (newScene != null) {
                 newScene.widthProperty().addListener((obss, oldWidth, newWidth) -> {
-                    if(browseScroll.isVisible()) {
+                    if(browseScroll.getParent().isVisible()) {
                         int coll = (int) ((double)newWidth - 223)/cardWidth;
                         if(coll != currentCol) {
                             currentCol = coll;
@@ -115,7 +115,7 @@ public class ClientController extends Controller implements Initializable{
 
     // bật/tắt Pane
     private void setBrowse(boolean isActive) {
-        browseScroll.setVisible(isActive);
+        browseScroll.getParent().setVisible(isActive);
         browseBut.getStyleClass().clear();
         if(!isActive) {
             browseBut.getStyleClass().add("second-hbox-style");
@@ -126,7 +126,7 @@ public class ClientController extends Controller implements Initializable{
         updateGrid(browseGrid, cardList, colCnt);
     }
     private void setMyDoc(boolean isActive) {
-        mydocScroll.setVisible(isActive);        
+        mydocScroll.getParent().setVisible(isActive);        
         mydocBut.getStyleClass().clear();
         if(!isActive) {
             mydocBut.getStyleClass().add("second-hbox-style");

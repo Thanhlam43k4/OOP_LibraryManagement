@@ -21,7 +21,7 @@
    <children>
       <AnchorPane layoutX="224.0" layoutY="42.0" prefHeight="60.0" prefWidth="526.0" stylesheets="@../CSS_Setup/anchorpane.css" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField layoutX="20.0" layoutY="18.0" prefHeight="32.0" prefWidth="200.0" promptText="Search..." style="-fx-background-color: transparent; -fx-border-color: #b3b2b2; -fx-border-radius: 12;" styleClass="primary-text-field" stylesheets="@../CSS_Setup/textfield.css" />
+            <TextField layoutX="38.0" layoutY="20.0" prefHeight="32.0" prefWidth="200.0" promptText="Search..." style="-fx-background-color: transparent; -fx-border-color: #b3b2b2; -fx-border-radius: 12;" styleClass="primary-text-field" stylesheets="@../CSS_Setup/textfield.css" />
             <HBox alignment="CENTER_RIGHT" layoutX="401.0" layoutY="10.0" prefHeight="40.0" prefWidth="241.0" spacing="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                <opaqueInsets>
                   <Insets />
@@ -36,9 +36,9 @@
                         <FontAwesomeIconView glyphName="USER" size="20" styleClass="fontawesome-icon" wrappingWidth="9.0" />
                      </graphic>
                   </MenuButton>
-                  <Label fx:id="userName" alignment="CENTER_RIGHT" text="Trong anh" textFill="#3c3a3a">
+                  <Label fx:id="userName" alignment="CENTER_RIGHT" text="Trong anh" textFill="#545454">
                      <font>
-                        <Font name="System Bold" size="13.0" />
+                        <Font name="Microsoft New Tai Lue Bold" size="15.0" />
                      </font>
                   </Label>
                </children>
@@ -46,51 +46,48 @@
                   <Insets right="20.0" />
                </padding>
             </HBox>
+            <FontAwesomeIconView fill="#a1a1a1" glyphName="SEARCH" layoutX="14.0" layoutY="42.0" size="18" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="500.0" prefWidth="223.0" style="-fx-border-width: 0 1 0 0; -fx-border-color: #c7c7c7; -fx-background-color: #f2f2f2; -fx-background-color: #fafafa;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane prefHeight="500.0" prefWidth="223.0" style="-fx-background-color: #f7f7f7;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox layoutY="53.0" prefHeight="103.0" prefWidth="223.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+            <VBox layoutY="53.0" prefHeight="103.0" prefWidth="223.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
                <children>
-                  <HBox fx:id="browseBut" alignment="CENTER_LEFT" onMouseClicked="#browseTab" prefHeight="100.0" prefWidth="223.0" spacing="10.0" styleClass="second-hbox-style" stylesheets="@../CSS_Setup/hbox.css">
+                  <HBox fx:id="browseBut" alignment="CENTER_LEFT" onMouseClicked="#browseTab" prefHeight="40.0" prefWidth="223.0" spacing="10.0" styleClass="second-hbox-style" stylesheets="@../CSS_Setup/hbox.css">
                      <children>
-                        <FontAwesomeIconView fill="#4a4a4a" glyphName="GLOBE" size="16">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </FontAwesomeIconView>
-                        <Label text="Browse" textFill="#4a4a4a">
+                        <Label text="Discover" textFill="#787878">
                            <font>
-                              <Font name="System Bold" size="14.0" />
+                              <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
                      </children>
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
                   </HBox>
-                  <HBox fx:id="mydocBut" alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#mydocTab" prefHeight="100.0" prefWidth="200.0" spacing="10.0" styleClass="second-hbox-style" stylesheets="@../CSS_Setup/hbox.css">
+                  <HBox fx:id="mydocBut" alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#mydocTab" prefHeight="40.0" prefWidth="200.0" spacing="10.0" styleClass="second-hbox-style" stylesheets="@../CSS_Setup/hbox.css">
                      <children>
-                        <FontAwesomeIconView fill="#4a4a4a" glyphName="BOOK" size="16">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </FontAwesomeIconView>
-                        <Label text="My Document" textFill="#4a4a4a">
+                        <Label text="My Document" textFill="#787878">
                            <font>
-                              <Font name="System Bold" size="14.0" />
+                              <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
                      </children>
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
                   </HBox>
                </children>
             </VBox>
-            <Label layoutX="76.0" layoutY="14.0" text="Library">
+            <Label layoutX="60.0" text="Library">
                <font>
-                  <Font name="Comic Sans MS Bold" size="20.0" />
+                  <Font name="Rage Italic" size="36.0" />
                </font>
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
@@ -107,36 +104,54 @@
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="224.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="61.0">
          <children>
-            <ScrollPane fx:id="browseScroll" prefHeight="439.0" prefWidth="526.0" stylesheets="@../CSS_Setup/scrollpane.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <content>
-                  <GridPane fx:id="browseGrid" alignment="CENTER" hgap="15.0" vgap="25.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="ALWAYS" minWidth="100.0" prefWidth="170.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="150.0" prefHeight="250.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <padding>
-                        <Insets bottom="20.0" left="20.0" top="20.0" />
-                     </padding>
-                  </GridPane>
-               </content>
-            </ScrollPane>
-            <ScrollPane fx:id="mydocScroll" prefHeight="439.0" prefWidth="526.0" stylesheets="@../CSS_Setup/scrollpane.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <content>
-                  <GridPane fx:id="mydocGrid" alignment="CENTER" hgap="15.0" vgap="25.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="ALWAYS" minWidth="500.0" prefWidth="500.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="160.0" prefHeight="160.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <padding>
-                        <Insets bottom="20.0" left="20.0" top="20.0" />
-                     </padding>
-                  </GridPane>
-               </content>
-            </ScrollPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="33.0" layoutY="14.0" text="Find Your Next Adventure" textFill="#393838">
+                     <font>
+                        <Font name="Cambria Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane fx:id="browseScroll" prefHeight="382.0" prefWidth="526.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                     <content>
+                        <GridPane fx:id="browseGrid" alignment="CENTER" hgap="10.0" vgap="35.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="ALWAYS" minWidth="190.0" prefWidth="190.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="280.0" prefHeight="280.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" />
+                           </padding>
+                        </GridPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="33.0" layoutY="14.0" text="Collection" textFill="#393838">
+                     <font>
+                        <Font name="Cambria Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane fx:id="mydocScroll" prefHeight="439.0" prefWidth="526.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                     <content>
+                        <GridPane fx:id="mydocGrid" alignment="CENTER" hgap="15.0" vgap="25.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="ALWAYS" minWidth="480.0" prefWidth="480.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="160.0" prefHeight="165.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <padding>
+                              <Insets bottom="20.0" left="30.0" top="20.0" />
+                           </padding>
+                        </GridPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>
