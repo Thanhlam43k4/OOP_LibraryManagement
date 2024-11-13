@@ -13,6 +13,7 @@ import com.example.Model.Transaction;
 import com.example.Service.ApiService;
 import com.example.Service.DocumentService;
 import com.example.Service.SessionManager;
+import com.example.Service.TransactionService;
 import com.example.Service.UserService;
 
 import javafx.animation.KeyFrame;
@@ -27,7 +28,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -44,6 +44,7 @@ import java.util.concurrent.Executors;
 public class AdminController extends Controller implements Initializable {
     @FXML private Label userName;
     @FXML private TextField searchField;
+    @FXML private ListView<String> suggestionsListView;
     // Tab button
     @FXML private HBox docsBut;
     @FXML private HBox usersBut;
@@ -58,11 +59,12 @@ public class AdminController extends Controller implements Initializable {
     @FXML private VBox userVBox;
     // Transaction
     @FXML private AnchorPane tranPane;
-    @FXML private TableView<Transaction> tranTable;
-    @FXML private ListView<String> suggestionsListView;
+    @FXML private VBox transVBox;
+
     private Timeline searchTimeline;
     private static List<Node> docList = new ArrayList<>();
     private static List<Node> userList = new ArrayList<>();
+    private static List<Node> transList = new ArrayList<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -71,12 +73,14 @@ public class AdminController extends Controller implements Initializable {
             System.out.println("Add admin node");
             addUserNodes();
             addDocNodes();
+            addTranscNodes();
         }
         setupSearchFieldListener();
         setPane(docPane, docsBut);
         
         setVBox(userVBox, userList);
         setVBox(docVBox, docList);
+        setVBox(transVBox, transList);
   //      setTranTable();
     }
     //#region event handle
@@ -119,7 +123,7 @@ public class AdminController extends Controller implements Initializable {
                 searchTimeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> handleSearch()));
                 searchTimeline.playFromStart(); // Bắt đầu chạy Timeline
             } else {
-                suggestionsListView.setVisible(false); // Ẩn ListView nếu trường tìm kiếm trống
+                suggestionsListView.getParent().setVisible(false); // Ẩn ListView nếu trường tìm kiếm trống
             }
         });
     }
@@ -175,6 +179,22 @@ public class AdminController extends Controller implements Initializable {
             }   
         }
     }
+    private void addTranscNodes() {
+        transList.clear();
+        List<Transaction> trans = TransactionService.instance.getTransactionsByUserId(1);
+        for (Transaction t : trans) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/TranRow.fxml"));
+                Node transNode = loader.load();
+                TransRowController transRowController = (TransRowController) loader.getController();
+                transRowController.setInfo(t);
+                transList.add(transNode);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }   
+        }
+    }
+
 
     // thêm data vào UI
     private void setVBox(VBox vbox, List<Node> list) {
@@ -223,6 +243,7 @@ public class AdminController extends Controller implements Initializable {
         }
     }
     
+
     private void clearNode() {
         docList.clear();
         userList.clear();
@@ -241,7 +262,7 @@ public class AdminController extends Controller implements Initializable {
 
             // Kiểm tra nếu `query` trống thì ẩn `ListView`
             if (query.isEmpty()) {
-                suggestionsListView.setVisible(false);
+                suggestionsListView.getParent().setVisible(false);
                 return;
             }
 
@@ -266,7 +287,7 @@ public class AdminController extends Controller implements Initializable {
 
             Platform.runLater(() -> {
                 suggestionsListView.setItems(suggestions);
-                suggestionsListView.setVisible(!suggestions.isEmpty());
+                suggestionsListView.getParent().setVisible(!suggestions.isEmpty());
             });
 
             suggestionsListView.setOnMouseClicked(event -> {

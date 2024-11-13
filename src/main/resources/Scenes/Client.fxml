@@ -27,6 +27,11 @@
                   <Insets />
                </opaqueInsets>
                <children>
+                  <Label fx:id="userName" alignment="CENTER_RIGHT" text="Trong anh" textFill="#545454">
+                     <font>
+                        <Font name="Microsoft New Tai Lue Bold" size="15.0" />
+                     </font>
+                  </Label>
                   <MenuButton alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="36.0" style="-fx-border-radius: 16px; -fx-background-radius: 16px;" styleClass="primary-menubutton" stylesheets="@../CSS_Setup/menubutton.css">
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#profile" text="Profile" />
@@ -36,11 +41,6 @@
                         <FontAwesomeIconView glyphName="USER" size="20" styleClass="fontawesome-icon" wrappingWidth="9.0" />
                      </graphic>
                   </MenuButton>
-                  <Label fx:id="userName" alignment="CENTER_RIGHT" text="Trong anh" textFill="#545454">
-                     <font>
-                        <Font name="Microsoft New Tai Lue Bold" size="15.0" />
-                     </font>
-                  </Label>
                </children>
                <padding>
                   <Insets right="20.0" />

@@ -43,8 +43,8 @@
       </Label>
       <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="26.0" prefWidth="190.0" spacing="5.0">
          <children>
-            <FontAwesomeIconView fill="#616161" glyphName="PENCIL" size="16" />
-            <Label fx:id="genre" text="Author" textFill="#464646">
+            <FontAwesomeIconView fill="#2e6ea5" glyphName="PENCIL" size="16" />
+            <Label fx:id="genre" text="Author" textFill="#2e6ea5">
                <font>
                   <Font size="13.0" />
                </font>

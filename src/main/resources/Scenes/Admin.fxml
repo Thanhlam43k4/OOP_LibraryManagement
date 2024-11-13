@@ -14,16 +14,28 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1366.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.AdminController">
    <children>
       <AnchorPane prefHeight="439.0" prefWidth="223.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="73.0" layoutY="14.0" text="Library">
+            <Label layoutX="60.0" text="Library">
                <font>
-                  <Font name="Comic Sans MS Bold" size="22.0" />
+                  <Font name="Rage Italic" size="36.0" />
                </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#9607c6" />
+                        <Stop color="#da3737" offset="0.007662835249042145" />
+                        <Stop color="#d0881b" offset="0.5095785440613025" />
+                        <Stop color="#cf6b1b" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
             </Label>
             <VBox layoutY="8.0" prefHeight="272.0" prefWidth="223.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="65.0">
                <children>
@@ -81,11 +93,18 @@
       </AnchorPane>
       <AnchorPane prefHeight="60.0" prefWidth="200.0" style="-fx-border-width: 0; -fx-background-color: transparent;" styleClass="primary-anchor-pane" stylesheets="@../CSS_Setup/anchorpane.css" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+            <FontAwesomeIconView fill="#868686" glyphName="SEARCH" layoutX="25.0" layoutY="36.0" size="19" />
+               <TextField fx:id="searchField" layoutX="53.0" layoutY="14.0" onKeyReleased="#handleSearch" prefHeight="33.0" prefWidth="300.0" promptText="Search..." style="-fx-background-color: transparent; -fx-border-color: #b3b2b2; -fx-border-radius: 12;" styleClass="primary-text-field" stylesheets="@../CSS_Setup/textfield.css" />
             <HBox alignment="CENTER_RIGHT" layoutX="401.0" layoutY="10.0" prefHeight="40.0" prefWidth="260.0" spacing="10.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="10.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <children>
+                  <Label fx:id="userName" alignment="CENTER_RIGHT" text="Trong anh" textFill="#3c3a3a">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
                   <MenuButton alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="36.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" styleClass="primary-menubutton" stylesheets="@../CSS_Setup/menubutton.css">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#goToProfile" text="Profile" />
@@ -95,11 +114,6 @@
                         <FontAwesomeIconView glyphName="USER_SECRET" size="20" styleClass="fontawesome-icon" wrappingWidth="9.0" />
                      </graphic>
                   </MenuButton>
-                  <Label fx:id="userName" alignment="CENTER_RIGHT" text="Trong anh" textFill="#3c3a3a">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Label>
                </children>
                <padding>
                   <Insets right="10.0" />
@@ -336,7 +350,7 @@
                                           <Font name="System Bold" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="10.0" layoutY="28.0" prefHeight="25.0" prefWidth="130.0" style="-fx-text-fill: white;" text="User Id" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                    <Label layoutX="10.0" layoutY="28.0" prefHeight="25.0" prefWidth="90.0" style="-fx-text-fill: white;" text="User Id" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>
@@ -344,7 +358,7 @@
                                           <Insets left="10.0" />
                                        </padding>
                                     </Label>
-                                    <Label layoutX="25.0" layoutY="28.0" prefHeight="25.0" prefWidth="130.0" style="-fx-text-fill: white;" text="Doc Id" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                    <Label layoutX="25.0" layoutY="28.0" prefHeight="25.0" prefWidth="190.0" style="-fx-text-fill: white;" text="Doc ISBN" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>
@@ -389,10 +403,9 @@
             </AnchorPane>
          </children>
       </StackPane>
-      <AnchorPane prefHeight="60.0" prefWidth="200.0" style="-fx-border-width: 0; -fx-background-color: transparent;" styleClass="primary-anchor-pane" stylesheets="@../CSS_Setup/anchorpane.css" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="276.0" prefHeight="200.0" prefWidth="617.0" style="-fx-border-width: 0; -fx-background-color: transparent;" styleClass="primary-anchor-pane" stylesheets="@../CSS_Setup/anchorpane.css" visible="false" AnchorPane.leftAnchor="276.0" AnchorPane.topAnchor="60.0">
          <children>
-               <TextField fx:id="searchField" layoutX="10.0" layoutY="17.0" onKeyReleased="#handleSearch" prefHeight="33.0" prefWidth="617.0" promptText="Search..." style="-fx-background-color: transparent; -fx-border-color: #b3b2b2; -fx-border-radius: 12;" styleClass="primary-text-field" stylesheets="@../CSS_Setup/textfield.css" />
-            <ListView fx:id="suggestionsListView" layoutX="14.0" layoutY="57.0" prefHeight="200.0" prefWidth="617.0" visible="false" AnchorPane.leftAnchor="14.0" />
+            <ListView fx:id="suggestionsListView" layoutX="14.0" layoutY="57.0" prefHeight="200.0" prefWidth="617.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
    </children>
