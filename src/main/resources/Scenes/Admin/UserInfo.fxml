@@ -13,7 +13,7 @@
 
 <StackPane fx:id="userInfoRoot" prefHeight="401.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.UserInfoController">
    <children>
-      <Pane prefHeight="314.0" prefWidth="776.0" style="-fx-background-color: #504b4b; -fx-opacity: 0.8;" />
+      <Pane prefHeight="314.0" prefWidth="776.0" style="-fx-background-color: #504b4b; -fx-opacity: 0.8; -fx-background-radius: 10;" />
       <AnchorPane maxHeight="413.0" maxWidth="722.0" prefHeight="722.0" style="-fx-background-color: white; -fx-border-color: #8d8888; -fx-background-radius: 15; -fx-border-radius: 15;">
          <children>
             <HBox layoutX="34.0" layoutY="14.0" prefHeight="25.0" prefWidth="200.0" spacing="5.0">

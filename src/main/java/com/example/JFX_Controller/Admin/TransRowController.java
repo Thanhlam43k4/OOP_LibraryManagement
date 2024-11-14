@@ -21,7 +21,7 @@ public class TransRowController {
             dueDate.setText(trans.getReturnDate().toString());
             returnDate.setText(trans.getActualReturnDate().toString());
         } catch (NullPointerException e) {
-            System.out.println(e);
+            System.out.println(e + " at TransRowController!");
         }
     }
 }

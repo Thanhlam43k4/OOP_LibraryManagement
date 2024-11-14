@@ -35,7 +35,7 @@ public class TransCardController {
         try {
             this.docCover.setImage(new Image(imageUrl));
         } catch (Exception e) {
-            System.err.println("docElement coverURL invalid!");
+            System.err.println("docElement coverURL invalid! when add DocElementNode");
         }
         this.title.setText(title);
         this.author.setText(author);

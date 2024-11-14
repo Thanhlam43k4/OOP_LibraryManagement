@@ -56,6 +56,8 @@ public class AdminController extends Controller implements Initializable {
     @FXML private VBox docVBox;
     // Users
     @FXML private AnchorPane userPane;
+    @FXML private StackPane returnDocPane;
+    @FXML private VBox returnDocVbox;
     @FXML private VBox userVBox;
     // Transaction
     @FXML private AnchorPane tranPane;
@@ -100,6 +102,8 @@ public class AdminController extends Controller implements Initializable {
                                            SessionManager.getInstance().clearSession();}
     @FXML
     void closeDocCopy(ActionEvent event) { copiesDocPane.setVisible(false); }
+    @FXML
+    void closeReturnDoc(ActionEvent event) { returnDocPane.setVisible(false); }
     @FXML
     void openAddDoc(ActionEvent event)   { loadAddDoc(); }
     @FXML
@@ -157,7 +161,7 @@ public class AdminController extends Controller implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/UserRow.fxml"));
                 Node userNode = loader.load();
                 UserRowController userRowController = loader.getController();
-                userRowController.setInfo(c, userPane);
+                userRowController.setInfo(c, userPane, returnDocPane, returnDocVbox);
                 userList.add(userNode);
             } catch (IOException e) {
                 e.printStackTrace();

@@ -1,15 +1,23 @@
 package com.example.JFX_Controller.Admin;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.example.Model.Client;
+import com.example.Model.Document;
+import com.example.Model.Transaction;
+import com.example.Service.DocumentService;
+import com.example.Service.TransactionService;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
 public class UserRowController {
     @FXML private Label userId;
@@ -20,6 +28,8 @@ public class UserRowController {
     @FXML private Label borrowed;
 
     @FXML private AnchorPane userPane;
+    @FXML private StackPane returnDocPane;
+    @FXML private VBox returnDocVbox;
 
     private Client client;
     @FXML
@@ -31,8 +41,8 @@ public class UserRowController {
 
     }
     @FXML
-    void returnDoc(ActionEvent event) {
-
+    void openReturnDoc(ActionEvent event) {
+        addCopyNodes();
     }
 
     void loadInfoPane() {
@@ -54,7 +64,27 @@ public class UserRowController {
         }
     }
 
-    public void setInfo(Client client, AnchorPane userPane) {
+    void addCopyNodes() {
+        returnDocPane.setVisible(true);
+        returnDocVbox.getChildren().clear();
+        List<Transaction> trans = TransactionService.instance.getTransactionsByUserId(client.getId());
+        returnDocVbox.setPrefHeight(trans.size() * 70);
+        for (Transaction t : trans) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/ReturnCopyRow.fxml"));
+                Node node = loader.load();
+
+                Document doc = DocumentService.instance.getDocumentByISBN(t.getISBN());
+                ReturnCopyRowController docCopyController = loader.getController();
+                docCopyController.setInfo(t.getTransactionId(), null, t.getISBN(), t.getReturnDate());
+                returnDocVbox.getChildren().add(node);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } 
+        }
+    }
+
+    public void setInfo(Client client, AnchorPane userPane, StackPane returnDocPane, VBox returnDocVbox) {
         this.client = client;
         this.userId.setText(String.valueOf(client.getId()));
         this.userName.setText(client.getUsername());
@@ -63,5 +93,7 @@ public class UserRowController {
         this.age.setText(String.valueOf(client.getAge()));
         this.borrowed.setText(String.valueOf(client.getBorrowedBook()));
         this.userPane = userPane;
+        this.returnDocPane = returnDocPane;
+        this.returnDocVbox = returnDocVbox;
     }
 }

@@ -203,8 +203,8 @@
                   </ScrollPane>
                   <StackPane fx:id="copiesDocPane" layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="776.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Pane prefHeight="412.0" prefWidth="776.0" style="-fx-background-color: #504b4b; -fx-opacity: 0.8;" />
-                        <AnchorPane maxHeight="413.0" maxWidth="718.0" style="-fx-background-color: #d3cccc; -fx-border-color: #8d8888;">
+                        <Pane prefHeight="412.0" prefWidth="776.0" style="-fx-background-color: #504b4b; -fx-opacity: 0.8; -fx-background-radius: 10;" />
+                        <AnchorPane maxHeight="450.0" maxWidth="718.0" style="-fx-background-color: #d3cccc; -fx-border-color: #8d8888;">
                            <children>
                               <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="10.0" prefHeight="50.0" prefWidth="682.0" style="-fx-background-color: rgb(211, 204, 204); -fx-background-radius: 15; -fx-border-color: #797577; -fx-border-radius: 15; -fx-border-width: 0;">
                                  <children>
@@ -261,7 +261,7 @@
                   <Insets />
                </StackPane.margin>
             </AnchorPane>
-            <AnchorPane fx:id="userPane" maxWidth="900.0" prefHeight="200.0" visible="false">
+            <AnchorPane fx:id="userPane" maxWidth="900.0" prefHeight="200.0">
                <children>
                   <HBox alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="200.0" spacing="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -335,9 +335,64 @@
                         <Insets left="10.0" />
                      </padding>
                   </ScrollPane>
+                  <StackPane fx:id="returnDocPane" prefHeight="410.0" prefWidth="776.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Pane prefHeight="412.0" prefWidth="776.0" style="-fx-background-color: #504b4b; -fx-opacity: 0.8; -fx-background-radius: 10;" />
+                        <AnchorPane maxHeight="450.0" maxWidth="718.0" style="-fx-background-color: #d3cccc; -fx-border-color: #8d8888;">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="10.0" prefHeight="50.0" prefWidth="682.0" style="-fx-background-color: rgb(211, 204, 204); -fx-background-radius: 15; -fx-border-color: #797577; -fx-border-radius: 15; -fx-border-width: 0;">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="25.0" prefWidth="83.0" text="Id" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="28.0" prefHeight="25.0" prefWidth="211.0" text="Title" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label layoutX="25.0" layoutY="28.0" prefHeight="25.0" prefWidth="251.0" text="ISBN" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label layoutX="101.0" layoutY="28.0" prefHeight="25.0" prefWidth="114.0" text="Due Date" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <ScrollPane maxHeight="413.0" maxWidth="718.0" prefHeight="413.0" prefWidth="718.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+                                 <content>
+                                    <VBox fx:id="returnDocVbox" prefHeight="434.0" prefWidth="692.0" spacing="10.0" style="-fx-background-color: transparent;" />
+                                 </content>
+                                 <padding>
+                                    <Insets left="10.0" top="10.0" />
+                                 </padding>
+                              </ScrollPane>
+                              <Button layoutX="665.0" layoutY="2.0" mnemonicParsing="false" onAction="#closeReturnDoc" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent;" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                                 <graphic>
+                                    <FontAwesomeIconView fill="#4d4b4b" glyphName="TIMES" size="17" />
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </StackPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="tranPane" maxWidth="900.0" prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane fx:id="tranPane" maxWidth="900.0" prefHeight="200.0" prefWidth="200.0" visible="false">
                <children>
                   <ScrollPane prefHeight="400.0" prefWidth="485.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
                      <content>

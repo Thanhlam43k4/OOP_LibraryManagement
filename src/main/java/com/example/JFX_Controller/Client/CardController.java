@@ -89,7 +89,7 @@ public class CardController extends Controller {
         try {
             docCover.setImage(new Image(doc.getUrlImage()));
         } catch (Exception e) {
-            System.err.println("card coverURL invalid!");
+            System.err.println("card coverURL invalid! when add CardNode");
         }
         this.id = doc.getDocumentId();
         this.imageUrl = doc.getUrlImage();
