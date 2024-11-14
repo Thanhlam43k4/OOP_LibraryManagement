@@ -3,6 +3,7 @@ package com.example.JFX_Controller.Admin.Document;
 import java.io.IOException;
 import java.util.List;
 
+import com.example.JFX_Controller.Admin.AdminController;
 import com.example.Model.Copies;
 import com.example.Model.Document;
 import com.example.Service.DocumentService;
@@ -12,8 +13,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
@@ -26,9 +25,8 @@ public class DocRowController {
     @FXML private Label genre;
     @FXML private Label amount;
 
-    @FXML private StackPane copiesDocPane;
-    @FXML private VBox docCopyVbox;
-    
+    private AdminController adminController;
+    private Node root;
     private Document doc;
 
     @FXML
@@ -41,18 +39,21 @@ public class DocRowController {
     }
     @FXML
     void deleteDoc(ActionEvent event) {
-
+        // update ui
+        AdminController.docList.remove(this.root);
+        adminController.setVBox(adminController.docVBox, AdminController.docList);
+        DocumentService.instance.deleteDocument(doc.getDocumentId());
     }
 
-    public void setInfo(Document d, StackPane copiesDocPane, VBox docCopyVBox) {
+    public void setInfo(Document d, AdminController adminController, Node root) {
         doc = d;
         this.docId.setText(String.valueOf(d.getDocumentId()));
         this.title.setText(d.getTitle());
         this.author.setText(d.getAuthor());
         this.genre.setText(d.getGenre());
         this.amount.setText(String.valueOf(d.getNumberCopy()));
-        this.copiesDocPane = copiesDocPane;
-        this.docCopyVbox = docCopyVBox;
+        this.adminController = adminController;
+        this.root = root;
     }
     public void modifyInfo(Document d) {
         doc = d;
@@ -64,10 +65,10 @@ public class DocRowController {
     }
     // có thể tối ưu sau
     void addCopyNodes() {
-        copiesDocPane.setVisible(true);
-        docCopyVbox.getChildren().clear();
+        adminController.copiesDocPane.setVisible(true);
+        adminController.docCopyVbox.getChildren().clear();
         List<Copies> copies = DocumentService.instance.getAllCopies(doc.getDocumentId());
-        docCopyVbox.setPrefHeight(copies.size() * 70);
+        adminController.docCopyVbox.setPrefHeight(copies.size() * 70);
         for (Copies c : copies) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/DocCopyRow.fxml"));
@@ -75,7 +76,7 @@ public class DocRowController {
 
                 DocCopyController docCopyController = loader.getController();
                 docCopyController.setInfo(c);
-                docCopyVbox.getChildren().add(node);
+                adminController.docCopyVbox.getChildren().add(node);
             } catch (IOException e) {
                 e.printStackTrace();
             } 
@@ -89,7 +90,7 @@ public class DocRowController {
             Parent modifyDocPane = loader.load();
 
             // lấy docPane của admin
-            AnchorPane docPane = (AnchorPane) copiesDocPane.getParent();
+            AnchorPane docPane = (AnchorPane) adminController.copiesDocPane.getParent();
             docPane.getChildren().add(modifyDocPane);
             AnchorPane.setBottomAnchor(modifyDocPane, 0.0);
             AnchorPane.setLeftAnchor(modifyDocPane, 0.0);

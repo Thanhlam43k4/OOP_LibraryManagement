@@ -55,9 +55,9 @@ public class AdminController extends Controller implements Initializable {
     @FXML private HBox tranBut;
     // Docs
     @FXML private AnchorPane docPane;
-    @FXML private StackPane copiesDocPane;
-    @FXML private VBox docCopyVbox;
-    @FXML private VBox docVBox;
+    @FXML public StackPane copiesDocPane;
+    @FXML public VBox docCopyVbox;
+    @FXML public VBox docVBox;
     // Users
     @FXML private AnchorPane userPane;
     @FXML private StackPane returnDocPane;
@@ -68,7 +68,7 @@ public class AdminController extends Controller implements Initializable {
     @FXML private VBox transVBox;
 
     private Timeline searchTimeline;
-    private static List<Node> docList = new ArrayList<>();
+    public static List<Node> docList = new ArrayList<>();
     private static List<Node> userList = new ArrayList<>();
     private static List<Node> transList = new ArrayList<>();
 
@@ -180,7 +180,7 @@ public class AdminController extends Controller implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/DocRow.fxml"));
                 Node docNode = loader.load();
                 DocRowController docRowController = (DocRowController) loader.getController();
-                docRowController.setInfo(d, copiesDocPane, docCopyVbox);
+                docRowController.setInfo(d, this, docNode);
                 docList.add(docNode);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -205,8 +205,10 @@ public class AdminController extends Controller implements Initializable {
 
 
     // thêm data vào UI
-    private void setVBox(VBox vbox, List<Node> list) {
-        //vbox.getChildren().clear();
+    public void setVBox(VBox vbox, List<Node> list) {
+        if (vbox.getChildren().size() > 1) {
+            vbox.getChildren().subList(1, vbox.getChildren().size()).clear();
+        }
         vbox.setPrefHeight(list.size() * 70 + 70);
         for (Node node : list) {
             vbox.getChildren().add(node);
