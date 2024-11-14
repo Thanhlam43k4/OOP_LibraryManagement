@@ -69,7 +69,8 @@ public class TransactionDaoImpl implements TransactionDao {
                         rs.getInt("user_id"),
                         rs.getString("copy_ISBN"),
                         rs.getDate("borrowed_date"),
-                        rs.getDate("return_date")
+                        rs.getDate("return_date"),
+                        rs.getDate("actual_return_date")
                 );
                 transactions.add(transaction);
             }

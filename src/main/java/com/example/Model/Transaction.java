@@ -41,6 +41,15 @@ public class Transaction {
         this.returnDate = new Date(System.currentTimeMillis() + TimeUnit.DAYS.toMillis(14));
     }
 
+    public Transaction(int transactionId, int userId, String copyIsbn, Date borrowedDate, Date returnDate, Date actualReturnDate) {
+        this.transactionId = transactionId;
+        this.userId = userId;
+        this.ISBN = copyIsbn;
+        this.borrowedDate = borrowedDate;
+        this.returnDate = returnDate;
+        this.actualReturnDate = actualReturnDate;
+    }
+
 
     public int getTransactionId() {
         return transactionId;

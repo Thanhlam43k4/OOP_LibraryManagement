@@ -28,17 +28,17 @@ public class ApiService {
             response.append(inputLine);
         }
         in.close();
-
-
         JsonObject jsonResponse = gson.fromJson(response.toString(), JsonObject.class);
         JsonArray documentsArray = jsonResponse.getAsJsonArray("books");
         List<Document> documents = new ArrayList<>();
+
         if (documentsArray == null) {
             System.out.println("No results found for your search query: " + query);
             return new ArrayList<>(); // Hoặc trả về một danh sách trống
         }
-        for (JsonElement documentElement : documentsArray) {
-            JsonObject documentObject = documentElement.getAsJsonObject();
+        int maxResults = 6;
+        for (int i = 0; i < documentsArray.size() && i < maxResults; i++) {
+            JsonObject documentObject = documentsArray.get(i).getAsJsonObject();
             Document document = new Document(
                     documentObject.get("title").getAsString(),
                     documentObject.get("authors").getAsString(),
@@ -49,6 +49,7 @@ public class ApiService {
         }
         return documents;
     }
+
 
     private static BufferedReader getBufferedReader(String query) throws IOException {
         String urlString = "https://www.dbooks.org/api/search/" + query + "?limit=5";

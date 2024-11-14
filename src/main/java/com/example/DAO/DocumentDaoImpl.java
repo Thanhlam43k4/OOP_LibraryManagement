@@ -153,7 +153,6 @@ public class DocumentDaoImpl implements DocumentDao {
         try (PreparedStatement pstmt = con.prepareStatement(query)) {
             pstmt.setString(1, ISBN); // Set the ISBN parameter in the query
             ResultSet rs = pstmt.executeQuery(); // Execute the query
-
             if (rs.next()) {
                 // Assuming Document has a constructor that accepts these fields
                 int documentId = rs.getInt("documentId"); // Adjust based on your Document fields

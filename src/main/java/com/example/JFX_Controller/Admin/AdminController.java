@@ -294,8 +294,6 @@ public class AdminController extends Controller implements Initializable {
             for (Document document : documents) {
                 suggestions.add(document.getTitle());
             }
-
-
             Platform.runLater(() -> {
                 suggestionsListView.setItems(suggestions);
                 suggestionsListView.getParent().setVisible(!suggestions.isEmpty());
