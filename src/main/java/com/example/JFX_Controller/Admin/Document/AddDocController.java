@@ -1,4 +1,4 @@
-package com.example.JFX_Controller.Admin;
+package com.example.JFX_Controller.Admin.Document;
 
 import com.example.Handlers.Notify;
 import com.example.Handlers.Validate;

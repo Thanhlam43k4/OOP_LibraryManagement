@@ -1,4 +1,4 @@
-package com.example.JFX_Controller.Admin;
+package com.example.JFX_Controller.Admin.User;
 
 import java.io.IOException;
 import java.util.List;

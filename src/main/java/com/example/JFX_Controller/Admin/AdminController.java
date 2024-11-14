@@ -7,6 +7,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import com.example.JFX_Controller.Controller;
+import com.example.JFX_Controller.Admin.Document.AddDocController;
+import com.example.JFX_Controller.Admin.Document.DocRowController;
+import com.example.JFX_Controller.Admin.User.AddUserController;
+import com.example.JFX_Controller.Admin.User.UserRowController;
 import com.example.Model.Client;
 import com.example.Model.Document;
 import com.example.Model.Transaction;
