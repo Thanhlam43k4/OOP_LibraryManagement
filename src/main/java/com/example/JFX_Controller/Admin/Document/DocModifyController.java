@@ -6,6 +6,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
 import com.example.Model.Document;
+import com.example.Service.DocumentService;
 
 import javafx.event.ActionEvent;
 
@@ -20,6 +21,9 @@ public class DocModifyController {
 
     @FXML private StackPane docModifyRoot;
     @FXML private AnchorPane docPane;
+
+    private int docId;
+    private DocRowController docRowController;
     @FXML
     void cancelModifyDoc(ActionEvent event) {
         docPane.getChildren().remove(this.docModifyRoot);
@@ -28,11 +32,22 @@ public class DocModifyController {
 
     @FXML
     void saveModifyDoc(ActionEvent event) {
+        Document modifyDoc = new Document(title.getText(), 
+                                          author.getText(), 
+                                          genre.getText(), 
+                                          Integer.parseInt(quantity.getText()), 
+                                          isbn.getText(), 
+                                          imageUrl.getText());
+        modifyDoc.setDocumentId(docId);
+        DocumentService.instance.updateDocument(modifyDoc);
+        docRowController.modifyInfo(modifyDoc);
+
         docPane.getChildren().remove(this.docModifyRoot);
         this.docModifyRoot = null;
     }
 
-    public void setInfo(Document d, AnchorPane docPane) {
+    public void setInfo(Document d, AnchorPane docPane, DocRowController docRow) {
+        docId = d.getDocumentId();
         this.title.setText(d.getTitle());
         this.author.setText(d.getAuthor());
         this.genre.setText(d.getGenre());
@@ -40,5 +55,6 @@ public class DocModifyController {
         this.isbn.setText(d.getISBN());
         this.quantity.setText(String.valueOf(d.getNumberCopy()));
         this.docPane = docPane;
+        this.docRowController = docRow;
     }
 }

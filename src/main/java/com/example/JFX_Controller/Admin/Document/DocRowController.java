@@ -54,7 +54,14 @@ public class DocRowController {
         this.copiesDocPane = copiesDocPane;
         this.docCopyVbox = docCopyVBox;
     }
-
+    public void modifyInfo(Document d) {
+        doc = d;
+        this.docId.setText(String.valueOf(d.getDocumentId()));
+        this.title.setText(d.getTitle());
+        this.author.setText(d.getAuthor());
+        this.genre.setText(d.getGenre());
+        this.amount.setText(String.valueOf(d.getNumberCopy()));
+    }
     // có thể tối ưu sau
     void addCopyNodes() {
         copiesDocPane.setVisible(true);
@@ -90,7 +97,7 @@ public class DocRowController {
             AnchorPane.setTopAnchor(modifyDocPane, 0.0);
             
             DocModifyController modifyController = loader.getController();
-            modifyController.setInfo(doc, docPane);
+            modifyController.setInfo(doc, docPane, this);
         } catch (IOException e) {
             e.printStackTrace();
         }
