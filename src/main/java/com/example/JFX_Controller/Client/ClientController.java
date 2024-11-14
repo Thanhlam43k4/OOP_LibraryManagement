@@ -147,7 +147,7 @@ public class ClientController extends Controller implements Initializable{
                 Node bookNode = loader.load();
                 
                 CardController cardController = loader.getController();
-                cardController.setInfo(document.getDocumentId(), "/DocCover_url/1586s.jpg", document.getTitle(), document.getGenre());
+                cardController.setInfo(document);
                 cardList.add(bookNode);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -165,7 +165,7 @@ public class ClientController extends Controller implements Initializable{
 
                 Document docInfo  = DocumentService.instance.getDocumentByISBN(ISBN);
                 TransCardController transCardController = loader.getController();
-                transCardController.setInfo(docInfo.getDocumentId(), "/DocCover_url/1586s.jpg", docInfo.getTitle(), "Bill Gate" ,docInfo.getGenre(), transaction.getReturnDate());
+                transCardController.setInfo(docInfo.getDocumentId(), docInfo.getUrlImage(), docInfo.getTitle(), "Bill Gate" ,docInfo.getGenre(), transaction.getReturnDate());
                 docelementList.add(bookNode);
             } catch (IOException e) {
                 e.printStackTrace();

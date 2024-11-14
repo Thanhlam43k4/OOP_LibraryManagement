@@ -9,16 +9,22 @@ import java.sql.Date;
 
 // Controller của từng thẻ Doc đang mượn ở tab MyDoc
 public class TransCardController {
-    @FXML private ImageView docCover;
-    @FXML private Label title;
-    @FXML private Label author;
-    @FXML private Label genre;
-    @FXML private Label returnDate;
+    @FXML
+    private ImageView docCover;
+    @FXML
+    private Label title;
+    @FXML
+    private Label author;
+    @FXML
+    private Label genre;
+    @FXML
+    private Label returnDate;
 
     @FXML
     void goReadDoc(ActionEvent event) {
 
     }
+
     @FXML
     void returnDoc(ActionEvent event) {
 
@@ -26,7 +32,11 @@ public class TransCardController {
 
     // set thông tin cho các UI element
     public void setInfo(int id, String imageUrl, String title, String author, String genre, Date returnDate) {
-        this.docCover.setImage(new Image(imageUrl));
+        try {
+            this.docCover.setImage(new Image(imageUrl));
+        } catch (Exception e) {
+            System.err.println("docElement coverURL invalid!");
+        }
         this.title.setText(title);
         this.author.setText(author);
         this.genre.setText(genre);

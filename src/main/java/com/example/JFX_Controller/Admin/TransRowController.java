@@ -1,23 +1,16 @@
 package com.example.JFX_Controller.Admin;
 
 import com.example.Model.Transaction;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class TransRowController {
-    @FXML
-    private Label transId;
-    @FXML
-    private Label userId;
-    @FXML
-    private Label docISBN;
-    @FXML
-    private Label borrowDate;
-    @FXML
-    private Label dueDate;
-    @FXML
-    private Label returnDate;
+    @FXML private Label transId;
+    @FXML private Label userId;
+    @FXML private Label docISBN;
+    @FXML private Label borrowDate;
+    @FXML private Label dueDate;
+    @FXML private Label returnDate;
 
     public void setInfo(Transaction trans) {
         transId.setText(String.valueOf(trans.getTransactionId()));

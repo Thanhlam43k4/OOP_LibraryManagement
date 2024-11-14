@@ -14,6 +14,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 import com.example.JFX_Controller.Controller;
+import com.example.Model.Document;
 
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -25,18 +26,23 @@ import javafx.fxml.FXMLLoader;
 
 // Controller của từng thẻ Doc trong tab Browse
 public class CardController extends Controller {
-    @FXML private VBox card;
-    @FXML private ImageView docCover;
-    @FXML private Label name;
-    @FXML private Label genre;
+    @FXML
+    private VBox card;
+    @FXML
+    private ImageView docCover;
+    @FXML
+    private Label name;
+    @FXML
+    private Label genre;
 
     private int id;
     private String imageUrl;
 
     boolean canLoad = true;
+
     @FXML
     void selectCard(MouseEvent event) {
-        if(canLoad) {
+        if (canLoad) {
             loadDocInfo();
             canLoad = false;
         }
@@ -49,7 +55,7 @@ public class CardController extends Controller {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/DocInfo.fxml"));
             Parent docinfoRoot = loader.load();
             Scene scene = card.getScene();
-            
+
             DocInfoController docInfoController = loader.getController();
             docInfoController.setInfo(id, imageUrl, name.getText(), genre.getText());
 
@@ -72,18 +78,22 @@ public class CardController extends Controller {
             timeline.getKeyFrames().add(kf);
             timeline.setOnFinished(e -> {
                 canLoad = true;
-            }); 
+            });
             timeline.play();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void setInfo(int id, String imageUrl, String name, String genre) {
-        docCover.setImage(new Image(imageUrl));
-        this.id = id;
-        this.imageUrl = imageUrl;
-        this.name.setText(name);
-        this.genre.setText(genre);
+    public void setInfo(Document doc) {
+        try {
+            docCover.setImage(new Image(doc.getUrlImage()));
+        } catch (Exception e) {
+            System.err.println("card coverURL invalid!");
+        }
+        this.id = doc.getDocumentId();
+        this.imageUrl = doc.getUrlImage();
+        this.name.setText(doc.getTitle());
+        this.genre.setText(doc.getGenre());
     }
 }
