@@ -1,10 +1,12 @@
 package com.example.JFX_Controller.Admin.Document;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
+import com.example.Handlers.Notify;
 import com.example.Model.Document;
 import com.example.Service.DocumentService;
 
@@ -41,6 +43,7 @@ public class DocModifyController {
         modifyDoc.setDocumentId(docId);
         DocumentService.instance.updateDocument(modifyDoc);
         docRowController.modifyInfo(modifyDoc);
+        Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Document has modified!");
 
         docPane.getChildren().remove(this.docModifyRoot);
         this.docModifyRoot = null;

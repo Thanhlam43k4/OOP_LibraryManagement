@@ -206,6 +206,7 @@ public class AdminController extends Controller implements Initializable {
 
     // thêm data vào UI
     public void setVBox(VBox vbox, List<Node> list) {
+        // clear vbox trừ node đầu tiên
         if (vbox.getChildren().size() > 1) {
             vbox.getChildren().subList(1, vbox.getChildren().size()).clear();
         }

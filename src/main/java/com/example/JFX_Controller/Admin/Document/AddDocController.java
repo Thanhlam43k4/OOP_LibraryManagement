@@ -33,27 +33,27 @@ public class AddDocController {
 
         // Kiểm tra từng trường đầu vào
         if (!Validate.isValidTitle(title_input)) {
-            Notify.showAlert(Alert.AlertType.ERROR, "Lỗi", "Tiêu đề không hợp lệ!");
+            Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Tilte invalid!");
             return;
         }
 
         if (!Validate.isValidAuthor(author_input)) {
-            Notify.showAlert(Alert.AlertType.ERROR, "Lỗi", "Tác giả không hợp lệ!");
+            Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Author invalid!");
             return;
         }
 
         if (!Validate.isValidGenre(genre_input)) {
-            Notify.showAlert(Alert.AlertType.ERROR, "Lỗi", "Thể loại không hợp lệ!");
+            Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Genre invalid!");
             return;
         }
 
         if (!Validate.isValidQuantity(quantity_input)) {
-            Notify.showAlert(Alert.AlertType.ERROR, "Lỗi", "Số lượng phải là số dương!");
+            Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Quantity invalid!");
             return;
         }
 
         if (!Validate.isValidISBN(isbn_input)) {
-            Notify.showAlert(Alert.AlertType.ERROR, "Lỗi", "ISBN không hợp lệ!");
+            Notify.showAlert(Alert.AlertType.ERROR, "Eror", "ISBN invalid!");
             return;
         }
 
@@ -63,7 +63,7 @@ public class AddDocController {
         DocumentService.instance.addDocument(doc);
 
         // Thông báo thành công
-        Notify.showAlert(Alert.AlertType.INFORMATION, "Thông báo", "Thêm sách thành công!");
+        Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Add Document sucess!");
     }
 
     @FXML
