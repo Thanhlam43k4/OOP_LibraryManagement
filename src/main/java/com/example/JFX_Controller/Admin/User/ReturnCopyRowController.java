@@ -14,7 +14,7 @@ public class ReturnCopyRowController {
     public void setInfo(int docId, String title, String isbn, Date dueDate) {
         this.docId.setText(String.valueOf(docId));
         this.isbn.setText(isbn);
-        //this.title.setText(title);
+        this.title.setText(title);
         try {
             this.dueDate.setText(dueDate.toString());            
         } catch (Exception e) {

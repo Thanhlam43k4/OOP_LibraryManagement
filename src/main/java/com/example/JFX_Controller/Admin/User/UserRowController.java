@@ -3,6 +3,7 @@ package com.example.JFX_Controller.Admin.User;
 import java.io.IOException;
 import java.util.List;
 
+import com.example.Handlers.ExtraFunction;
 import com.example.Model.Client;
 import com.example.Model.Document;
 import com.example.Model.Transaction;
@@ -74,9 +75,10 @@ public class UserRowController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/ReturnCopyRow.fxml"));
                 Node node = loader.load();
 
-                Document doc = DocumentService.instance.getDocumentByISBN(t.getISBN());
+                String ISBN = ExtraFunction.extractISBN(t.getISBN());
+                Document doc = DocumentService.instance.getDocumentByISBN(ISBN);
                 ReturnCopyRowController docCopyController = loader.getController();
-                docCopyController.setInfo(t.getTransactionId(), null, t.getISBN(), t.getReturnDate());
+                docCopyController.setInfo(t.getTransactionId(), doc.getTitle(), t.getISBN(), t.getReturnDate());
                 returnDocVbox.getChildren().add(node);
             } catch (IOException e) {
                 e.printStackTrace();
