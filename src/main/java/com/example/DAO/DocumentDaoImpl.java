@@ -148,7 +148,6 @@ public class DocumentDaoImpl implements DocumentDao {
 
     @Override
     public Document getDocumentByISBN(String ISBN) {
-        System.out.println(ISBN);
         String query = "SELECT * " +
                 "FROM documents d " +
                 "WHERE ISBN = ?";

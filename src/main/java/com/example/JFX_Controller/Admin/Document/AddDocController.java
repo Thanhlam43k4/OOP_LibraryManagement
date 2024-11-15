@@ -88,7 +88,7 @@ public class AddDocController {
             DocRowController docRowController = (DocRowController) loader.getController();
             docRowController.setInfo(doc, adminController, docNode);
             AdminController.docList.add(docNode);
-            adminController.docVBox.setPrefHeight(adminController.docVBox.getHeight() + 70);        
+            adminController.docVBox.setPrefHeight(AdminController.docList.size() * 70 + 70);        
             adminController.docVBox.getChildren().add(docNode);
         } catch (IOException e) {
             e.printStackTrace();
