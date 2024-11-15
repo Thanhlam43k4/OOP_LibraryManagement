@@ -7,6 +7,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.sql.Date;
 
+import com.example.Model.Document;
+
 // Controller của từng thẻ Doc đang mượn ở tab MyDoc
 public class TransCardController {
     @FXML
@@ -31,15 +33,15 @@ public class TransCardController {
     }
 
     // set thông tin cho các UI element
-    public void setInfo(int id, String imageUrl, String title, String author, String genre, Date returnDate) {
+    public void setInfo(Document doc, Date returnDate) {
         try {
-            this.docCover.setImage(new Image(imageUrl));
+            this.docCover.setImage(new Image(doc.getUrlImage()));
         } catch (Exception e) {
             System.err.println("docElement coverURL invalid! when add DocElementNode");
         }
-        this.title.setText(title);
-        this.author.setText(author);
-        this.genre.setText(genre);
+        this.title.setText(doc.getTitle());
+        this.author.setText(doc.getAuthor());
+        this.genre.setText(doc.getGenre());
         this.returnDate.setText(returnDate.toString());
     }
 }

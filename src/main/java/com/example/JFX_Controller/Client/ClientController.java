@@ -165,7 +165,7 @@ public class ClientController extends Controller implements Initializable{
 
                 Document docInfo  = DocumentService.instance.getDocumentByISBN(ISBN);
                 TransCardController transCardController = loader.getController();
-                transCardController.setInfo(docInfo.getDocumentId(), docInfo.getUrlImage(), docInfo.getTitle(), "Bill Gate" ,docInfo.getGenre(), transaction.getReturnDate());
+                transCardController.setInfo(docInfo, transaction.getReturnDate());
                 docelementList.add(bookNode);
             } catch (IOException e) {
                 e.printStackTrace();
