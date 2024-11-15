@@ -1,1 +1,5 @@
 Hello Java App
+updateDocument: thêm description
+getDocbyISBN: thêm url
+validate modifyDoc ở DocModifyController
+deleteDoc: check transaction
