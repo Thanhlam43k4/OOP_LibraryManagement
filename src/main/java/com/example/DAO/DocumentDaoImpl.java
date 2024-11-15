@@ -95,7 +95,6 @@ public class DocumentDaoImpl implements DocumentDao {
                             rs.getString("copy_ISBN"),  // Sửa lỗi chính tả từ "copies_ISBN" thành "copy_ISBN"
                             rs.getString("status")
                     );
-                    System.out.println(copy);
                     copies.add(copy);
                 }
             }

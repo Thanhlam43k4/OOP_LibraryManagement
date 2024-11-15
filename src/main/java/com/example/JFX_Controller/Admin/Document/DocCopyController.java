@@ -17,5 +17,11 @@ public class DocCopyController {
         this.title.setText(c.getTitle());
         this.isbn.setText(c.getCopies_ISBN());
         this.state.setText(c.getStatus());
+        if(c.getStatus().equals("Available")) {
+            state.setStyle("-fx-text-fill: #317c47;");
+        }
+        else {
+            state.setStyle("-fx-text-fill: #9d3838;");
+        }
     }
 }
