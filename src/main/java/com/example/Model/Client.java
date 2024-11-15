@@ -8,7 +8,7 @@ public class Client extends User {
         super(email, password);
     }
     public Client(int id, String username, String email,int age,String phoneNumber, int borrowedBook){
-        super(id,username,email,age,phoneNumber);
+        super(id,email,username,age,phoneNumber);
         this.borrowedBook = borrowedBook;
     }
     public Client(String email, String username, String phoneNumber,int age){

@@ -23,148 +23,13 @@
                         <Insets top="4.0" />
                      </HBox.margin>
                   </FontAwesomeIconView>
-                  <Label text="User Infomation">
+                  <Label text="Account Detail">
                      <font>
                         <Font name="Comic Sans MS Bold" size="18.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <VBox layoutX="110.0" layoutY="54.0" prefHeight="215.0" prefWidth="282.0" spacing="3.0">
-               <children>
-                  <VBox layoutX="10.0" layoutY="72.0" prefHeight="60.0" prefWidth="300.0">
-                     <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="300.0" spacing="4.0">
-                           <children>
-                              <FontAwesomeIconView fill="#544f4f" glyphName="USER" size="15" />
-                              <Label text="User id">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Label fx:id="userId" prefHeight="25.0" prefWidth="319.0" text="1" textFill="#2c2a2a">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                           <padding>
-                              <Insets left="2.0" />
-                           </padding>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="62.0" prefWidth="300.0">
-                     <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="300.0" spacing="4.0">
-                           <children>
-                              <FontAwesomeIconView fill="#544f4f" glyphName="ENVELOPE" size="15" />
-                              <Label text="Email">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Label fx:id="email" prefHeight="25.0" prefWidth="319.0" text="latgoto@gmail.com" textFill="#2c2a2a">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                           <padding>
-                              <Insets left="2.0" />
-                           </padding>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox layoutX="10.0" layoutY="10.0" prefHeight="62.0" prefWidth="300.0">
-                     <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="300.0" spacing="4.0">
-                           <children>
-                              <FontAwesomeIconView fill="#544f4f" glyphName="PHONE" size="15" />
-                              <Label text="Phone number">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Label fx:id="phone" prefHeight="25.0" prefWidth="319.0" text="0977324199" textFill="#2c2a2a">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                           <padding>
-                              <Insets left="2.0" />
-                           </padding>
-                        </Label>
-                     </children>
-                  </VBox>
-               </children>
-            </VBox>
-            <VBox layoutX="408.0" layoutY="54.0" prefHeight="215.0" prefWidth="300.0" spacing="3.0">
-               <children>
-                  <VBox prefHeight="62.0" prefWidth="300.0">
-                     <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="300.0" spacing="4.0">
-                           <children>
-                              <FontAwesomeIconView fill="#544f4f" glyphName="PENCIL" size="15" />
-                              <Label text="Username">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Label fx:id="userName" prefHeight="25.0" prefWidth="319.0" text="trong anh" textFill="#2c2a2a">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                           <padding>
-                              <Insets left="2.0" />
-                           </padding>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="62.0" prefWidth="300.0">
-                     <children>
-                        <Label text="Age">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="age" prefHeight="25.0" prefWidth="70.0" text="20" textFill="#2c2a2a">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                           <padding>
-                              <Insets left="2.0" />
-                           </padding>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox layoutX="10.0" layoutY="10.0" prefHeight="62.0" prefWidth="300.0">
-                     <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="300.0" spacing="4.0">
-                           <children>
-                              <FontAwesomeIconView fill="#544f4f" glyphName="BOOK" size="15" />
-                              <Label text="Borrowed">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Label fx:id="borrowed" prefHeight="25.0" prefWidth="319.0" text="7" textFill="#2c2a2a">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                           <padding>
-                              <Insets left="2.0" />
-                           </padding>
-                        </Label>
-                     </children>
-                  </VBox>
-               </children>
-            </VBox>
             <Button layoutX="680.0" layoutY="3.0" mnemonicParsing="false" onAction="#turnOffPane" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: transparent;" textFill="#e4e0e0">
                <font>
                   <Font name="System Bold" size="16.0" />
@@ -173,6 +38,103 @@
                   <FontAwesomeIconView glyphName="TIMES" size="22" style="-fx-fill: #3c373a;" />
                </graphic>
             </Button>
+            <VBox layoutX="120.0" layoutY="60.0" prefHeight="282.0" prefWidth="420.0" spacing="12.0">
+               <children>
+                  <Label fx:id="userName" prefHeight="36.0" prefWidth="349.0" text="trong anh" textFill="#2c2a2a">
+                     <font>
+                        <Font name="System Bold" size="32.0" />
+                     </font>
+                     <padding>
+                        <Insets left="2.0" />
+                     </padding>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="200.0" spacing="3.0">
+                     <children>
+                        <Label text="ID:" textFill="#757575">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="userId" prefHeight="25.0" prefWidth="107.0" text="1" textFill="#396c8c">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets left="2.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="200.0" spacing="3.0">
+                     <children>
+                        <Label text="Phone:" textFill="#757575">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="phone" prefHeight="25.0" prefWidth="138.0" text="0977324199" textFill="#2c2a2a">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets left="2.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="364.0" spacing="3.0">
+                     <children>
+                        <Label text="Email:" textFill="#757575">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="email" prefHeight="27.0" prefWidth="306.0" text="latgoto@gmail.com" textFill="#2c2a2a">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets left="2.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="154.0" spacing="3.0">
+                     <children>
+                        <Label text="Age:" textFill="#757575">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="age" prefHeight="25.0" prefWidth="70.0" text="20" textFill="#2c2a2a">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets left="2.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="200.0" spacing="3.0">
+                     <children>
+                        <Label text="Borrowed:" textFill="#757575">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="borrowed" prefHeight="25.0" prefWidth="75.0" text="7" textFill="#2a2b2a">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets left="2.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
    </children>
