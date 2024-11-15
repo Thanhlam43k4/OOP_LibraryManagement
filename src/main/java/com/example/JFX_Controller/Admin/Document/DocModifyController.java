@@ -42,8 +42,8 @@ public class DocModifyController {
                                           imageUrl.getText());
         modifyDoc.setDocumentId(docId);
         DocumentService.instance.updateDocument(modifyDoc);
-        docRowController.modifyInfo(modifyDoc);
-        Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Document has modified!");
+        docRowController.modifyInfo(modifyDoc); // update ui
+        Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Document has been modified!");
 
         docPane.getChildren().remove(this.docModifyRoot);
         this.docModifyRoot = null;

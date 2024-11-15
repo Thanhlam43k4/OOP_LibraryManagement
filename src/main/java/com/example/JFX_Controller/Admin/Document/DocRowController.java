@@ -43,7 +43,7 @@ public class DocRowController {
     void deleteDoc(ActionEvent event) {
         // update ui
         AdminController.docList.remove(this.root);
-        adminController.setVBox(adminController.docVBox, AdminController.docList);
+        adminController.docVBox.getChildren().remove(this.root);
         DocumentService.instance.deleteDocument(doc.getDocumentId());
         Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Delete Document sucess!");
     }

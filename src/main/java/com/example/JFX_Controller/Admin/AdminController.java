@@ -54,7 +54,7 @@ public class AdminController extends Controller implements Initializable {
     @FXML private HBox usersBut;
     @FXML private HBox tranBut;
     // Docs
-    @FXML private AnchorPane docPane;
+    @FXML public AnchorPane docPane;
     @FXML public StackPane copiesDocPane;
     @FXML public VBox docCopyVbox;
     @FXML public VBox docVBox;
@@ -230,7 +230,7 @@ public class AdminController extends Controller implements Initializable {
             AnchorPane.setTopAnchor(addDocPane, 0.0);
             
             AddDocController addDocController = loader.getController();
-            addDocController.setInfo(docPane);
+            addDocController.setInfo(this);
         } catch (IOException e) {
             e.printStackTrace();
         }

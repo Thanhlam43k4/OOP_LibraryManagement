@@ -1,17 +1,21 @@
 package com.example.JFX_Controller.Admin.Document;
 
+import java.io.IOException;
+
 import com.example.Handlers.Notify;
 import com.example.Handlers.Validate;
+import com.example.JFX_Controller.Admin.AdminController;
 import com.example.Model.Document;
 import com.example.Service.DocumentService;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.event.ActionEvent;
 
-public class AddDocController {    
+public class AddDocController {
     @FXML private TextField title;
     @FXML private TextField author;
     @FXML private TextField genre;
@@ -20,7 +24,8 @@ public class AddDocController {
     @FXML private TextField imageUrl;
 
     @FXML private StackPane addDocRoot;
-    @FXML private AnchorPane docPane;
+
+    private AdminController adminController;
 
     @FXML
     void addDoc(ActionEvent event) {
@@ -61,18 +66,36 @@ public class AddDocController {
         int quantity = Integer.parseInt(quantity_input); // Chuyển đổi số lượng thành số nguyên
         Document doc = new Document(title_input, author_input, genre_input, quantity, isbn_input, imageUrl_input);
         DocumentService.instance.addDocument(doc);
-
+        doc.setDocumentId(DocumentService.instance.getDocumentByISBN(isbn_input).getDocumentId());
+        // update ui
+        addDocNode(doc);
+        adminController.docPane.getChildren().remove(addDocRoot);
+        addDocRoot = null;
         // Thông báo thành công
         Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Add Document sucess!");
     }
 
     @FXML
     void cancelAddDoc(ActionEvent event) {
-        docPane.getChildren().remove(addDocRoot);
+        adminController.docPane.getChildren().remove(addDocRoot);
         addDocRoot = null;
     }
 
-    public void setInfo(AnchorPane docPane) {
-        this.docPane = docPane;
+    private void addDocNode(Document doc) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/DocRow.fxml"));
+            Node docNode = loader.load();
+            DocRowController docRowController = (DocRowController) loader.getController();
+            docRowController.setInfo(doc, adminController, docNode);
+            AdminController.docList.add(docNode);
+            adminController.docVBox.setPrefHeight(adminController.docVBox.getHeight() + 70);        
+            adminController.docVBox.getChildren().add(docNode);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setInfo(AdminController adminController) {
+        this.adminController = adminController;
     }
 }
