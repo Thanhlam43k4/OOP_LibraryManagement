@@ -78,7 +78,7 @@ public class UserRowController {
                 String ISBN = ExtraFunction.extractISBN(t.getISBN());
                 Document doc = DocumentService.instance.getDocumentByISBN(ISBN);
                 ReturnCopyRowController docCopyController = loader.getController();
-                docCopyController.setInfo(t.getTransactionId(), doc.getTitle(), t.getISBN(), t.getReturnDate());
+                docCopyController.setInfo(t.getTransactionId(), doc.getTitle(), t.getISBN(), t.getReturnDate(), node, returnDocVbox);
                 returnDocVbox.getChildren().add(node);
             } catch (IOException e) {
                 e.printStackTrace();

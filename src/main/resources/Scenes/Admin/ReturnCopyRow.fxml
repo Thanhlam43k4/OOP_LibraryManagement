@@ -38,7 +38,7 @@
             <Insets left="10.0" />
          </padding>
       </Label>
-      <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-border-width: 0;" styleClass="second-button" stylesheets="@../../CSS_Setup/button.css">
+      <Button mnemonicParsing="false" onAction="#applyReturn" prefHeight="30.0" prefWidth="30.0" style="-fx-border-width: 0;" styleClass="second-button" stylesheets="@../../CSS_Setup/button.css">
          <graphic>
             <FontAwesomeIconView glyphName="REFRESH" size="14" styleClass="fontawesome-icon" />
          </graphic>
