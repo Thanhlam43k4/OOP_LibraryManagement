@@ -117,25 +117,6 @@ public class AdminController extends Controller implements Initializable {
     //#endregion
     
     //#region fe_func
-    // catch find textfield change
-    private void setupSearchFieldListener() {
-        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-            // Hủy Timeline trước đó nếu có
-            if (searchTimeline != null) {
-                searchTimeline.stop();
-            }
-
-            // Nếu trường tìm kiếm không trống
-            if (!newValue.trim().isEmpty()) {
-                // Tạo một mới Timeline với 2 giây trì hoãn
-                searchTimeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> handleSearch()));
-                searchTimeline.playFromStart(); // Bắt đầu chạy Timeline
-            } else {
-                suggestionsListView.getParent().setVisible(false); // Ẩn ListView nếu trường tìm kiếm trống
-            }
-        });
-    }
-
     // bật/tắt Pane
     private void setPane(Parent pane, HBox tabBut) {
         Pane anchorPane = (Pane) pane.getParent();
@@ -156,7 +137,8 @@ public class AdminController extends Controller implements Initializable {
 
         selectedBut.getStyleClass().add("hbox-style-selected");
     }
-    // load Data
+    
+    // load fxml Data
     private void addUserNodes() {
         userList.clear();
         List<Client> clients = UserService.instance.getAllClients();
@@ -202,7 +184,6 @@ public class AdminController extends Controller implements Initializable {
             }   
         }
     }
-
 
     // thêm data vào UI
     public void setVBox(VBox vbox, List<Node> list) {
@@ -254,13 +235,31 @@ public class AdminController extends Controller implements Initializable {
         }
     }
     
-
+    // giải phóng
     private void clearNode() {
         docList.clear();
         userList.clear();
     }
 
 
+    // catch find textfield change
+    private void setupSearchFieldListener() {
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Hủy Timeline trước đó nếu có
+            if (searchTimeline != null) {
+                searchTimeline.stop();
+            }
+
+            // Nếu trường tìm kiếm không trống
+            if (!newValue.trim().isEmpty()) {
+                // Tạo một mới Timeline với 2 giây trì hoãn
+                searchTimeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> handleSearch()));
+                searchTimeline.playFromStart(); // Bắt đầu chạy Timeline
+            } else {
+                suggestionsListView.getParent().setVisible(false); // Ẩn ListView nếu trường tìm kiếm trống
+            }
+        });
+    } 
     @FXML
     private void handleSearch() {
         try {
@@ -311,10 +310,8 @@ public class AdminController extends Controller implements Initializable {
             e.printStackTrace();
         }
     }
-
     public void shutdown() {
         executorService.shutdown(); // Đảm bảo dừng ExecutorService khi không còn sử dụng
     }
-
     //#endregion
 }
