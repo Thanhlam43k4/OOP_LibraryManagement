@@ -39,7 +39,7 @@ public class UserRowController {
     }
     @FXML
     void borrowDoc(ActionEvent event) {
-
+        loadBorrowPane();
     }
     @FXML
     void openReturnDoc(ActionEvent event) {
@@ -60,6 +60,25 @@ public class UserRowController {
             
             UserInfoController userInfoController = loader.getController();
             userInfoController.setInfo(client, userPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    void loadBorrowPane() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/UserBorrow.fxml"));
+            Parent borrowPane = loader.load();
+
+            // lấy docPane của admin
+            userPane.getChildren().add(borrowPane);
+            AnchorPane.setBottomAnchor(borrowPane, 0.0);
+            AnchorPane.setLeftAnchor(borrowPane, 0.0);
+            AnchorPane.setRightAnchor(borrowPane, 0.0);
+            AnchorPane.setTopAnchor(borrowPane, 0.0);
+            
+            BorrowController userInfoController = loader.getController();
+            userInfoController.setInfo(userPane);
         } catch (IOException e) {
             e.printStackTrace();
         }

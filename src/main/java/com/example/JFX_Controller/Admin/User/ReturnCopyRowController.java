@@ -2,9 +2,12 @@ package com.example.JFX_Controller.Admin.User;
 
 import java.sql.Date;
 
+import com.example.Handlers.Notify;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
@@ -20,6 +23,7 @@ public class ReturnCopyRowController {
     void applyReturn(ActionEvent event) {
         //ui
         returnDocVBox.getChildren().remove(root);
+        Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Return Document sucess!");
     }
 
     public void setInfo(int docId, String title, String isbn, Date dueDate, Node root, VBox returnDocVbox) {
