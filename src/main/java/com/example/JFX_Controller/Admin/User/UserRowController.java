@@ -77,8 +77,8 @@ public class UserRowController {
             AnchorPane.setRightAnchor(borrowPane, 0.0);
             AnchorPane.setTopAnchor(borrowPane, 0.0);
             
-            BorrowController userInfoController = loader.getController();
-            userInfoController.setInfo(userPane);
+            BorrowController borrowController = loader.getController();
+            borrowController.setInfo(client.getId(), userPane);
         } catch (IOException e) {
             e.printStackTrace();
         }

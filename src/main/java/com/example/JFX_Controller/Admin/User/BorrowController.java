@@ -13,6 +13,8 @@ public class BorrowController {
     
     @FXML private StackPane userBorrowRoot;
     @FXML private AnchorPane userPane;
+
+    private int userId;
     @FXML
     void borrowDoc(ActionEvent event) {
         userPane.getChildren().remove(this.userBorrowRoot);
@@ -25,7 +27,8 @@ public class BorrowController {
         this.userBorrowRoot = null;
     }
 
-    public void setInfo(AnchorPane userPane) {
+    public void setInfo(int userId, AnchorPane userPane) {
         this.userPane = userPane;
+        this.userId = userId;
     }
 }
