@@ -90,7 +90,6 @@ public class AdminController extends Controller implements Initializable {
         setVBox(userVBox, userList);
         setVBox(docVBox, docList);
         setVBox(transVBox, transList);
-  //      setTranTable();
     }
     //#region event handle
     @FXML
@@ -240,6 +239,7 @@ public class AdminController extends Controller implements Initializable {
         instance = null;
         docList.clear();
         userList.clear();
+        transList.clear();
     }
 
 
