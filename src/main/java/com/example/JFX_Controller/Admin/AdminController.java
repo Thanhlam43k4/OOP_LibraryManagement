@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import com.example.JFX_Controller.Controller;
-import com.example.JFX_Controller.Admin.Document.AddDocController;
 import com.example.JFX_Controller.Admin.Document.DocRowController;
 import com.example.JFX_Controller.Admin.User.AddUserController;
 import com.example.JFX_Controller.Admin.User.UserRowController;
@@ -71,11 +70,13 @@ public class AdminController extends Controller implements Initializable {
     public static List<Node> docList = new ArrayList<>();
     private static List<Node> userList = new ArrayList<>();
     public static List<Node> transList = new ArrayList<>();
+    // singleton
     public static AdminController instance;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if(instance == null) instance = this;
+
         userName.setText(SessionManager.getInstance().getLoggedInUser().getUsername());
         if (userList.isEmpty()) {
             System.out.println("Add admin node");
@@ -211,9 +212,6 @@ public class AdminController extends Controller implements Initializable {
             AnchorPane.setLeftAnchor(addDocPane, 0.0);
             AnchorPane.setRightAnchor(addDocPane, 0.0);
             AnchorPane.setTopAnchor(addDocPane, 0.0);
-            
-            AddDocController addDocController = loader.getController();
-            addDocController.setInfo(this);
         } catch (IOException e) {
             e.printStackTrace();
         }

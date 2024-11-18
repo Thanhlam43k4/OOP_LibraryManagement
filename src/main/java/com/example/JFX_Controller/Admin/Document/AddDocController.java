@@ -25,8 +25,6 @@ public class AddDocController {
 
     @FXML private StackPane addDocRoot;
 
-    private AdminController adminController;
-
     @FXML
     void addDoc(ActionEvent event) {
         String title_input = title.getText();
@@ -69,7 +67,7 @@ public class AddDocController {
         doc.setDocumentId(DocumentService.instance.getDocumentByISBN(isbn_input).getDocumentId());
         // update ui
         addDocNode(doc);
-        adminController.docPane.getChildren().remove(addDocRoot);
+        AdminController.instance.docPane.getChildren().remove(addDocRoot);
         addDocRoot = null;
         // Thông báo thành công
         Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Add Document sucess!");
@@ -77,7 +75,7 @@ public class AddDocController {
 
     @FXML
     void cancelAddDoc(ActionEvent event) {
-        adminController.docPane.getChildren().remove(addDocRoot);
+        AdminController.instance.docPane.getChildren().remove(addDocRoot);
         addDocRoot = null;
     }
 
@@ -88,14 +86,10 @@ public class AddDocController {
             DocRowController docRowController = (DocRowController) loader.getController();
             docRowController.setInfo(doc, docNode);
             AdminController.docList.add(docNode);
-            adminController.docVBox.setPrefHeight(AdminController.docList.size() * 70 + 70);        
-            adminController.docVBox.getChildren().add(docNode);
+            AdminController.instance.docVBox.setPrefHeight(AdminController.docList.size() * 70 + 70);        
+            AdminController.instance.docVBox.getChildren().add(docNode);
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void setInfo(AdminController adminController) {
-        this.adminController = adminController;
     }
 }
