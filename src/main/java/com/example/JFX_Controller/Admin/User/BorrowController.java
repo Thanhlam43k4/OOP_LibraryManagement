@@ -6,7 +6,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
-import com.example.Handlers.ExtraFunction;
 import com.example.Handlers.Notify;
 import com.example.Handlers.Validate;
 import com.example.JFX_Controller.Admin.AdminController;
@@ -22,7 +21,6 @@ public class BorrowController {
     @FXML private StackPane userBorrowRoot;
     @FXML private AnchorPane userPane;
 
-    private AdminController adminController;
     private int userId;
     @FXML
     void borrowDoc(ActionEvent event) {
@@ -50,13 +48,12 @@ public class BorrowController {
 
     private void resetTrans() {
         AdminController.transList.clear();
-        adminController.addTranscNodes();
-        adminController.setVBox(adminController.transVBox, AdminController.transList);
+        AdminController.instance.addTranscNodes();
+        AdminController.instance.setVBox(AdminController.instance.transVBox, AdminController.transList);
     }
 
-    public void setInfo(int userId, AdminController adminController) {
-        this.adminController = adminController;
-        this.userPane = adminController.userPane;
+    public void setInfo(int userId) {
+        this.userPane = AdminController.instance.userPane;
         this.userId = userId;
     }
 }

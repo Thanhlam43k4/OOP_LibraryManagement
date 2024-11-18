@@ -33,8 +33,6 @@ public class UserRowController {
     @FXML private StackPane returnDocPane;
     @FXML private VBox returnDocVbox;
 
-    private AdminController adminController;
-
     private Client client;
     @FXML
     void showInfo(ActionEvent event) {
@@ -81,7 +79,7 @@ public class UserRowController {
             AnchorPane.setTopAnchor(borrowPane, 0.0);
             
             BorrowController borrowController = loader.getController();
-            borrowController.setInfo(client.getId(), adminController);
+            borrowController.setInfo(client.getId());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -108,7 +106,7 @@ public class UserRowController {
         }
     }
 
-    public void setInfo(Client client, AdminController adminController) {
+    public void setInfo(Client client) {
         this.client = client;
         this.userId.setText(String.valueOf(client.getId()));
         this.userName.setText(client.getUsername());
@@ -116,9 +114,8 @@ public class UserRowController {
         this.phone.setText(client.getPhoneNumber());
         this.age.setText(String.valueOf(client.getAge()));
         this.borrowed.setText(String.valueOf(client.getBorrowedBook()));
-        this.adminController = adminController;
-        this.userPane = adminController.userPane;
-        this.returnDocPane = adminController.returnDocPane;
-        this.returnDocVbox = adminController.returnDocVbox;
+        this.userPane = AdminController.instance.userPane;
+        this.returnDocPane = AdminController.instance.returnDocPane;
+        this.returnDocVbox = AdminController.instance.returnDocVbox;
     }
 }

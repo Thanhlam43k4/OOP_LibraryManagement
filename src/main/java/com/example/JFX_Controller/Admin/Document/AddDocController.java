@@ -86,7 +86,7 @@ public class AddDocController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/DocRow.fxml"));
             Node docNode = loader.load();
             DocRowController docRowController = (DocRowController) loader.getController();
-            docRowController.setInfo(doc, adminController, docNode);
+            docRowController.setInfo(doc, docNode);
             AdminController.docList.add(docNode);
             adminController.docVBox.setPrefHeight(AdminController.docList.size() * 70 + 70);        
             adminController.docVBox.getChildren().add(docNode);

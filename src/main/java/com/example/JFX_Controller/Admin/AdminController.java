@@ -71,9 +71,11 @@ public class AdminController extends Controller implements Initializable {
     public static List<Node> docList = new ArrayList<>();
     private static List<Node> userList = new ArrayList<>();
     public static List<Node> transList = new ArrayList<>();
+    public static AdminController instance;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        if(instance == null) instance = this;
         userName.setText(SessionManager.getInstance().getLoggedInUser().getUsername());
         if (userList.isEmpty()) {
             System.out.println("Add admin node");
@@ -147,7 +149,7 @@ public class AdminController extends Controller implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/UserRow.fxml"));
                 Node userNode = loader.load();
                 UserRowController userRowController = loader.getController();
-                userRowController.setInfo(c, this);
+                userRowController.setInfo(c);
                 userList.add(userNode);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -162,7 +164,7 @@ public class AdminController extends Controller implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/DocRow.fxml"));
                 Node docNode = loader.load();
                 DocRowController docRowController = (DocRowController) loader.getController();
-                docRowController.setInfo(d, this, docNode);
+                docRowController.setInfo(d, docNode);
                 docList.add(docNode);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -237,6 +239,7 @@ public class AdminController extends Controller implements Initializable {
     
     // giải phóng
     private void clearNode() {
+        instance = null;
         docList.clear();
         userList.clear();
     }
