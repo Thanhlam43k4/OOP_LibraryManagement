@@ -75,7 +75,7 @@ public class AdminController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if(instance == null) instance = this;
+        instance = this;
 
         userName.setText(SessionManager.getInstance().getLoggedInUser().getUsername());
         if (userList.isEmpty()) {
