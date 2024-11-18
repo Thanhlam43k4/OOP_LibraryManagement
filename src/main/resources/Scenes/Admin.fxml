@@ -123,9 +123,9 @@
       </AnchorPane>
       <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #fff8f2; -fx-background-radius: 40;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="65.0">
          <children>
-            <AnchorPane fx:id="docPane" maxWidth="940.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+            <AnchorPane fx:id="docPane" maxWidth="940.0" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="251.0" spacing="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="200.0" spacing="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <MenuButton mnemonicParsing="false" prefHeight="32.0" styleClass="second-menubutton" stylesheets="@../CSS_Setup/menubutton.css" text="Type" textFill="#5e5757">
                            <items>
@@ -139,11 +139,18 @@
                               <FontAwesomeIconView fill="#a43d3d" glyphName="FILTER" styleClass="fontawesome-icon" wrappingWidth="10.428571701049805" />
                            </graphic>
                         </MenuButton>
-                        <Button mnemonicParsing="false" onAction="#openAddDoc" prefHeight="32.0" styleClass="primary-button" stylesheets="@../CSS_Setup/button.css" text=" Add Doc">
+                        <MenuButton layoutX="84.0" layoutY="27.0" mnemonicParsing="false" prefHeight="32.0" styleClass="second-menubutton" stylesheets="@../CSS_Setup/menubutton.css" text="Add Doc" textFill="#5e5757">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#openAddDoc" text="Normal" />
+                              <MenuItem mnemonicParsing="false" text="With API" />
+                           </items>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                            <graphic>
-                              <FontAwesomeIconView glyphName="PLUS" styleClass="fontawesome-icon" />
+                              <FontAwesomeIconView fill="#a43d3d" glyphName="PLUS" styleClass="fontawesome-icon" wrappingWidth="10.428571701049805" />
                            </graphic>
-                        </Button>
+                        </MenuButton>
                      </children>
                      <padding>
                         <Insets right="10.0" />
@@ -261,7 +268,7 @@
                   <Insets />
                </StackPane.margin>
             </AnchorPane>
-            <AnchorPane fx:id="userPane" maxWidth="900.0" prefHeight="200.0">
+            <AnchorPane fx:id="userPane" maxWidth="900.0" prefHeight="200.0" visible="false">
                <children>
                   <HBox alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="200.0" spacing="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
