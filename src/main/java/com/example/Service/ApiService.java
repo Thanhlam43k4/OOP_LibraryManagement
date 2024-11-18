@@ -52,7 +52,7 @@ public class ApiService {
 
 
     private static BufferedReader getBufferedReader(String query) throws IOException {
-        String urlString = "https://www.dbooks.org/api/search/" + query + "?limit=5";
+        String urlString = "https://www.dbooks.org/api/search/" + query + "?limit=6";
         URL url = new URL(urlString);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
@@ -60,8 +60,10 @@ public class ApiService {
         connection.setRequestProperty("User-Agent", "Mozilla/5.0");  // Thêm dòng này
         int responseCode = connection.getResponseCode();
         if (responseCode != HttpURLConnection.HTTP_OK) {
-            throw new RuntimeException("HTTP GET Request Failed with Error code : " + responseCode);
+            System.err.println("Error fetching books: HTTP code " + responseCode);
+            return new BufferedReader(new InputStreamReader(connection.getErrorStream())); // Lấy thêm chi tiết lỗi
         }
+
 
         BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         return in;

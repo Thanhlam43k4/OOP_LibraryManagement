@@ -250,7 +250,6 @@ public class AdminController extends Controller implements Initializable {
             if (searchTimeline != null) {
                 searchTimeline.stop();
             }
-
             // Nếu trường tìm kiếm không trống
             if (!newValue.trim().isEmpty()) {
                 // Tạo một mới Timeline với 2 giây trì hoãn
@@ -271,19 +270,20 @@ public class AdminController extends Controller implements Initializable {
 
             String query = searchField.getText().trim();
 
-            // Kiểm tra nếu `query` trống thì ẩn `ListView`
             if (query.isEmpty()) {
                 suggestionsListView.getParent().setVisible(false);
                 return;
             }
-
-            // Thực hiện tìm kiếm trong một luồng riêng
             executorService.submit(() -> searchBooks(query));
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
+
+
     private void searchBooks(String query) {
         try {
             // Gọi API để tìm kiếm sách

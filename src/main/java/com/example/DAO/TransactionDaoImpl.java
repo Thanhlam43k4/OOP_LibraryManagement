@@ -14,7 +14,6 @@ public class TransactionDaoImpl implements TransactionDao {
     public TransactionDaoImpl(Connection con){
         this.con = con;
     }
-
     @Override
     public void addTransaction(Transaction transaction){
         String sql = "INSERT INTO transactions (user_id,copy_ISBN,borrowed_date,return_date) " +
@@ -54,7 +53,6 @@ public class TransactionDaoImpl implements TransactionDao {
             e.printStackTrace();
         }
     }
-
     @Override
     public List<Transaction> getTransactionsByUserId(int userId){
         List<Transaction> transactions = new ArrayList<>();
@@ -109,4 +107,43 @@ public class TransactionDaoImpl implements TransactionDao {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void returnBook(int userId, String ISBN) {
+        // SQL để cập nhật giao dịch trong bảng transactions
+        String updateTransactionSQL =
+                "UPDATE transactions " +
+                        "SET actual_return_date = CURRENT_DATE " +
+                        "WHERE user_id = ? AND copy_ISBN = ? AND actual_return_date IS NULL";
+
+        // SQL để cập nhật trạng thái sách trong bảng copies
+        String updateCopySQL =
+                "UPDATE copies " +
+                        "SET status = 'Available' " +
+                        "WHERE copy_ISBN = ?";
+
+        try (PreparedStatement updateTransactionStmt = con.prepareStatement(updateTransactionSQL);
+             PreparedStatement updateCopyStmt = con.prepareStatement(updateCopySQL)) {
+
+            // Cập nhật giao dịch
+            updateTransactionStmt.setInt(1, userId);
+            updateTransactionStmt.setString(2, ISBN);
+            int rowsUpdated = updateTransactionStmt.executeUpdate();
+
+            if (rowsUpdated == 0) {
+                System.out.println("No active transaction found for userId: " + userId + " and ISBN: " + ISBN);
+                return;
+            }
+
+            // Cập nhật trạng thái sách
+            updateCopyStmt.setString(1, ISBN);
+            updateCopyStmt.executeUpdate();
+
+            System.out.println("Book returned successfully. ISBN: " + ISBN + " is now available.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

@@ -47,4 +47,7 @@ public class DocumentService {
         return documentDao.getDocumentByISBN(ISBN);
     }
 
+    public boolean isDocAvailable(String docISBN) {
+        return documentDao.isDocAvailable(docISBN);
+    }
 }

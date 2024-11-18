@@ -23,7 +23,7 @@ public class BorrowController {
     @FXML
     void borrowDoc(ActionEvent event) {
         String isbn_input = isbn.getText();
-        if (!Validate.isValidISBN(isbn_input)) {
+        if (Validate.isValidISBN(isbn_input)) {
             Notify.showAlert(Alert.AlertType.ERROR, "Eror", "ISBN invalid!");
             return;
         }

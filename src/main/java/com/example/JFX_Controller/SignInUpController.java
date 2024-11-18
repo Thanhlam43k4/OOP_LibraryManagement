@@ -42,39 +42,83 @@ public class SignInUpController extends Controller {
         be_signUp();
     }
     private void be_signIn() {
-        String email = emailField.getText();
-        String password = passwordField.getText();
-        boolean isMatchAccount = UserService.instance.isMatchAccount(email, password);
-        if (!isMatchAccount) {
-            Notify.showAlert(Alert.AlertType.ERROR, "Email or password is wrong", "Please login again!");
-        } else {
-            User user = UserService.instance.getUserByEmail(email);
-            SessionManager.getInstance().setLoggedInUser(user);
-            if (user.getRole().equals("admin")) {
-                System.out.println("Đăng nhập thành công với email: " + email + " với vai trò Admin.");
-                loadScene("Admin.fxml"); // Chuyển đến trang Admin
-            }else if (user.getRole().equals("client")) {
-                System.out.println("Đăng nhập thành công với email: " + email + " với vai trò Client.");
-                loadScene("Client.fxml"); // Chuyển đến trang Clien
-            }
-        }
+        final String email = emailField.getText();
+        final String password = passwordField.getText();
+
+        AsyncTaskExecutor.executeAsync(
+                // Logic chạy trong luồng nền
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!UserService.instance.isMatchAccount(email, password)) {
+                            throw new IllegalArgumentException("Email or password is wrong");
+                        }
+                    }
+                },
+                // Logic chạy trên UI thread sau khi thành công
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        User user = UserService.instance.getUserByEmail(email);
+                        SessionManager.getInstance().setLoggedInUser(user);
+
+                        if ("admin".equals(user.getRole())) {
+                            System.out.println("Đăng nhập thành công với email: " + email + " với vai trò Admin.");
+                            loadScene("Admin.fxml");
+                        } else if ("client".equals(user.getRole())) {
+                            System.out.println("Đăng nhập thành công với email: " + email + " với vai trò Client.");
+                            loadScene("Client.fxml");
+                        }
+                    }
+                },
+                // Logic chạy trên UI thread nếu có lỗi
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        Notify.showAlert(Alert.AlertType.ERROR, "Email or password is wrong", "Please login again!");
+                    }
+                }
+        );
     }
     private void be_signUp() {
-        String email = emailField.getText();
-        String password = passwordField.getText();
-        String confirmpassword = confirmpassField.getText();
-        boolean isEmailExists = UserService.instance.isEmailExists(email);
-        if (email.isEmpty() || password.isEmpty() || confirmpassword.isEmpty()) {
-            Notify.showAlert(Alert.AlertType.ERROR, "Missing Information", "Please fill in all fields!");
-        } else if (isEmailExists) {
-            Notify.showAlert(Alert.AlertType.ERROR, "Email is existed", "Please register with other email!");
-        } else if (Objects.equals(password, confirmpassword)) {
-            User user = new User(email, password);
-            UserService.instance.createUser(user);
-            Notify.showAlert(Alert.AlertType.INFORMATION, "Register Successful", "Please Login!");
-            loadScene("Login.fxml");
-        } else {
-            Notify.showAlert(Alert.AlertType.ERROR, "Wrong Password Matching", "Please register again!");
-        }
+        final String email = emailField.getText();
+        final String password = passwordField.getText();
+        final String confirmpassword = confirmpassField.getText();
+
+        AsyncTaskExecutor.executeAsync(
+                // Logic chạy trong luồng nền
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        if (email.isEmpty() || password.isEmpty() || confirmpassword.isEmpty()) {
+                            throw new IllegalArgumentException("Missing Information");
+                        }
+                        if (UserService.instance.isEmailExists(email)) {
+                            throw new IllegalArgumentException("Email is existed");
+                        }
+                        if (!password.equals(confirmpassword)) {
+                            throw new IllegalArgumentException("Wrong Password Matching");
+                        }
+                        User user = new User(email, password);
+                        UserService.instance.createUser(user);
+                    }
+                },
+                // Logic chạy trên UI thread sau khi thành công
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        Notify.showAlert(Alert.AlertType.INFORMATION, "Register Successful", "Please Login!");
+                        loadScene("Login.fxml");
+                    }
+                },
+                // Logic chạy trên UI thread nếu có lỗi
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        Notify.showAlert(Alert.AlertType.ERROR, "Error", "An error occurred during registration");
+                    }
+                }
+        );
     }
+
 }

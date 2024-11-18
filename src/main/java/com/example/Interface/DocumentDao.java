@@ -21,4 +21,6 @@ public interface DocumentDao {
     boolean isBookAvailable(String ISBN);
 
     Document getDocumentByISBN(String ISBN);
+
+    boolean isDocAvailable(String docISBN);
 }

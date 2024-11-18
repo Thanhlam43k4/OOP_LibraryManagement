@@ -169,4 +169,24 @@ public class DocumentDaoImpl implements DocumentDao {
         }
         return null; // Return null if no document found
     }
+    @Override
+    public boolean isDocAvailable(String ISBN) {
+        String query = "SELECT COUNT(*) > 0 AS is_in_transaction " +
+                "FROM copies c " +
+                "JOIN documents d ON c.document_id = d.documentId " +
+                "JOIN transactions t ON c.copy_ISBN = t.copy_ISBN " +
+                "WHERE d.ISBN = ?";
+
+        try (PreparedStatement pstmt = con.prepareStatement(query)) {
+            pstmt.setString(1, ISBN);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getBoolean("is_in_transaction");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false; // Mặc định trả về false nếu có lỗi
+    }
 }

@@ -32,6 +32,6 @@ public class Validate {
     }
 
     public static boolean isValidISBN(String isbn) {
-        return isbn != null && isbn.matches("^[0-9-]+$"); // Kiểm tra ISBN chỉ chứa số và dấu gạch ngang
+        return isbn == null || !isbn.matches("^[0-9-]+$"); // Kiểm tra ISBN chỉ chứa số và dấu gạch ngang
     }
 }

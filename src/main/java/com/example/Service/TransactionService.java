@@ -30,4 +30,7 @@ public class TransactionService {
     public List<Transaction> getAllTransaction() {
         return transactionDao.getAllTransaction();
     }
+    public void returnBook(int userId, String ISBN){
+        transactionDao.returnBook(userId, ISBN);
+    }
 }

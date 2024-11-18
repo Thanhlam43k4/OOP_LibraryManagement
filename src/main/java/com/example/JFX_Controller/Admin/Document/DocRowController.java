@@ -3,12 +3,13 @@ package com.example.JFX_Controller.Admin.Document;
 import java.io.IOException;
 import java.util.List;
 
+
 import com.example.Handlers.Notify;
 import com.example.JFX_Controller.Admin.AdminController;
 import com.example.Model.Copies;
 import com.example.Model.Document;
 import com.example.Service.DocumentService;
-
+import com.example.Handlers.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,13 +41,18 @@ public class DocRowController {
     }
     @FXML
     void deleteDoc(ActionEvent event) {
+
+        if (DocumentService.instance.isDocAvailable(doc.getISBN())){
+            Notify.showAlert(Alert.AlertType.ERROR, "Error", "Document cannot be deleted because it is part of an active transaction!");
+            return;
+        }
         // update ui
+
         AdminController.docList.remove(this.root);
         AdminController.instance.docVBox.getChildren().remove(this.root);
         AdminController.instance.docVBox.setPrefHeight(AdminController.docList.size() * 70 + 70);
         DocumentService.instance.deleteDocument(doc.getDocumentId());
         Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Delete Document sucess!");
-
     }
 
     public void setInfo(Document d, Node root) {

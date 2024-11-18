@@ -10,4 +10,5 @@ public interface TransactionDao {
     public void deleteTransaction(int transactionId);
     public void addTransaction(int userId, String ISBN);
     public List<Transaction> getAllTransaction();
+    public void returnBook(int userId,String ISBN);
 }

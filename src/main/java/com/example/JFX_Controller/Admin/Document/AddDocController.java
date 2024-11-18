@@ -55,7 +55,7 @@ public class AddDocController {
             return;
         }
 
-        if (!Validate.isValidISBN(isbn_input)) {
+        if (Validate.isValidISBN(isbn_input)) {
             Notify.showAlert(Alert.AlertType.ERROR, "Eror", "ISBN invalid!");
             return;
         }
