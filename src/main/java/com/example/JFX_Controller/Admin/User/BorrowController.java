@@ -14,8 +14,6 @@ import com.example.Service.TransactionService;
 import javafx.event.ActionEvent;
 
 public class BorrowController {
-
-    @FXML private TextField docId;
     @FXML private TextField isbn; // của copy
     
     @FXML private StackPane userBorrowRoot;
