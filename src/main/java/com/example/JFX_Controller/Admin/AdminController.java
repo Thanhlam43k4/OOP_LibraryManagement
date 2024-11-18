@@ -289,7 +289,6 @@ public class AdminController extends Controller implements Initializable {
             // Gọi API để tìm kiếm sách
             List<Document> documents = ApiService.searchBooks(query);
 
-            // Chuyển đổi danh sách Document thành ObservableList<String> để hiển thị tiêu đề
             ObservableList<String> suggestions = FXCollections.observableArrayList();
             for (Document document : documents) {
                 suggestions.add(document.getTitle());

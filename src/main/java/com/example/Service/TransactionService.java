@@ -27,4 +27,7 @@ public class TransactionService {
 
         transactionDao.addTransaction(userId,ISBN);
     }
+    public List<Transaction> getAllTransaction() {
+        return transactionDao.getAllTransaction();
+    }
 }

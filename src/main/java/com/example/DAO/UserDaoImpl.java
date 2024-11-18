@@ -1,4 +1,5 @@
 package com.example.DAO;
+import com.example.Database.DatabaseConnection;
 import com.example.Interface.UserDao;
 import com.example.Model.Client;
 import com.example.Model.User;
@@ -154,5 +155,31 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
+    @Override
+    public void addUser(String email, String username, String phoneNumber, int age){
+        String query = "INSERT INTO users (email, username, phoneNumber, age) VALUES (?, ?, ?, ?)";
+        try (Connection conn = DatabaseConnection.getConnection(); // Giả sử bạn có một phương thức để lấy kết nối
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
 
+            // Thiết lập các tham số cho câu lệnh
+            pstmt.setString(1, email);
+            pstmt.setString(2, username);
+            pstmt.setString(3, phoneNumber);
+            pstmt.setInt(4, age);
+
+            // Thực thi câu lệnh INSERT
+            int rowsAffected = pstmt.executeUpdate();
+
+            // Kiểm tra xem câu lệnh có thành công không
+            if (rowsAffected > 0) {
+                System.out.println("User added successfully.");
+            } else {
+                System.out.println("Failed to add user.");
+            }
+        } catch (SQLException e) {
+            // Xử lý lỗi khi kết nối hoặc thực thi câu truy vấn
+            e.printStackTrace();
+        }
+
+    }
 }

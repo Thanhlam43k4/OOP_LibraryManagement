@@ -46,6 +46,7 @@ public class DocRowController {
         AdminController.instance.docVBox.setPrefHeight(AdminController.docList.size() * 70 + 70);
         DocumentService.instance.deleteDocument(doc.getDocumentId());
         Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Delete Document sucess!");
+
     }
 
     public void setInfo(Document d, Node root) {

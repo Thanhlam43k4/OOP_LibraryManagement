@@ -106,12 +106,13 @@ public class DocumentDaoImpl implements DocumentDao {
     }
     @Override
     public void updateDocument(Document doc) {
-        String query = "UPDATE documents SET title = ?, year = ?, genre = ? WHERE documentId = ?";
+        String query = "UPDATE documents SET title = ?, year = ?, genre = ? , description = ? WHERE documentId = ?";
         try (PreparedStatement pstmt = con.prepareStatement(query)) {
             pstmt.setString(1, doc.getTitle());
             pstmt.setInt(2, doc.getYear());
             pstmt.setString(3, doc.getGenre());
-            pstmt.setInt(4, doc.getDocumentId());
+            pstmt.setString(4,doc.getDescription());
+            pstmt.setInt(5, doc.getDocumentId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

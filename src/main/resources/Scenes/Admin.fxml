@@ -286,14 +286,14 @@
                      <content>
                         <VBox fx:id="userVBox" prefHeight="224.0" prefWidth="860.0" spacing="10.0">
                            <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="751.0" style="-fx-background-color: #e8e8e8 #e8e8e8; -fx-background-radius: 10; -fx-border-color: #c7c7c7; -fx-border-radius: 10; -fx-background-color: #303030; -fx-border-width: 0;">
+                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="895.0" style="-fx-background-color: #e8e8e8 #e8e8e8; -fx-background-radius: 10; -fx-border-color: #c7c7c7; -fx-border-radius: 10; -fx-background-color: #303030; -fx-border-width: 0;">
                                  <children>
                                     <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" style="-fx-text-fill: white;" text="Id" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="10.0" layoutY="28.0" prefHeight="25.0" prefWidth="210.0" style="-fx-text-fill: white;" text="Username" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                    <Label layoutX="10.0" layoutY="28.0" prefHeight="25.0" prefWidth="210.0" style="-fx-text-fill: white;" text="Username" textAlignment="CENTER" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>
@@ -301,7 +301,7 @@
                                           <Insets left="10.0" />
                                        </padding>
                                     </Label>
-                                    <Label layoutX="25.0" layoutY="28.0" prefHeight="25.0" prefWidth="230.0" style="-fx-text-fill: white;" text="Email" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                    <Label layoutX="25.0" layoutY="28.0" prefHeight="25.0" prefWidth="186.0" style="-fx-text-fill: white;" text="Email" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>

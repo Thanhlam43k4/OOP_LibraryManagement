@@ -1,5 +1,6 @@
 package com.example.DAO;
 import com.example.Interface.TransactionDao;
+import com.example.Model.Client;
 import com.example.Model.Transaction;
 
 import java.sql.*;
@@ -45,12 +46,10 @@ public class TransactionDaoImpl implements TransactionDao {
             pstmt.setDate(4,Date.valueOf(returnDate));
             pstmt.executeUpdate();
             System.out.println("Add Transaction Successfully with userId: "+ userId +" ISBN: " +ISBN);
-
             updatestmt.setString(1,ISBN);
             updatestmt.executeUpdate();
 
             System.out.println("Status of Copy with ISBN=" +ISBN + " is changed to Checked Out");
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -79,7 +78,27 @@ public class TransactionDaoImpl implements TransactionDao {
         }
         return transactions;
     }
-
+    @Override
+    public List<Transaction> getAllTransaction() {
+        List<Transaction> trans = new ArrayList<>();
+        String sql = "SELECT * FROM transactions";
+        try (Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                Transaction transaction = new Transaction(
+                        rs.getInt("transaction_id"),
+                        rs.getInt("user_id"),
+                        rs.getString("copy_ISBN"),
+                        rs.getDate("borrowed_date"),
+                        rs.getDate("return_date"),
+                        rs.getDate("actual_return_date")
+                );
+                trans.add(transaction);
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return trans;
+    }
     @Override
     public void deleteTransaction(int transactionId){
         String sql = "DELETE FROM transactions WHERE transaction_id = ?";
