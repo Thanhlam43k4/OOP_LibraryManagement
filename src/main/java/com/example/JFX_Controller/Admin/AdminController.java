@@ -59,18 +59,18 @@ public class AdminController extends Controller implements Initializable {
     @FXML public VBox docCopyVbox;
     @FXML public VBox docVBox;
     // Users
-    @FXML private AnchorPane userPane;
-    @FXML private StackPane returnDocPane;
-    @FXML private VBox returnDocVbox;
+    @FXML public AnchorPane userPane;
+    @FXML public StackPane returnDocPane;
+    @FXML public VBox returnDocVbox;
     @FXML private VBox userVBox;
     // Transaction
     @FXML private AnchorPane tranPane;
-    @FXML private VBox transVBox;
+    @FXML public VBox transVBox;
 
     private Timeline searchTimeline;
     public static List<Node> docList = new ArrayList<>();
     private static List<Node> userList = new ArrayList<>();
-    private static List<Node> transList = new ArrayList<>();
+    public static List<Node> transList = new ArrayList<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -147,7 +147,7 @@ public class AdminController extends Controller implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/UserRow.fxml"));
                 Node userNode = loader.load();
                 UserRowController userRowController = loader.getController();
-                userRowController.setInfo(c, userPane, returnDocPane, returnDocVbox);
+                userRowController.setInfo(c, this);
                 userList.add(userNode);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -169,7 +169,7 @@ public class AdminController extends Controller implements Initializable {
             }   
         }
     }
-    private void addTranscNodes() {
+    public void addTranscNodes() {
         transList.clear();
         List<Transaction> trans = TransactionService.instance.getTransactionsByUserId(1);
         for (Transaction t : trans) {

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.example.Handlers.ExtraFunction;
+import com.example.JFX_Controller.Admin.AdminController;
 import com.example.Model.Client;
 import com.example.Model.Document;
 import com.example.Model.Transaction;
@@ -31,6 +32,8 @@ public class UserRowController {
     @FXML private AnchorPane userPane;
     @FXML private StackPane returnDocPane;
     @FXML private VBox returnDocVbox;
+
+    private AdminController adminController;
 
     private Client client;
     @FXML
@@ -78,7 +81,7 @@ public class UserRowController {
             AnchorPane.setTopAnchor(borrowPane, 0.0);
             
             BorrowController borrowController = loader.getController();
-            borrowController.setInfo(client.getId(), userPane);
+            borrowController.setInfo(client.getId(), adminController);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -105,7 +108,7 @@ public class UserRowController {
         }
     }
 
-    public void setInfo(Client client, AnchorPane userPane, StackPane returnDocPane, VBox returnDocVbox) {
+    public void setInfo(Client client, AdminController adminController) {
         this.client = client;
         this.userId.setText(String.valueOf(client.getId()));
         this.userName.setText(client.getUsername());
@@ -113,8 +116,9 @@ public class UserRowController {
         this.phone.setText(client.getPhoneNumber());
         this.age.setText(String.valueOf(client.getAge()));
         this.borrowed.setText(String.valueOf(client.getBorrowedBook()));
-        this.userPane = userPane;
-        this.returnDocPane = returnDocPane;
-        this.returnDocVbox = returnDocVbox;
+        this.adminController = adminController;
+        this.userPane = adminController.userPane;
+        this.returnDocPane = adminController.returnDocPane;
+        this.returnDocVbox = adminController.returnDocVbox;
     }
 }

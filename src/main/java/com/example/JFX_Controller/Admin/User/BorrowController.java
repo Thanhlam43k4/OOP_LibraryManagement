@@ -9,6 +9,7 @@ import javafx.scene.layout.StackPane;
 import com.example.Handlers.ExtraFunction;
 import com.example.Handlers.Notify;
 import com.example.Handlers.Validate;
+import com.example.JFX_Controller.Admin.AdminController;
 import com.example.Service.TransactionService;
 
 import javafx.event.ActionEvent;
@@ -21,11 +22,11 @@ public class BorrowController {
     @FXML private StackPane userBorrowRoot;
     @FXML private AnchorPane userPane;
 
+    private AdminController adminController;
     private int userId;
     @FXML
     void borrowDoc(ActionEvent event) {
         String isbn_input = isbn.getText();
-        isbn_input = ExtraFunction.extractISBN(isbn_input);
         if (!Validate.isValidISBN(isbn_input)) {
             Notify.showAlert(Alert.AlertType.ERROR, "Eror", "ISBN invalid!");
             return;
@@ -33,6 +34,10 @@ public class BorrowController {
 
         TransactionService.instance.borrowBook(userId, isbn_input);
         Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Borrow Document sucess!");
+        
+        // update transaction UI
+        resetTrans();
+
         userPane.getChildren().remove(this.userBorrowRoot);
         this.userBorrowRoot = null;
     }
@@ -43,8 +48,15 @@ public class BorrowController {
         this.userBorrowRoot = null;
     }
 
-    public void setInfo(int userId, AnchorPane userPane) {
-        this.userPane = userPane;
+    private void resetTrans() {
+        AdminController.transList.clear();
+        adminController.addTranscNodes();
+        adminController.setVBox(adminController.transVBox, AdminController.transList);
+    }
+
+    public void setInfo(int userId, AdminController adminController) {
+        this.adminController = adminController;
+        this.userPane = adminController.userPane;
         this.userId = userId;
     }
 }
