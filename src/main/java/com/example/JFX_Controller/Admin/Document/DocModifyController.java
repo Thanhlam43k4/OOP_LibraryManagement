@@ -73,6 +73,11 @@ public class DocModifyController {
             Notify.showAlert(Alert.AlertType.ERROR, "Eror", "ISBN invalid!");
             return;
         }
+
+        if (!Validate.isValidTitle(description.getText())) {
+            Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Desciption invalid!");
+            return;
+        }
     }
 
     public void setInfo(Document d, DocRowController docRow) {

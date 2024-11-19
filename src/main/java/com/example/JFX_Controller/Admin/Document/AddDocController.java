@@ -78,6 +78,8 @@ public class AddDocController {
         addDocNode(doc);
         // Thông báo thành công
         Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Add Document sucess!");
+        AdminController.instance.docPane.getChildren().remove(addDocRoot);
+        addDocRoot = null;
     }
 
     @FXML
