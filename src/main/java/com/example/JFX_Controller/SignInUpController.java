@@ -1,7 +1,6 @@
 package com.example.JFX_Controller;
 
 //#region Lib
-import java.util.Objects;
 
 import com.example.Handlers.Notify;
 import com.example.Model.User;

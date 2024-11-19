@@ -1,5 +1,5 @@
 Hello Java App
 updateDocument: thêm description, url
 getDocbyISBN: thêm url
-validate modifyDoc ở DocModifyController
+validate modifyDoc (phần url) ở DocModifyController
 deleteDoc: check transaction

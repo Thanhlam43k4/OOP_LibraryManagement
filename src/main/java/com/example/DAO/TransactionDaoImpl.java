@@ -1,6 +1,5 @@
 package com.example.DAO;
 import com.example.Interface.TransactionDao;
-import com.example.Model.Client;
 import com.example.Model.Transaction;
 
 import java.sql.*;
