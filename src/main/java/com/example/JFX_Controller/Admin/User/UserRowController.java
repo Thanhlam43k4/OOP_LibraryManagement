@@ -29,7 +29,6 @@ public class UserRowController {
     @FXML private Label phone;
     @FXML private Label borrowed;
 
-    @FXML private AnchorPane userPane;
     @FXML private StackPane returnDocPane;
     @FXML private VBox returnDocVbox;
 
@@ -53,14 +52,14 @@ public class UserRowController {
             Parent userInfoPane = loader.load();
 
             // lấy docPane của admin
-            userPane.getChildren().add(userInfoPane);
+            AdminController.instance.userPane.getChildren().add(userInfoPane);
             AnchorPane.setBottomAnchor(userInfoPane, 0.0);
             AnchorPane.setLeftAnchor(userInfoPane, 0.0);
             AnchorPane.setRightAnchor(userInfoPane, 0.0);
             AnchorPane.setTopAnchor(userInfoPane, 0.0);
             
             UserInfoController userInfoController = loader.getController();
-            userInfoController.setInfo(client, userPane);
+            userInfoController.setInfo(client);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -72,7 +71,7 @@ public class UserRowController {
             Parent borrowPane = loader.load();
 
             // lấy docPane của admin
-            userPane.getChildren().add(borrowPane);
+            AdminController.instance.userPane.getChildren().add(borrowPane);
             AnchorPane.setBottomAnchor(borrowPane, 0.0);
             AnchorPane.setLeftAnchor(borrowPane, 0.0);
             AnchorPane.setRightAnchor(borrowPane, 0.0);
@@ -114,7 +113,6 @@ public class UserRowController {
         this.phone.setText(client.getPhoneNumber());
         this.age.setText(String.valueOf(client.getAge()));
         this.borrowed.setText(String.valueOf(client.getBorrowedBook()));
-        this.userPane = AdminController.instance.userPane;
         this.returnDocPane = AdminController.instance.returnDocPane;
         this.returnDocVbox = AdminController.instance.returnDocVbox;
     }

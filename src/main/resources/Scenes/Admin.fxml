@@ -121,96 +121,103 @@
             </HBox>
          </children>
       </AnchorPane>
-      <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #fff8f2; -fx-background-radius: 40;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="65.0">
+      <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #fff8f2; -fx-background-radius: 30;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="65.0">
          <children>
-            <AnchorPane fx:id="docPane" maxWidth="940.0" prefHeight="200.0" prefWidth="200.0">
+            <StackPane fx:id="docPane" prefHeight="150.0" prefWidth="200.0" visible="false">
                <children>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="200.0" spacing="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane maxWidth="940.0" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <MenuButton mnemonicParsing="false" prefHeight="32.0" styleClass="second-menubutton" stylesheets="@../CSS_Setup/menubutton.css" text="Type" textFill="#5e5757">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="All" />
-                              <MenuItem mnemonicParsing="false" text="Book" />
-                           </items>
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                           <graphic>
-                              <FontAwesomeIconView fill="#a43d3d" glyphName="FILTER" styleClass="fontawesome-icon" wrappingWidth="10.428571701049805" />
-                           </graphic>
-                        </MenuButton>
-                        <MenuButton layoutX="84.0" layoutY="27.0" mnemonicParsing="false" prefHeight="32.0" styleClass="second-menubutton" stylesheets="@../CSS_Setup/menubutton.css" text="Add Doc" textFill="#5e5757">
-                           <items>
-                              <MenuItem mnemonicParsing="false" onAction="#openAddDoc" text="Normal" />
-                              <MenuItem mnemonicParsing="false" onAction="#openAddDocApi" text="With API" />
-                           </items>
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                           <graphic>
-                              <FontAwesomeIconView fill="#a43d3d" glyphName="PLUS" styleClass="fontawesome-icon" wrappingWidth="10.428571701049805" />
-                           </graphic>
-                        </MenuButton>
-                     </children>
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding>
-                  </HBox>
-                  <ScrollPane layoutY="36.0" prefHeight="403.0" prefWidth="526.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
-                     <content>
-                        <VBox fx:id="docVBox" prefHeight="326.0" prefWidth="900.0" spacing="10.0">
+                        <HBox alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="200.0" spacing="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="766.0" style="-fx-background-color: #e8e8e8; -fx-background-radius: 10; -fx-border-color: #c7c7c7; -fx-border-radius: 10; -fx-background-color: #303030; -fx-border-width: 0;">
-                                 <children>
-                                    <Label alignment="CENTER" prefHeight="25.0" prefWidth="74.0" style="-fx-text-fill: white;" text="Id" textFill="#3c3a3a">
-                                       <font>
-                                          <Font name="System Bold" size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="10.0" layoutY="28.0" prefHeight="25.0" prefWidth="320.0" style="-fx-text-fill: white;" text="Title" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
-                                       <font>
-                                          <Font name="System Bold" size="16.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label layoutX="25.0" layoutY="28.0" prefHeight="25.0" prefWidth="220.0" style="-fx-text-fill: white;" text="Author" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
-                                       <font>
-                                          <Font name="System Bold" size="16.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label layoutX="101.0" layoutY="28.0" prefHeight="25.0" prefWidth="155.0" style="-fx-text-fill: white;" text="Genre" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
-                                       <font>
-                                          <Font name="System Bold" size="16.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label layoutX="462.0" layoutY="28.0" prefHeight="25.0" prefWidth="93.0" style="-fx-text-fill: white;" text="Copies" textFill="#3c3a3a">
-                                       <font>
-                                          <Font name="System Bold" size="16.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                 </children>
-                              </HBox>
+                              <MenuButton mnemonicParsing="false" prefHeight="32.0" styleClass="second-menubutton" stylesheets="@../CSS_Setup/menubutton.css" text="Type" textFill="#5e5757">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" text="All" />
+                                    <MenuItem mnemonicParsing="false" text="Book" />
+                                 </items>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIconView fill="#a43d3d" glyphName="FILTER" styleClass="fontawesome-icon" wrappingWidth="10.428571701049805" />
+                                 </graphic>
+                              </MenuButton>
+                              <MenuButton layoutX="84.0" layoutY="27.0" mnemonicParsing="false" prefHeight="32.0" styleClass="second-menubutton" stylesheets="@../CSS_Setup/menubutton.css" text="Add Doc" textFill="#5e5757">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#openAddDoc" text="Normal" />
+                                    <MenuItem mnemonicParsing="false" onAction="#openAddDocApi" text="With API" />
+                                 </items>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIconView fill="#a43d3d" glyphName="PLUS" styleClass="fontawesome-icon" wrappingWidth="10.428571701049805" />
+                                 </graphic>
+                              </MenuButton>
                            </children>
-                        </VBox>
-                     </content>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                  </ScrollPane>
-                  <StackPane fx:id="copiesDocPane" layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="776.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </HBox>
+                        <ScrollPane layoutY="36.0" prefHeight="403.0" prefWidth="526.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
+                           <content>
+                              <VBox fx:id="docVBox" prefHeight="326.0" prefWidth="900.0" spacing="10.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="766.0" style="-fx-background-color: #e8e8e8; -fx-background-radius: 10; -fx-border-color: #c7c7c7; -fx-border-radius: 10; -fx-background-color: #303030; -fx-border-width: 0;">
+                                       <children>
+                                          <Label alignment="CENTER" prefHeight="25.0" prefWidth="74.0" style="-fx-text-fill: white;" text="Id" textFill="#3c3a3a">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="10.0" layoutY="28.0" prefHeight="25.0" prefWidth="320.0" style="-fx-text-fill: white;" text="Title" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label layoutX="25.0" layoutY="28.0" prefHeight="25.0" prefWidth="220.0" style="-fx-text-fill: white;" text="Author" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label layoutX="101.0" layoutY="28.0" prefHeight="25.0" prefWidth="155.0" style="-fx-text-fill: white;" text="Genre" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label layoutX="462.0" layoutY="28.0" prefHeight="25.0" prefWidth="93.0" style="-fx-text-fill: white;" text="Copies" textFill="#3c3a3a">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </content>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </ScrollPane>
+                     </children>
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                  </AnchorPane>
+                  <StackPane fx:id="copiesDocPane" prefHeight="150.0" prefWidth="776.0" visible="false">
                      <children>
-                        <Pane prefHeight="412.0" prefWidth="776.0" style="-fx-background-color: #504b4b; -fx-opacity: 0.8; -fx-background-radius: 10;" />
+                        <Pane prefHeight="412.0" prefWidth="776.0" style="-fx-background-color: #504b4b; -fx-opacity: 0.8; -fx-background-radius: 30;" />
                         <AnchorPane maxHeight="450.0" maxWidth="718.0" style="-fx-background-color: #d3cccc; -fx-border-color: #8d8888;">
                            <children>
                               <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="10.0" prefHeight="50.0" prefWidth="682.0" style="-fx-background-color: rgb(211, 204, 204); -fx-background-radius: 15; -fx-border-color: #797577; -fx-border-radius: 15; -fx-border-width: 0;">
@@ -264,87 +271,88 @@
                      </children>
                   </StackPane>
                </children>
-               <StackPane.margin>
-                  <Insets />
-               </StackPane.margin>
-            </AnchorPane>
-            <AnchorPane fx:id="userPane" maxWidth="900.0" prefHeight="200.0" visible="false">
+            </StackPane>
+            <StackPane fx:id="userPane" prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="200.0" spacing="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane maxWidth="900.0" prefHeight="200.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#openAddUser" styleClass="primary-button" stylesheets="@../CSS_Setup/button.css" text=" Add User">
-                           <graphic>
-                              <FontAwesomeIconView glyphName="PLUS" styleClass="fontawesome-icon" />
-                           </graphic>
-                        </Button>
-                     </children>
-                     <padding>
-                        <Insets right="20.0" />
-                     </padding>
-                  </HBox>
-                  <ScrollPane prefHeight="419.0" prefWidth="758.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
-                     <content>
-                        <VBox fx:id="userVBox" prefHeight="224.0" prefWidth="860.0" spacing="10.0">
+                        <HBox alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="200.0" spacing="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="895.0" style="-fx-background-color: #e8e8e8 #e8e8e8; -fx-background-radius: 10; -fx-border-color: #c7c7c7; -fx-border-radius: 10; -fx-background-color: #303030; -fx-border-width: 0;">
-                                 <children>
-                                    <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" style="-fx-text-fill: white;" text="Id" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
-                                       <font>
-                                          <Font name="System Bold" size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="10.0" layoutY="28.0" prefHeight="25.0" prefWidth="210.0" style="-fx-text-fill: white;" text="Username" textAlignment="CENTER" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
-                                       <font>
-                                          <Font name="System Bold" size="16.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label layoutX="25.0" layoutY="28.0" prefHeight="25.0" prefWidth="230.0" style="-fx-text-fill: white;" text="Email" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
-                                       <font>
-                                          <Font name="System Bold" size="16.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label layoutX="101.0" layoutY="28.0" prefHeight="25.0" prefWidth="65.0" style="-fx-text-fill: white;" text="Age" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
-                                       <font>
-                                          <Font name="System Bold" size="16.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label layoutX="478.0" layoutY="28.0" prefHeight="25.0" prefWidth="114.0" style="-fx-text-fill: white;" text="Phone" textFill="#3c3a3a">
-                                       <font>
-                                          <Font name="System Bold" size="16.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label layoutX="478.0" layoutY="28.0" prefHeight="25.0" prefWidth="87.0" style="-fx-text-fill: white;" text="Borrowed" textFill="#3c3a3a">
-                                       <font>
-                                          <Font name="System Bold" size="16.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                 </children>
-                              </HBox>
+                              <Button mnemonicParsing="false" onAction="#openAddUser" prefHeight="32.0" prefWidth="89.0" styleClass="primary-button" stylesheets="@../CSS_Setup/button.css" text=" Add User">
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="PLUS" styleClass="fontawesome-icon" />
+                                 </graphic>
+                              </Button>
                            </children>
-                        </VBox>
-                     </content>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                  </ScrollPane>
-                  <StackPane fx:id="returnDocPane" prefHeight="410.0" prefWidth="776.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <padding>
+                              <Insets right="20.0" />
+                           </padding>
+                        </HBox>
+                        <ScrollPane prefHeight="419.0" prefWidth="758.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
+                           <content>
+                              <VBox fx:id="userVBox" prefHeight="224.0" prefWidth="860.0" spacing="10.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="895.0" style="-fx-background-color: #e8e8e8 #e8e8e8; -fx-background-radius: 10; -fx-border-color: #c7c7c7; -fx-border-radius: 10; -fx-background-color: #303030; -fx-border-width: 0;">
+                                       <children>
+                                          <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" style="-fx-text-fill: white;" text="Id" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="10.0" layoutY="28.0" prefHeight="25.0" prefWidth="210.0" style="-fx-text-fill: white;" text="Username" textAlignment="CENTER" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label layoutX="25.0" layoutY="28.0" prefHeight="25.0" prefWidth="230.0" style="-fx-text-fill: white;" text="Email" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label layoutX="101.0" layoutY="28.0" prefHeight="25.0" prefWidth="65.0" style="-fx-text-fill: white;" text="Age" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label layoutX="478.0" layoutY="28.0" prefHeight="25.0" prefWidth="114.0" style="-fx-text-fill: white;" text="Phone" textFill="#3c3a3a">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label layoutX="478.0" layoutY="28.0" prefHeight="25.0" prefWidth="87.0" style="-fx-text-fill: white;" text="Borrowed" textFill="#3c3a3a">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </content>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+                  <StackPane fx:id="returnDocPane" prefHeight="410.0" prefWidth="776.0" visible="false">
                      <children>
-                        <Pane prefHeight="412.0" prefWidth="776.0" style="-fx-background-color: #504b4b; -fx-opacity: 0.8; -fx-background-radius: 10;" />
+                        <Pane prefHeight="412.0" prefWidth="776.0" style="-fx-background-color: #504b4b; -fx-opacity: 0.8; -fx-background-radius: 30;" />
                         <AnchorPane maxHeight="450.0" maxWidth="718.0" style="-fx-background-color: rgb(211, 204, 204); -fx-border-color: #8d8888;">
                            <children>
                               <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="10.0" prefHeight="50.0" prefWidth="682.0" style="-fx-background-color: rgb(211, 204, 204); -fx-background-radius: 15; -fx-border-color: #797577; -fx-border-radius: 15; -fx-border-width: 0;">
@@ -398,7 +406,7 @@
                      </children>
                   </StackPane>
                </children>
-            </AnchorPane>
+            </StackPane>
             <AnchorPane fx:id="tranPane" maxWidth="900.0" prefHeight="200.0" prefWidth="200.0" visible="false">
                <children>
                   <ScrollPane prefHeight="400.0" prefWidth="485.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">

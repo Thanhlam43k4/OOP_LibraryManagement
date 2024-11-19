@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 
 import com.example.JFX_Controller.Controller;
 import com.example.JFX_Controller.Admin.Document.DocRowController;
-import com.example.JFX_Controller.Admin.User.AddUserController;
 import com.example.JFX_Controller.Admin.User.UserRowController;
 import com.example.Model.Client;
 import com.example.Model.Document;
@@ -53,12 +52,12 @@ public class AdminController extends Controller implements Initializable {
     @FXML private HBox usersBut;
     @FXML private HBox tranBut;
     // Docs
-    @FXML public AnchorPane docPane;
+    @FXML public StackPane docPane;
     @FXML public StackPane copiesDocPane;
     @FXML public VBox docCopyVbox;
     @FXML public VBox docVBox;
     // Users
-    @FXML public AnchorPane userPane;
+    @FXML public StackPane userPane;
     @FXML public StackPane returnDocPane;
     @FXML public VBox returnDocVbox;
     @FXML private VBox userVBox;
@@ -228,9 +227,6 @@ public class AdminController extends Controller implements Initializable {
             AnchorPane.setLeftAnchor(addUserPane, 0.0);
             AnchorPane.setRightAnchor(addUserPane, 0.0);
             AnchorPane.setTopAnchor(addUserPane, 0.0);
-            
-            AddUserController addUserController = loader.getController();
-            addUserController.setInfo(userPane);
         } catch (IOException e) {
             e.printStackTrace();
         }

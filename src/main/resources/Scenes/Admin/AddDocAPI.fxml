@@ -14,8 +14,8 @@
 
 <StackPane fx:id="addDocRoot" alignment="TOP_CENTER" prefHeight="552.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.Document.AddDocApiController">
    <children>
-      <Pane prefHeight="412.0" prefWidth="776.0" style="-fx-background-color: #504b4b; -fx-opacity: 0.8; -fx-background-radius: 10;" />
-      <AnchorPane maxHeight="500.0" maxWidth="720.0">
+      <Pane prefHeight="412.0" prefWidth="776.0" style="-fx-background-color: #504b4b; -fx-opacity: 0.8; -fx-background-radius: 30;" />
+      <AnchorPane maxHeight="510.0" maxWidth="720.0">
          <children>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="720.0" style="-fx-background-color: white; -fx-background-radius: 10;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -56,9 +56,9 @@
                   </VBox>
                </children>
             </AnchorPane>
-            <ListView fx:id="suggestList" prefHeight="165.0" prefWidth="720.0" style="-fx-background-radius: 0 0 10 10; -fx-background-color: white; -fx-border-color: #cfcfcf; -fx-border-width: 1 0 0 0;" styleClass="primary-listview" stylesheets="@../../CSS_Setup/listview.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="170.0">
+            <ListView fx:id="suggestList" prefHeight="180.0" prefWidth="720.0" style="-fx-background-radius: 0 0 10 10; -fx-background-color: white; -fx-border-color: #cfcfcf; -fx-border-width: 1 0 0 0;" styleClass="primary-listview" stylesheets="@../../CSS_Setup/listview.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="170.0">
                <padding>
-                  <Insets left="15.0" top="5.0" />
+                  <Insets left="15.0" top="10.0" />
                </padding>
             </ListView>
          </children>

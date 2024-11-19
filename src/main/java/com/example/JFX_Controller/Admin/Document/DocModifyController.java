@@ -4,11 +4,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
 import com.example.Handlers.Notify;
 import com.example.Handlers.Validate;
+import com.example.JFX_Controller.Admin.AdminController;
 import com.example.Model.Document;
 import com.example.Service.DocumentService;
 
@@ -24,13 +24,12 @@ public class DocModifyController {
     @FXML private TextField imageUrl;
 
     @FXML private StackPane docModifyRoot;
-    @FXML private AnchorPane docPane;
 
     private int docId;
     private DocRowController docRowController;
     @FXML
     void cancelModifyDoc(ActionEvent event) {
-        docPane.getChildren().remove(this.docModifyRoot);
+        AdminController.instance.docPane.getChildren().remove(this.docModifyRoot);
         this.docModifyRoot = null;
     }
 
@@ -49,7 +48,7 @@ public class DocModifyController {
         docRowController.modifyInfo(modifyDoc); // update ui
         Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Document has been modified!");
         // tắt Pane
-        docPane.getChildren().remove(this.docModifyRoot);
+        AdminController.instance.docPane.getChildren().remove(this.docModifyRoot);
         this.docModifyRoot = null;
     }
 
@@ -76,7 +75,7 @@ public class DocModifyController {
         }
     }
 
-    public void setInfo(Document d, AnchorPane docPane, DocRowController docRow) {
+    public void setInfo(Document d, DocRowController docRow) {
         docId = d.getDocumentId();
         this.title.setText(d.getTitle());
         this.author.setText(d.getAuthor());
@@ -84,7 +83,6 @@ public class DocModifyController {
         this.description.setText(d.getDescription());
         this.imageUrl.setText(d.getUrlImage());
         this.isbn.setText(d.getISBN());
-        this.docPane = docPane;
         this.docRowController = docRow;
     }
 }

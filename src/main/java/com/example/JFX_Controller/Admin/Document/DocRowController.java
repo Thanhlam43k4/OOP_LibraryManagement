@@ -99,15 +99,14 @@ public class DocRowController {
             Parent modifyDocPane = loader.load();
 
             // lấy docPane của admin
-            AnchorPane docPane = (AnchorPane) AdminController.instance.copiesDocPane.getParent();
-            docPane.getChildren().add(modifyDocPane);
+            AdminController.instance.docPane.getChildren().add(modifyDocPane);
             AnchorPane.setBottomAnchor(modifyDocPane, 0.0);
             AnchorPane.setLeftAnchor(modifyDocPane, 0.0);
             AnchorPane.setRightAnchor(modifyDocPane, 0.0);
             AnchorPane.setTopAnchor(modifyDocPane, 0.0);
             
             DocModifyController modifyController = loader.getController();
-            modifyController.setInfo(doc, docPane, this);
+            modifyController.setInfo(doc, this);
         } catch (IOException e) {
             e.printStackTrace();
         }

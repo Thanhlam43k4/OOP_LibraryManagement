@@ -3,7 +3,6 @@ package com.example.JFX_Controller.Admin.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
 import com.example.Handlers.Notify;
@@ -17,7 +16,6 @@ public class BorrowController {
     @FXML private TextField isbn; // của copy
     
     @FXML private StackPane userBorrowRoot;
-    @FXML private AnchorPane userPane;
 
     private int userId;
     @FXML
@@ -34,13 +32,13 @@ public class BorrowController {
         // update transaction UI
         resetTrans();
 
-        userPane.getChildren().remove(this.userBorrowRoot);
+        AdminController.instance.userPane.getChildren().remove(this.userBorrowRoot);
         this.userBorrowRoot = null;
     }
 
     @FXML
     void turnOffPane(ActionEvent event) {
-        userPane.getChildren().remove(this.userBorrowRoot);
+        AdminController.instance.userPane.getChildren().remove(this.userBorrowRoot);
         this.userBorrowRoot = null;
     }
 
@@ -51,7 +49,6 @@ public class BorrowController {
     }
 
     public void setInfo(int userId) {
-        this.userPane = AdminController.instance.userPane;
         this.userId = userId;
     }
 }
