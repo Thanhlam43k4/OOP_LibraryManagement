@@ -3,3 +3,4 @@ updateDocument: thêm description, url
 getDocbyISBN: thêm url
 validate modifyDoc (phần url) ở DocModifyController
 deleteDoc: check transaction
+thêm điều kiện getTransactionsByUserId với actualreturnDate = null

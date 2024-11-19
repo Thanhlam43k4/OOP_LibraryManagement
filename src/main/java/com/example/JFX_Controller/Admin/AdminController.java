@@ -174,7 +174,7 @@ public class AdminController extends Controller implements Initializable {
     }
     public void addTranscNodes() {
         transList.clear();
-        List<Transaction> trans = TransactionService.instance.getTransactionsByUserId(1);
+        List<Transaction> trans = TransactionService.instance.getAllTransaction();
         for (Transaction t : trans) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/TranRow.fxml"));

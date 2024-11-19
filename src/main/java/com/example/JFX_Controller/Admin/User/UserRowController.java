@@ -90,6 +90,7 @@ public class UserRowController {
         List<Transaction> trans = TransactionService.instance.getTransactionsByUserId(client.getId());
         returnDocVbox.setPrefHeight(trans.size() * 70);
         for (Transaction t : trans) {
+            if(t.getActualReturnDate() != null) continue;
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/ReturnCopyRow.fxml"));
                 Node node = loader.load();
@@ -97,7 +98,7 @@ public class UserRowController {
                 String ISBN = ExtraFunction.extractISBN(t.getISBN());
                 Document doc = DocumentService.instance.getDocumentByISBN(ISBN);
                 ReturnCopyRowController docCopyController = loader.getController();
-                docCopyController.setInfo(t.getTransactionId(), doc.getTitle(), t.getISBN(), t.getReturnDate(), node, returnDocVbox);
+                docCopyController.setInfo(client.getId(), t.getTransactionId(), doc.getTitle(), t.getISBN(), t.getReturnDate(), node, returnDocVbox);
                 returnDocVbox.getChildren().add(node);
             } catch (IOException e) {
                 e.printStackTrace();

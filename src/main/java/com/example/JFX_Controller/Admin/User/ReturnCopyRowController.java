@@ -3,6 +3,8 @@ package com.example.JFX_Controller.Admin.User;
 import java.sql.Date;
 
 import com.example.Handlers.Notify;
+import com.example.JFX_Controller.Admin.AdminController;
+import com.example.Service.TransactionService;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,16 +21,27 @@ public class ReturnCopyRowController {
 
     private Node root;
     private VBox returnDocVBox;
+
+    private int userId;
     @FXML
     void applyReturn(ActionEvent event) {
+        TransactionService.instance.returnBook(userId, isbn.getText());
         //ui
+        resetTrans();
         returnDocVBox.getChildren().remove(root);
         Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Return Document sucess!");
     }
 
-    public void setInfo(int docId, String title, String isbn, Date dueDate, Node root, VBox returnDocVbox) {
+    private void resetTrans() {
+        AdminController.transList.clear();
+        AdminController.instance.addTranscNodes();
+        AdminController.instance.setVBox(AdminController.instance.transVBox, AdminController.transList);
+    }
+
+    public void setInfo(int userId, int docId, String title, String isbn, Date dueDate, Node root, VBox returnDocVbox) {
         this.root = root;
         this.returnDocVBox = returnDocVbox;
+        this.userId = userId;
         this.docId.setText(String.valueOf(docId));
         this.isbn.setText(isbn);
         this.title.setText(title);
