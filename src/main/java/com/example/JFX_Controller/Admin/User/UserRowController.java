@@ -90,7 +90,6 @@ public class UserRowController {
         List<Transaction> trans = TransactionService.instance.getTransactionsByUserId(client.getId());
         returnDocVbox.setPrefHeight(trans.size() * 70);
         for (Transaction t : trans) {
-            if(t.getActualReturnDate() != null) continue;
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/ReturnCopyRow.fxml"));
                 Node node = loader.load();
