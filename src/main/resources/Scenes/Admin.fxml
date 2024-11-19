@@ -370,7 +370,7 @@
                                           <Insets left="10.0" />
                                        </padding>
                                     </Label>
-                                    <Label layoutX="25.0" layoutY="28.0" prefHeight="25.0" prefWidth="251.0" text="ISBN" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                    <Label layoutX="25.0" layoutY="28.0" prefHeight="25.0" prefWidth="240.0" text="ISBN" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>

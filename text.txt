@@ -4,3 +4,4 @@ getDocbyISBN: thêm url
 validate modifyDoc (phần url) ở DocModifyController
 deleteDoc: check transaction
 thêm điều kiện getTransactionsByUserId với actualreturnDate = null
+thêm description ở dao addDocument

@@ -4,8 +4,10 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -21,7 +23,7 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Label>
-            <VBox layoutX="1.0" layoutY="44.0" prefHeight="225.0" prefWidth="368.0">
+            <VBox layoutX="1.0" layoutY="44.0" prefHeight="153.0" prefWidth="368.0">
                <children>
                   <VBox prefHeight="73.0" prefWidth="405.0">
                      <children>
@@ -37,34 +39,38 @@
                         </TextField>
                      </children>
                   </VBox>
-                  <VBox layoutX="10.0" layoutY="83.0" prefHeight="73.0" prefWidth="405.0">
+                  <HBox prefHeight="74.0" prefWidth="333.0" spacing="10.0">
                      <children>
-                        <Label text="Genre *">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="genre" maxWidth="-Infinity" prefHeight="35.0" prefWidth="326.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </TextField>
+                        <VBox prefHeight="0.0" prefWidth="168.0">
+                           <children>
+                              <Label text="Genre *">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="genre" maxWidth="-Infinity" prefHeight="35.0" prefWidth="171.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="0.0" prefWidth="156.0">
+                           <children>
+                              <Label text="Quantity *">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="quantity" maxWidth="-Infinity" prefHeight="35.0" prefWidth="146.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
                      </children>
-                  </VBox>
-                  <VBox layoutX="10.0" layoutY="156.0" prefHeight="73.0" prefWidth="405.0">
-                     <children>
-                        <Label text="Quantity *">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="quantity" maxWidth="-Infinity" prefHeight="35.0" prefWidth="172.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </VBox>
+                  </HBox>
                </children>
                <padding>
                   <Insets left="35.0" />
@@ -97,7 +103,7 @@
                   </TextField>
                </children>
             </VBox>
-            <VBox layoutX="340.0" layoutY="44.0" prefHeight="225.0" prefWidth="368.0">
+            <VBox layoutX="340.0" layoutY="44.0" prefHeight="153.0" prefWidth="333.0">
                <children>
                   <VBox prefHeight="73.0" prefWidth="405.0">
                      <children>
@@ -113,7 +119,7 @@
                         </TextField>
                      </children>
                   </VBox>
-                  <VBox layoutX="10.0" layoutY="83.0" prefHeight="73.0" prefWidth="405.0">
+                  <VBox layoutX="10.0" layoutY="83.0" prefHeight="73.0" prefWidth="317.0">
                      <children>
                         <Label text="ISBN *">
                            <font>
@@ -131,6 +137,20 @@
                <padding>
                   <Insets left="35.0" />
                </padding>
+            </VBox>
+            <VBox layoutX="37.0" layoutY="186.0" prefHeight="95.0" prefWidth="639.0">
+               <children>
+                  <Label text="Description">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="description" prefHeight="73.0" prefWidth="646.0" style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020;" wrapText="true">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </TextArea>
+               </children>
             </VBox>
          </children>
       </AnchorPane>

@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.event.ActionEvent;
@@ -21,6 +22,7 @@ public class AddDocController {
     @FXML private TextField genre;
     @FXML private TextField quantity;
     @FXML private TextField isbn;
+    @FXML private TextArea description;
     @FXML private TextField imageUrl;
 
     @FXML private StackPane addDocRoot;
@@ -32,6 +34,7 @@ public class AddDocController {
         String genre_input = genre.getText();
         String quantity_input = quantity.getText();
         String isbn_input = isbn.getText();
+        String description_input = description.getText();
         String imageUrl_input = imageUrl.getText();
 
         // Kiểm tra từng trường đầu vào
@@ -60,15 +63,19 @@ public class AddDocController {
             return;
         }
 
+        if (!Validate.isValidTitle(description_input)) {
+            Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Desciption invalid!");
+            return;
+        }
+
         // Nếu tất cả các trường hợp đều hợp lệ, thêm tài liệu
         int quantity = Integer.parseInt(quantity_input); // Chuyển đổi số lượng thành số nguyên
         Document doc = new Document(title_input, author_input, genre_input, quantity, isbn_input, imageUrl_input);
+        doc.setDescription(description_input);
         DocumentService.instance.addDocument(doc);
         doc.setDocumentId(DocumentService.instance.getDocumentByISBN(isbn_input).getDocumentId());
         // update ui
         addDocNode(doc);
-        AdminController.instance.docPane.getChildren().remove(addDocRoot);
-        addDocRoot = null;
         // Thông báo thành công
         Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Add Document sucess!");
     }
