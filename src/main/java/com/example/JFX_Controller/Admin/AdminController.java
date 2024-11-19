@@ -111,7 +111,9 @@ public class AdminController extends Controller implements Initializable {
     @FXML
     void closeReturnDoc(ActionEvent event) { returnDocPane.setVisible(false); }
     @FXML
-    void openAddDoc(ActionEvent event)   { loadAddDoc(); }
+    void openAddDoc(ActionEvent event)   { loadAddDoc("AddDoc.fxml"); }
+    @FXML
+    void openAddDocApi(ActionEvent event) { loadAddDoc("AddDocAPI.fxml"); }
     @FXML
     void openAddUser(ActionEvent event)  { loadAddUser(); }
     private final ExecutorService executorService = Executors.newSingleThreadExecutor(); // ExecutorService với 1 luồng
@@ -200,9 +202,9 @@ public class AdminController extends Controller implements Initializable {
     }
     
     // mở pane add document và add user
-    private void loadAddDoc() {
+    private void loadAddDoc(String fxml) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/AddDoc.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/" + fxml));
             Parent addDocPane = loader.load();
 
             docPane.getChildren().add(addDocPane);

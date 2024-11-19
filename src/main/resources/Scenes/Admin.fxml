@@ -142,7 +142,7 @@
                         <MenuButton layoutX="84.0" layoutY="27.0" mnemonicParsing="false" prefHeight="32.0" styleClass="second-menubutton" stylesheets="@../CSS_Setup/menubutton.css" text="Add Doc" textFill="#5e5757">
                            <items>
                               <MenuItem mnemonicParsing="false" onAction="#openAddDoc" text="Normal" />
-                              <MenuItem mnemonicParsing="false" text="With API" />
+                              <MenuItem mnemonicParsing="false" onAction="#openAddDocApi" text="With API" />
                            </items>
                            <font>
                               <Font name="System Bold" size="12.0" />
