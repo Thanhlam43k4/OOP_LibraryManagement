@@ -5,7 +5,7 @@
 
 .primary-listview .list-cell {
     -fx-background-color: transparent;
-    -fx-padding: 15px;
+    -fx-padding: 10px;
 }
 
 .primary-listview .list-cell:selected {

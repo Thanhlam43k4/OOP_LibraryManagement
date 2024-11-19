@@ -29,7 +29,7 @@ public class AddDocApiController {
     void goSearch(ActionEvent event) {
         for (int i = 0; i < 4; i++) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/DocElement.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/ApiDocCard.fxml"));
                 Parent docNode = loader.load();
                 suggestList.getItems().add(docNode);
             } catch (IOException e) {

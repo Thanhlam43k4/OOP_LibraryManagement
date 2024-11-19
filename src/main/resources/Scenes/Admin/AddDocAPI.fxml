@@ -56,7 +56,11 @@
                   </VBox>
                </children>
             </AnchorPane>
-            <ListView fx:id="suggestList" prefHeight="165.0" prefWidth="720.0" style="-fx-background-radius: 0 0 10 10; -fx-background-color: white; -fx-border-color: #cfcfcf; -fx-border-width: 1 0 0 0;" styleClass="primary-listview" stylesheets="@../../CSS_Setup/listview.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="170.0" />
+            <ListView fx:id="suggestList" prefHeight="165.0" prefWidth="720.0" style="-fx-background-radius: 0 0 10 10; -fx-background-color: white; -fx-border-color: #cfcfcf; -fx-border-width: 1 0 0 0;" styleClass="primary-listview" stylesheets="@../../CSS_Setup/listview.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="170.0">
+               <padding>
+                  <Insets left="15.0" top="5.0" />
+               </padding>
+            </ListView>
          </children>
          <StackPane.margin>
             <Insets top="50.0" />
