@@ -8,6 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
 import com.example.Handlers.Notify;
+import com.example.Handlers.Validate;
 import com.example.Model.Document;
 import com.example.Service.DocumentService;
 
@@ -35,6 +36,7 @@ public class DocModifyController {
 
     @FXML
     void saveModifyDoc(ActionEvent event) {
+        validate();
         Document modifyDoc = new Document(title.getText(), 
                                           author.getText(), 
                                           genre.getText(), 
@@ -46,9 +48,32 @@ public class DocModifyController {
         DocumentService.instance.updateDocument(modifyDoc);
         docRowController.modifyInfo(modifyDoc); // update ui
         Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Document has been modified!");
-
+        // tắt Pane
         docPane.getChildren().remove(this.docModifyRoot);
         this.docModifyRoot = null;
+    }
+
+    private void validate() {
+        // Kiểm tra từng trường đầu vào
+        if (!Validate.isValidTitle(title.getText())) {
+            Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Tilte invalid!");
+            return;
+        }
+
+        if (!Validate.isValidAuthor(author.getText())) {
+            Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Author invalid!");
+            return;
+        }
+
+        if (!Validate.isValidGenre(genre.getText())) {
+            Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Genre invalid!");
+            return;
+        }
+
+        if (Validate.isValidISBN(isbn.getText())) {
+            Notify.showAlert(Alert.AlertType.ERROR, "Eror", "ISBN invalid!");
+            return;
+        }
     }
 
     public void setInfo(Document d, AnchorPane docPane, DocRowController docRow) {

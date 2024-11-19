@@ -183,7 +183,7 @@
                                           <Insets left="10.0" />
                                        </padding>
                                     </Label>
-                                    <Label layoutX="101.0" layoutY="28.0" prefHeight="25.0" prefWidth="143.0" style="-fx-text-fill: white;" text="Genre" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                    <Label layoutX="101.0" layoutY="28.0" prefHeight="25.0" prefWidth="155.0" style="-fx-text-fill: white;" text="Genre" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>
@@ -301,7 +301,7 @@
                                           <Insets left="10.0" />
                                        </padding>
                                     </Label>
-                                    <Label layoutX="25.0" layoutY="28.0" prefHeight="25.0" prefWidth="186.0" style="-fx-text-fill: white;" text="Email" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
+                                    <Label layoutX="25.0" layoutY="28.0" prefHeight="25.0" prefWidth="230.0" style="-fx-text-fill: white;" text="Email" textFill="#3c3a3a" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>
