@@ -3,8 +3,11 @@
     searching main
     thêm description ở dao addDocument
     addDocApi (chưa làm gì)
-    modifyDoc: Author, url, isbn
+    modifyDoc: Author, url, isbn (updateDocument ở DAO)
     addUser: chưa làm
     update borrowed_book ở db khi mượn/trả
     check available khi mượn sách
     thêm điều kiện getTransactionsByUserId với actualreturnDate = null
+
+UI Problem: Mỗi lần có transaction phải clear và add lại toàn bộ -> chưa tối ưu 
+(ở BorrowController và ReturnCopyRowController)
