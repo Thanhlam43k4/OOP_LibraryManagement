@@ -1,7 +1,10 @@
-Hello Java App
-updateDocument: thêm description, url
-getDocbyISBN: thêm url
-validate modifyDoc (phần url) ở DocModifyController
-deleteDoc: check transaction
-thêm điều kiện getTransactionsByUserId với actualreturnDate = null
-thêm description ở dao addDocument
+---To Do---
+-Admin:
+    searching main
+    thêm description ở dao addDocument
+    addDocApi (chưa làm gì)
+    modifyDoc: Author, url, isbn
+    addUser: chưa làm
+    update borrowed_book ở db khi mượn/trả
+    check available khi mượn sách
+    thêm điều kiện getTransactionsByUserId với actualreturnDate = null
