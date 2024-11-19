@@ -1,0 +1,24 @@
+ /* cố định kích thước listview */
+.primary-listview {
+    -fx-background-insets: 0;
+}
+
+.primary-listview .list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 15px;
+}
+
+.primary-listview .list-cell:selected {
+    -fx-background-color: transparent;
+}
+
+/* scroll bar */
+.primary-listview .scroll-bar {
+    -fx-background-color: transparent;
+}
+
+/* thanh trượt (thuộc scroll bar)*/
+.primary-listview .scroll-bar .thumb {
+    -fx-background-color: #888888;     
+    -fx-background-radius: 10px;
+}
