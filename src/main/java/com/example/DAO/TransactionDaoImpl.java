@@ -65,7 +65,7 @@ public class TransactionDaoImpl implements TransactionDao {
             pstmt.setInt(1, userId);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                if (rs.getDate("actual_return_date") != null) { // Kiểm tra actual_return_date
+                if (rs.getDate("actual_return_date") == null) { // Kiểm tra actual_return_date
                     Transaction transaction = new Transaction(
                             rs.getInt("transaction_id"),
                             rs.getInt("user_id"),
