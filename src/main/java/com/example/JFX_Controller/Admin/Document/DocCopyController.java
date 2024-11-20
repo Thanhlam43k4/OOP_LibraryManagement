@@ -17,7 +17,7 @@ public class DocCopyController {
     public void setInfo(Copies c) {
         this.docId.setText(String.valueOf(c.getDocumentId()));
         this.title.setText(c.getTitle());
-        this.isbn.setText(c.getCopies_ISBN());
+        this.isbn.setText(c.getCopyISBN());
         this.state.setText(c.getStatus());
         if(c.getStatus().equals("Available")) {
             state.setStyle("-fx-text-fill: #317c47;");

@@ -2,11 +2,8 @@
 -Admin:
     searching main
     addDocApi (chưa làm gì)
-    addUser: chưa làm
     update borrowed_book ở db khi mượn/trả (Đã làm) -> Lỗi là sau khi update xong UI chưa refresh
-    check available khi mượn sách ()
-    (Mới) Return Book chưa hiện lên mặc dù đã có transaction và đã borrowBook
-    (Mới) Check Available khi borrowBook;
+    (Mới) Check Available khi borrowBook (Đã xong)
 
 
 UI Problem: Mỗi lần có transaction phải clear và add lại toàn bộ -> chưa tối ưu 

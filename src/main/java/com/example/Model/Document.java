@@ -15,17 +15,27 @@ public class Document {
     public Document() {
 
     }
-    public Document(int documentId, String title, String ISBN, String author, String urlImage, String genre, int numberCopy, String description) {
+    public Document(int documentId, String title, String author, String urlImage, String genre, String description) {
         this.documentId = documentId;
         this.title = title;
-        this.ISBN = ISBN;
         this.author = author;
         this.urlImage = urlImage;
         this.genre = genre;
+        this.description = description;
+    }
+
+    public Document(int documentId, String title, String ISBN,String author, String urlImage, String genre,int numberCopy, String description) {
+        this.documentId = documentId;
+        this.title = title;
+        this.genre = genre;
+        this.ISBN = ISBN;
+        this.author = author;
+        this.urlImage = urlImage;
         this.numberCopy = numberCopy;
         this.description = description;
     }
-    public Document(String title, String author, String genre,int numberCopy ,  String ISBN,  String urlImage) {
+
+    public Document(String title, String author, String genre, int numberCopy , String ISBN, String urlImage) {
         this.title = title;
         this.ISBN = ISBN;
         this.author = author;
@@ -60,8 +70,6 @@ public class Document {
         this.ISBN = ISBN;
         this.urlImage = urlImage;
     }
-
-
 
 
     public String getDescription() {

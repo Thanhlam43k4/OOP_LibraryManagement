@@ -226,20 +226,29 @@ public class AdminController extends Controller implements Initializable {
     
     // thay đổi listener
     private void searchFieldListener(FilteredList<Parent> filterList, String searchId) {
-        if(currentListener!=null)searchField.textProperty().removeListener(currentListener);
+        if(currentListener != null) searchField.textProperty().removeListener(currentListener);
+
         currentListener = (observable, oldValue, newValue) -> {
             filterList.setPredicate(parent -> {
                 if (newValue == null || newValue.isEmpty()) {
                     return true; // Hiển thị tất cả nếu không có gì được nhập
                 }
                 String lowerCaseFilter = newValue.toLowerCase();
-                
-                // Lấy Label trong Parent và kiểm tra text
-                Label label = (Label) parent.lookup("#" + searchId);
-                return label != null && label.getText().toLowerCase().contains(lowerCaseFilter);
+
+                try {
+                    // Lấy Label trong Parent và kiểm tra text
+                    Label label = (Label) parent.lookup("#" + searchId);
+                    if (label != null) {
+                        return label.getText().toLowerCase().contains(lowerCaseFilter);
+                    } else {
+                        return false; // Trả về false nếu không tìm thấy Label
+                    }
+                } catch (NullPointerException e) {
+                    // Nếu gặp NullPointerException, trả về false mà không làm gián đoạn ứng dụng
+                    return false; // Bạn có thể thay đổi giá trị trả về nếu cần
+                }
             });
         };
         searchField.textProperty().addListener(currentListener);
     }
-    //#endregion
 }
