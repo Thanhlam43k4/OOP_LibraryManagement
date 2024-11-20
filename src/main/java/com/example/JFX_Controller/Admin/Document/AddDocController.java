@@ -99,4 +99,13 @@ public class AddDocController {
             e.printStackTrace();
         }
     }
+
+    public void setInfo(Document d) {
+        this.title.setText(d.getTitle());
+        this.author.setText(d.getAuthor());
+        this.genre.setText(d.getGenre());
+        this.isbn.setText(d.getISBN());
+        this.description.setText(d.getDescription());
+        this.imageUrl.setText(d.getUrlImage());
+    }
 }
