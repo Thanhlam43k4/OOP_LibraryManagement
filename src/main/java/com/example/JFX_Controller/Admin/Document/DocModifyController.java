@@ -32,52 +32,56 @@ public class DocModifyController {
         AdminController.instance.docPane.getChildren().remove(this.docModifyRoot);
         this.docModifyRoot = null;
     }
-
     @FXML
     void saveModifyDoc(ActionEvent event) {
-        validate();
-        Document modifyDoc = new Document(title.getText(), 
-                                          author.getText(), 
-                                          genre.getText(), 
-                                          0,
-                                          isbn.getText(), 
-                                          imageUrl.getText());
-        modifyDoc.setDocumentId(docId);
-        modifyDoc.setDescription(description.getText());
-        DocumentService.instance.updateDocument(modifyDoc);
-        docRowController.modifyInfo(modifyDoc); // update ui
-        Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Document has been modified!");
-        // tắt Pane
-        AdminController.instance.docPane.getChildren().remove(this.docModifyRoot);
-        this.docModifyRoot = null;
+        if(validate()){
+            Document modifyDoc = new Document(title.getText(),
+                    author.getText(),
+                    genre.getText(),
+                    description.getText(),
+                    imageUrl.getText());
+            modifyDoc.setDocumentId(docId);
+            modifyDoc.setDescription(description.getText());
+
+            DocumentService.instance.updateDocument(modifyDoc);
+            docRowController.modifyInfo(modifyDoc); // update ui
+            Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Document has been modified!");
+            // tắt Pane
+            AdminController.instance.docPane.getChildren().remove(this.docModifyRoot);
+            this.docModifyRoot = null;
+        }else {
+            return;
+        }
+
     }
 
-    private void validate() {
+    private boolean validate() {
         // Kiểm tra từng trường đầu vào
         if (!Validate.isValidTitle(title.getText())) {
             Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Tilte invalid!");
-            return;
+            return false;
         }
 
         if (!Validate.isValidAuthor(author.getText())) {
             Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Author invalid!");
-            return;
+            return false;
         }
 
         if (!Validate.isValidGenre(genre.getText())) {
             Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Genre invalid!");
-            return;
+            return false;
         }
 
         if (Validate.isValidISBN(isbn.getText())) {
             Notify.showAlert(Alert.AlertType.ERROR, "Eror", "ISBN invalid!");
-            return;
+            return false;
         }
 
         if (!Validate.isValidTitle(description.getText())) {
             Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Desciption invalid!");
-            return;
+            return false;
         }
+        return true;
     }
 
     public void setInfo(Document d, DocRowController docRow) {

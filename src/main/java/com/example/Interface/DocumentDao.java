@@ -8,7 +8,6 @@ import java.util.List;
 public interface DocumentDao {
     void addDocument(Document doc);
 
-    Document getDocumentById(int documentId);
 
     List<Document> getAllDocuments();
 

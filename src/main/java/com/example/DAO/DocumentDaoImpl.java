@@ -35,24 +35,7 @@ public class DocumentDaoImpl implements DocumentDao {
         }
     }
 
-    @Override
-    public Document getDocumentById(int documentId) {
-        String query = "SELECT * FROM documents WHERE documentId = ?";
-        try (PreparedStatement pstmt = con.prepareStatement(query)) {
-            pstmt.setInt(1, documentId);
-            ResultSet rs = pstmt.executeQuery();
-            if (rs.next()) {
-                return new Document(
-                        rs.getInt("documentId"),
-                        rs.getString("title"),
-                        rs.getString("author"),
-                        rs.getString("genre"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+
 
     @Override
     public List<Document> getAllDocuments() {

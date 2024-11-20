@@ -24,7 +24,7 @@ public class Document {
         this.numberCopy = numberCopy;
         this.description = description;
     }
-    public Document(String title, String author, String genre,int numberCopy,  String ISBN,  String urlImage) {
+    public Document(String title, String author, String genre,int numberCopy ,  String ISBN,  String urlImage) {
         this.title = title;
         this.ISBN = ISBN;
         this.author = author;
@@ -32,6 +32,15 @@ public class Document {
         this.genre = genre;
         this.numberCopy = numberCopy;
     }
+    public Document(String title, String author, String genre,String description,  String urlImage) {
+        this.title = title;
+        this.description = description;
+        this.author = author;
+        this.urlImage = urlImage;
+        this.genre = genre;
+
+    }
+
 
     public Document(int documentId, String title) {
         this.documentId = documentId;
@@ -50,6 +59,8 @@ public class Document {
         this.genre = genre;
         this.urlImage = urlImage;
     }
+
+
 
 
     public String getDescription() {

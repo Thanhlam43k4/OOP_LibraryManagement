@@ -19,9 +19,6 @@ public class DocumentService {
     public void addDocument(Document document) {
         documentDao.addDocument(document);
     }
-    public Document getDocumentById(int documentId) {
-        return  documentDao.getDocumentById(documentId);
-    }
     public List<Document> getAllDocument(){
 
         return documentDao.getAllDocuments();
