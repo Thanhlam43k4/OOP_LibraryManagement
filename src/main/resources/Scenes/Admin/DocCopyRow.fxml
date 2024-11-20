@@ -3,8 +3,6 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
@@ -31,6 +29,7 @@
             <Insets left="10.0" />
          </padding>
       </Label>
+      <FontAwesomeIconView fx:id="iconState" fill="#317c47" glyphName="CIRCLE" />
       <Label fx:id="state" layoutX="578.0" layoutY="30.0" prefHeight="20.0" prefWidth="120.0" text="Available" textFill="#317c47">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -39,18 +38,6 @@
             <Insets left="10.0" />
          </padding>
       </Label>
-      <MenuButton mnemonicParsing="false" style="-fx-border-width: 0;" styleClass="second-menubutton" stylesheets="@../../CSS_Setup/menubutton.css">
-         <items>
-            <MenuItem mnemonicParsing="false" style="-fx-font-size: 12;" text="Action 1" />
-            <MenuItem mnemonicParsing="false" style="-fx-font-size: 12;" text="Action 2" />
-         </items>
-         <graphic>
-            <FontAwesomeIconView glyphName="ELLIPSIS_V" size="15" styleClass="fontawesome-icon" wrappingWidth="1.0" />
-         </graphic>
-         <padding>
-            <Insets left="5.0" />
-         </padding>
-      </MenuButton>
    </children>
    <padding>
       <Insets right="15.0" />

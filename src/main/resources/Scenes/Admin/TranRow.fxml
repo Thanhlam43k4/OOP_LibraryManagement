@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
@@ -44,12 +45,13 @@
             <Insets left="10.0" />
          </padding>
       </Label>
+      <FontAwesomeIconView fx:id="iconState" glyphName="CIRCLE" />
       <Label fx:id="returnDate" layoutX="480.0" layoutY="30.0" prefHeight="20.0" prefWidth="160.0" text="unpaid" textFill="#3c3a3a">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
          <padding>
-            <Insets left="25.0" />
+            <Insets left="10.0" />
          </padding>
       </Label>
    </children>

@@ -212,7 +212,7 @@
                   <StackPane fx:id="copiesDocPane" prefHeight="150.0" prefWidth="776.0" visible="false">
                      <children>
                         <Pane prefHeight="412.0" prefWidth="776.0" style="-fx-background-color: #504b4b; -fx-opacity: 0.8; -fx-background-radius: 30;" />
-                        <AnchorPane maxHeight="450.0" maxWidth="718.0" style="-fx-background-color: #d3cccc; -fx-border-color: #8d8888;">
+                        <AnchorPane maxHeight="450.0" maxWidth="718.0" style="-fx-background-color: #d3cccc; -fx-border-color: #8d8888; -fx-background-radius: 13 13 0 0; -fx-border-width: 0;">
                            <children>
                               <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="10.0" prefHeight="50.0" prefWidth="682.0" style="-fx-background-color: rgb(211, 204, 204); -fx-background-radius: 15; -fx-border-color: #797577; -fx-border-radius: 15; -fx-border-width: 0;">
                                  <children>
@@ -337,7 +337,7 @@
                   <StackPane fx:id="returnDocPane" prefHeight="410.0" prefWidth="776.0" visible="false">
                      <children>
                         <Pane prefHeight="412.0" prefWidth="776.0" style="-fx-background-color: #504b4b; -fx-opacity: 0.8; -fx-background-radius: 30;" />
-                        <AnchorPane maxHeight="450.0" maxWidth="718.0" style="-fx-background-color: rgb(211, 204, 204); -fx-border-color: #8d8888;">
+                        <AnchorPane maxHeight="450.0" maxWidth="718.0" style="-fx-background-color: rgb(211, 204, 204); -fx-border-color: #8d8888; -fx-background-radius: 13 13 0 0; -fx-border-width: 0;">
                            <children>
                               <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="10.0" prefHeight="50.0" prefWidth="682.0" style="-fx-background-color: rgb(211, 204, 204); -fx-background-radius: 15; -fx-border-color: #797577; -fx-border-radius: 15; -fx-border-width: 0;">
                                  <children>

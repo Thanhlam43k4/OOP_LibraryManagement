@@ -1,22 +1,19 @@
 package com.example.JFX_Controller.Admin;
 
 import com.example.Model.Transaction;
+
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class TransRowController {
-    @FXML
-    private Label transId;
-    @FXML
-    private Label userId;
-    @FXML
-    private Label docISBN;
-    @FXML
-    private Label borrowDate;
-    @FXML
-    private Label dueDate;
-    @FXML
-    private Label returnDate;
+    @FXML private Label transId;
+    @FXML private Label userId;
+    @FXML private Label docISBN;
+    @FXML private Label borrowDate;
+    @FXML private Label dueDate;
+    @FXML private FontAwesomeIconView iconState;
+    @FXML private Label returnDate;
 
     public void setInfo(Transaction trans) {
         transId.setText(String.valueOf(trans.getTransactionId()));
@@ -27,9 +24,11 @@ public class TransRowController {
         try {
             returnDate.setText(trans.getActualReturnDate().toString());
             returnDate.setStyle("-fx-text-fill: #317c47;");
+            iconState.setStyle("-fx-fill: #317c47;");
         } catch (Exception e) {
-            returnDate.setText("Unpaid");
+            returnDate.setText("Not return");
             returnDate.setStyle("-fx-text-fill: #9d3838;");
+            iconState.setStyle("-fx-fill: #9d3838;");
         }
     }
 }
