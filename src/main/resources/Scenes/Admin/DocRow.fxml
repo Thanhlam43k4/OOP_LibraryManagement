@@ -5,11 +5,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <HBox alignment="CENTER_LEFT" onMouseClicked="#showAllCopy" prefHeight="60.0" prefWidth="900.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="second-anchor-card" stylesheets="@../../CSS_Setup/card.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.Document.DocRowController">
    <children>
+      <ImageView fx:id="docImage" fitHeight="86.0" fitWidth="87.0" preserveRatio="true" />
+
       <Label fx:id="docId" alignment="CENTER" prefHeight="20.0" prefWidth="74.0" text="#123" textFill="#3a6d8c">
          <font>
             <Font name="System Bold" size="14.0" />

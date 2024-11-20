@@ -1,9 +1,11 @@
 package com.example.JFX_Controller.Admin.Document;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 
 
+import com.example.Handlers.ImageLoader;
 import com.example.Handlers.Notify;
 import com.example.JFX_Controller.Admin.AdminController;
 import com.example.Model.Copies;
@@ -12,15 +14,20 @@ import com.example.Service.DocumentService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+
+
 
 // Controller của từng hàng trong tab DocManager
 public class DocRowController {
+    @FXML private ImageView docImage;
     @FXML private Label docId;
     @FXML private Label title;
     @FXML private Label author;
@@ -54,6 +61,8 @@ public class DocRowController {
 
     public void setInfo(Document d, Node root) {
         doc = d;
+        Image image = ImageLoader.loadImage(doc.getUrlImage());
+        this.docImage.setImage(image);
         this.docId.setText(String.valueOf(d.getDocumentId()));
         this.title.setText(d.getTitle());
         this.author.setText(d.getAuthor());
