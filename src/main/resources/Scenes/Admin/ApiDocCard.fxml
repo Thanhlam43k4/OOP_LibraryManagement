@@ -33,7 +33,7 @@
             </ImageView>
          </children>
       </StackPane>
-      <VBox prefHeight="136.0" prefWidth="242.0">
+      <VBox prefHeight="160.0" prefWidth="313.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="264.0" spacing="10.0">
                <children>
@@ -85,7 +85,7 @@
             <Insets />
          </opaqueInsets>
       </VBox>
-      <AnchorPane prefHeight="160.0" prefWidth="265.0">
+      <AnchorPane prefHeight="160.0" prefWidth="187.0">
          <children>
             <Button layoutX="37.0" layoutY="60.0" mnemonicParsing="false" onAction="#addDocToLib" prefHeight="40.0" prefWidth="142.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" styleClass="second-button" stylesheets="@../../CSS_Setup/button.css" text=" Add to library" textFill="WHITE" AnchorPane.rightAnchor="25.0">
                <graphic>
