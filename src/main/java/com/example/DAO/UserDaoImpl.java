@@ -180,6 +180,5 @@ public class UserDaoImpl implements UserDao {
             // Xử lý lỗi khi kết nối hoặc thực thi câu truy vấn
             e.printStackTrace();
         }
-
     }
 }

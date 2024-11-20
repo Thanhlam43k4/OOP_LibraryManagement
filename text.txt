@@ -1,13 +1,16 @@
 ---To Do---
 -Admin:
     searching main
-    thêm description ở dao addDocument
+    thêm description ở dao addDocument (Đã làm)
     addDocApi (chưa làm gì)
-    modifyDoc: Author, url, isbn (updateDocument ở DAO)
+    modifyDoc: Author, url, isbn (updateDocument ở DAO)  (Đã làm)
     addUser: chưa làm
-    update borrowed_book ở db khi mượn/trả
-    check available khi mượn sách
-    thêm điều kiện getTransactionsByUserId với actualreturnDate = null
+    update borrowed_book ở db khi mượn/trả (Đã làm) -> Lỗi là sau khi update xong UI chưa refresh
+    check available khi mượn sách ()
+    thêm điều kiện getTransactionsByUserId với actualreturnDate = null (Lâm đã xong)
+    Load user kh có admin (Đã sửa)
+
+
 
 UI Problem: Mỗi lần có transaction phải clear và add lại toàn bộ -> chưa tối ưu 
 (ở BorrowController và ReturnCopyRowController)

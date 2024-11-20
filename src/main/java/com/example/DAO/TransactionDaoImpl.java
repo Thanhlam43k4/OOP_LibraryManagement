@@ -32,43 +32,50 @@ public class TransactionDaoImpl implements TransactionDao {
         String sql = "INSERT INTO transactions (user_id,copy_ISBN,borrowed_date,return_date)" +
                 "VALUES (?, ?, ?, ?)";
         String updateStatusSQL = "UPDATE copies SET status = 'Checked Out' WHERE copy_ISBN = ?";
-
+        String updateBorrowedBookSql = "UPDATE client SET borrowed_books = borrowed_books + 1 WHERE user_id = ?";
         LocalDate borrowedDate = LocalDate.now();
         // Cộng thêm 14 ngày để lấy ngày trả
         LocalDate returnDate = borrowedDate.plusDays(14);
         try(PreparedStatement pstmt = con.prepareStatement(sql);
-            PreparedStatement updatestmt = con.prepareStatement(updateStatusSQL)) {
+            PreparedStatement updatestmt = con.prepareStatement(updateStatusSQL);
+            PreparedStatement updateBorrowedBookStmt = con.prepareStatement(updateBorrowedBookSql)) {
             pstmt.setInt(1,userId);
             pstmt.setString(2,ISBN);
             pstmt.setDate(3, Date.valueOf(borrowedDate));
             pstmt.setDate(4,Date.valueOf(returnDate));
             pstmt.executeUpdate();
             System.out.println("Add Transaction Successfully with userId: "+ userId +" ISBN: " +ISBN);
+
             updatestmt.setString(1,ISBN);
             updatestmt.executeUpdate();
-
             System.out.println("Status of Copy with ISBN=" +ISBN + " is changed to Checked Out");
+
+            updateBorrowedBookStmt.setInt(1, userId);
+            updateBorrowedBookStmt.executeUpdate();
+            System.out.println("Updated borrowed_book for userId: " + userId);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
     @Override
-    public List<Transaction> getTransactionsByUserId(int userId){
+    public List<Transaction> getTransactionsByUserId(int userId) {
         List<Transaction> transactions = new ArrayList<>();
         String sql = "SELECT * FROM transactions WHERE user_id = ?";
-        try(PreparedStatement pstmt = con.prepareStatement(sql)){
-            pstmt.setInt(1,userId);
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setInt(1, userId);
             ResultSet rs = pstmt.executeQuery();
-            while(rs.next()){
-                Transaction transaction = new Transaction(
-                        rs.getInt("transaction_id"),
-                        rs.getInt("user_id"),
-                        rs.getString("copy_ISBN"),
-                        rs.getDate("borrowed_date"),
-                        rs.getDate("return_date"),
-                        rs.getDate("actual_return_date")
-                );
-                transactions.add(transaction);
+            while (rs.next()) {
+                if (rs.getDate("actual_return_date") != null) { // Kiểm tra actual_return_date
+                    Transaction transaction = new Transaction(
+                            rs.getInt("transaction_id"),
+                            rs.getInt("user_id"),
+                            rs.getString("copy_ISBN"),
+                            rs.getDate("borrowed_date"),
+                            rs.getDate("return_date"),
+                            rs.getDate("actual_return_date")
+                    );
+                    transactions.add(transaction);
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
