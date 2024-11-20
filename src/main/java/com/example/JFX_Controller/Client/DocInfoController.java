@@ -10,13 +10,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.example.JFX_Controller.Controller;
+import com.example.Model.Document;
+import com.example.Service.SessionManager;
 import com.example.Handlers.ImageLoader;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -26,15 +27,15 @@ import javafx.event.ActionEvent;
 //#endregion
 
 public class DocInfoController extends Controller implements Initializable{
-
-    @FXML private ScrollPane docScroll;
+    @FXML private Label userName;
     @FXML private ImageView docCover;
-    @FXML private Rectangle shadow;
     @FXML private Label title;
-    @FXML private Label description;
     @FXML private Label author;
-    @FXML private Button borrowBut;
+    @FXML private Label description;
     @FXML private Label stateText;
+    
+    @FXML private Button borrowBut;
+    @FXML private ScrollPane docScroll;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
@@ -69,11 +70,12 @@ public class DocInfoController extends Controller implements Initializable{
         });        
         timeline.play();
     }
-    public void setInfo(int docId, String imageUrl, String title, String genre) {
-        System.out.println(imageUrl);
-        Image image = ImageLoader.loadImage(imageUrl);
+    public void setInfo(Document doc) {
+        Image image = ImageLoader.loadImage(doc.getUrlImage());
         docCover.setImage(image);
-        this.title.setText(title.toUpperCase());
+        this.userName.setText(SessionManager.getInstance().getLoggedInUser().getUsername());
+        this.title.setText(doc.getTitle().toUpperCase());
+        this.author.setText(doc.getAuthor());
         // query description here
         // check borrow
         setBorrowBut();
