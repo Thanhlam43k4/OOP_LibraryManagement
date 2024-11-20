@@ -15,7 +15,7 @@ import java.io.IOException;
 
 import com.example.JFX_Controller.Controller;
 import com.example.Model.Document;
-
+import com.example.Handlers.ImageLoader;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -86,8 +86,12 @@ public class CardController extends Controller {
     }
 
     public void setInfo(Document doc) {
+
         try {
-            docCover.setImage(new Image(doc.getUrlImage(), true));
+            Image image = ImageLoader.loadImage(doc.getUrlImage());
+            docCover.setImage(image);
+            System.out.println("Image URL: " + doc.getUrlImage());
+
         } catch (Exception e) {
             System.err.println("card coverURL invalid! when add CardNode");
         }

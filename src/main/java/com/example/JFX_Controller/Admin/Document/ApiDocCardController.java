@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import com.example.Model.Document;
-
+import com.example.Handlers.ImageLoader;
 import javafx.event.ActionEvent;
 
 public class ApiDocCardController {
@@ -23,12 +23,13 @@ public class ApiDocCardController {
 
     public void setInfo(Document doc) {
         try {
-            this.docCover.setImage(new Image(doc.getUrlImage()));
+            Image image = ImageLoader.loadImage(doc.getUrlImage());
+            this.docCover.setImage(image);
         } catch (Exception e) {
             System.err.println("docElement coverURL invalid! when add DocElementNode");
         }
         this.title.setText(doc.getTitle());
         this.author.setText(doc.getAuthor());
-        this.genre.setText(doc.getGenre());
+        this.isbn.setText(doc.getISBN());
     }
 }

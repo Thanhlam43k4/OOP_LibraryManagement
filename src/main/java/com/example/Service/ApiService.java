@@ -41,8 +41,8 @@ public class ApiService {
             Document document = new Document(
                     documentObject.get("title").getAsString(),
                     documentObject.get("authors").getAsString(),
-                    documentObject.get("image").getAsString(),
-                    documentObject.get("url").getAsString()
+                    documentObject.get("id").getAsString(),
+                    documentObject.get("image").getAsString()
             );
             documents.add(document);
         }

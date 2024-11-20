@@ -1,5 +1,7 @@
 package com.example.Model;
 
+import javafx.scene.image.Image;
+
 public class Document {
     private int documentId;
     private String title;
@@ -53,10 +55,10 @@ public class Document {
         this.author = author;
         this.genre = genre;
     }
-    public Document(String title,String author,String genre,String urlImage) {
+    public Document(String title,String author,String ISBN,String urlImage) {
         this.title = title;
         this.author = author;
-        this.genre = genre;
+        this.ISBN = ISBN;
         this.urlImage = urlImage;
     }
 
