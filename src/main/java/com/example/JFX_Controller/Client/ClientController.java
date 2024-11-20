@@ -26,10 +26,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 //#endregion
+import javafx.scene.control.TextField;
 
 public class ClientController extends Controller implements Initializable{
 //UI
     @FXML private Label userName;
+    @FXML private TextField searchField;
     // Tab button
     @FXML private HBox browseBut;
     @FXML private HBox mydocBut;
