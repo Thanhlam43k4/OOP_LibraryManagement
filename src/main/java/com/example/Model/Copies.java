@@ -13,9 +13,7 @@ public class Copies extends Document{
         this.status = status;
     }
 
-    public String getCopies_ISBN() {
-        return copies_ISBN;
-    }
+
 
     public void setCopies_ISBN(String copies_ISBN) {
         this.copies_ISBN = copies_ISBN;
@@ -37,5 +35,9 @@ public class Copies extends Document{
                 ", copyISBN='" + copies_ISBN + '\'' +
                 ", status='" + status + '\'' +
                 '}';
+    }
+
+    public String getCopyISBN() {
+        return copies_ISBN;
     }
 }

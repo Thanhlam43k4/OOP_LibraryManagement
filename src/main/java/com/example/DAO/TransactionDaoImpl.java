@@ -127,9 +127,14 @@ public class TransactionDaoImpl implements TransactionDao {
                 "UPDATE copies " +
                         "SET status = 'Available' " +
                         "WHERE copy_ISBN = ?";
+        String updateUserSql =
+                "UPDATE client " +
+                        "SET borrowed_books = borrowed_books - 1 " +
+                        "WHERE user_id = ?";
 
         try (PreparedStatement updateTransactionStmt = con.prepareStatement(updateTransactionSQL);
-             PreparedStatement updateCopyStmt = con.prepareStatement(updateCopySQL)) {
+             PreparedStatement updateCopyStmt = con.prepareStatement(updateCopySQL);
+             PreparedStatement updateUserStmt = con.prepareStatement(updateUserSql)) {
 
             // Cập nhật giao dịch
             updateTransactionStmt.setInt(1, userId);
@@ -144,6 +149,10 @@ public class TransactionDaoImpl implements TransactionDao {
             // Cập nhật trạng thái sách
             updateCopyStmt.setString(1, ISBN);
             updateCopyStmt.executeUpdate();
+
+            // Cập nhật số lượng sách đã mượn
+            updateUserStmt.setInt(1, userId);
+            updateUserStmt.executeUpdate();
 
             System.out.println("Book returned successfully. ISBN: " + ISBN + " is now available.");
         } catch (SQLException e) {

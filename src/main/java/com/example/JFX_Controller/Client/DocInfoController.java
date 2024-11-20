@@ -17,7 +17,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.example.JFX_Controller.Controller;
-
+import com.example.Handlers.ImageLoader;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -70,7 +70,9 @@ public class DocInfoController extends Controller implements Initializable{
         timeline.play();
     }
     public void setInfo(int docId, String imageUrl, String title, String genre) {
-        docCover.setImage(new Image(imageUrl));
+        System.out.println(imageUrl);
+        Image image = ImageLoader.loadImage(imageUrl);
+        docCover.setImage(image);
         this.title.setText(title.toUpperCase());
         // query description here
         // check borrow
