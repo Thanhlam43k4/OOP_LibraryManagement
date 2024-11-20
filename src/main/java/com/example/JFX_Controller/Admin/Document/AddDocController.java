@@ -9,7 +9,7 @@ import com.example.Model.Document;
 import com.example.Service.DocumentService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -91,12 +91,10 @@ public class AddDocController {
     private void addDocNode(Document doc) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/DocRow.fxml"));
-            Node docNode = loader.load();
+            Parent docNode = loader.load();
             DocRowController docRowController = (DocRowController) loader.getController();
             docRowController.setInfo(doc, docNode);
             AdminController.docList.add(docNode);
-            AdminController.instance.docVBox.setPrefHeight(AdminController.docList.size() * 70 + 70);        
-            AdminController.instance.docVBox.getChildren().add(docNode);
         } catch (IOException e) {
             e.printStackTrace();
         }

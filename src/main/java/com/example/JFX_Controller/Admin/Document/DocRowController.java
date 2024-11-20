@@ -48,8 +48,6 @@ public class DocRowController {
         // update ui
 
         AdminController.docList.remove(this.root);
-        AdminController.instance.docVBox.getChildren().remove(this.root);
-        AdminController.instance.docVBox.setPrefHeight(AdminController.docList.size() * 70 + 70);
         DocumentService.instance.deleteDocument(doc.getDocumentId());
         Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Delete Document sucess!");
     }

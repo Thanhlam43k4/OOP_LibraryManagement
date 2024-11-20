@@ -55,7 +55,7 @@ public class AdminController extends Controller implements Initializable {
     @FXML public StackPane docPane;
     @FXML public StackPane copiesDocPane;
     @FXML public VBox docCopyVbox;
-    @FXML public VBox docVBox;
+    @FXML public ListView<Parent> docListView;
     // Users
     @FXML public StackPane userPane;
     @FXML public StackPane returnDocPane;
@@ -66,7 +66,7 @@ public class AdminController extends Controller implements Initializable {
     @FXML public VBox transVBox;
 
     private Timeline searchTimeline;
-    public static List<Node> docList = new ArrayList<>();
+    public static ObservableList<Parent> docList = FXCollections.observableArrayList(); 
     private static List<Node> userList = new ArrayList<>();
     public static List<Node> transList = new ArrayList<>();
     // singleton
@@ -86,8 +86,8 @@ public class AdminController extends Controller implements Initializable {
         setupSearchFieldListener();
         setPane(docPane, docsBut);
         
+        docListView.setItems(docList);
         setVBox(userVBox, userList);
-        setVBox(docVBox, docList);
         setVBox(transVBox, transList);
     }
     //#region event handle
@@ -163,7 +163,7 @@ public class AdminController extends Controller implements Initializable {
         for (Document d : docs) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/DocRow.fxml"));
-                Node docNode = loader.load();
+                Parent docNode = loader.load();
                 DocRowController docRowController = (DocRowController) loader.getController();
                 docRowController.setInfo(d, docNode);
                 docList.add(docNode);

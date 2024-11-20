@@ -22,3 +22,29 @@
     -fx-background-color: #888888;     
     -fx-background-radius: 10px;
 }
+
+
+ /* cố định kích thước listview */
+ .second-listview {
+    -fx-background-insets: 0;
+}
+
+.second-listview .list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 10 6 0 0 0;
+}
+
+.second-listview .list-cell:selected {
+    -fx-background-color: transparent;
+}
+
+/* scroll bar */
+.second-listview .scroll-bar {
+    -fx-background-color: transparent;
+}
+
+/* thanh trượt (thuộc scroll bar)*/
+.second-listview .scroll-bar .thumb {
+    -fx-background-color: #888888;     
+    -fx-background-radius: 10px;
+}
