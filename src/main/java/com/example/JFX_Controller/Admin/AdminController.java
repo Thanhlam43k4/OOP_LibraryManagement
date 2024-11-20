@@ -40,7 +40,6 @@ import javafx.fxml.Initializable;
 public class AdminController extends Controller implements Initializable {
     @FXML private Label userName;
     @FXML private TextField searchField;
-    @FXML private ListView<String> suggestionsListView;
     // Tab button
     @FXML private HBox docsBut;
     @FXML private HBox usersBut;
@@ -76,8 +75,7 @@ public class AdminController extends Controller implements Initializable {
             addDocNodes();
             addTranscNodes();
         }
-        //setPane(docPane, docsBut, docFilterList, "title");
-        setPane(userPane, usersBut, userFilterList, "userName");
+        setPane(docPane, docsBut, docFilterList, "title");
         
         docListView.setItems(docFilterList);
         userListView.setItems(userFilterList);
