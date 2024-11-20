@@ -1,6 +1,5 @@
 package com.example.JFX_Controller.Admin.Document;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 
@@ -28,7 +27,6 @@ import javafx.scene.image.ImageView;
 // Controller của từng hàng trong tab DocManager
 public class DocRowController {
     @FXML private ImageView docImage;
-    @FXML private Label docId;
     @FXML private Label title;
     @FXML private Label author;
     @FXML private Label genre;
@@ -63,7 +61,6 @@ public class DocRowController {
         doc = d;
         Image image = ImageLoader.loadImage(doc.getUrlImage());
         this.docImage.setImage(image);
-        this.docId.setText(String.valueOf(d.getDocumentId()));
         this.title.setText(d.getTitle());
         this.author.setText(d.getAuthor());
         this.genre.setText(d.getGenre());
@@ -72,7 +69,8 @@ public class DocRowController {
     }
     public void modifyInfo(Document d) {
         doc = d;
-        this.docId.setText(String.valueOf(d.getDocumentId()));
+        Image image = ImageLoader.loadImage(doc.getUrlImage());
+        this.docImage.setImage(image);
         this.title.setText(d.getTitle());
         this.author.setText(d.getAuthor());
         this.genre.setText(d.getGenre());

@@ -11,17 +11,15 @@ import com.example.JFX_Controller.Admin.User.UserRowController;
 import com.example.Model.Client;
 import com.example.Model.Document;
 import com.example.Model.Transaction;
-import com.example.Service.ApiService;
 import com.example.Service.DocumentService;
 import com.example.Service.SessionManager;
 import com.example.Service.TransactionService;
 import com.example.Service.UserService;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,15 +35,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.Initializable;
-import javafx.util.Duration;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 //#endregion
 
 public class AdminController extends Controller implements Initializable {
     @FXML private Label userName;
     @FXML private TextField searchField;
-    @FXML private ListView<String> suggestionsListView;
     // Tab button
     @FXML private HBox docsBut;
     @FXML private HBox usersBut;
@@ -64,7 +58,6 @@ public class AdminController extends Controller implements Initializable {
     @FXML private AnchorPane tranPane;
     @FXML private ListView<Parent> transListView;
 
-    private Timeline searchTimeline;
     public static ObservableList<Parent> docList = FXCollections.observableArrayList(); 
     private static ObservableList<Parent> userList = FXCollections.observableArrayList(); 
     public static ObservableList<Parent> transList = FXCollections.observableArrayList(); 
@@ -82,20 +75,19 @@ public class AdminController extends Controller implements Initializable {
             addDocNodes();
             addTranscNodes();
         }
-        setupSearchFieldListener();
-        setPane(docPane, docsBut);
+        setPane(docPane, docsBut, docFilterList, "title");
         
-        docListView.setItems(docList);
-        userListView.setItems(userList);
-        transListView.setItems(transList);
+        docListView.setItems(docFilterList);
+        userListView.setItems(userFilterList);
+        transListView.setItems(transFilterList);
     }
     //#region event handle
     @FXML
-    void docsTab(MouseEvent event)       { setPane(docPane, docsBut); }
+    void docsTab(MouseEvent event)       { setPane(docPane, docsBut, docFilterList, "title"); }
     @FXML
-    void usersTab(MouseEvent event)      { setPane(userPane, usersBut); }
+    void usersTab(MouseEvent event)      { setPane(userPane, usersBut, userFilterList, "userName"); }
     @FXML
-    void transTab(MouseEvent event)      { setPane(tranPane, tranBut); }
+    void transTab(MouseEvent event)      { setPane(tranPane, tranBut, transFilterList, "transId"); }
     @FXML
     void showSetting(ActionEvent event)  { }
     @FXML
@@ -114,14 +106,14 @@ public class AdminController extends Controller implements Initializable {
     void openAddDocApi(ActionEvent event) { loadAddDoc("AddDocAPI.fxml"); }
     @FXML
     void openAddUser(ActionEvent event)  { loadAddUser(); }
-    private final ExecutorService executorService = Executors.newSingleThreadExecutor(); // ExecutorService với 1 luồng
 
     //#endregion
     
     //#region fe_func
     // bật/tắt Pane
-    private void setPane(Parent pane, HBox tabBut) {
+    private void setPane(Parent pane, HBox tabBut, FilteredList<Parent> filterList, String searchId) {
         Pane anchorPane = (Pane) pane.getParent();
+        searchFieldListener(filterList, searchId);
         for (Node child : anchorPane.getChildren()) {
             child.setVisible(false);
         }
@@ -226,75 +218,28 @@ public class AdminController extends Controller implements Initializable {
         userList.clear();
         transList.clear();
     }
-
-
-    // catch find textfield change
-    private void setupSearchFieldListener() {
-        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-            // Hủy Timeline trước đó nếu có
-            if (searchTimeline != null) {
-                searchTimeline.stop();
-            }
-            // Nếu trường tìm kiếm không trống
-            if (!newValue.trim().isEmpty()) {
-                // Tạo một mới Timeline với 2 giây trì hoãn
-                searchTimeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> handleSearch()));
-                searchTimeline.playFromStart(); // Bắt đầu chạy Timeline
-            } else {
-                suggestionsListView.getParent().setVisible(false); // Ẩn ListView nếu trường tìm kiếm trống
-            }
-        });
-    } 
-    @FXML
-    private void handleSearch() {
-        try {
-            if (searchField == null || suggestionsListView == null) {
-                System.err.println("searchField or suggestionList is null!");
-                return;
-            }
-
-            String query = searchField.getText().trim();
-
-            if (query.isEmpty()) {
-                suggestionsListView.getParent().setVisible(false);
-                return;
-            }
-            executorService.submit(() -> searchBooks(query));
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
-
-    private void searchBooks(String query) {
-        try {
-            // Gọi API để tìm kiếm sách
-            List<Document> documents = ApiService.searchBooks(query);
-
-            ObservableList<String> suggestions = FXCollections.observableArrayList();
-            for (Document document : documents) {
-                suggestions.add(document.getTitle());
-            }
-            Platform.runLater(() -> {
-                suggestionsListView.setItems(suggestions);
-                suggestionsListView.getParent().setVisible(!suggestions.isEmpty());
-            });
-
-            suggestionsListView.setOnMouseClicked(event -> {
-                String selectedDocument = suggestionsListView.getSelectionModel().getSelectedItem();
-                if (selectedDocument != null) {
-                    System.out.println(selectedDocument);
+ 
+    ChangeListener<String> currentListener = null;
+    FilteredList<Parent> docFilterList = new FilteredList<>(docList, s -> true);
+    FilteredList<Parent> userFilterList = new FilteredList<>(userList, s -> true);
+    FilteredList<Parent> transFilterList = new FilteredList<>(transList, s -> true);
+    
+    // thay đổi listener
+    private void searchFieldListener(FilteredList<Parent> filterList, String searchId) {
+        if(currentListener!=null)searchField.textProperty().removeListener(currentListener);
+        currentListener = (observable, oldValue, newValue) -> {
+            filterList.setPredicate(parent -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true; // Hiển thị tất cả nếu không có gì được nhập
                 }
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                // Lấy Label trong Parent và kiểm tra text
+                Label label = (Label) parent.lookup("#" + searchId);
+                return label != null && label.getText().toLowerCase().contains(lowerCaseFilter);
             });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    public void shutdown() {
-        executorService.shutdown(); // Đảm bảo dừng ExecutorService khi không còn sử dụng
+        };
+        searchField.textProperty().addListener(currentListener);
     }
     //#endregion
 }

@@ -36,7 +36,7 @@
             <Insets left="12.0" />
          </padding>
       </Label>
-      <Label fx:id="dueDate" layoutX="480.0" layoutY="30.0" prefHeight="20.0" prefWidth="160.0" text="21-09-2024" textFill="#a13c3c">
+      <Label fx:id="dueDate" layoutX="480.0" layoutY="30.0" prefHeight="20.0" prefWidth="160.0" text="21-09-2024" textFill="#396c8c">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

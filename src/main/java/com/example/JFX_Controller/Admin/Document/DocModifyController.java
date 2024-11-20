@@ -19,7 +19,6 @@ public class DocModifyController {
     @FXML private TextField title;
     @FXML private TextField author;
     @FXML private TextField genre;
-    @FXML private TextField isbn;
     @FXML private TextArea description;
     @FXML private TextField imageUrl;
 
@@ -72,11 +71,6 @@ public class DocModifyController {
             return false;
         }
 
-        if (Validate.isValidISBN(isbn.getText())) {
-            Notify.showAlert(Alert.AlertType.ERROR, "Eror", "ISBN invalid!");
-            return false;
-        }
-
         if (!Validate.isValidTitle(description.getText())) {
             Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Desciption invalid!");
             return false;
@@ -91,7 +85,6 @@ public class DocModifyController {
         this.genre.setText(d.getGenre());
         this.description.setText(d.getDescription());
         this.imageUrl.setText(d.getUrlImage());
-        this.isbn.setText(d.getISBN());
         this.docRowController = docRow;
     }
 }
