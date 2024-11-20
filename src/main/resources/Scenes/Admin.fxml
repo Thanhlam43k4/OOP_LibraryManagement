@@ -94,7 +94,7 @@
       <AnchorPane prefHeight="60.0" prefWidth="200.0" style="-fx-border-width: 0; -fx-background-color: transparent;" styleClass="primary-anchor-pane" stylesheets="@../CSS_Setup/anchorpane.css" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <FontAwesomeIconView fill="#868686" glyphName="SEARCH" layoutX="25.0" layoutY="36.0" size="19" />
-               <TextField fx:id="searchField" layoutX="53.0" layoutY="14.0" onKeyReleased="#handleSearch" prefHeight="33.0" prefWidth="300.0" promptText="Search..." style="-fx-background-color: transparent; -fx-border-color: #b3b2b2; -fx-border-radius: 12;" styleClass="primary-text-field" stylesheets="@../CSS_Setup/textfield.css" />
+               <TextField fx:id="searchField" layoutX="53.0" layoutY="14.0" prefHeight="33.0" prefWidth="300.0" promptText="Search..." style="-fx-background-color: transparent; -fx-border-color: #b3b2b2; -fx-border-radius: 12;" styleClass="primary-text-field" stylesheets="@../CSS_Setup/textfield.css" />
             <HBox alignment="CENTER_RIGHT" layoutX="401.0" layoutY="10.0" prefHeight="40.0" prefWidth="260.0" spacing="10.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="10.0">
                <opaqueInsets>
                   <Insets />

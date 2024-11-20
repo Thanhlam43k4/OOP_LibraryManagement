@@ -1,6 +1,5 @@
 package com.example.Model;
 
-import javafx.scene.image.Image;
 
 public class Document {
     private int documentId;
