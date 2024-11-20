@@ -39,6 +39,7 @@ public class AddDocApiController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        suggestList.setVisible(false);
         searchFieldListener();
     }
 
@@ -56,8 +57,8 @@ public class AddDocApiController implements Initializable {
     private void searchFieldListener() {
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.isEmpty()) {
-                // Khi TextField trống, ListView sẽ không hiển thị gì
-                suggestList.setItems(FXCollections.observableArrayList());
+                // Khi TextField trống, ListView tắt
+                suggestList.setVisible(false);
             } 
             else {
                 searchTimeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> handleSearch()));
@@ -70,6 +71,10 @@ public class AddDocApiController implements Initializable {
             String query = searchField.getText().trim();
             if (query.isEmpty()) {
                 suggestList.setItems(FXCollections.observableArrayList());
+                return;
+            }
+            if (query.isEmpty()) {
+                suggestList.setVisible(false);
                 return;
             }
             executorService.submit(() -> searchBooks(query));
@@ -89,6 +94,7 @@ public class AddDocApiController implements Initializable {
             }
             Platform.runLater(() -> {
                 suggestList.setItems(suggestions);
+                suggestList.setVisible(!suggestions.isEmpty());
             });
         } catch (Exception e) {
             e.printStackTrace();
