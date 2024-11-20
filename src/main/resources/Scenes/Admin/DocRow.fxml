@@ -5,13 +5,33 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <HBox alignment="CENTER_LEFT" onMouseClicked="#showAllCopy" prefHeight="100.0" prefWidth="900.0" style="-fx-background-radius: 13; -fx-border-radius: 13;" styleClass="second-anchor-card" stylesheets="@../../CSS_Setup/card.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.Document.DocRowController">
    <children>
-      <ImageView fx:id="docImage" fitHeight="86.0" fitWidth="60.0" preserveRatio="true" />
+      <StackPane prefHeight="98.0" prefWidth="70.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="61.0">
+               <StackPane.margin>
+                  <Insets right="5.0" top="4.0" />
+               </StackPane.margin>
+               <effect>
+                  <Shadow color="#797979" height="29.9" radius="14.45" width="29.9" />
+               </effect>
+            </Rectangle>
+            <ImageView fx:id="docImage" fitHeight="86.0" fitWidth="60.0" preserveRatio="true">
+               <image>
+                  <Image url="@../../DocCover_url/1586s.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </StackPane>
       <Label fx:id="title" layoutX="10.0" layoutY="30.0" prefHeight="20.0" prefWidth="320.0" text="One Piece" textFill="#3c3a3a">
          <font>
             <Font name="System Bold" size="14.0" />
