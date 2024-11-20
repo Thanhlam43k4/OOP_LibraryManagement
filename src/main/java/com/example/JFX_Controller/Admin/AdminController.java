@@ -225,7 +225,8 @@ public class AdminController extends Controller implements Initializable {
     FilteredList<Parent> docFilterList = new FilteredList<>(docList, s -> true);
     FilteredList<Parent> userFilterList = new FilteredList<>(userList, s -> true);
     FilteredList<Parent> transFilterList = new FilteredList<>(transList, s -> true);
-    // catch find textfield change
+    
+    // thay đổi listener
     private void searchFieldListener(FilteredList<Parent> filterList, String searchId) {
         if(currentListener!=null)searchField.textProperty().removeListener(currentListener);
         currentListener = (observable, oldValue, newValue) -> {
