@@ -33,9 +33,7 @@ public class ReturnCopyRowController {
     }
 
     private void updateTransTable() {
-        AdminController.transList.clear();
         AdminController.instance.addTranscNodes();
-        AdminController.instance.setVBox(AdminController.instance.transVBox, AdminController.transList);
     }
 
     public void setInfo(int userId, int transId, String title, String isbn, Date dueDate, Node root, VBox returnDocVbox) {

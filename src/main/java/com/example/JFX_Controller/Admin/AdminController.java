@@ -2,7 +2,6 @@ package com.example.JFX_Controller.Admin;
 //#region Lib
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -63,12 +62,12 @@ public class AdminController extends Controller implements Initializable {
     @FXML private ListView<Parent> userListView;
     // Transaction
     @FXML private AnchorPane tranPane;
-    @FXML public VBox transVBox;
+    @FXML private ListView<Parent> transListView;
 
     private Timeline searchTimeline;
     public static ObservableList<Parent> docList = FXCollections.observableArrayList(); 
     private static ObservableList<Parent> userList = FXCollections.observableArrayList(); 
-    public static List<Node> transList = new ArrayList<>();
+    public static ObservableList<Parent> transList = FXCollections.observableArrayList(); 
     // singleton
     public static AdminController instance;
 
@@ -88,7 +87,7 @@ public class AdminController extends Controller implements Initializable {
         
         docListView.setItems(docList);
         userListView.setItems(userList);
-        setVBox(transVBox, transList);
+        transListView.setItems(transList);
     }
     //#region event handle
     @FXML
@@ -178,25 +177,13 @@ public class AdminController extends Controller implements Initializable {
         for (Transaction t : trans) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/TranRow.fxml"));
-                Node transNode = loader.load();
+                Parent transNode = loader.load();
                 TransRowController transRowController = (TransRowController) loader.getController();
                 transRowController.setInfo(t);
                 transList.add(transNode);
             } catch (IOException e) {
                 e.printStackTrace();
             }   
-        }
-    }
-
-    // thêm data vào UI
-    public void setVBox(VBox vbox, List<Node> list) {
-        // clear vbox trừ node đầu tiên
-        if (vbox.getChildren().size() > 1) {
-            vbox.getChildren().subList(1, vbox.getChildren().size()).clear();
-        }
-        vbox.setPrefHeight(list.size() * 70 + 70);
-        for (Node node : list) {
-            vbox.getChildren().add(node);
         }
     }
     

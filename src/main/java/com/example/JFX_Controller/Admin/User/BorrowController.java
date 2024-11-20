@@ -43,9 +43,7 @@ public class BorrowController {
     }
 
     private void resetTrans() {
-        AdminController.transList.clear();
         AdminController.instance.addTranscNodes();
-        AdminController.instance.setVBox(AdminController.instance.transVBox, AdminController.transList);
     }
 
     public void setInfo(int userId) {
