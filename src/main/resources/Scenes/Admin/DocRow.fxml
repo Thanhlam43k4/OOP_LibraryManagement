@@ -9,21 +9,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER_LEFT" onMouseClicked="#showAllCopy" prefHeight="60.0" prefWidth="900.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="second-anchor-card" stylesheets="@../../CSS_Setup/card.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.Document.DocRowController">
+<HBox alignment="CENTER_LEFT" onMouseClicked="#showAllCopy" prefHeight="100.0" prefWidth="900.0" style="-fx-background-radius: 13; -fx-border-radius: 13;" styleClass="second-anchor-card" stylesheets="@../../CSS_Setup/card.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.Document.DocRowController">
    <children>
-      <ImageView fx:id="docImage" fitHeight="86.0" fitWidth="87.0" preserveRatio="true" />
-
-      <Label fx:id="docId" alignment="CENTER" prefHeight="20.0" prefWidth="74.0" text="#123" textFill="#3a6d8c">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
+      <ImageView fx:id="docImage" fitHeight="86.0" fitWidth="60.0" preserveRatio="true" />
       <Label fx:id="title" layoutX="10.0" layoutY="30.0" prefHeight="20.0" prefWidth="320.0" text="One Piece" textFill="#3c3a3a">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
          <padding>
-            <Insets left="10.0" />
+            <Insets left="25.0" />
          </padding>
       </Label>
       <Label fx:id="author" layoutX="94.0" layoutY="30.0" prefHeight="20.0" prefWidth="220.0" text="Oda" textFill="#3c3a3a">
@@ -64,6 +58,6 @@
       </MenuButton>
    </children>
    <padding>
-      <Insets right="15.0" />
+      <Insets left="15.0" right="15.0" />
    </padding>
 </HBox>
