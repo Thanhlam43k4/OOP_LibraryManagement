@@ -21,7 +21,7 @@
    <children>
       <AnchorPane layoutX="224.0" layoutY="42.0" prefHeight="60.0" prefWidth="526.0" stylesheets="@../CSS_Setup/anchorpane.css" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField layoutX="38.0" layoutY="20.0" prefHeight="32.0" prefWidth="200.0" promptText="Search..." style="-fx-background-color: transparent; -fx-border-color: #b3b2b2; -fx-border-radius: 12;" styleClass="primary-text-field" stylesheets="@../CSS_Setup/textfield.css" />
+            <TextField fx:id="searchField" layoutX="38.0" layoutY="20.0" prefHeight="32.0" prefWidth="200.0" promptText="Search..." style="-fx-background-color: transparent; -fx-border-color: #b3b2b2; -fx-border-radius: 12;" styleClass="primary-text-field" stylesheets="@../CSS_Setup/textfield.css" />
             <HBox alignment="CENTER_RIGHT" layoutX="401.0" layoutY="10.0" prefHeight="40.0" prefWidth="241.0" spacing="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                <opaqueInsets>
                   <Insets />

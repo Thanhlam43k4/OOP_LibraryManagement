@@ -26,10 +26,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 //#endregion
+import javafx.scene.control.TextField;
 
 public class ClientController extends Controller implements Initializable{
 //UI
     @FXML private Label userName;
+    @FXML private TextField searchField;
     // Tab button
     @FXML private HBox browseBut;
     @FXML private HBox mydocBut;
@@ -38,7 +40,7 @@ public class ClientController extends Controller implements Initializable{
     @FXML private GridPane browseGrid;
     // MyDoc Tab
     @FXML private ScrollPane mydocScroll;
-    @FXML private GridPane mydocGrid;
+    @FXML public GridPane mydocGrid;
 
 //Prop
     private static final int cardWidth = 200; // Chiều rộng phần tử sách + Hgap
@@ -49,8 +51,12 @@ public class ClientController extends Controller implements Initializable{
     
     private int currentCol = 0; // số cột hiện tại của grid
 
+    public static ClientController instance;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        instance = this;
+
         userName.setText(SessionManager.getInstance().getLoggedInUser().getUsername());
         if(cardList.isEmpty()) {
             System.out.println("Add client node");

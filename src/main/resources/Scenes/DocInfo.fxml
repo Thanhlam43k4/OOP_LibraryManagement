@@ -25,6 +25,11 @@
                   <Insets />
                </opaqueInsets>
                <children>
+                  <Label fx:id="userName" alignment="CENTER_RIGHT" text="name" textFill="#363636">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
                   <MenuButton alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="36.0" style="-fx-border-radius: 16px; -fx-background-radius: 16px;" styleClass="primary-menubutton" stylesheets="@../CSS_Setup/menubutton.css">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Profile" />
@@ -34,11 +39,6 @@
                         <FontAwesomeIconView glyphName="USER" size="20" styleClass="fontawesome-icon" wrappingWidth="8.0" />
                      </graphic>
                   </MenuButton>
-                  <Label maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="71.0" text="Trong anh" textFill="#3c3a3a" wrapText="true">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Label>
                </children>
                <padding>
                   <Insets right="10.0" />
@@ -55,18 +55,18 @@
             </Button>
          </children>
       </AnchorPane>
-      <ScrollPane fx:id="docScroll" layoutX="376.0" layoutY="115.0" prefHeight="385.0" prefWidth="374.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="376.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0">
+      <ScrollPane fx:id="docScroll" layoutX="376.0" layoutY="123.0" prefHeight="377.0" prefWidth="374.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="376.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="123.0">
          <content>
-            <AnchorPane prefHeight="506.0" prefWidth="364.0">
+            <AnchorPane prefHeight="510.0" prefWidth="364.0">
                <children>
                   <Label layoutY="10.0" text="Description:" underline="true">
                      <font>
-                        <Font name="System Bold" size="16.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="description" alignment="TOP_LEFT" layoutY="34.0" prefHeight="472.0" prefWidth="354.0" text="this is document description" textFill="#6b6767" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="34.0">
+                  <Label fx:id="description" alignment="TOP_LEFT" layoutY="41.0" prefHeight="465.0" prefWidth="364.0" text="this is document description" textFill="#6b6767" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="41.0">
                      <font>
-                        <Font size="13.0" />
+                        <Font size="15.0" />
                      </font>
                   </Label>
                </children>
@@ -77,11 +77,20 @@
             <Font name="Georgia Bold" size="36.0" />
          </font>
       </Label>
-      <Label fx:id="author" layoutX="377.0" layoutY="105.0" text="Author:" AnchorPane.leftAnchor="377.0" AnchorPane.topAnchor="105.0">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
+      <HBox layoutX="377.0" layoutY="102.0" prefHeight="27.0" prefWidth="277.0" spacing="5.0">
+         <children>
+            <Label fx:id="author" text="By:">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="author" text="Author">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
       <HBox prefHeight="127.0" prefWidth="393.0" spacing="15.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="345.0" AnchorPane.rightAnchor="12.0">
          <children>
             <Button fx:id="borrowBut" mnemonicParsing="false" onAction="#borrowDoc" prefHeight="50.0" prefWidth="120.0" styleClass="second-button" stylesheets="@../CSS_Setup/button.css" text=" Borrow">

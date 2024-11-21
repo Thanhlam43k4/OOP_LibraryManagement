@@ -26,17 +26,12 @@ import javafx.fxml.FXMLLoader;
 
 // Controller của từng thẻ Doc trong tab Browse
 public class CardController extends Controller {
-    @FXML
-    private VBox card;
-    @FXML
-    private ImageView docCover;
-    @FXML
-    private Label name;
-    @FXML
-    private Label genre;
+    @FXML private VBox card;
+    @FXML private ImageView docCover;
+    @FXML private Label name;
+    @FXML private Label genre;
 
-    private int id;
-    private String imageUrl;
+    private Document doc;
 
     boolean canLoad = true;
 
@@ -57,7 +52,7 @@ public class CardController extends Controller {
             Scene scene = card.getScene();
 
             DocInfoController docInfoController = loader.getController();
-            docInfoController.setInfo(id, imageUrl, name.getText(), genre.getText());
+            docInfoController.setInfo(doc);
 
             // fix docinfo size
             AnchorPane pane = (AnchorPane) docinfoRoot;
@@ -86,7 +81,7 @@ public class CardController extends Controller {
     }
 
     public void setInfo(Document doc) {
-
+        this.doc = doc;
         try {
             Image image = ImageLoader.loadImage(doc.getUrlImage());
             docCover.setImage(image);
@@ -95,8 +90,6 @@ public class CardController extends Controller {
         } catch (Exception e) {
             System.err.println("card coverURL invalid! when add CardNode");
         }
-        this.id = doc.getDocumentId();
-        this.imageUrl = doc.getUrlImage();
         this.name.setText(doc.getTitle());
         this.genre.setText(doc.getGenre());
     }
