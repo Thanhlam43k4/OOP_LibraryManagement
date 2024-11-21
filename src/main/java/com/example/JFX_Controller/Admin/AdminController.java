@@ -62,7 +62,7 @@ public class AdminController extends Controller implements Initializable {
 
     private String[] docSearchOp = {"title", "author", "genre"};
     private String[] userSearchOp = {"userName", "email", "phone"};
-    private String[] transSearchOp = {"userId", "docISBN"};
+    private String[] transSearchOp = {"userId", "docISBN", "returnDate"};
     private String[] currentSearchOp = docSearchOp;
     public static ObservableList<Parent> docList = FXCollections.observableArrayList(); 
     private static ObservableList<Parent> userList = FXCollections.observableArrayList(); 
