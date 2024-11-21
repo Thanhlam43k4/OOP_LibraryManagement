@@ -24,6 +24,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 //#endregion
 import javafx.scene.control.TextField;
@@ -46,10 +47,10 @@ public class ClientController extends Controller implements Initializable{
     private static final int cardWidth = 200; // Chiều rộng phần tử sách + Hgap
     private static final int docElementWidth = 495;
     
-    private static List<Node> cardList = new ArrayList<>();
-    private static List<Node> docelementList = new ArrayList<>();
+    private static List<Parent> cardList = new ArrayList<>();
+    public static List<Parent> docelementList = new ArrayList<>();
     
-    private int currentCol = 0; // số cột hiện tại của grid
+    public int currentCol = 0; // số cột hiện tại của grid
 
     public static ClientController instance;
 
@@ -150,7 +151,7 @@ public class ClientController extends Controller implements Initializable{
         for (Document document : docs) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Card.fxml"));
-                Node bookNode = loader.load();
+                Parent bookNode = loader.load();
                 
                 CardController cardController = loader.getController();
                 cardController.setInfo(document);
@@ -166,12 +167,12 @@ public class ClientController extends Controller implements Initializable{
         for (Transaction transaction : transactions) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/DocElement.fxml"));
-                Node bookNode = loader.load();
+                Parent bookNode = loader.load();
                 String ISBN = ExtraFunction.extractISBN(transaction.getISBN());
 
                 Document docInfo  = DocumentService.instance.getDocumentByISBN(ISBN);
                 TransCardController transCardController = loader.getController();
-                transCardController.setInfo(docInfo, transaction.getReturnDate());
+                transCardController.setInfo(docInfo, transaction.getReturnDate(), transaction.getTransactionId());
                 docelementList.add(bookNode);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -180,7 +181,7 @@ public class ClientController extends Controller implements Initializable{
     }
 
     // thay đổi cột của grid
-    private void updateGrid(GridPane grid, List<Node> list, int colCnt) {
+    public void updateGrid(GridPane grid, List<Parent> list, int colCnt) {
         grid.getChildren().clear();
         int row = 0, col = 0;
         for (Node node : list) {

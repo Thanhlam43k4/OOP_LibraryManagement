@@ -85,7 +85,6 @@ public class CardController extends Controller {
         try {
             Image image = ImageLoader.loadImage(doc.getUrlImage());
             docCover.setImage(image);
-            System.out.println("Image URL: " + doc.getUrlImage());
 
         } catch (Exception e) {
             System.err.println("card coverURL invalid! when add CardNode");
