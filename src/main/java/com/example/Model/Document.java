@@ -23,7 +23,13 @@ public class Document {
         this.genre = genre;
         this.description = description;
     }
-
+    public Document(int documentId, String title, String author,  String genre,String urlImage) {
+        this.documentId = documentId;
+        this.title = title;
+        this.author = author;
+        this.urlImage = urlImage;
+        this.genre = genre;
+    }
     public Document(int documentId, String title, String ISBN,String author, String urlImage, String genre,int numberCopy, String description) {
         this.documentId = documentId;
         this.title = title;
@@ -43,12 +49,12 @@ public class Document {
         this.genre = genre;
         this.numberCopy = numberCopy;
     }
-    public Document(String title, String author, String genre,String description,  String urlImage) {
+    public Document(String title, String author, String ISBN,String description,  String urlImage) {
         this.title = title;
         this.description = description;
         this.author = author;
         this.urlImage = urlImage;
-        this.genre = genre;
+        this.ISBN = ISBN;
 
     }
 

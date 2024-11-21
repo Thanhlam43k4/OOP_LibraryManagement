@@ -59,7 +59,7 @@ public class AddDocApiController implements Initializable {
             if (newValue.isEmpty()) {
                 // Khi TextField trống, ListView tắt
                 suggestList.setVisible(false);
-            } 
+            }
             else {
                 searchTimeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> handleSearch()));
                 searchTimeline.playFromStart();

@@ -145,9 +145,10 @@ public class DocumentDaoImpl implements DocumentDao {
                 String title = rs.getString("title");
                 String author = rs.getString("author");
                 String genre = rs.getString("genre");
+                String urlImage = rs.getString("urlImage");
                 // Add other fields as necessary
 
-                return new Document(documentId,title,author,genre); // Return the Document object
+                return new Document(documentId,title,author,genre,urlImage); // Return the Document object
             }
         } catch (SQLException e) {
             e.printStackTrace(); // Handle SQL exceptions

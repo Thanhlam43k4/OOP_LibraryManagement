@@ -9,10 +9,11 @@ public class ImageLoader {
 
     public static Image loadImage(String urlString) {
         InputStream inputStream = null;
+        HttpURLConnection connection = null;
         try {
             // Tạo URL và mở kết nối
             URL url = new URL(urlString);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setRequestProperty("User-Agent", "Mozilla/5.0");
             connection.setConnectTimeout(5000); // Thiết lập timeout kết nối
@@ -32,13 +33,16 @@ public class ImageLoader {
             System.err.println("Error loading image: " + e.getMessage());
             e.printStackTrace();
         } finally {
-            // Đóng InputStream nếu có
-            if (inputStream != null) {
-                try {
+            // Đóng InputStream và connection nếu có
+            try {
+                if (inputStream != null) {
                     inputStream.close();
-                } catch (Exception e) {
-                    System.err.println("Failed to close InputStream: " + e.getMessage());
                 }
+                if (connection != null) {
+                    connection.disconnect(); // Đảm bảo ngắt kết nối khi xong
+                }
+            } catch (Exception e) {
+                System.err.println("Failed to close InputStream or connection: " + e.getMessage());
             }
         }
         return null; // Trả về null nếu không tải được ảnh
