@@ -128,6 +128,7 @@ public class ClientController extends Controller implements Initializable{
 
     // bật/tắt Pane
     private void setBrowse(boolean isActive) {
+        searchField.setText(null);
         browseScroll.getParent().setVisible(isActive);
         browseBut.getStyleClass().clear();
         if(!isActive) {
