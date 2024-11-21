@@ -19,6 +19,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Label;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,7 +50,7 @@ public class ClientController extends Controller implements Initializable{
     private static final int cardWidth = 200; // Chiều rộng phần tử sách + Hgap
     private static final int docElementWidth = 495;
     
-    private static List<Parent> cardList = new ArrayList<>();
+    private static ObservableList<Parent> cardList = FXCollections.observableArrayList();
     public static List<Parent> docelementList = new ArrayList<>();
     
     public int currentCol = 0; // số cột hiện tại của grid
@@ -68,7 +71,10 @@ public class ClientController extends Controller implements Initializable{
         setBrowse(true);
         setMyDoc(false);
         
-        widthListener(); 
+        widthListener();
+        searchFieldListener();
+
+        updateGrid.run();
     }
 
     @FXML
@@ -198,5 +204,46 @@ public class ClientController extends Controller implements Initializable{
         docelementList.clear();
         cardList.clear();
     }
+
+    FilteredList<Parent> docFilterList = new FilteredList<>(cardList, s -> true);
+    private void searchFieldListener() {
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            docFilterList.setPredicate(parent -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true; // Hiển thị tất cả nếu không có gì được nhập
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                try {
+                    // Lấy Label trong Parent và kiểm tra text
+                    Label label = (Label) parent.lookup("#name");
+                    if (label != null) {
+                        return label.getText().toLowerCase().contains(lowerCaseFilter);
+                    } else {
+                        return false; // Trả về false nếu không tìm thấy Label
+                    }
+                } catch (NullPointerException e) {
+                    return false; // Bạn có thể thay đổi giá trị trả về nếu cần
+                }
+            });
+            updateGrid.run();
+        });
+    }
+
+    Runnable updateGrid = () -> {
+        browseGrid.getChildren().clear(); // Xóa kết quả cũ
+        int column = 0, row = 0;
+        int colCnt = (int) (browseScroll.getWidth())/cardWidth;
+        // Thêm các mục phù hợp vào GridPane
+        for (Parent item : docFilterList) {
+            browseGrid.add(item, column, row);
+
+            column++;
+            if (column >= colCnt) { // Hiển thị tối đa 3 cột mỗi hàng
+                column = 0;
+                row++;
+            }
+        }
+    };
     //#endregion
 }
