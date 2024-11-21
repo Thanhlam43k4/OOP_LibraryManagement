@@ -25,6 +25,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -40,6 +41,7 @@ import javafx.fxml.Initializable;
 public class AdminController extends Controller implements Initializable {
     @FXML private Label userName;
     @FXML private TextField searchField;
+    @FXML private ChoiceBox<String> searchChoice;
     // Tab button
     @FXML private HBox docsBut;
     @FXML private HBox usersBut;
@@ -58,6 +60,10 @@ public class AdminController extends Controller implements Initializable {
     @FXML private AnchorPane tranPane;
     @FXML private ListView<Parent> transListView;
 
+    private String[] docSearchOp = {"title", "author", "genre"};
+    private String[] userSearchOp = {"userName", "email", "phone"};
+    private String[] transSearchOp = {"userId", "docISBN"};
+    private String[] currentSearchOp = docSearchOp;
     public static ObservableList<Parent> docList = FXCollections.observableArrayList(); 
     private static ObservableList<Parent> userList = FXCollections.observableArrayList(); 
     public static ObservableList<Parent> transList = FXCollections.observableArrayList(); 
@@ -75,7 +81,7 @@ public class AdminController extends Controller implements Initializable {
             addDocNodes();
             addTranscNodes();
         }
-        setPane(docPane, docsBut, docFilterList, "title");
+        setPane(docPane, docsBut, docFilterList, docSearchOp);
         
         docListView.setItems(docFilterList);
         userListView.setItems(userFilterList);
@@ -83,11 +89,11 @@ public class AdminController extends Controller implements Initializable {
     }
     //#region event handle
     @FXML
-    void docsTab(MouseEvent event)       { setPane(docPane, docsBut, docFilterList, "title"); }
+    void docsTab(MouseEvent event)       { setPane(docPane, docsBut, docFilterList, docSearchOp); }
     @FXML
-    void usersTab(MouseEvent event)      { setPane(userPane, usersBut, userFilterList, "userName"); }
+    void usersTab(MouseEvent event)      { setPane(userPane, usersBut, userFilterList, userSearchOp); }
     @FXML
-    void transTab(MouseEvent event)      { setPane(tranPane, tranBut, transFilterList, "transId"); }
+    void transTab(MouseEvent event)      { setPane(tranPane, tranBut, transFilterList, transSearchOp); }
     @FXML
     void showSetting(ActionEvent event)  { }
     @FXML
@@ -111,10 +117,14 @@ public class AdminController extends Controller implements Initializable {
     
     //#region fe_func
     // bật/tắt Pane
-    private void setPane(Parent pane, HBox tabBut, FilteredList<Parent> filterList, String searchId) {
+    private void setPane(Parent pane, HBox tabBut, FilteredList<Parent> filterList, String[] searchOption) {
         Pane anchorPane = (Pane) pane.getParent();
         searchField.setText(null);
-        searchFieldListener(filterList, searchId);
+        searchChoice.getItems().removeAll(currentSearchOp);
+        currentSearchOp = searchOption;
+        searchChoice.getItems().addAll(currentSearchOp);
+        searchChoice.setValue(currentSearchOp[0]);
+        searchFieldListener(filterList);
         for (Node child : anchorPane.getChildren()) {
             child.setVisible(false);
         }
@@ -226,7 +236,7 @@ public class AdminController extends Controller implements Initializable {
     FilteredList<Parent> transFilterList = new FilteredList<>(transList, s -> true);
     
     // thay đổi listener
-    private void searchFieldListener(FilteredList<Parent> filterList, String searchId) {
+    private void searchFieldListener(FilteredList<Parent> filterList) {
         if(currentListener != null) searchField.textProperty().removeListener(currentListener);
 
         currentListener = (observable, oldValue, newValue) -> {
@@ -238,7 +248,7 @@ public class AdminController extends Controller implements Initializable {
 
                 try {
                     // Lấy Label trong Parent và kiểm tra text
-                    Label label = (Label) parent.lookup("#" + searchId);
+                    Label label = (Label) parent.lookup("#" + searchChoice.getValue());
                     if (label != null) {
                         return label.getText().toLowerCase().contains(lowerCaseFilter);
                     } else {

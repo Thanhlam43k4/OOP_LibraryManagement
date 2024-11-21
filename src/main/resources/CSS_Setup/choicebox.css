@@ -1,0 +1,33 @@
+/* Cấu hình cho ChoiceBox */
+.primary-choice-box {
+    -fx-background-color: rgba(185, 185, 185, 0); /* Màu nền */
+    -fx-text-fill: rgb(236, 236, 236); /* Màu chữ */
+    -fx-font-size: 13px; /* Kích thước font chữ */
+    /* -fx-font-weight: bold; */
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-border-color: #b1b1b1;
+}
+
+.primary-choice-box:hover {
+    -fx-background-color: rgb(235, 235, 235);
+}
+
+
+.primary-choice-box .arrow {
+    -fx-background-color: #8a8a8a;
+}
+
+.primary-choice-box .arrow:hover {
+    -fx-background-color: rgb(56, 56, 56);
+}
+
+.primary-choice-box .list-cell {
+    -fx-background-color: #aa2626; /* Nền của các mục */
+    -fx-text-fill: #00897b;        /* Màu chữ */
+}
+
+.primary-choice-box .list-cell:hover {
+    -fx-background-color: #b2dfdb; /* Nền khi di chuột */
+}
