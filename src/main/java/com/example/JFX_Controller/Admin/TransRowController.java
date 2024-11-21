@@ -26,7 +26,7 @@ public class TransRowController {
             returnDate.setStyle("-fx-text-fill: #317c47;");
             iconState.setStyle("-fx-fill: #317c47;");
         } catch (Exception e) {
-            returnDate.setText("Not return");
+            returnDate.setText("Borrowing");
             returnDate.setStyle("-fx-text-fill: #9d3838;");
             iconState.setStyle("-fx-fill: #9d3838;");
         }
