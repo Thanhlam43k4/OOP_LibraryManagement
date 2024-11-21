@@ -19,6 +19,7 @@ public class DocModifyController {
     @FXML private TextField title;
     @FXML private TextField author;
     @FXML private TextField genre;
+    @FXML private TextField isbn;
     @FXML private TextArea description;
     @FXML private TextField imageUrl;
 
@@ -83,6 +84,7 @@ public class DocModifyController {
         this.title.setText(d.getTitle());
         this.author.setText(d.getAuthor());
         this.genre.setText(d.getGenre());
+        this.isbn.setText(d.getISBN());
         this.description.setText(d.getDescription());
         this.imageUrl.setText(d.getUrlImage());
         this.docRowController = docRow;

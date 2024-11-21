@@ -113,6 +113,7 @@ public class AdminController extends Controller implements Initializable {
     // bật/tắt Pane
     private void setPane(Parent pane, HBox tabBut, FilteredList<Parent> filterList, String searchId) {
         Pane anchorPane = (Pane) pane.getParent();
+        searchField.setText(null);
         searchFieldListener(filterList, searchId);
         for (Node child : anchorPane.getChildren()) {
             child.setVisible(false);

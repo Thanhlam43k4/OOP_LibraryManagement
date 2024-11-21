@@ -78,7 +78,7 @@ public class UserRowController {
             AnchorPane.setTopAnchor(borrowPane, 0.0);
             
             BorrowController borrowController = loader.getController();
-            borrowController.setInfo(client.getId());
+            borrowController.setInfo(client, this);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -97,12 +97,16 @@ public class UserRowController {
                 String ISBN = ExtraFunction.extractISBN(t.getISBN());
                 Document doc = DocumentService.instance.getDocumentByISBN(ISBN);
                 ReturnCopyRowController docCopyController = loader.getController();
-                docCopyController.setInfo(client.getId(), t.getTransactionId(), doc.getTitle(), t.getISBN(), t.getReturnDate(), node, returnDocVbox);
+                docCopyController.setInfo(client, this, t.getTransactionId(), doc.getTitle(), t.getISBN(), t.getReturnDate(), node, returnDocVbox);
                 returnDocVbox.getChildren().add(node);
             } catch (IOException e) {
                 e.printStackTrace();
             } 
         }
+    }
+
+    public void modifyBorrowed() {
+        this.borrowed.setText(String.valueOf(client.getBorrowedBook()));
     }
 
     public void setInfo(Client client) {

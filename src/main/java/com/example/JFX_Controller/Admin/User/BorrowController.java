@@ -9,6 +9,7 @@ import javafx.scene.layout.StackPane;
 import com.example.Handlers.Notify;
 import com.example.Handlers.Validate;
 import com.example.JFX_Controller.Admin.AdminController;
+import com.example.Model.Client;
 import com.example.Service.TransactionService;
 
 import javafx.event.ActionEvent;
@@ -18,7 +19,8 @@ public class BorrowController {
     
     @FXML private StackPane userBorrowRoot;
 
-    private int userId;
+    private Client client;
+    private UserRowController userRowController;
     @FXML
     void borrowDoc(ActionEvent event) {
         String isbn_input = isbn.getText();
@@ -31,10 +33,12 @@ public class BorrowController {
             System.out.println(DocumentService.instance.isBookAvailable(isbn_input));
             Notify.showAlert(Alert.AlertType.ERROR,"Error","This Books is not available please choose other copies");
         }else{
-            TransactionService.instance.borrowBook(userId, isbn_input);
+            TransactionService.instance.borrowBook(client.getId(), isbn_input);
             Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Borrow Document sucess!");
 
             // update transaction UI
+            client.setBorrowedBook(client.getBorrowedBook() + 1);
+            userRowController.modifyBorrowed();
             resetTrans();
 
             AdminController.instance.userPane.getChildren().remove(this.userBorrowRoot);
@@ -53,7 +57,8 @@ public class BorrowController {
         AdminController.instance.addTranscNodes();
     }
 
-    public void setInfo(int userId) {
-        this.userId = userId;
+    public void setInfo(Client client, UserRowController userRowController) {
+        this.client = client;
+        this.userRowController = userRowController;
     }
 }

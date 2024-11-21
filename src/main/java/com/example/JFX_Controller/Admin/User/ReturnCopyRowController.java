@@ -5,6 +5,7 @@ import java.sql.Date;
 import com.example.Handlers.Notify;
 import com.example.JFX_Controller.Admin.AdminController;
 import com.example.Service.TransactionService;
+import com.example.Model.Client;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,11 +23,14 @@ public class ReturnCopyRowController {
     private Node root;
     private VBox returnDocVBox;
 
-    private int userId;
+    private Client client;
+    UserRowController userRowController;
     @FXML
     void applyReturn(ActionEvent event) {
-        TransactionService.instance.returnBook(userId, isbn.getText());
+        TransactionService.instance.returnBook(client.getId(), isbn.getText());
         //ui
+        client.setBorrowedBook(client.getBorrowedBook() - 1);
+        userRowController.modifyBorrowed();
         updateTransTable();
         returnDocVBox.getChildren().remove(root);
         Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Return Document sucess!");
@@ -36,10 +40,11 @@ public class ReturnCopyRowController {
         AdminController.instance.addTranscNodes();
     }
 
-    public void setInfo(int userId, int transId, String title, String isbn, Date dueDate, Node root, VBox returnDocVbox) {
+    public void setInfo(Client client, UserRowController userRowController, int transId, String title, String isbn, Date dueDate, Node root, VBox returnDocVbox) {
         this.root = root;
         this.returnDocVBox = returnDocVbox;
-        this.userId = userId;
+        this.client = client;
+        this.userRowController = userRowController;
         this.transId.setText(String.valueOf(transId));
         this.isbn.setText(isbn);
         this.title.setText(title);
