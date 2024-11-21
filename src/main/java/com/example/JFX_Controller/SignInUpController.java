@@ -20,6 +20,8 @@ public class SignInUpController extends Controller {
     private PasswordField passwordField;
     @FXML
     private PasswordField confirmpassField;
+    @FXML
+    private PasswordField userName;
 
     @FXML
     void returnSignIn(ActionEvent event) {
@@ -83,13 +85,15 @@ public class SignInUpController extends Controller {
         final String email = emailField.getText();
         final String password = passwordField.getText();
         final String confirmpassword = confirmpassField.getText();
+        final String username = userName.getText();
+
 
         AsyncTaskExecutor.executeAsync(
                 // Logic chạy trong luồng nền
                 new Runnable() {
                     @Override
                     public void run() {
-                        if (email.isEmpty() || password.isEmpty() || confirmpassword.isEmpty()) {
+                        if (email.isEmpty() || password.isEmpty() || confirmpassword.isEmpty() || username.isEmpty()) {
                             throw new IllegalArgumentException("Missing Information");
                         }
                         if (UserService.instance.isEmailExists(email)) {

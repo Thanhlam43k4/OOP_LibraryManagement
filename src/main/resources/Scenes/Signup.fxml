@@ -81,5 +81,18 @@
             <Insets top="30.0" />
          </StackPane.margin>
       </PasswordField>
+      <PasswordField fx:id="userName" layoutX="265.0" layoutY="258.0" maxWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" promptText="username" style="-fx-background-color: #1f1f1f00; -fx-text-fill: #222020; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #2a2b29; -fx-border-width: 2;">
+         <StackPane.margin>
+            <Insets top="160.0" />
+         </StackPane.margin>
+      </PasswordField>
+      <Label layoutX="265.0" layoutY="231.0" prefHeight="28.0" prefWidth="141.0" text="Username" textFill="#2a2b29">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <StackPane.margin>
+            <Insets right="100.0" top="100.0" />
+         </StackPane.margin>
+      </Label>
    </children>
 </StackPane>
