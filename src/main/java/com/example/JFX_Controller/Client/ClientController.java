@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 
 import com.example.MainUI;
 import com.example.JFX_Controller.Controller;
+import com.example.JFX_Controller.ProfileController;
 import com.example.Model.Document;
 import com.example.Model.Transaction;
 import com.example.Service.DocumentService;
@@ -93,7 +94,7 @@ public class ClientController extends Controller implements Initializable{
     void showSetting(ActionEvent event) { }
     @FXML
     void profile(ActionEvent event) { 
-        loadScene("Profile.fxml"); 
+        loadProfile();
     }
     @FXML
     void signOut(ActionEvent event) { 
@@ -203,6 +204,28 @@ public class ClientController extends Controller implements Initializable{
         }
     }
     
+    private void loadProfile() {
+        try {
+            // create docinfo
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Profile.fxml"));
+            Parent profileRoot = loader.load();
+
+            ProfileController profileController = loader.getController();
+            profileController.setInfo(root, profileRoot);
+
+            // fix docinfo size
+            AnchorPane.setBottomAnchor(profileRoot, 0.0);
+            AnchorPane.setLeftAnchor(profileRoot, 0.0);
+            AnchorPane.setRightAnchor(profileRoot, 0.0);
+            AnchorPane.setTopAnchor(profileRoot, 0.0);
+
+            // set docinfo position
+            ClientController.instance.root.getChildren().add(profileRoot);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void clearNode() {
         docelementList.clear();
         cardList.clear();
