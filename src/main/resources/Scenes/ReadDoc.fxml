@@ -48,14 +48,14 @@
             </Label>
             <HBox prefHeight="20.0" prefWidth="200.0" spacing="7.0">
                <children>
-                  <Label text="By:" textFill="#3c3a3a">
+                  <Label text="By:" textFill="#828282">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="author" layoutX="10.0" layoutY="10.0" prefHeight="25.0" text="Bill Gate" textFill="#3c3a3a">
+                  <Label fx:id="author" layoutX="10.0" layoutY="10.0" prefHeight="25.0" text="Bill Gate" textFill="#323232">
                      <font>
-                        <Font name="Georgia" size="18.0" />
+                        <Font name="Georgia Bold" size="18.0" />
                      </font>
                   </Label>
                </children>
@@ -65,14 +65,14 @@
             </HBox>
             <HBox layoutX="10.0" layoutY="61.0" prefHeight="20.0" prefWidth="200.0" spacing="7.0">
                <children>
-                  <Label text="Genre:" textFill="#3c3a3a">
+                  <Label text="Genre:" textFill="#828282">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label fx:id="genre" layoutX="10.0" layoutY="10.0" prefHeight="25.0" text="book" textFill="#376a86">
                      <font>
-                        <Font name="Georgia" size="18.0" />
+                        <Font name="Georgia Bold" size="18.0" />
                      </font>
                   </Label>
                </children>

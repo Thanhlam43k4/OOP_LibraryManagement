@@ -5,8 +5,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
-import com.example.Handlers.ImageLoader;
 import com.example.Model.Document;
 
 import javafx.event.ActionEvent;
@@ -26,11 +24,10 @@ public class ReadDocController {
         root = null;
     }
 
-    public void setInfo(Parent root, Document doc) {
+    public void setInfo(Parent root, Document doc, Image coverImage) {
         this.root = root;
         try {
-            Image image = ImageLoader.loadImage(doc.getUrlImage());
-            docCover.setImage(image);
+            docCover.setImage(coverImage);
         } catch (Exception e) {
             System.err.println("can't load docCover_url in ReadDocController");
         }

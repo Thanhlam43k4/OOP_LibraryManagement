@@ -32,6 +32,7 @@ public class CardController extends Controller {
     @FXML private Label genre;
 
     private Document doc;
+    private Image coverImage;
 
     boolean canLoad = true;
 
@@ -52,7 +53,7 @@ public class CardController extends Controller {
             Scene scene = card.getScene();
 
             DocInfoController docInfoController = loader.getController();
-            docInfoController.setInfo(doc, docinfoRoot);
+            docInfoController.setInfo(doc, docinfoRoot, coverImage);
 
             // fix docinfo size
             AnchorPane pane = (AnchorPane) docinfoRoot;
@@ -84,6 +85,7 @@ public class CardController extends Controller {
         this.doc = doc;
         try {
             Image image = ImageLoader.loadImage(doc.getUrlImage());
+            coverImage = image;
             docCover.setImage(image);
 
         } catch (Exception e) {

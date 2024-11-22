@@ -32,6 +32,7 @@ public class TransCardController {
 
     private int tranId;
     private Document doc;
+    private Image coverImage;
     @FXML
     void goReadDoc(ActionEvent event) {
         try {
@@ -40,7 +41,7 @@ public class TransCardController {
             Parent readDocRoot = loader.load();
 
             ReadDocController readDocController = loader.getController();
-            readDocController.setInfo(readDocRoot, doc);
+            readDocController.setInfo(readDocRoot, doc, coverImage);
 
             // fix docinfo size
             //AnchorPane pane = (AnchorPane) docinfoRoot;
@@ -71,6 +72,7 @@ public class TransCardController {
         this.doc = doc;
         try {
             Image image = ImageLoader.loadImage(doc.getUrlImage());
+            coverImage = image;
             docCover.setImage(image);
         } catch (Exception e) {
             System.err.println("docElement coverURL invalid! when add DocElementNode");
