@@ -75,6 +75,7 @@ public class DocInfoController extends Controller implements Initializable{
         this.userName.setText(SessionManager.getInstance().getLoggedInUser().getUsername());
         this.title.setText(doc.getTitle().toUpperCase());
         this.author.setText(doc.getAuthor());
+        description.setText(doc.getDescription());
         // query description here
         // check borrow
         setBorrowBut();
