@@ -36,6 +36,7 @@ public class DocInfoController extends Controller implements Initializable{
     
     @FXML private Button borrowBut;
     @FXML private ScrollPane docScroll;
+    private Parent root;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
@@ -58,19 +59,19 @@ public class DocInfoController extends Controller implements Initializable{
     private void backToClient() {
         Scene scene = docScroll.getScene();
         AnchorPane clientRoot = (AnchorPane) scene.getRoot();
-        Parent docInfoRoot = docScroll.getParent();
     
         Timeline timeline = new Timeline();
-        KeyValue kvOut = new KeyValue(docInfoRoot.translateXProperty(), scene.getWidth(), Interpolator.EASE_IN);
+        KeyValue kvOut = new KeyValue(root.translateXProperty(), scene.getWidth(), Interpolator.EASE_IN);
         KeyFrame kfOut = new KeyFrame(Duration.seconds(0.35), kvOut);
         timeline.getKeyFrames().add(kfOut);
 
         timeline.setOnFinished(e -> {
-            clientRoot.getChildren().remove(docInfoRoot);
+            clientRoot.getChildren().remove(root);
         });        
         timeline.play();
     }
-    public void setInfo(Document doc) {
+    public void setInfo(Document doc, Parent root) {
+        this.root = root;
         Image image = ImageLoader.loadImage(doc.getUrlImage());
         docCover.setImage(image);
         this.userName.setText(SessionManager.getInstance().getLoggedInUser().getUsername());

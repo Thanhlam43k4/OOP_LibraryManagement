@@ -5,85 +5,102 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: rgb(238, 231, 231);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1200.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Client.ReadDocController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="90.0" style="-fx-background-color: rgb(211, 204, 204);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane prefHeight="200.0" prefWidth="90.0" style="-fx-background-color: #ededed;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="40.0" prefWidth="40.0" styleClass="second-button" stylesheets="@../CSS_Setup/button.css">
                <graphic>
-                  <FontAwesomeIconView glyphName="TIMES" size="20" styleClass="fontawesome-icon" />
+                  <FontAwesomeIconView glyphName="ARROW_LEFT" size="20" styleClass="fontawesome-icon" />
                </graphic>
             </Button>
-            <VBox alignment="TOP_CENTER" layoutY="88.0" prefHeight="200.0" prefWidth="90.0" AnchorPane.topAnchor="100.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#toMyDoc" prefHeight="60.0" prefWidth="90.0" styleClass="hbox-style" stylesheets="@../CSS_Setup/hbox.css">
-                     <graphic>
-                        <FontAwesomeIconView fill="#3c3a3a" glyphName="GLOBE" size="20" />
-                     </graphic>
-                  </Button>
-                  <Button layoutX="10.0" layoutY="160.0" mnemonicParsing="false" onAction="#toMyDoc" prefHeight="60.0" prefWidth="90.0" styleClass="hbox-style" stylesheets="@../CSS_Setup/hbox.css">
-                     <graphic>
-                        <FontAwesomeIconView fill="#3c3a3a" glyphName="BOOK" size="20" />
-                     </graphic>
-                  </Button>
-               </children>
-            </VBox>
+            <VBox alignment="TOP_CENTER" layoutY="88.0" prefHeight="200.0" prefWidth="90.0" AnchorPane.topAnchor="80.0" />
          </children>
       </AnchorPane>
-      <ScrollPane layoutX="175.0" layoutY="128.0" prefHeight="352.0" prefWidth="520.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="120.0">
+      <ScrollPane layoutX="450.0" layoutY="128.0" prefHeight="352.0" prefWidth="700.0" style="-fx-background-color: #f2f2f2; -fx-background-radius: 20;" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="140.0">
          <content>
-            <Label alignment="TOP_LEFT" prefHeight="407.0" prefWidth="467.0" style="-fx-background-color: yellow;" text="In order to represent real life situations mathematically, we often use symbols to represent unknown quantities. We call these symbols variables. Each mathematical subject requires knowledge of manipulating expressions and equations to solve for a variable. Careers such as automobile accident investigators, quality control engineers, and insurance originators use equations to determine the value of variables. Real numbers are all around us.Introductory Algebra provides a comprehensive introduction of variables, functionsand linear equations and gives students a solid foundation in algebra.This open book is licensed under a Creative Commons License (CC BY-NC-SA). You can download Introductory Algebra ebook for free in PDF format (38.6 MB)." wrapText="true">
+            <Label fx:id="content" maxHeight="1.7976931348623157E308" maxWidth="610.0" text="In order to represent real life situations mathematically, we often use symbols to represent unknown quantities. We call these symbols variables. Each mathematical subject requires knowledge of manipulating expressions and equations to solve for a variable. Careers such as automobile accident investigators, quality control engineers, and insurance originators use equations to determine the value of variables. Real numbers are all around us.Introductory Algebra provides a comprehensive introduction of variables, functionsand linear equations and gives students a solid foundation in algebra.This open book is licensed under a Creative Commons License (CC BY-NC-SA). You can download Introductory Algebra ebook for free in PDF format (38.6 MB)." textAlignment="JUSTIFY" wrapText="true">
                <font>
-                  <Font size="13.0" />
+                  <Font size="16.0" />
                </font>
             </Label>
          </content>
+         <padding>
+            <Insets left="40.0" top="40.0" />
+         </padding>
       </ScrollPane>
-      <VBox layoutX="298.0" layoutY="-100.0" prefHeight="110.0" prefWidth="284.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="0.0">
+      <VBox layoutX="460.0" prefHeight="139.0" prefWidth="684.0" spacing="5.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="title" prefHeight="51.0" prefWidth="215.0" text="DOC NAME" textFill="#3c3a3a" wrapText="true">
+            <Label fx:id="title" maxWidth="700.0" text="DOC NAME" textFill="#3c3a3a" wrapText="true">
                <font>
-                  <Font name="Georgia Bold" size="36.0" />
+                  <Font name="Georgia Bold" size="32.0" />
                </font>
             </Label>
             <HBox prefHeight="20.0" prefWidth="200.0" spacing="7.0">
                <children>
-                  <Label fx:id="author" text="Author:" textFill="#3c3a3a">
+                  <Label text="By:" textFill="#3c3a3a">
                      <font>
-                        <Font name="System Bold" size="16.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="author1" layoutX="10.0" layoutY="10.0" prefHeight="25.0" text="Bill Gate" textFill="#3c3a3a">
+                  <Label fx:id="author" layoutX="10.0" layoutY="10.0" prefHeight="25.0" text="Bill Gate" textFill="#3c3a3a">
                      <font>
-                        <Font name="Georgia" size="16.0" />
+                        <Font name="Georgia" size="18.0" />
                      </font>
                   </Label>
                </children>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
             </HBox>
             <HBox layoutX="10.0" layoutY="61.0" prefHeight="20.0" prefWidth="200.0" spacing="7.0">
                <children>
-                  <Label fx:id="author1" text="Genre:" textFill="#3c3a3a">
+                  <Label text="Genre:" textFill="#3c3a3a">
                      <font>
-                        <Font name="System Bold" size="16.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="author11" layoutX="10.0" layoutY="10.0" prefHeight="25.0" text="book" textFill="#3c3a3a">
+                  <Label fx:id="genre" layoutX="10.0" layoutY="10.0" prefHeight="25.0" text="book" textFill="#376a86">
                      <font>
-                        <Font name="Georgia" size="16.0" />
+                        <Font name="Georgia" size="18.0" />
                      </font>
                   </Label>
                </children>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
             </HBox>
          </children>
          <padding>
             <Insets top="10.0" />
          </padding>
       </VBox>
+      <StackPane layoutX="150.0" layoutY="20.0" prefHeight="370.0" prefWidth="250.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3a3b3c" height="343.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="238.0">
+               <effect>
+                  <Shadow color="#757575" height="34.35" radius="17.785" width="38.79" />
+               </effect>
+               <StackPane.margin>
+                  <Insets bottom="15.0" left="15.0" />
+               </StackPane.margin>
+            </Rectangle>
+            <ImageView fx:id="docCover" fitHeight="355.0" fitWidth="242.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../DocCover_url/programing%20python.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>

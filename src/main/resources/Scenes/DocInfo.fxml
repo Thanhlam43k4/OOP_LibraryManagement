@@ -13,10 +13,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Client.DocInfoController">
+<AnchorPane prefHeight="500.0" prefWidth="1200.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Client.DocInfoController">
    <children>
       <AnchorPane layoutX="224.0" layoutY="42.0" prefHeight="60.0" prefWidth="526.0" stylesheets="@../CSS_Setup/anchorpane.css" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -55,42 +56,47 @@
             </Button>
          </children>
       </AnchorPane>
-      <ScrollPane fx:id="docScroll" layoutX="376.0" layoutY="123.0" prefHeight="377.0" prefWidth="374.0" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="376.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="123.0">
-         <content>
-            <AnchorPane prefHeight="510.0" prefWidth="364.0">
+      <VBox layoutX="360.0" layoutY="50.0" prefHeight="330.0" prefWidth="812.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="358.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <Label fx:id="title" maxWidth="900.0" text="DOC NAME" textFill="#3c3a3a" wrapText="true">
+               <font>
+                  <Font name="Georgia Bold" size="32.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="27.0" prefWidth="277.0" spacing="5.0">
                <children>
-                  <Label layoutY="10.0" text="Description:" underline="true">
+                  <Label fx:id="author" text="By:">
                      <font>
-                        <Font name="System Bold" size="20.0" />
+                        <Font size="17.0" />
                      </font>
                   </Label>
-                  <Label fx:id="description" alignment="TOP_LEFT" layoutY="41.0" prefHeight="465.0" prefWidth="364.0" text="this is document description" textFill="#6b6767" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="41.0">
+                  <Label fx:id="author" text="Author">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="System Bold" size="17.0" />
                      </font>
                   </Label>
                </children>
-            </AnchorPane>
-         </content></ScrollPane>
-      <Label fx:id="title" layoutX="377.0" layoutY="60.0" text="DOC NAME" textFill="#3c3a3a" wrapText="true" AnchorPane.leftAnchor="377.0" AnchorPane.topAnchor="60.0">
-         <font>
-            <Font name="Georgia Bold" size="36.0" />
-         </font>
-      </Label>
-      <HBox layoutX="377.0" layoutY="102.0" prefHeight="27.0" prefWidth="277.0" spacing="5.0">
-         <children>
-            <Label fx:id="author" text="By:">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Label>
-            <Label fx:id="author" text="Author">
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
-            </Label>
+            </HBox>
+            <ScrollPane fx:id="docScroll" fitToHeight="true" prefHeight="377.0" prefWidth="374.0" stylesheets="@../CSS_Setup/scrollpane.css">
+               <content>
+                  <AnchorPane prefHeight="510.0" prefWidth="364.0">
+                     <children>
+                        <Label layoutY="10.0" text="Description:" underline="true">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="description" alignment="TOP_LEFT" layoutY="41.0" prefHeight="465.0" prefWidth="364.0" text="this is document description" textFill="#6b6767" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="41.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
          </children>
-      </HBox>
+      </VBox>
       <HBox prefHeight="127.0" prefWidth="393.0" spacing="15.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="345.0" AnchorPane.rightAnchor="12.0">
          <children>
             <Button fx:id="borrowBut" mnemonicParsing="false" onAction="#borrowDoc" prefHeight="50.0" prefWidth="120.0" styleClass="second-button" stylesheets="@../CSS_Setup/button.css" text=" Borrow">

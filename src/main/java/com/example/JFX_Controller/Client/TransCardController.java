@@ -2,13 +2,17 @@ package com.example.JFX_Controller.Client;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
+import java.io.IOException;
 import java.sql.Date;
 
 import com.example.Handlers.ImageLoader;
@@ -27,9 +31,29 @@ public class TransCardController {
     @FXML private HBox root;
 
     private int tranId;
+    private Document doc;
     @FXML
     void goReadDoc(ActionEvent event) {
+        try {
+            // create docinfo
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/ReadDoc.fxml"));
+            Parent readDocRoot = loader.load();
 
+            ReadDocController readDocController = loader.getController();
+            readDocController.setInfo(readDocRoot, doc);
+
+            // fix docinfo size
+            //AnchorPane pane = (AnchorPane) docinfoRoot;
+            AnchorPane.setBottomAnchor(readDocRoot, 0.0);
+            AnchorPane.setLeftAnchor(readDocRoot, 0.0);
+            AnchorPane.setRightAnchor(readDocRoot, 0.0);
+            AnchorPane.setTopAnchor(readDocRoot, 0.0);
+
+            // set docinfo position
+            ClientController.instance.root.getChildren().add(readDocRoot);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -44,6 +68,7 @@ public class TransCardController {
 
     // set thông tin cho các UI element
     public void setInfo(Document doc, Date returnDate, int tranId) {
+        this.doc = doc;
         try {
             Image image = ImageLoader.loadImage(doc.getUrlImage());
             docCover.setImage(image);

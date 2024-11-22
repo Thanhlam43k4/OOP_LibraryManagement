@@ -16,6 +16,7 @@ import com.example.Service.SessionManager;
 import com.example.Service.TransactionService;
 import com.example.Handlers.ExtraFunction;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Label;
@@ -34,6 +35,7 @@ import javafx.scene.control.TextField;
 
 public class ClientController extends Controller implements Initializable{
 //UI
+    @FXML public AnchorPane root;
     @FXML private Label userName;
     @FXML private TextField searchField;
     // Tab button

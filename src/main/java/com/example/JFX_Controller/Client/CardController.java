@@ -52,7 +52,7 @@ public class CardController extends Controller {
             Scene scene = card.getScene();
 
             DocInfoController docInfoController = loader.getController();
-            docInfoController.setInfo(doc);
+            docInfoController.setInfo(doc, docinfoRoot);
 
             // fix docinfo size
             AnchorPane pane = (AnchorPane) docinfoRoot;
