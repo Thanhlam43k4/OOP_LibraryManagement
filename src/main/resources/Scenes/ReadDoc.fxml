@@ -27,7 +27,7 @@
             <VBox alignment="TOP_CENTER" layoutY="88.0" prefHeight="200.0" prefWidth="90.0" AnchorPane.topAnchor="80.0" />
          </children>
       </AnchorPane>
-      <ScrollPane layoutX="450.0" layoutY="128.0" prefHeight="352.0" prefWidth="700.0" style="-fx-background-color: #f2f2f2; -fx-background-radius: 20;" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="140.0">
+      <ScrollPane layoutX="450.0" layoutY="165.0" prefHeight="315.0" prefWidth="700.0" style="-fx-background-color: #f2f2f2; -fx-background-radius: 20;" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="165.0">
          <content>
             <Label fx:id="content" maxHeight="1.7976931348623157E308" maxWidth="610.0" text="In order to represent real life situations mathematically, we often use symbols to represent unknown quantities. We call these symbols variables. Each mathematical subject requires knowledge of manipulating expressions and equations to solve for a variable. Careers such as automobile accident investigators, quality control engineers, and insurance originators use equations to determine the value of variables. Real numbers are all around us.Introductory Algebra provides a comprehensive introduction of variables, functionsand linear equations and gives students a solid foundation in algebra.This open book is licensed under a Creative Commons License (CC BY-NC-SA). You can download Introductory Algebra ebook for free in PDF format (38.6 MB)." textAlignment="JUSTIFY" wrapText="true">
                <font>
@@ -39,9 +39,9 @@
             <Insets left="40.0" top="40.0" />
          </padding>
       </ScrollPane>
-      <VBox layoutX="460.0" prefHeight="139.0" prefWidth="684.0" spacing="5.0" AnchorPane.topAnchor="0.0">
+      <VBox layoutX="460.0" prefHeight="167.0" prefWidth="684.0" spacing="5.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="title" maxWidth="700.0" text="DOC NAME" textFill="#3c3a3a" wrapText="true">
+            <Label fx:id="title" lineSpacing="3.0" maxHeight="1.7976931348623157E308" maxWidth="800.0" text="DOC NAME" textFill="#3c3a3a" wrapText="true">
                <font>
                   <Font name="Georgia Bold" size="32.0" />
                </font>

@@ -171,7 +171,7 @@ public class ClientController extends Controller implements Initializable{
             }
         }
     }
-    private void addDocElementNodes() {
+    public void addDocElementNodes() {
         docelementList.clear();
         List<Transaction> transactions = TransactionService.instance.getTransactionsByUserId(SessionManager.getInstance().getLoggedInUser().getId());
         for (Transaction transaction : transactions) {

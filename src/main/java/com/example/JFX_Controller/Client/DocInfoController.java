@@ -1,9 +1,14 @@
 package com.example.JFX_Controller.Client;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
 //#region Lib
 import com.example.Handlers.Notify;
 import com.example.Model.Copies;
 import com.example.Service.DocumentService;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -28,7 +33,7 @@ import javafx.event.ActionEvent;
 
 //#endregion
 
-public class DocInfoController extends Controller {
+public class DocInfoController extends Controller implements Initializable {
     @FXML private Label userName;
     @FXML private ImageView docCover;
     @FXML private Label title;
@@ -41,6 +46,10 @@ public class DocInfoController extends Controller {
     private Parent root;
 
     private int docId;
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        setBorrowBut();
+    }
     @FXML
     void backMain(ActionEvent event) {
         backToClient();
@@ -54,6 +63,8 @@ public class DocInfoController extends Controller {
             return;
         }else{
             TransactionService.instance.borrowBook(userId,copyDoc.getCopyISBN());
+            //ui
+            ClientController.instance.addDocElementNodes();
             borrowBut.setDisable(true);
             stateText.setVisible(true);
         }
@@ -93,5 +104,6 @@ public class DocInfoController extends Controller {
     }
     private void setBorrowBut() {
         // query transaction to find if doc borrwed by user then disable button and show text
+        
     }
 }

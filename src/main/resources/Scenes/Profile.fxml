@@ -16,7 +16,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1200.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.ProfileController">
    <children>
-      <Pane layoutX="550.0" prefHeight="200.0" prefWidth="660.0" style="-fx-background-color: linear-gradient(to top right , #9ba8ab, #11212d);" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Pane layoutX="550.0" prefHeight="200.0" prefWidth="660.0" style="-fx-background-color: linear-gradient(to top right , #4a5c6a, #11212d);" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane prefHeight="200.0" prefWidth="90.0" style="-fx-background-color: #ededed;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="40.0" prefWidth="40.0" styleClass="second-button" stylesheets="@../CSS_Setup/button.css">
