@@ -226,7 +226,7 @@ public class ClientController extends Controller implements Initializable{
         }
     }
 
-    private void clearNode() {
+    public void clearNode() {
         docelementList.clear();
         cardList.clear();
     }

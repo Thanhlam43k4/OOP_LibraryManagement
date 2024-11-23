@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1200.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.ProfileController">
    <children>
-      <Button layoutX="1078.0" layoutY="220.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-font-size: 15; -fx-border-radius: 20; -fx-background-radius: 20; -fx-font-weight: bold;" styleClass="second-button" stylesheets="@../CSS_Setup/button.css" text="Modify" AnchorPane.rightAnchor="22.0" />
+      <Pane layoutX="550.0" prefHeight="200.0" prefWidth="660.0" style="-fx-background-color: linear-gradient(to top right , #9ba8ab, #11212d);" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane prefHeight="200.0" prefWidth="90.0" style="-fx-background-color: #ededed;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="40.0" prefWidth="40.0" styleClass="second-button" stylesheets="@../CSS_Setup/button.css">
@@ -20,63 +24,148 @@
                   <FontAwesomeIconView glyphName="TIMES" size="20" styleClass="fontawesome-icon" />
                </graphic>
             </Button>
-            <VBox alignment="BOTTOM_CENTER" layoutY="250.0" prefHeight="200.0" prefWidth="90.0" AnchorPane.bottomAnchor="0.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#toMyDoc" prefHeight="60.0" prefWidth="90.0" styleClass="hbox-style" stylesheets="@../CSS_Setup/hbox.css">
-                     <graphic>
-                        <FontAwesomeIconView fill="#3c3a3a" glyphName="BOOK" size="20" />
-                     </graphic>
-                  </Button>
-                  <Button layoutX="10.0" layoutY="160.0" mnemonicParsing="false" onAction="#signOut" prefHeight="60.0" prefWidth="90.0" styleClass="hbox-style" stylesheets="@../CSS_Setup/hbox.css">
-                     <graphic>
-                        <FontAwesomeIconView fill="#3c3a3a" glyphName="SIGN_OUT" size="20" />
-                     </graphic>
-                  </Button>
-               </children>
-            </VBox>
          </children>
       </AnchorPane>
-      <Pane layoutX="550.0" prefHeight="200.0" prefWidth="660.0" style="-fx-background-color: linear-gradient(to top right , #9ba8ab, #11212d);" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <HBox layoutX="342.0" layoutY="285.0" prefHeight="60.0" prefWidth="857.0" spacing="40.0">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="326.0" spacing="7.0" style="-fx-background-color: #f2f2f2; -fx-background-radius: 12;">
+            <Button layoutY="18.0" mnemonicParsing="false" onAction="#goModify" prefHeight="50.0" prefWidth="100.0" style="-fx-font-size: 15; -fx-border-radius: 20; -fx-background-radius: 20; -fx-font-weight: bold;" styleClass="second-button" stylesheets="@../CSS_Setup/button.css" text="Update" AnchorPane.rightAnchor="22.0">
+               <graphic>
+                  <FontAwesomeIconView glyphName="WRENCH" size="14" styleClass="fontawesome-icon" />
+               </graphic>
+            </Button>
+            <Label fx:id="userName" layoutX="260.0" prefHeight="40.0" text="Nguyen Trong Anh" textFill="#3c3a3a">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="24.0" />
+               </font>
+            </Label>
+            <HBox layoutX="250.0" layoutY="70.0" prefHeight="60.0" prefWidth="857.0" spacing="40.0">
                <children>
-                  <FontAwesomeIconView fill="#3c3a3a" glyphName="ENVELOPE" size="18" />
-                  <Label fx:id="email" text="latgoto@gmail.com" textFill="#3c3a3a">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0" spacing="7.0" style="-fx-background-radius: 12; -fx-background-color: #f2f2f2;">
-               <children>
-                  <FontAwesomeIconView fill="#3c3a3a" glyphName="PHONE" size="18" />
-                  <Label fx:id="phone" text="0834534766" textFill="#3c3a3a">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="91.0" spacing="7.0" style="-fx-background-color: #f2f2f2; -fx-background-radius: 12;">
-               <children>
-                  <FontAwesomeIconView fill="#3c3a3a" glyphName="BIRTHDAY_CAKE" size="18" />
-                  <Label fx:id="age" text="18" textFill="#3c3a3a">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="CENTER" prefHeight="60.0" prefWidth="326.0" spacing="7.0" style="-fx-background-color: #f2f2f2; -fx-background-radius: 12;">
+                     <children>
+                        <FontAwesomeIconView fill="#3c3a3a" glyphName="ENVELOPE" size="18" />
+                        <Label fx:id="email" text="latgoto@gmail.com" textFill="#3c3a3a">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0" spacing="7.0" style="-fx-background-radius: 12; -fx-background-color: #f2f2f2;">
+                     <children>
+                        <FontAwesomeIconView fill="#3c3a3a" glyphName="PHONE" size="18" />
+                        <Label fx:id="phone" text="0834534766" textFill="#3c3a3a">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="60.0" prefWidth="91.0" spacing="7.0" style="-fx-background-color: #f2f2f2; -fx-background-radius: 12;">
+                     <children>
+                        <FontAwesomeIconView fill="#3c3a3a" glyphName="BIRTHDAY_CAKE" size="18" />
+                        <Label fx:id="age" text="18" textFill="#3c3a3a">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
             </HBox>
          </children>
-      </HBox>
-      <Label fx:id="userName" layoutX="342.0" layoutY="200.0" prefHeight="40.0" prefWidth="215.0" text="Nguyen Trong Anh" textFill="#3c3a3a">
-         <font>
-            <Font name="Comic Sans MS Bold" size="24.0" />
-         </font>
-      </Label>
-      <Circle fill="#3c3a3a" radius="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="110.0" />
-      <FontAwesomeIconView fill="#b5b5b5" glyphName="USER" size="130" AnchorPane.leftAnchor="190.0" AnchorPane.topAnchor="135.0" />
+      </AnchorPane>
+      <Circle fill="#575757" radius="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="110.0" />
+      <FontAwesomeIconView fill="#cfcfcf" glyphName="USER" size="130" AnchorPane.leftAnchor="190.0" AnchorPane.topAnchor="135.0" />
+      <StackPane fx:id="profilePane" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #6e6e6e70;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane maxHeight="440.0" maxWidth="500.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 13;">
+               <children>
+                  <Label layoutX="28.0" layoutY="14.0" style="-fx-text-fill: linear-gradient( to bottom, #4a5c6a, #11212d);" text="PROFILE" textFill="#323232">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#cancelModify" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: transparent;" textFill="#e4e0e0" AnchorPane.rightAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="TIMES" size="22" style="-fx-fill: #3c373a;" />
+                     </graphic>
+                  </Button>
+                  <Button layoutX="27.0" layoutY="375.0" mnemonicParsing="false" onAction="#applyModify" prefHeight="37.0" prefWidth="447.0" style="-fx-background-color: linear-gradient( to right, #4a5c6a, #11212d); -fx-background-radius: 10;" text="Apply" textFill="#f2ebeb">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <VBox layoutX="206.0" layoutY="65.0" prefHeight="310.0" prefWidth="280.0">
+                     <children>
+                        <VBox prefHeight="73.0" prefWidth="280.0">
+                           <children>
+                              <Label text="Username *">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="userNameField" maxWidth="-Infinity" prefHeight="35.0" prefWidth="250.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="73.0" prefWidth="280.0">
+                           <children>
+                              <Label text="Email *">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="emailField" maxWidth="-Infinity" prefHeight="35.0" prefWidth="250.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="83.0" prefHeight="73.0" prefWidth="280.0">
+                           <children>
+                              <Label text="Phone number *">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="phoneField" maxWidth="-Infinity" prefHeight="35.0" prefWidth="250.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="156.0" prefHeight="73.0" prefWidth="280.0">
+                           <children>
+                              <Label text="Date of birth *">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker fx:id="dobPicker" prefHeight="35.0" prefWidth="174.0" style="-fx-border-color: #8d8888; -fx-border-radius: 10; -fx-background-radius: 10;">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </DatePicker>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <Pane layoutX="27.0" layoutY="72.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #707070; -fx-background-radius: 100;">
+                     <children>
+                        <FontAwesomeIconView fill="#cfcfcf" glyphName="USER" layoutX="36.0" layoutY="109.0" size="100" />
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>
