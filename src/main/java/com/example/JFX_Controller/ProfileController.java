@@ -26,6 +26,12 @@ public class ProfileController extends Controller {
     @FXML private TextField phoneField;
     @FXML private DatePicker dobPicker;
 
+    //Change password
+    @FXML private StackPane passPane;
+    @FXML private TextField oldPassword;
+    @FXML private TextField newPassword;
+    @FXML private TextField confirmNewPassword;
+
     AnchorPane mainRoot;
 
     @FXML
@@ -33,6 +39,7 @@ public class ProfileController extends Controller {
         mainRoot.getChildren().remove(root);
         root = null;
     }
+    //Modify event
     @FXML
     void goModify(ActionEvent event) {
         profilePane.setVisible(true);
@@ -44,6 +51,19 @@ public class ProfileController extends Controller {
     @FXML
     void applyModify(ActionEvent event) {
         profilePane.setVisible(false);
+    }
+    //Change password event
+    @FXML
+    void goChangePass(ActionEvent event) {
+        passPane.setVisible(true);
+    }
+    @FXML
+    void cancelChangePass(ActionEvent event) {
+        passPane.setVisible(false);
+    }
+    @FXML
+    void applyChangePass(ActionEvent event) {
+        passPane.setVisible(false);
     }
 
     public void setInfo(AnchorPane mainRoot, Parent profileRoot) {
