@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1200.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Client.ReadDocController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1200.0" style="-fx-background-color: white; -fx-background-color: linear-gradient(to top right , #9ba8ab, #253745);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Client.ReadDocController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="90.0" style="-fx-background-color: #ededed;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -36,24 +36,24 @@
             </Label>
          </content>
          <padding>
-            <Insets left="40.0" top="40.0" />
+            <Insets left="45.0" top="40.0" />
          </padding>
       </ScrollPane>
       <VBox layoutX="460.0" prefHeight="167.0" prefWidth="684.0" spacing="5.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="title" lineSpacing="3.0" maxHeight="1.7976931348623157E308" maxWidth="800.0" text="DOC NAME" textFill="#3c3a3a" wrapText="true">
+            <Label fx:id="title" lineSpacing="3.0" maxHeight="1.7976931348623157E308" maxWidth="800.0" text="DOC NAME" textFill="#eeeeee" wrapText="true">
                <font>
                   <Font name="Georgia Bold" size="32.0" />
                </font>
             </Label>
             <HBox prefHeight="20.0" prefWidth="200.0" spacing="7.0">
                <children>
-                  <Label text="By:" textFill="#828282">
+                  <Label text="By:" textFill="#d6d6d6">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="author" layoutX="10.0" layoutY="10.0" prefHeight="25.0" text="Bill Gate" textFill="#323232">
+                  <Label fx:id="author" layoutX="10.0" layoutY="10.0" prefHeight="25.0" text="Bill Gate" textFill="#eeeeee">
                      <font>
                         <Font name="Georgia Bold" size="18.0" />
                      </font>
@@ -65,12 +65,12 @@
             </HBox>
             <HBox layoutX="10.0" layoutY="61.0" prefHeight="20.0" prefWidth="200.0" spacing="7.0">
                <children>
-                  <Label text="Genre:" textFill="#828282">
+                  <Label text="Genre:" textFill="#d6d6d6">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="genre" layoutX="10.0" layoutY="10.0" prefHeight="25.0" text="book" textFill="#376a86">
+                  <Label fx:id="genre" layoutX="10.0" layoutY="10.0" prefHeight="25.0" text="book" textFill="#82c8ee">
                      <font>
                         <Font name="Georgia Bold" size="18.0" />
                      </font>
@@ -89,7 +89,7 @@
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3a3b3c" height="343.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="238.0">
                <effect>
-                  <Shadow color="#757575" height="34.35" radius="17.785" width="38.79" />
+                  <Shadow color="#2f2e2e" height="36.57" radius="18.34" width="38.79" />
                </effect>
                <StackPane.margin>
                   <Insets bottom="15.0" left="15.0" />
