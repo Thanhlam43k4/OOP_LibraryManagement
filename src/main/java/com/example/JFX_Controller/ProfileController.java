@@ -13,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
 public class ProfileController extends Controller {
+    private Parent root;
     @FXML private Label userName;
     @FXML private Label email;
     @FXML private Label phone;
@@ -26,12 +27,11 @@ public class ProfileController extends Controller {
     @FXML private DatePicker dobPicker;
 
     AnchorPane mainRoot;
-    Parent profileRoot;
 
     @FXML
     void backToMain(ActionEvent event) {
-        mainRoot.getChildren().remove(profileRoot);
-        profileRoot = null;
+        mainRoot.getChildren().remove(root);
+        root = null;
     }
     @FXML
     void goModify(ActionEvent event) {
@@ -48,7 +48,7 @@ public class ProfileController extends Controller {
 
     public void setInfo(AnchorPane mainRoot, Parent profileRoot) {
         this.mainRoot = mainRoot;
-        this.profileRoot = profileRoot;
+        this.root = profileRoot;
         User user = SessionManager.getInstance().getLoggedInUser();
         userName.setText(user.getUsername());
         email.setText(user.getEmail());

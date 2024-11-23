@@ -12,7 +12,6 @@ import com.example.Handlers.Validate;
 import com.example.JFX_Controller.Admin.AdminController;
 
 import javafx.event.ActionEvent;
-import org.mockito.internal.matchers.Not;
 
 public class AddUserController {
     @FXML private TextField email;

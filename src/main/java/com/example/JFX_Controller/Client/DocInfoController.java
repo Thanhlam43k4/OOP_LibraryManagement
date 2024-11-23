@@ -4,7 +4,6 @@ import com.example.Handlers.Notify;
 import com.example.Model.Copies;
 import com.example.Service.DocumentService;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -15,9 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import com.example.JFX_Controller.Controller;
 import com.example.Model.Document;
@@ -30,10 +26,9 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 
-import javax.print.Doc;
 //#endregion
 
-public class DocInfoController extends Controller implements Initializable{
+public class DocInfoController extends Controller {
     @FXML private Label userName;
     @FXML private ImageView docCover;
     @FXML private Label title;
@@ -46,12 +41,6 @@ public class DocInfoController extends Controller implements Initializable{
     private Parent root;
 
     private int docId;
-    private String ISBN;
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        
-    }
-
     @FXML
     void backMain(ActionEvent event) {
         backToClient();
@@ -71,6 +60,8 @@ public class DocInfoController extends Controller implements Initializable{
     }
     @FXML
     void signOut(ActionEvent event) {
+        SessionManager.getInstance().clearSession();
+        ClientController.instance.clearNode();
         loadScene("Login.fxml");
     }
 
@@ -91,7 +82,6 @@ public class DocInfoController extends Controller implements Initializable{
     public void setInfo(Document doc, Parent root, Image coverImage) {
         this.root = root;
         docId = doc.getDocumentId();
-        ISBN = doc.getISBN();
         docCover.setImage(coverImage);
         this.userName.setText(SessionManager.getInstance().getLoggedInUser().getUsername());
         this.title.setText(doc.getTitle().toUpperCase());
@@ -101,7 +91,6 @@ public class DocInfoController extends Controller implements Initializable{
         // check borrow
         setBorrowBut();
     }
-
     private void setBorrowBut() {
         // query transaction to find if doc borrwed by user then disable button and show text
     }

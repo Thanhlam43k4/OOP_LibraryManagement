@@ -1,7 +1,6 @@
 package com.example.Service;
 
 import org.apache.commons.mail.Email;
-import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 
