@@ -56,22 +56,22 @@ public class DocModifyController {
 
     private boolean validate() {
         // Kiểm tra từng trường đầu vào
-        if (!Validate.isValidTitle(title.getText())) {
+        if (Validate.isValidTitle(title.getText())) {
             Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Tilte invalid!");
             return false;
         }
 
-        if (!Validate.isValidAuthor(author.getText())) {
+        if (Validate.isValidAuthor(author.getText())) {
             Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Author invalid!");
             return false;
         }
 
-        if (!Validate.isValidGenre(genre.getText())) {
+        if (Validate.isValidGenre(genre.getText())) {
             Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Genre invalid!");
             return false;
         }
 
-        if (!Validate.isValidTitle(description.getText())) {
+        if (Validate.isValidTitle(description.getText())) {
             Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Desciption invalid!");
             return false;
         }

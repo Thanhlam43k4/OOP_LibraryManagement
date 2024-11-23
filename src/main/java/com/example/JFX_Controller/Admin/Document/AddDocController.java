@@ -38,17 +38,17 @@ public class AddDocController {
         String imageUrl_input = imageUrl.getText();
 
         // Kiểm tra từng trường đầu vào
-        if (!Validate.isValidTitle(title_input)) {
+        if (Validate.isValidTitle(title_input)) {
             Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Tilte invalid!");
             return;
         }
 
-        if (!Validate.isValidAuthor(author_input)) {
+        if (Validate.isValidAuthor(author_input)) {
             Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Author invalid!");
             return;
         }
 
-        if (!Validate.isValidGenre(genre_input)) {
+        if (Validate.isValidGenre(genre_input)) {
             Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Genre invalid!");
             return;
         }
@@ -63,7 +63,7 @@ public class AddDocController {
             return;
         }
 
-        if (!Validate.isValidTitle(description_input)) {
+        if (Validate.isValidTitle(description_input)) {
             Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Desciption invalid!");
             return;
         }

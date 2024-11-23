@@ -51,7 +51,7 @@ public class AddDocApiController implements Initializable {
 
     @FXML
     void goSearch(ActionEvent event) {
-
+        // This could be extended to handle search on button click if needed.
     }
 
     private void searchFieldListener() {
@@ -59,47 +59,55 @@ public class AddDocApiController implements Initializable {
             if (newValue.isEmpty()) {
                 // Khi TextField trống, ListView tắt
                 suggestList.setVisible(false);
-            }
-            else {
+            } else {
+                // Nếu có sự thay đổi trong nội dung, hủy timeline cũ
+                if (searchTimeline != null) {
+                    searchTimeline.stop();
+                }
+                // Tạo một timeline mới với thời gian trì hoãn
                 searchTimeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> handleSearch()));
                 searchTimeline.playFromStart();
             }
         });
     }
+
     private void handleSearch() {
-        try {
-            String query = searchField.getText().trim();
-            if (query.isEmpty()) {
-                suggestList.setItems(FXCollections.observableArrayList());
-                return;
-            }
-            if (query.isEmpty()) {
-                suggestList.setVisible(false);
-                return;
-            }
-            executorService.submit(() -> searchBooks(query));
-        } catch (Exception e) {
-            e.printStackTrace();
+        String query = searchField.getText().trim();
+        if (query.isEmpty()) {
+            suggestList.setItems(FXCollections.observableArrayList());
+            suggestList.setVisible(false);
+            return;
         }
+
+        // Chạy tìm kiếm trong một luồng nền
+        executorService.submit(() -> searchBooks(query));
     }
-    // query api và addnode vào listview
+
     private void searchBooks(String query) {
         try {
-            // Gọi API để tìm kiếm sách
+            // Gọi API để tìm kiếm tài liệu
             List<Document> documents = ApiService.searchBooks(query);
 
+            // Tạo danh sách các item HBox từ kết quả tìm kiếm
             ObservableList<HBox> suggestions = FXCollections.observableArrayList();
             for (Document document : documents) {
                 suggestions.add(createItem(document));
             }
+
+            // Cập nhật giao diện người dùng trong JavaFX thread
             Platform.runLater(() -> {
-                suggestList.setItems(suggestions);
-                suggestList.setVisible(!suggestions.isEmpty());
+                if (suggestions.isEmpty()) {
+                    suggestList.setVisible(false);
+                } else {
+                    suggestList.setItems(suggestions);
+                    suggestList.setVisible(true);
+                }
             });
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     private HBox createItem(Document doc) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/ApiDocCard.fxml"));

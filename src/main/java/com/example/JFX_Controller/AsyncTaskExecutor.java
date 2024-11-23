@@ -1,8 +1,12 @@
 package com.example.JFX_Controller;
 
 import javafx.concurrent.Task;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class AsyncTaskExecutor {
+
+    private static final ExecutorService executorService = Executors.newFixedThreadPool(4); // Sử dụng 4 luồng trong pool
 
     /**
      * Thực hiện một tác vụ không trả về kết quả.
@@ -19,7 +23,6 @@ public class AsyncTaskExecutor {
                 return null;
             }
         };
-
         backgroundTask.setOnSucceeded(event -> {
             if (onSuccess != null) {
                 onSuccess.run();
@@ -32,7 +35,8 @@ public class AsyncTaskExecutor {
             }
         });
 
-        new Thread(backgroundTask).start();
+        // Thay vì tạo một Thread mới, sử dụng ExecutorService để chạy tác vụ.
+        executorService.submit(backgroundTask);
     }
 
     /**
@@ -65,6 +69,14 @@ public class AsyncTaskExecutor {
             }
         });
 
-        new Thread(backgroundTask).start();
+        // Sử dụng ExecutorService để chạy tác vụ với Callable.
+        executorService.submit(backgroundTask);
+    }
+
+    /**
+     * Dừng ExecutorService khi không còn sử dụng.
+     */
+    public static void shutdown() {
+        executorService.shutdown();
     }
 }
