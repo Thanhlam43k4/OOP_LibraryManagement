@@ -12,8 +12,15 @@ public class Copies extends Document{
         this.copies_ISBN = copies_ISBN;
         this.status = status;
     }
-
-
+    public Copies(String copies_ISBN,String status) {
+        this.copies_ISBN = copies_ISBN;
+        this.status = status;
+    }
+    public Copies(String copies_ISBN,int documentId,String status) {
+        super(documentId);
+        this.copies_ISBN = copies_ISBN;
+        this.status = status;
+    }
 
     public void setCopies_ISBN(String copies_ISBN) {
         this.copies_ISBN = copies_ISBN;

@@ -74,7 +74,6 @@ public class DocRowController {
         this.title.setText(d.getTitle());
         this.author.setText(d.getAuthor());
         this.genre.setText(d.getGenre());
-        this.amount.setText(String.valueOf(d.getNumberCopy()));
     }
     // có thể tối ưu sau
     void addCopyNodes() {

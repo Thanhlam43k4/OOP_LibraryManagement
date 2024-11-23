@@ -15,4 +15,5 @@ public interface UserDao {
     boolean isEmailExists(String email);
     boolean isMatchAccount(String email, String password);
     void addUser(String email, String username, String phoneNumber, int age);
+    int getUserBooks(int id);
 }

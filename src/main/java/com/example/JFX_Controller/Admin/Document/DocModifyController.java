@@ -35,14 +35,13 @@ public class DocModifyController {
     @FXML
     void saveModifyDoc(ActionEvent event) {
         if(validate()){
-            Document modifyDoc = new Document(title.getText(),
+            Document modifyDoc = new Document(
+                    docId,
+                    title.getText(),
                     author.getText(),
+                    imageUrl.getText(),
                     genre.getText(),
-                    description.getText(),
-                    imageUrl.getText());
-            modifyDoc.setDocumentId(docId);
-            modifyDoc.setDescription(description.getText());
-
+                    description.getText());
             DocumentService.instance.updateDocument(modifyDoc);
             docRowController.modifyInfo(modifyDoc); // update ui
             Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Document has been modified!");

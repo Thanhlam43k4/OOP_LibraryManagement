@@ -47,8 +47,11 @@ public class DocInfoController extends Controller implements Initializable{
     }
     @FXML
     void borrowDoc(ActionEvent event) {
+        int userId = SessionManager.getInstance().getLoggedInUser().getId();
+
         borrowBut.setDisable(true);
         stateText.setVisible(true);
+
     }
     @FXML
     void signOut(ActionEvent event) {
@@ -75,6 +78,7 @@ public class DocInfoController extends Controller implements Initializable{
         this.userName.setText(SessionManager.getInstance().getLoggedInUser().getUsername());
         this.title.setText(doc.getTitle().toUpperCase());
         this.author.setText(doc.getAuthor());
+
         description.setText(doc.getDescription());
         // query description here
         // check borrow

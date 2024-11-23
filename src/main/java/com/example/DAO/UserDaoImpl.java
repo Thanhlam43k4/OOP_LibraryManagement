@@ -9,13 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoImpl implements UserDao {
-    private Connection con;
-
+    private final Connection con;
 
     public UserDaoImpl(Connection con) {
         this.con = con;
     }
-
     @Override
     public void createUser(User user) {
         String sql = "INSERT INTO users (email, password) VALUES ('" + user.getEmail() + "', '" + user.getPassword() + "')";
@@ -181,4 +179,27 @@ public class UserDaoImpl implements UserDao {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public int getUserBooks(int id) {
+        String query = "SELECT borrowed_books FROM client WHERE user_id = ?";
+        int borrowedBooks = 0;
+        try (Connection conn = DatabaseConnection.getConnection(); // Giả sử bạn có phương thức để lấy kết nối
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+            // Thiết lập tham số cho câu lệnh
+            pstmt.setInt(1, id);
+            // Thực thi câu lệnh SELECT
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    borrowedBooks = rs.getInt("borrowed_books"); // Lấy giá trị từ cột borrowed_books
+                }
+            }
+        } catch (SQLException e) {
+            // Xử lý lỗi khi kết nối hoặc thực thi câu truy vấn
+            e.printStackTrace();
+        }
+
+        return borrowedBooks; // Trả về số sách mượn
+    }
+
 }

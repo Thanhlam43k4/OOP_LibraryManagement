@@ -1,6 +1,7 @@
 package com.example.JFX_Controller.Admin.User;
 
 import com.example.Service.DocumentService;
+import com.example.Service.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -32,15 +33,15 @@ public class BorrowController {
             System.out.println(isbn_input);
             System.out.println(DocumentService.instance.isBookAvailable(isbn_input));
             Notify.showAlert(Alert.AlertType.ERROR,"Error","This Books is not available please choose other copies");
-        }else{
+        }else if(UserService.instance.getUserBooks(client.getId()) >= 8) {
+            Notify.showAlert(Alert.AlertType.ERROR,"Error","This user has more books than allowed limit!!");
+        } else{
             TransactionService.instance.borrowBook(client.getId(), isbn_input);
             Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Borrow Document sucess!");
-
             // update transaction UI
             client.setBorrowedBook(client.getBorrowedBook() + 1);
             userRowController.modifyBorrowed();
             resetTrans();
-
             AdminController.instance.userPane.getChildren().remove(this.userBorrowRoot);
             this.userBorrowRoot = null;
         }

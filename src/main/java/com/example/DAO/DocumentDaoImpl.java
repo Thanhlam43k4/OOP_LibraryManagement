@@ -1,5 +1,6 @@
 package com.example.DAO;
 
+import com.example.Database.DatabaseConnection;
 import com.example.Interface.DocumentDao;
 import com.example.Model.Copies;
 import com.example.Model.Document;
@@ -34,8 +35,6 @@ public class DocumentDaoImpl implements DocumentDao {
             e.printStackTrace();
         }
     }
-
-
 
     @Override
     public List<Document> getAllDocuments() {
@@ -174,5 +173,31 @@ public class DocumentDaoImpl implements DocumentDao {
         }
 
         return false; // Mặc định trả về false nếu có lỗi
+    }
+
+    @Override
+    public Copies getAvailCopies(int documentId) {
+        String query = "SELECT copy_ISBN, status FROM copies WHERE document_id = ? AND status = 'Available' LIMIT 1";
+        Copies copy = null;
+
+        try (PreparedStatement pstmt = con.prepareStatement(query)) {
+
+            // Thiết lập tham số cho câu lệnh
+            pstmt.setInt(1, documentId);
+            // Thực thi truy vấn
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    // Tạo đối tượng Copies từ kết quả truy vấn
+                    copy = new Copies(
+                            rs.getString("copy_ISBN"),
+                            documentId,
+                            rs.getString("status")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Ghi log lỗi
+        }
+        return copy; // Trả về bản sao nếu tìm thấy, hoặc null nếu không có bản sao khả dụng
     }
 }

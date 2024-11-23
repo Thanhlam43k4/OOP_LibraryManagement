@@ -8,7 +8,6 @@ import java.util.List;
 public interface DocumentDao {
     void addDocument(Document doc);
 
-
     List<Document> getAllDocuments();
 
     List<Copies> getAllCopies(int documentId);
@@ -22,4 +21,6 @@ public interface DocumentDao {
     Document getDocumentByISBN(String ISBN);
 
     boolean isDocAvailable(String docISBN);
+
+    Copies getAvailCopies(int documentId);
 }

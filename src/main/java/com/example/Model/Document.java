@@ -76,6 +76,9 @@ public class Document {
         this.ISBN = ISBN;
         this.urlImage = urlImage;
     }
+    public Document(int documentId) {
+        this.documentId = documentId;
+    }
 
 
     public String getDescription() {
@@ -165,6 +168,7 @@ public class Document {
     public void getDetails() {
         System.out.println("DocumentId: " + documentId + " Title: " + title + " Year: " + year + " Genre: "+ genre);
     }
+
     @Override
     public String toString() {
         return "Document{" +
@@ -172,7 +176,12 @@ public class Document {
                 ", title='" + title + '\'' +
                 ", year=" + year +
                 ", genre='" + genre + '\'' +
+                ", ISBN='" + ISBN + '\'' +
+                ", content='" + content + '\'' +
+                ", author='" + author + '\'' +
+                ", urlImage='" + urlImage + '\'' +
+                ", numberCopy=" + numberCopy +
+                ", description='" + description + '\'' +
                 '}';
     }
-
 }

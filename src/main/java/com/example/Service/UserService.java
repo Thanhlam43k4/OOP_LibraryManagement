@@ -44,8 +44,11 @@ public class UserService {
         return userDao.getUserByEmail(email);
     }
 
-
     public void deleteUser(int id) {
         userDao.deleteUser(id);
+    }
+
+    public int getUserBooks(int id) {
+       return userDao.getUserBooks(id);
     }
 }

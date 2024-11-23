@@ -47,4 +47,7 @@ public class DocumentService {
     public boolean isDocAvailable(String isbn) {
         return documentDao.isDocAvailable(isbn);
     }
+    public Copies getAvailCopies(int documentId) {
+        return documentDao.getAvailCopies(documentId);
+    }
 }
