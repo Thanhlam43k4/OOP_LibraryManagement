@@ -18,6 +18,8 @@ import java.util.ResourceBundle;
 import com.example.JFX_Controller.Controller;
 import com.example.Model.Document;
 import com.example.Service.SessionManager;
+import com.example.Service.TransactionService;
+
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -36,6 +38,8 @@ public class DocInfoController extends Controller implements Initializable{
     @FXML private Button borrowBut;
     @FXML private ScrollPane docScroll;
     private Parent root;
+
+    private int docId;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
@@ -48,6 +52,7 @@ public class DocInfoController extends Controller implements Initializable{
     @FXML
     void borrowDoc(ActionEvent event) {
         int userId = SessionManager.getInstance().getLoggedInUser().getId();
+
 
         borrowBut.setDisable(true);
         stateText.setVisible(true);
@@ -74,6 +79,7 @@ public class DocInfoController extends Controller implements Initializable{
     }
     public void setInfo(Document doc, Parent root, Image coverImage) {
         this.root = root;
+        docId = doc.getDocumentId();
         docCover.setImage(coverImage);
         this.userName.setText(SessionManager.getInstance().getLoggedInUser().getUsername());
         this.title.setText(doc.getTitle().toUpperCase());

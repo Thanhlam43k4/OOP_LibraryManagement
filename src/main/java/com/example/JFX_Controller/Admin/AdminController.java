@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import com.example.JFX_Controller.Controller;
+import com.example.JFX_Controller.ProfileController;
 import com.example.JFX_Controller.Admin.Document.DocRowController;
 import com.example.JFX_Controller.Admin.User.UserRowController;
 import com.example.Model.Client;
@@ -39,6 +40,7 @@ import javafx.fxml.Initializable;
 //#endregion
 
 public class AdminController extends Controller implements Initializable {
+    @FXML private AnchorPane root;
     @FXML private Label userName;
     @FXML private TextField searchField;
     @FXML private ChoiceBox<String> searchChoice;
@@ -97,7 +99,7 @@ public class AdminController extends Controller implements Initializable {
     @FXML
     void showSetting(ActionEvent event)  { }
     @FXML
-    void goToProfile(ActionEvent event)  { loadScene("Profile.fxml"); }
+    void goToProfile(ActionEvent event)  { loadProfile(); }
     @FXML
     void signOut(ActionEvent event)      { loadScene("Login.fxml"); 
                                            clearNode();
@@ -221,7 +223,28 @@ public class AdminController extends Controller implements Initializable {
             e.printStackTrace();
         }
     }
-    
+    private void loadProfile() {
+        try {
+            // create docinfo
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Profile.fxml"));
+            Parent profileRoot = loader.load();
+
+            ProfileController profileController = loader.getController();
+            profileController.setInfo(root, profileRoot);
+
+            // fix docinfo size
+            AnchorPane.setBottomAnchor(profileRoot, 0.0);
+            AnchorPane.setLeftAnchor(profileRoot, 0.0);
+            AnchorPane.setRightAnchor(profileRoot, 0.0);
+            AnchorPane.setTopAnchor(profileRoot, 0.0);
+
+            // set docinfo position
+            root.getChildren().add(profileRoot);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     // giải phóng
     private void clearNode() {
         instance = null;
