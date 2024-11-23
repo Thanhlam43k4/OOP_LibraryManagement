@@ -1,9 +1,13 @@
 package com.example.JFX_Controller.Client;
 //#region Lib
+import com.example.Handlers.Notify;
+import com.example.Model.Copies;
+import com.example.Service.DocumentService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Button;
@@ -25,6 +29,8 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+
+import javax.print.Doc;
 //#endregion
 
 public class DocInfoController extends Controller implements Initializable{
@@ -40,6 +46,7 @@ public class DocInfoController extends Controller implements Initializable{
     private Parent root;
 
     private int docId;
+    private String ISBN;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
@@ -52,11 +59,15 @@ public class DocInfoController extends Controller implements Initializable{
     @FXML
     void borrowDoc(ActionEvent event) {
         int userId = SessionManager.getInstance().getLoggedInUser().getId();
-
-
-        borrowBut.setDisable(true);
-        stateText.setVisible(true);
-
+        Copies copyDoc = DocumentService.instance.getAvailCopies(docId);
+        if(copyDoc == null){
+            Notify.showAlert(Alert.AlertType.ERROR, "Error when borrow Book", "This Book isn't having available copies now!!! Please choose another Book");
+            return;
+        }else{
+            TransactionService.instance.borrowBook(userId,copyDoc.getCopyISBN());
+            borrowBut.setDisable(true);
+            stateText.setVisible(true);
+        }
     }
     @FXML
     void signOut(ActionEvent event) {
@@ -80,11 +91,11 @@ public class DocInfoController extends Controller implements Initializable{
     public void setInfo(Document doc, Parent root, Image coverImage) {
         this.root = root;
         docId = doc.getDocumentId();
+        ISBN = doc.getISBN();
         docCover.setImage(coverImage);
         this.userName.setText(SessionManager.getInstance().getLoggedInUser().getUsername());
         this.title.setText(doc.getTitle().toUpperCase());
         this.author.setText(doc.getAuthor());
-
         description.setText(doc.getDescription());
         // query description here
         // check borrow

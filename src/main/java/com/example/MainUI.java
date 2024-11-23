@@ -8,6 +8,7 @@ import java.util.Objects;
 import com.example.Database.DatabaseConnection;
 
 import com.example.Service.DocumentService;
+import com.example.Service.EmailService;
 import com.example.Service.TransactionService;
 import com.example.Service.UserService;
 import javafx.application.Application;
@@ -31,10 +32,19 @@ public class MainUI extends Application {
         }
         // Create service
         createServices(con);
-        // Create Scene
+        EmailService emailService = EmailService.getInstance();
+
+
+
         primaryStage = stage;
+
+
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Login.fxml"));
         Parent root = loader.load();
+
+
+
         Image logoImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Image/logo.jpg"))); // Đảm bảo đường dẫn đúng
         primaryStage.getIcons().add(logoImage); // Thêm biểu tượng vào cửa sổ
 
