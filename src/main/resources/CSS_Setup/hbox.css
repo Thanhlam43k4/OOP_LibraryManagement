@@ -29,10 +29,10 @@
 }
 
 .second-hbox-style-selected .label {
-    -fx-text-fill: linear-gradient(to right bottom, rgb(224, 46, 22), rgb(216, 116, 22));
+    -fx-text-fill: linear-gradient( to bottom, #9ba8ab, #11212d);
 }
 
 .second-hbox-style-selected {
-    -fx-border-color: linear-gradient(to right bottom, rgb(224, 46, 22), rgb(216, 116, 22));
+    -fx-border-color: linear-gradient( to bottom, #9ba8ab, #11212d);
     -fx-border-width: 0 0 0 5;
 }

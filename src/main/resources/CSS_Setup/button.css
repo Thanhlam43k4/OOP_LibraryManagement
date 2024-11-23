@@ -27,18 +27,18 @@
 
 .second-button {
     -fx-background-color:  rgb(238, 231, 231);
-    -fx-border-color: linear-gradient(to right bottom, rgb(224, 46, 22), rgb(216, 116, 22));
+    -fx-border-color: linear-gradient( to right, #4a5c6a, #11212d);
     -fx-background-radius: 20px;
     -fx-border-radius: 20px;
-    -fx-text-fill: linear-gradient(to right bottom, rgb(224, 46, 22), rgb(216, 116, 22));
+    -fx-text-fill: linear-gradient( to bottom, #4a5c6a, #11212d);
 }
 
 .second-button .fontawesome-icon {
-    -fx-fill: linear-gradient(to right bottom, rgb(224, 46, 22), rgb(216, 116, 22));
+    -fx-fill: linear-gradient( to right, #4a5c6a, #11212d);
 }
 
 .second-button:hover {
-    -fx-background-color: linear-gradient(to right bottom, rgb(224, 46, 22), rgb(216, 116, 22));
+    -fx-background-color: linear-gradient( to bottom right, #4a5c6a, #11212d);
     -fx-text-fill: #ebebeb;    
 }
 
@@ -46,5 +46,5 @@
     -fx-fill: #ebebeb;
 }
 .second-button:pressed {
-    -fx-background-color: linear-gradient(to right bottom, rgb(224, 113, 22), rgb(216, 45, 22));
+    -fx-background-color: linear-gradient( to left, #4a5c6a, #11212d);
 }

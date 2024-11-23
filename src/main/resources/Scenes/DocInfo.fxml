@@ -47,7 +47,7 @@
             </HBox>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="500.0" prefWidth="223.0" style="-fx-background-color: linear-gradient(to right bottom, rgb(224, 46, 22), rgb(216, 116, 22));" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane prefHeight="500.0" prefWidth="223.0" style="-fx-background-color: linear-gradient( to right bottom, #9ba8ab, #11212d);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backMain" prefHeight="35.0" prefWidth="36.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="12.0">
                <graphic>

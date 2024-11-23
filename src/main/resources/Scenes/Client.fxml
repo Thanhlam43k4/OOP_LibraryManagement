@@ -55,7 +55,7 @@
                <children>
                   <HBox fx:id="browseBut" alignment="CENTER_LEFT" onMouseClicked="#browseTab" prefHeight="40.0" prefWidth="223.0" spacing="10.0" styleClass="second-hbox-style" stylesheets="@../CSS_Setup/hbox.css">
                      <children>
-                        <Label text="Discover" textFill="#787878">
+                        <Label text="Discover" textFill="#8c8c8c">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -70,7 +70,7 @@
                   </HBox>
                   <HBox fx:id="mydocBut" alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#mydocTab" prefHeight="40.0" prefWidth="200.0" spacing="10.0" styleClass="second-hbox-style" stylesheets="@../CSS_Setup/hbox.css">
                      <children>
-                        <Label text="My Document" textFill="#787878">
+                        <Label text="My Document" textFill="#8c8c8c">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -85,7 +85,7 @@
                   </HBox>
                </children>
             </VBox>
-            <Label layoutX="60.0" text="Library">
+            <Label layoutX="60.0" style="-fx-text-fill: linear-gradient( to bottom, #9ba8ab, #11212d);;" text="Library">
                <font>
                   <Font name="Rage Italic" size="36.0" />
                </font>

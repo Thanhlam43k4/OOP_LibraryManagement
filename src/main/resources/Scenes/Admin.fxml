@@ -23,7 +23,7 @@
    <children>
       <AnchorPane prefHeight="439.0" prefWidth="223.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="60.0" text="Library">
+            <Label layoutX="60.0" style="-fx-text-fill: linear-gradient( to bottom, #9ba8ab, #11212d);;" text="Library">
                <font>
                   <Font name="Rage Italic" size="36.0" />
                </font>
