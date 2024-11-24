@@ -1,5 +1,4 @@
 package com.example.DAO;
-import com.example.Database.DatabaseConnection;
 import com.example.Interface.UserDao;
 import com.example.Model.Client;
 import com.example.Model.User;
@@ -94,12 +93,14 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void updateUser(User user) {
-        String sql = "UPDATE users SET username = ?, password = ? WHERE id = ?";
+    public void updateUser(int userId,String username, String phoneNumber, Date dob) {
+        String sql = "UPDATE users SET username = ?, phoneNumber = ?, dob = ?  WHERE id = ?";
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
-            stmt.setString(1, user.getUsername());
-            stmt.setString(2, user.getPassword());
-            stmt.setInt(3, user.getId());
+            stmt.setString(1, username);
+            stmt.setString(2, phoneNumber);
+            stmt.setDate(3,dob );
+            stmt.setInt(4,userId);
+
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -156,8 +157,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void addUser(String email, String username, String phoneNumber, int age){
         String query = "INSERT INTO users (email, username, phoneNumber, age) VALUES (?, ?, ?, ?)";
-        try (Connection conn = DatabaseConnection.getConnection(); // Giả sử bạn có một phương thức để lấy kết nối
-             PreparedStatement pstmt = conn.prepareStatement(query)) {
+        try (PreparedStatement pstmt = con.prepareStatement(query)) {
 
             // Thiết lập các tham số cho câu lệnh
             pstmt.setString(1, email);
@@ -184,11 +184,8 @@ public class UserDaoImpl implements UserDao {
     public int getUserBooks(int id) {
         String query = "SELECT borrowed_books FROM client WHERE user_id = ?";
         int borrowedBooks = 0;
-        try (Connection conn = DatabaseConnection.getConnection(); // Giả sử bạn có phương thức để lấy kết nối
-             PreparedStatement pstmt = conn.prepareStatement(query)) {
-            // Thiết lập tham số cho câu lệnh
+        try (PreparedStatement pstmt = con.prepareStatement(query)) {
             pstmt.setInt(1, id);
-            // Thực thi câu lệnh SELECT
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
                     borrowedBooks = rs.getInt("borrowed_books"); // Lấy giá trị từ cột borrowed_books
@@ -200,6 +197,19 @@ public class UserDaoImpl implements UserDao {
         }
 
         return borrowedBooks; // Trả về số sách mượn
+    }
+
+    @Override
+    public void updatePassword(int userId, String updatePass) {
+        String query = "UPDATE users SET password = ? WHERE user_id = ?";
+        try (PreparedStatement pstmt = con.prepareStatement(query)) {
+            pstmt.setString(1,updatePass);
+            pstmt.setInt(2,userId);
+            pstmt.executeQuery();
+            System.out.println("Update Password Successfully!!!");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

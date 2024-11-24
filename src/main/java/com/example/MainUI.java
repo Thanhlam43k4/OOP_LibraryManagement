@@ -34,16 +34,10 @@ public class MainUI extends Application {
         createServices(con);
         EmailService emailService = EmailService.getInstance();
 
-
-
         primaryStage = stage;
-
-
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Login.fxml"));
         Parent root = loader.load();
-
-
 
         Image logoImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Image/logo.jpg"))); // Đảm bảo đường dẫn đúng
         primaryStage.getIcons().add(logoImage); // Thêm biểu tượng vào cửa sổ

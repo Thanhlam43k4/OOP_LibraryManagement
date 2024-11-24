@@ -1,8 +1,10 @@
 package com.example.JFX_Controller;
 
 import com.example.Model.User;
+import com.example.Service.DocumentService;
 import com.example.Service.SessionManager;
 
+import com.example.Service.UserService;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -50,6 +52,8 @@ public class ProfileController extends Controller {
     }
     @FXML
     void applyModify(ActionEvent event) {
+    //    UserService.instance.updateUser(userId,username,phoneNumber,dob);
+
         profilePane.setVisible(false);
     }
     //Change password event
@@ -63,6 +67,12 @@ public class ProfileController extends Controller {
     }
     @FXML
     void applyChangePass(ActionEvent event) {
+        // Check Current password is right use UserService.instance.isMatchAccount(email,password)
+
+        // Check password == retype password
+
+        // Update new password after checkin UserService.instance.updatePassword(userId,updatePassword);
+
         passPane.setVisible(false);
     }
 

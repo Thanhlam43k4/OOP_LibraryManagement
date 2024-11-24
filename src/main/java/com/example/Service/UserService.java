@@ -6,6 +6,7 @@ import com.example.Model.Client;
 import com.example.Model.User;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.util.List;
 
 public class UserService {
@@ -28,8 +29,8 @@ public class UserService {
         return userDao.getAllClients();
     }
 
-    public void updateUser(User user) {
-        userDao.updateUser(user);
+    public void updateUser(int userId,String username,String phoneNumber, Date dob) {
+        userDao.updateUser(userId,username,phoneNumber,dob);
     }
 
     public boolean isEmailExists(String email){
@@ -50,5 +51,8 @@ public class UserService {
 
     public int getUserBooks(int id) {
        return userDao.getUserBooks(id);
+    }
+    public void updatePassword(int userId,String updatePassword){
+        userDao.updatePassword(userId,updatePassword);
     }
 }
