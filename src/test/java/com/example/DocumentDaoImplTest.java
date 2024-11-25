@@ -196,4 +196,35 @@ class DocumentDaoImplTest {
         verify(mockResultSet, times(1)).getString("genre");
     }
 
+    @Test
+    void testGetAvailCopies() throws SQLException {
+        int documentId = 1; // ID của tài liệu muốn lấy bản sao khả dụng
+
+        // Giả lập hành vi của connection, prepared statement và result set
+        when(mockConnection.prepareStatement(anyString())).thenReturn(mockPreparedStatement);
+        when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
+
+        // Giả lập kết quả của ResultSet
+        when(mockResultSet.next()).thenReturn(true); // Giả lập có một dòng kết quả
+        when(mockResultSet.getString("copy_ISBN")).thenReturn("1234567890"); // ISBN của bản sao
+        when(mockResultSet.getString("status")).thenReturn("Available"); // Trạng thái bản sao
+
+        // Gọi phương thức getAvailCopies
+        Copies copy = documentDao.getAvailCopies(documentId);
+
+        // Kiểm tra kết quả
+        assertNotNull(copy); // Kiểm tra xem bản sao có được trả về hay không
+        assertEquals("1234567890", copy.getCopyISBN()); // Kiểm tra ISBN bản sao
+        assertEquals("Available", copy.getStatus()); // Kiểm tra trạng thái bản sao
+        assertEquals(documentId, copy.getDocumentId()); // Kiểm tra documentId
+
+        // Đảm bảo rằng phương thức SQL được gọi đúng
+        verify(mockConnection, times(1)).prepareStatement(anyString());
+        verify(mockPreparedStatement, times(1)).setInt(1, documentId); // Đảm bảo setInt được gọi với documentId
+        verify(mockPreparedStatement, times(1)).executeQuery();
+        verify(mockResultSet, times(1)).next();
+        verify(mockResultSet, times(1)).getString("copy_ISBN");
+        verify(mockResultSet, times(1)).getString("status");
+    }
+
 }

@@ -1,65 +1,113 @@
-#  To do List OOP Library Mangement App
+# 📚 Ứng dụng Quản Lý Thư Viện
 
-*Thành Viên Nhóm*:
+## 📋 Mục lục
+1. [Tổng quan](#tổng-quan)
+2. [Tính năng](#tính-năng)
+3. [Cấu trúc ứng dụng](#cấu-trúc-ứng-dụng)
+    - [Models](#models)
+    - [Use Cases](#use-cases)
+    - [Services](#services)
+    - [Controllers](#controllers)
+4. [Cài đặt và thiết lập](#cài-đặt-và-thiết-lập)
+5. [Hướng dẫn sử dụng](#hướng-dẫn-sử-dụng)
+6. [Các cải tiến trong tương lai](#các-cải-tiến-trong-tương-lai)
+7. [Tác giả](#tác-giả)
 
-+ 22022212: Nguyễn Thành Lâm.
-+ 22022196: Nguyễn Hữu Trọng Anh.
-+ 22022163: Đỗ Nhất Anh.
+---
 
-**Frontend**
+## 📝 Tổng quan
+Ứng dụng **Quản lý thư viện** được phát triển bằng JavaFX nhằm hỗ trợ quản lý thông tin sách, độc giả và hoạt động mượn/trả sách. Mục tiêu chính là tối ưu hóa quy trình quản lý thư viện cho các quản trị viên và cung cấp giao diện thân thiện với người dùng.
 
-    Thiết kế thêm admin load database.
+---
 
-    Thiết kế thêm phần thêm sửa xóa admin , Thêm Info ISBN ở phần add.
+## ✨ Tính năng
+Các tính năng nổi bật của ứng dụng bao gồm:
 
-    User Management Borrow thành book_borrowed.
+### 🛠️ Dành cho Admin
+- **Quản lý sách**: Thêm, sửa, xóa thông tin sách.
+- **Quản lý người sử dụng**: Thêm, sửa, xóa thông tin người dùng.
+- **Quản lý mượn/trả sách**: Xử lý các yêu cầu mượn sách và trả sách từ người dùng.
+- **Tìm kiếm nâng cao**:
+    - Tìm kiếm và thêm sách theo API.
+    - Tìm kiếm sách theo tiêu chí (tên sách, tác gi ả, thể loại,...).
+    - 
+### 📚 Dành cho Client (Người dùng)
+- **Tìm kiếm sách**:
+    - Tìm kiếm sách theo tên, tác giả, hoặc thể loại.
+    - Xem trạng thái của sách (đang mượn, có sẵn...).
+- **Xem lịch sử mượn sách**:
+    - Hiển thị danh sách các sách đã mượn và trả.
+    - Kiểm tra thời hạn trả sách.
+
+---
+
+## 🏗️ Cấu trúc ứng dụng
+
+### 📦 Models
+Các model chính trong ứng dụng được thể hiện qua UML sau:
     
-    * Update phần mượn trả sách trong User Management TAB.
+![img.png](src/main/resources/Image/uml-model.png)
 
-    Update Status mượn trả sách với actual Date UserName trong bản transaction.
-    
-    Viết thêm panel khi click vào document ở admin dashboard hiện thêm list copy.
+### 🧩 Use Cases
+Các trường hợp sử dụng chính:
 
-**Controller:**
+1. **Quản trị viên**:
+    - Thêm, sửa, xóa thông tin sách.
+    - Quản lý danh sách độc giả.
+    - Xem lịch sử mượn/trả.
+2. **Độc giả**:
+    - Tra cứu thông tin sách.
+    - Kiểm tra lịch sử mượn sách của mình.
 
-    Client: cần userId để query đến transaction trong hàm addDocElementNodes, load username.
+### 🛠️ Services
+Các service xử lý logic nghiệp vụ:
+- **BookService**: Quản lý dữ liệu liên quan đến sách.
+- **ReaderService**: Xử lý thông tin độc giả.
+- **BorrowService**: Xử lý các giao dịch mượn và trả sách.
 
-    DocInfo: query doc description và check doc đã được mượn chưa ở hàm setInfo.
+### 🎛️ Controllers
+Các controller điều khiển giao diện và liên kết logic:
+- **MainController**: Quản lý giao diện chính và điều hướng.
+- **BookController**: Quản lý giao diện và hành động liên quan đến sách.
+- **ReaderController**: Quản lý giao diện và hành động liên quan đến độc giả.
+- **BorrowController**: Xử lý giao diện mượn/trả sách.
 
-    TransCard: thiếu full.
+---
 
-    Admin: thiếu.
+## ⚙️ Cài đặt và thiết lập
+1. **Yêu cầu hệ thống**:
+    - JDK 17 hoặc mới hơn.
+    - JavaFX SDK.
+    - IDE hỗ trợ Java (IntelliJ IDEA, Eclipse...).
 
-    Profile: chưa load Info.
+2. **Cài đặt**:
+    - Clone repository:
+      ```bash
+      git clone https://github.com/your-repo/library-management.git
+      cd library-management
+      ```
+    - Cấu hình JavaFX SDK trong IDE.
+    - Chạy ứng dụng.
 
-    SignInUp: thiếu username.
+---
 
+## 🚀 Hướng dẫn sử dụng
+1. Mở ứng dụng.
+2. Đăng nhập với tài khoản quản trị viên.
+3. Điều hướng qua các tab để quản lý sách, độc giả, và giao dịch mượn/trả.
 
-**Class:**
+---
 
-    Admin && Client: Add 2 class
-     + Client thì có borrowed_book.
-     
-        
-    Client Click Borrow để mượn sách.
+## 🔮 Các cải tiến trong tương lai
+- Tích hợp API để đồng bộ dữ liệu.
+- Thêm chức năng quản lý danh mục sách nâng cao.
+- Phát triển ứng dụng web song song.
 
-    Tách Thesis vs Books.
+---
 
-**Database Model**
+## ✍️ Tác giả
+- **Họ tên**: [Tên của bạn]
+- **Liên hệ**: [Email hoặc mạng xã hội]
+- **GitHub**: [Link GitHub của bạn]
 
-    Bỏ Amount Ready của database documents thêm vào copies (Int) là tổng số copy.
-    Thêm phần copies_document.
-
-    Upload Database Model và kiểm tra kỹ lại các query injection trong db.
-
-    Sửa lại các khóa chính của các bảng copies với admin và client.
-
-**Service**
-
-    Tao thêm service xử lý session manager để query.
-
-    Xử lý transaction Service mỗi khi User Borrow Book.
-
-    Viết add User, Email Username, PhoneNumber , Age.   
-
-    Add service Transaction ở admin Dashboard
+---

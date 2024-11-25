@@ -1,24 +1,39 @@
-package com.example.Model;
+package com.example.Model;  // Tên package dùng chữ thường
 
-import java.sql.Date;
+/**
+ * The User class represents a user with various details like id, username, email, age, phone number, password, and role.
+ */
+public class User {
 
-public  class User {
     private int id;
     private String username;
     private String email;
     private int age;
     private String password;
     private String phoneNumber;
-    private Date dob;
     private String role;
 
-
-    public User(int id, String username, String password){
+    /**
+     * Constructor để tạo một đối tượng User với id, username và password.
+     * @param id ID của người dùng.
+     * @param username Tên người dùng.
+     * @param password Mật khẩu của người dùng.
+     */
+    public User(int id, String username, String password) {
         this.id = id;
         this.username = username;
         this.password = password;
     }
-    public User(int id,String email,String username,int age,String phoneNumber){
+
+    /**
+     * Constructor để tạo một đối tượng User với id, email, username, age và phoneNumber.
+     * @param id ID của người dùng.
+     * @param email Địa chỉ email của người dùng.
+     * @param username Tên người dùng.
+     * @param age Tuổi của người dùng.
+     * @param phoneNumber Số điện thoại của người dùng.
+     */
+    public User(int id, String email, String username, int age, String phoneNumber) {
         this.id = id;
         this.email = email;
         this.username = username;
@@ -26,25 +41,76 @@ public  class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public User(String email, String password){
+    /**
+     * Constructor để tạo một đối tượng User với email và password.
+     * @param email Địa chỉ email của người dùng.
+     * @param password Mật khẩu của người dùng.
+     */
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
     }
-    public User(int id,String email, String username, String role){
+
+    /**
+     * Constructor để tạo một đối tượng User với id, email, username và role.
+     * @param id ID của người dùng.
+     * @param email Địa chỉ email của người dùng.
+     * @param username Tên người dùng.
+     * @param role Vai trò của người dùng.
+     */
+    public User(int id, String email, String username, String role) {
         this.id = id;
         this.email = email;
         this.username = username;
         this.role = role;
-
     }
-    public User(String email,String username, String phoneNumber,int age){
+
+    /**
+     * Constructor để tạo một đối tượng User với email, username, phoneNumber và age.
+     * @param email Địa chỉ email của người dùng.
+     * @param username Tên người dùng.
+     * @param phoneNumber Số điện thoại của người dùng.
+     * @param age Tuổi của người dùng.
+     */
+    public User(String email, String username, String phoneNumber, int age) {
         this.email = email;
         this.username = username;
         this.phoneNumber = phoneNumber;
-        this.age =  age;
+        this.age = age;
     }
 
+    // Getter và Setter cho các thuộc tính
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public int getAge() {
         return age;
@@ -61,54 +127,31 @@ public  class User {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    public Date getDob() {
-        return dob;
-    }
 
-    public void setDob(Date dob) {
-        this.dob = dob;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getId()
-    {
-        return id;
-    }
-    public void setId(int id){
-        this.id = id;
-    }
-    public String getUsername()
-    {
-        return username;
-    }
-    public void setUsername(String username){
-        this.username = username;
-    }
-    public String getPassword()
-    {
-        return password;
-    }
-    public void setPassword(String password){
-        this.password = password;
-    }
-    public void display()
-    {
-        System.out.println("UserName: " +  username +  " " + "Password: "+ password);
-    }
-    public String getRole() // Phương thức trừu tượng để lấy vai trò
-    {
+    public String getRole() {
         return role;
     }
+
     public void setRole(String role) {
         this.role = role;
     }
 
+    /**
+     * Hiển thị thông tin người dùng.
+     */
+    public void display() {
+        System.out.println("Username: " + username + " Password: " + password);
+    }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", age=" + age +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", role='" + role + '\'' +
+                '}';
+    }
 }

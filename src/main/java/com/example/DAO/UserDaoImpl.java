@@ -79,14 +79,36 @@ public class UserDaoImpl implements UserDao {
 
         try (Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                clients.add(new Client(rs.getInt("id"),
-                        rs.getString("username"),
-                        rs.getString("email"),
-                        rs.getInt("age"),
-                        rs.getString("phoneNumber"),
-                        rs.getInt("borrowed_books")));
+                // Lấy các giá trị từ ResultSet và kiểm tra null
+                int id = rs.getInt("id");
+
+                // Dùng getString(), kiểm tra null bằng cách sử dụng rs.getObject() để tránh NullPointerException
+                String username = rs.getString("username");
+                if (username == null) {
+                    username = "Unknown"; // Giá trị mặc định
+                }
+
+                String email = rs.getString("email");
+                if (email == null) {
+                    email = "Unknown"; // Giá trị mặc định
+                }
+
+                int age = rs.getInt("age");
+                String phoneNumber = rs.getString("phoneNumber");
+                if (phoneNumber == null) {
+                    phoneNumber = "Unknown"; // Giá trị mặc định
+                }
+
+                // Kiểm tra borrowed_books với rs.wasNull() để đảm bảo không phải là giá trị NULL trong cơ sở dữ liệu
+                int borrowedBooks = rs.getInt("borrowed_books");
+                if (rs.wasNull()) {
+                    borrowedBooks = 0; // Giá trị mặc định khi borrowed_books là NULL
+                }
+
+                // Tạo đối tượng Client và thêm vào danh sách
+                clients.add(new Client(id, username, email, age, phoneNumber, borrowedBooks));
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return clients;

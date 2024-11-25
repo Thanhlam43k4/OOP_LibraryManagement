@@ -7,7 +7,6 @@ public class Document {
     private int year;
     private String genre;
     private String ISBN;
-    private String content;
     private String author;
     private String urlImage;  // Thêm thuộc tính urlImage
     private int numberCopy;
@@ -133,14 +132,6 @@ public class Document {
         this.ISBN = ISBN;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     public String getAuthor() {
         return author;
     }
@@ -177,7 +168,6 @@ public class Document {
                 ", year=" + year +
                 ", genre='" + genre + '\'' +
                 ", ISBN='" + ISBN + '\'' +
-                ", content='" + content + '\'' +
                 ", author='" + author + '\'' +
                 ", urlImage='" + urlImage + '\'' +
                 ", numberCopy=" + numberCopy +
