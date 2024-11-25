@@ -1,10 +1,15 @@
 package com.example.JFX_Controller;
 
+import java.sql.Date;
+
+import com.example.Handlers.Notify;
+import com.example.Handlers.Validate;
 import com.example.Model.User;
-import com.example.Service.DocumentService;
 import com.example.Service.SessionManager;
 
 import com.example.Service.UserService;
+
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -52,9 +57,16 @@ public class ProfileController extends Controller {
     }
     @FXML
     void applyModify(ActionEvent event) {
-    //    UserService.instance.updateUser(userId,username,phoneNumber,dob);
+        if(validate()) {
+            profilePane.setVisible(false);
 
-        profilePane.setVisible(false);
+            int userId = SessionManager.getInstance().getLoggedInUser().getId();
+            Date dob = Date.valueOf(dobPicker.getValue());
+            UserService.instance.updateUser(userId,userNameField.getText(),phoneField.getText(), dob);
+            
+            setInfo(mainRoot, profilePane);
+        }
+
     }
     //Change password event
     @FXML
@@ -84,5 +96,17 @@ public class ProfileController extends Controller {
         email.setText(user.getEmail());
         phone.setText(user.getPhoneNumber());
         age.setText(String.valueOf(user.getAge()));
+    }
+
+    private boolean validate() {
+        if(!Validate.isValidUsername(userNameField.getText())) {
+            Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Username invalid!");
+            return false;
+        }
+        if(!Validate.isValidPhoneNumber(phoneField.getText())) {
+            Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Phone number invalid!");
+            return false;
+        }
+        return true;
     }
 }

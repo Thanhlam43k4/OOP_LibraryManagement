@@ -24,6 +24,10 @@ public class SignInUpController extends Controller {
     private PasswordField userName;
 
     @FXML
+    void forgotPassword(ActionEvent event) {
+
+    }
+    @FXML
     void returnSignIn(ActionEvent event) {
         loadScene("Login.fxml");
     }
