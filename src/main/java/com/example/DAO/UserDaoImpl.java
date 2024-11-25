@@ -1,38 +1,50 @@
 package com.example.DAO;
+
 import com.example.Interface.UserDao;
 import com.example.Model.Client;
 import com.example.Model.User;
+import com.example.Handlers.ExtraFunction;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation of the UserDao interface for interacting with the database.
+ */
 public class UserDaoImpl implements UserDao {
+
     private final Connection con;
 
+    /**
+     * Constructor to initialize the database connection.
+     *
+     * @param con Database connection.
+     */
     public UserDaoImpl(Connection con) {
         this.con = con;
     }
+
+    /**
+     * Creates a new user in the database.
+     *
+     * @param user The user object to be added.
+     */
     @Override
     public void createUser(User user) {
-        String sql = "INSERT INTO users (email, password) VALUES ('" + user.getEmail() + "', '" + user.getPassword() + "')";
-        try {
-            if (con == null) {
-                System.out.println("Connection to mysql is failed.");
-                return;
-            }
-            // Tạo một Statement
-            Statement stmt = con.createStatement();
-            // Thực thi câu lệnh SQL
-            int rowsAffected = stmt.executeUpdate(sql);
+        String sql = "INSERT INTO users (email, username, password) VALUES (?, ?, ?)";
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1, user.getEmail());
+            stmt.setString(2,user.getUsername());
+            stmt.setString(3, user.getPassword());
+
+            int rowsAffected = stmt.executeUpdate();
 
             if (rowsAffected > 0) {
-                System.out.println("User: "+  user.getEmail() + "is created successfully.");
+                System.out.println("User: " + user.getEmail() + " is created successfully.");
             } else {
                 System.out.println("No user was created.");
             }
-            // Đóng Statement
-            stmt.close();
         } catch (SQLException e) {
             System.out.println("Error occurred while creating user:");
             e.printStackTrace();
@@ -40,13 +52,40 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public void addUser (User user) {
+        String sql = "INSERT INTO users (email, username, password, phoneNumber, age) VALUES (?, ?, ?, ?,?)";
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1, user.getEmail());
+            stmt.setString(2,user.getUsername());
+            stmt.setString(3, user.getPassword());
+            stmt.setString(4,user.getPhoneNumber());
+            stmt.setInt(5,user.getAge());
+
+            int rowsAffected = stmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("User: " + user.getEmail() + " is created successfully.");
+            } else {
+                System.out.println("No user was created.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error occurred while creating user:");
+            e.printStackTrace();
+        }
+    }
+    /**
+     * Retrieves a user by their ID.
+     *
+     * @param id The ID of the user to be retrieved.
+     * @return The user object or null if not found.
+     */
+    @Override
     public User getUserById(int id) {
         String sql = "SELECT * FROM users WHERE id = ?";
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-
                 return new User(rs.getInt("id"), rs.getString("username"), rs.getString("password"));
             }
         } catch (SQLException e) {
@@ -54,6 +93,13 @@ public class UserDaoImpl implements UserDao {
         }
         return null;
     }
+
+    /**
+     * Retrieves a user by their email.
+     *
+     * @param email The email of the user to be retrieved.
+     * @return The user object or null if not found.
+     */
     @Override
     public User getUserByEmail(String email) {
         String sql = "SELECT * FROM users WHERE email = ?";
@@ -61,7 +107,7 @@ public class UserDaoImpl implements UserDao {
             stmt.setString(1, email);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return new User(rs.getInt("id"), rs.getString("email"),rs.getString("username"),rs.getString("role"));
+                return new User(rs.getInt("id"), rs.getString("email"), rs.getString("username"), rs.getString("role"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -69,43 +115,37 @@ public class UserDaoImpl implements UserDao {
         return null;
     }
 
+    /**
+     * Retrieves all clients along with their borrowed books.
+     *
+     * @return A list of all clients.
+     */
     @Override
     public List<Client> getAllClients() {
         List<Client> clients = new ArrayList<>();
-        String sql = "SELECT users.id, users.username,users.email, users.age, " +
-                "users.phoneNumber,client.borrowed_books " +
+        String sql = "SELECT users.id, users.username, users.email, users.age, " +
+                "users.phoneNumber, client.borrowed_books " +
                 "FROM users " +
                 "LEFT JOIN client ON users.id = client.user_id";
 
         try (Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                // Lấy các giá trị từ ResultSet và kiểm tra null
                 int id = rs.getInt("id");
-
-                // Dùng getString(), kiểm tra null bằng cách sử dụng rs.getObject() để tránh NullPointerException
                 String username = rs.getString("username");
-                if (username == null) {
-                    username = "Unknown"; // Giá trị mặc định
-                }
+                username = (username == null) ? "Unknown" : username;
 
                 String email = rs.getString("email");
-                if (email == null) {
-                    email = "Unknown"; // Giá trị mặc định
-                }
+                email = (email == null) ? "Unknown" : email;
 
                 int age = rs.getInt("age");
                 String phoneNumber = rs.getString("phoneNumber");
-                if (phoneNumber == null) {
-                    phoneNumber = "Unknown"; // Giá trị mặc định
-                }
+                phoneNumber = (phoneNumber == null) ? "Unknown" : phoneNumber;
 
-                // Kiểm tra borrowed_books với rs.wasNull() để đảm bảo không phải là giá trị NULL trong cơ sở dữ liệu
                 int borrowedBooks = rs.getInt("borrowed_books");
                 if (rs.wasNull()) {
-                    borrowedBooks = 0; // Giá trị mặc định khi borrowed_books là NULL
+                    borrowedBooks = 0;
                 }
 
-                // Tạo đối tượng Client và thêm vào danh sách
                 clients.add(new Client(id, username, email, age, phoneNumber, borrowedBooks));
             }
         } catch (SQLException e) {
@@ -114,94 +154,125 @@ public class UserDaoImpl implements UserDao {
         return clients;
     }
 
+    /**
+     * Updates user details like username, phone number, and date of birth.
+     *
+     * @param userId    The ID of the user to update.
+     * @param username  The new username.
+     * @param phoneNumber The new phone number.
+     * @param dob       The new date of birth.
+     */
     @Override
-    public void updateUser(int userId,String username, String phoneNumber, Date dob) {
-        String sql = "UPDATE users SET username = ?, phoneNumber = ?, dob = ?  WHERE id = ?";
+    public void updateUser(int userId, String username, String phoneNumber, Date dob) {
+        String sql = "UPDATE users SET username = ?, phoneNumber = ?, dob = ? WHERE id = ?";
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setString(1, username);
             stmt.setString(2, phoneNumber);
-            stmt.setDate(3,dob );
-            stmt.setInt(4,userId);
-
+            stmt.setDate(3, dob);
+            stmt.setInt(4, userId);
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Deletes a user from the database by their ID.
+     *
+     * @param id The ID of the user to be deleted.
+     */
     @Override
     public void deleteUser(int id) {
         String sql = "DELETE FROM users WHERE id = ?";
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
-            System.out.println("Delete user with id: "+ id + " successfully!!!");
+            System.out.println("Deleted user with id: " + id + " successfully!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Checks if an email already exists in the users table.
+     *
+     * @param email The email to check for existence.
+     * @return True if the email exists, false otherwise.
+     */
     @Override
     public boolean isEmailExists(String email) {
-        String query = "SELECT * FROM users WHERE email = ?"; // Giả sử bảng của bạn tên là 'users'
+        String query = "SELECT * FROM users WHERE email = ?";
         try (PreparedStatement stmt = con.prepareStatement(query)) {
             stmt.setString(1, email);
             ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                System.out.println("From isEmailExists!!!");
-                return rs.getInt(1) > 0; // Nếu số lượng lớn hơn 0, tức là email đã tồn tại
+            return rs.next(); // If the email exists, a result will be returned.
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * Verifies if the provided email and password match an existing account.
+     *
+     * @param email    The user's email.
+     * @return True if the email and password match, false otherwise.
+     */
+    @Override
+    public boolean isMatchAccount(String email, String plainPassword) {
+        String query = "SELECT password FROM users WHERE email = ?";
+        try (PreparedStatement statement = con.prepareStatement(query)) {
+            // Thiết lập tham số truy vấn
+            statement.setString(1, email);
+            // Thực thi truy vấn
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                // Lấy hashed password từ cơ sở dữ liệu
+                String hashedPassword = resultSet.getString("password");
+                // So sánh plainPassword với hashedPassword
+                return ExtraFunction.decode(plainPassword,hashedPassword);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false; // Nếu không có lỗi và không tìm thấy email
+
+        // Trả về false nếu không tìm thấy tài khoản hoặc xảy ra lỗi
+        return false;
     }
-
+    /**
+     * Adds a new user with the given details.
+     *
+     * @param email      The user's email.
+     * @param username   The user's username.
+     * @param phoneNumber The user's phone number.
+     * @param age        The user's age.
+     */
     @Override
-    public boolean isMatchAccount(String email, String password) {
-        String query = "SELECT * FROM users WHERE email = ? AND password = ?";
-        try (PreparedStatement statement = con.prepareStatement(query)) {
-            // Thiết lập các tham số
-            statement.setString(1, email);
-            statement.setString(2, password);
-
-            // Thực thi truy vấn
-            ResultSet resultSet = statement.executeQuery();
-
-            // Kiểm tra nếu có kết quả nào trả về
-            return resultSet.next(); // Nếu có bản ghi nào khớp thì trả về true
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    @Override
-    public void addUser(String email, String username, String phoneNumber, int age){
+    public void addUser(String email, String username, String phoneNumber, int age) {
         String query = "INSERT INTO users (email, username, phoneNumber, age) VALUES (?, ?, ?, ?)";
         try (PreparedStatement pstmt = con.prepareStatement(query)) {
-
-            // Thiết lập các tham số cho câu lệnh
             pstmt.setString(1, email);
             pstmt.setString(2, username);
             pstmt.setString(3, phoneNumber);
             pstmt.setInt(4, age);
 
-            // Thực thi câu lệnh INSERT
             int rowsAffected = pstmt.executeUpdate();
-
-            // Kiểm tra xem câu lệnh có thành công không
             if (rowsAffected > 0) {
                 System.out.println("User added successfully.");
             } else {
                 System.out.println("Failed to add user.");
             }
         } catch (SQLException e) {
-            // Xử lý lỗi khi kết nối hoặc thực thi câu truy vấn
             e.printStackTrace();
         }
     }
 
+    /**
+     * Retrieves the number of borrowed books for a user by their ID.
+     *
+     * @param id The user's ID.
+     * @return The number of borrowed books.
+     */
     @Override
     public int getUserBooks(int id) {
         String query = "SELECT borrowed_books FROM client WHERE user_id = ?";
@@ -210,28 +281,31 @@ public class UserDaoImpl implements UserDao {
             pstmt.setInt(1, id);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-                    borrowedBooks = rs.getInt("borrowed_books"); // Lấy giá trị từ cột borrowed_books
+                    borrowedBooks = rs.getInt("borrowed_books");
                 }
             }
         } catch (SQLException e) {
-            // Xử lý lỗi khi kết nối hoặc thực thi câu truy vấn
             e.printStackTrace();
         }
-
-        return borrowedBooks; // Trả về số sách mượn
+        return borrowedBooks;
     }
 
+    /**
+     * Updates the password for a specific user by their ID.
+     *
+     * @param userId    The ID of the user to update.
+     * @param updatePass The new password to set.
+     */
     @Override
     public void updatePassword(int userId, String updatePass) {
         String query = "UPDATE users SET password = ? WHERE user_id = ?";
         try (PreparedStatement pstmt = con.prepareStatement(query)) {
-            pstmt.setString(1,updatePass);
-            pstmt.setInt(2,userId);
-            pstmt.executeQuery();
-            System.out.println("Update Password Successfully!!!");
+            pstmt.setString(1, updatePass);
+            pstmt.setInt(2, userId);
+            pstmt.executeUpdate();
+            System.out.println("Password updated successfully!");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
-
 }

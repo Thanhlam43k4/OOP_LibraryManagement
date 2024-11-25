@@ -25,6 +25,12 @@ public class User {
         this.password = password;
     }
 
+    public User(String email,String username,String password) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+    }
+
     /**
      * Constructor để tạo một đối tượng User với id, email, username, age và phoneNumber.
      * @param id ID của người dùng.
@@ -69,10 +75,25 @@ public class User {
      * Constructor để tạo một đối tượng User với email, username, phoneNumber và age.
      * @param email Địa chỉ email của người dùng.
      * @param username Tên người dùng.
+     * @param password mk người dùng
      * @param phoneNumber Số điện thoại của người dùng.
      * @param age Tuổi của người dùng.
      */
-    public User(String email, String username, String phoneNumber, int age) {
+    public User(String email, String username, String password,String phoneNumber, int age) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.age = age;
+    }
+    /**
+     * Constructor để tạo một đối tượng User với email, username, phoneNumber và age.
+     * @param email Địa chỉ email của người dùng.
+     * @param username Tên người dùng.
+     * @param phoneNumber Số điện thoại của người dùng.
+     * @param age Tuổi của người dùng.
+     */
+    public User(String email, String username,String phoneNumber, int age) {
         this.email = email;
         this.username = username;
         this.phoneNumber = phoneNumber;

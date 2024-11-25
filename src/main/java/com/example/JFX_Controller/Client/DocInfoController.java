@@ -62,7 +62,7 @@ public class DocInfoController extends Controller implements Initializable {
             Notify.showAlert(Alert.AlertType.ERROR, "Error when borrow Book", "This Book isn't having available copies now!!! Please choose another Book");
             return;
         }else{
-            TransactionService.instance.borrowBook(userId,copyDoc.getCopyISBN());
+            TransactionService.instance.borrowBook(userId,copyDoc.getCopyIsbn());
             //ui
             ClientController.instance.addDocElementNodes();
             borrowBut.setDisable(true);

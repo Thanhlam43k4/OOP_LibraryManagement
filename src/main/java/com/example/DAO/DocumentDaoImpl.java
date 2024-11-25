@@ -9,40 +9,54 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DocumentDaoImpl implements DocumentDao {
-    private final Connection con;
+    private final Connection connection;
 
-    public DocumentDaoImpl(Connection con) {
-        this.con = con;
-
+    /**
+     * Constructor để khởi tạo đối tượng DocumentDaoImpl với một kết nối cơ sở dữ liệu.
+     *
+     * @param connection kết nối cơ sở dữ liệu.
+     */
+    public DocumentDaoImpl(Connection connection) {
+        this.connection = connection;
     }
 
+    /**
+     * Thêm một tài liệu mới vào cơ sở dữ liệu.
+     *
+     * @param document đối tượng Document chứa thông tin tài liệu cần thêm.
+     */
     @Override
-    public void addDocument(Document doc) {
-        String query = "INSERT INTO documents (title,author,genre,ISBN,number_of_copies,urlImage,description) " +
-                "VALUES (?, ?, ?, ?, ?, ?,?)";
-        try (PreparedStatement pstmt = con.prepareStatement(query)) {
-            pstmt.setString(1, doc.getTitle());
-            pstmt.setString(2, doc.getAuthor());
-            pstmt.setString(3, doc.getGenre());
-            pstmt.setString(4, doc.getISBN());
-            pstmt.setInt(5, doc.getNumberCopy());
-            pstmt.setString(6,doc.getUrlImage());
-            pstmt.setString(7,doc.getDescription());
+    public void addDocument(Document document) {
+        final String query = "INSERT INTO documents (title, author, genre, ISBN, number_of_copies, urlImage, description) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+            pstmt.setString(1, document.getTitle());
+            pstmt.setString(2, document.getAuthor());
+            pstmt.setString(3, document.getGenre());
+            pstmt.setString(4, document.getISBN());
+            pstmt.setInt(5, document.getNumberCopy());
+            pstmt.setString(6, document.getUrlImage());
+            pstmt.setString(7, document.getDescription());
             pstmt.executeUpdate();
-            System.out.println("Add Document Successfully!!!!");
+            System.out.println("Add Document Successfully!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Lấy tất cả tài liệu từ cơ sở dữ liệu.
+     *
+     * @return danh sách các tài liệu.
+     */
     @Override
     public List<Document> getAllDocuments() {
+        final String query = "SELECT * FROM documents";
         List<Document> documents = new ArrayList<>();
-        String query = "SELECT * FROM documents";
-        try (Statement stmt = con.createStatement();
-                ResultSet rs = stmt.executeQuery(query)) {
+        try (Statement stmt = connection.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
             while (rs.next()) {
-                Document doc = new Document(
+                Document document = new Document(
                         rs.getInt("documentId"),
                         rs.getString("title"),
                         rs.getString("ISBN"),
@@ -50,8 +64,9 @@ public class DocumentDaoImpl implements DocumentDao {
                         rs.getString("urlImage"),
                         rs.getString("genre"),
                         rs.getInt("number_of_copies"),
-                        rs.getString("description"));
-                documents.add(doc);
+                        rs.getString("description")
+                );
+                documents.add(document);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -59,53 +74,68 @@ public class DocumentDaoImpl implements DocumentDao {
         return documents;
     }
 
+    /**
+     * Lấy tất cả bản sao của một tài liệu dựa trên documentId.
+     *
+     * @param documentId ID của tài liệu cần lấy bản sao.
+     * @return danh sách các bản sao của tài liệu.
+     */
     @Override
-    public  List<Copies> getAllCopies(int documentId) {
-        List<Copies> copies = new ArrayList<>();
-        String query = "SELECT c.document_id, d.title, c.copy_ISBN ,c.status " +
+    public List<Copies> getAllCopies(int documentId) {
+        final String query = "SELECT c.document_id, d.title, c.copy_ISBN, c.status " +
                 "FROM copies c " +
                 "JOIN documents d ON c.document_id = d.documentId " +
                 "WHERE c.document_id = ?";
-        try (PreparedStatement pstmt = con.prepareStatement(query)) {
-            pstmt.setInt(1, documentId);  // Thiết lập giá trị cho tham số đầu tiên (documentId)
-
+        List<Copies> copies = new ArrayList<>();
+        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+            pstmt.setInt(1, documentId);
             try (ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
                     Copies copy = new Copies(
-                            rs.getInt("document_id"), // Giả sử bạn có getter cho documentId
+                            rs.getInt("document_id"),
                             rs.getString("title"),
-                            rs.getString("copy_ISBN"),  // Sửa lỗi chính tả từ "copies_ISBN" thành "copy_ISBN"
+                            rs.getString("copy_ISBN"),
                             rs.getString("status")
                     );
                     copies.add(copy);
                 }
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return copies;
     }
+
+    /**
+     * Cập nhật thông tin tài liệu trong cơ sở dữ liệu.
+     *
+     * @param document đối tượng Document chứa thông tin tài liệu cần cập nhật.
+     */
     @Override
-    public void updateDocument(Document doc) {
-        String query = "UPDATE documents SET title = ?, author = ?, genre = ? , description = ?, urlImage = ? WHERE documentId = ?";
-        try (PreparedStatement pstmt = con.prepareStatement(query)) {
-            pstmt.setString(1, doc.getTitle());
-            pstmt.setString(2, doc.getAuthor());
-            pstmt.setString(3, doc.getGenre());
-            pstmt.setString(4,doc.getDescription());
-            pstmt.setString(5,doc.getUrlImage());
-            pstmt.setInt(6, doc.getDocumentId());
+    public void updateDocument(Document document) {
+        final String query = "UPDATE documents SET title = ?, author = ?, genre = ?, description = ?, urlImage = ? WHERE documentId = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+            pstmt.setString(1, document.getTitle());
+            pstmt.setString(2, document.getAuthor());
+            pstmt.setString(3, document.getGenre());
+            pstmt.setString(4, document.getDescription());
+            pstmt.setString(5, document.getUrlImage());
+            pstmt.setInt(6, document.getDocumentId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Xóa một tài liệu khỏi cơ sở dữ liệu dựa trên documentId.
+     *
+     * @param documentId ID của tài liệu cần xóa.
+     */
     @Override
     public void deleteDocument(int documentId) {
-        String query = "DELETE FROM documents WHERE documentId = ?";
-        try (PreparedStatement pstmt = con.prepareStatement(query)) {
+        final String query = "DELETE FROM documents WHERE documentId = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
             pstmt.setInt(1, documentId);
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -113,80 +143,96 @@ public class DocumentDaoImpl implements DocumentDao {
         }
     }
 
+    /**
+     * Kiểm tra xem sách có sẵn trong cơ sở dữ liệu hay không dựa trên ISBN.
+     *
+     * @param isbn ISBN của sách cần kiểm tra.
+     * @return true nếu sách có sẵn, false nếu không.
+     */
     @Override
-    public boolean isBookAvailable(String ISBN) {
-        String query = "SELECT COUNT(*) > 0 AS is_available FROM copies WHERE copy_ISBN = ? AND status = 'Available'";
-        try(PreparedStatement pstmt = con.prepareStatement(query)) {
-            pstmt.setString(1,ISBN);
-            ResultSet rs = pstmt.executeQuery();
-            if (rs.next()) {
-                return rs.getBoolean("is_available"); // Trả về true nếu có sẵn, false nếu không
+    public boolean isBookAvailable(String isbn) {
+        final String query = "SELECT COUNT(*) > 0 AS is_available FROM copies WHERE copy_ISBN = ? AND status = 'Available'";
+        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+            pstmt.setString(1, isbn);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getBoolean("is_available");
+                }
             }
-
-        }catch(SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
     }
 
+    /**
+     * Lấy thông tin tài liệu dựa trên ISBN.
+     *
+     * @param isbn ISBN của tài liệu cần lấy.
+     * @return tài liệu có ISBN tương ứng, hoặc null nếu không tìm thấy.
+     */
     @Override
-    public Document getDocumentByISBN(String ISBN) {
-        String query = "SELECT * " +
-                "FROM documents d " +
-                "WHERE ISBN = ?";
-        try (PreparedStatement pstmt = con.prepareStatement(query)) {
-            pstmt.setString(1, ISBN); // Set the ISBN parameter in the query
-            ResultSet rs = pstmt.executeQuery(); // Execute the query
-            if (rs.next()) {
-                // Assuming Document has a constructor that accepts these fields
-                int documentId = rs.getInt("documentId"); // Adjust based on your Document fields
-                String title = rs.getString("title");
-                String author = rs.getString("author");
-                String genre = rs.getString("genre");
-                String urlImage = rs.getString("urlImage");
-                // Add other fields as necessary
-
-                return new Document(documentId,title,author,genre,urlImage); // Return the Document object
-            }
-        } catch (SQLException e) {
-            e.printStackTrace(); // Handle SQL exceptions
-        }
-        return null; // Return null if no document found
-    }
-    @Override
-    public boolean isDocAvailable(String ISBN) {
-        String query = "SELECT COUNT(*) > 0 AS is_in_transaction " +
-                "FROM copies c " +
-                "JOIN documents d ON c.document_id = d.documentId " +
-                "JOIN transactions t ON c.copy_ISBN = t.copy_ISBN " +
-                "WHERE d.ISBN = ?";
-
-        try (PreparedStatement pstmt = con.prepareStatement(query)) {
-            pstmt.setString(1, ISBN);
-            ResultSet rs = pstmt.executeQuery();
-            if (rs.next()) {
-                return rs.getBoolean("is_in_transaction");
+    public Document getDocumentByISBN(String isbn) {
+        final String query = "SELECT * FROM documents WHERE ISBN = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+            pstmt.setString(1, isbn);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    return new Document(
+                            rs.getInt("documentId"),
+                            rs.getString("title"),
+                            rs.getString("author"),
+                            rs.getString("genre"),
+                            rs.getString("urlImage")
+                    );
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        return false; // Mặc định trả về false nếu có lỗi
+        return null;
     }
 
+    /**
+     * Kiểm tra xem tài liệu có đang trong giao dịch hay không.
+     *
+     * @param isbn ISBN của tài liệu cần kiểm tra.
+     * @return true nếu tài liệu đang trong giao dịch, false nếu không.
+     */
     @Override
-    public Copies getAvailCopies(int documentId) {
-        String query = "SELECT copy_ISBN, status FROM copies WHERE document_id = ? AND status = 'Available' LIMIT 1";
-        Copies copy = null;
-
-        try (PreparedStatement pstmt = con.prepareStatement(query)) {
-
-            // Thiết lập tham số cho câu lệnh
-            pstmt.setInt(1, documentId);
-            // Thực thi truy vấn
+    public boolean isDocAvailable(String isbn) {
+        final String query = "SELECT COUNT(*) > 0 AS is_in_transaction " +
+                "FROM copies c " +
+                "JOIN documents d ON c.document_id = d.documentId " +
+                "JOIN transactions t ON c.copy_ISBN = t.copy_ISBN " +
+                "WHERE d.ISBN = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+            pstmt.setString(1, isbn);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-                    // Tạo đối tượng Copies từ kết quả truy vấn
+                    return rs.getBoolean("is_in_transaction");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * Lấy bản sao có sẵn của một tài liệu.
+     *
+     * @param documentId ID của tài liệu cần lấy bản sao.
+     * @return bản sao có trạng thái 'Available', hoặc null nếu không có bản sao nào.
+     */
+    @Override
+    public Copies getAvailCopies(int documentId) {
+        final String query = "SELECT copy_ISBN, status FROM copies WHERE document_id = ? AND status = 'Available' LIMIT 1";
+        Copies copy = null;
+        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+            pstmt.setInt(1, documentId);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
                     copy = new Copies(
                             rs.getString("copy_ISBN"),
                             documentId,
@@ -195,8 +241,8 @@ public class DocumentDaoImpl implements DocumentDao {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Ghi log lỗi
+            e.printStackTrace();
         }
-        return copy; // Trả về bản sao nếu tìm thấy, hoặc null nếu không có bản sao khả dụng
+        return copy;
     }
 }

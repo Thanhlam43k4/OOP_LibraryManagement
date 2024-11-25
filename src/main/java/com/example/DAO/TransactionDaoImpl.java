@@ -1,4 +1,5 @@
 package com.example.DAO;
+
 import com.example.Interface.TransactionDao;
 import com.example.Model.Transaction;
 
@@ -7,65 +8,98 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation of TransactionDao interface for handling transaction-related database operations.
+ */
 public class TransactionDaoImpl implements TransactionDao {
+
     private Connection con;
 
-    public TransactionDaoImpl(Connection con){
+    /**
+     * Constructor that initializes the database connection.
+     *
+     * @param con the database connection
+     */
+    public TransactionDaoImpl(Connection con) {
         this.con = con;
     }
+
+    /**
+     * Adds a new transaction to the database.
+     *
+     * @param transaction the transaction to be added
+     */
     @Override
-    public void addTransaction(Transaction transaction){
-        String sql = "INSERT INTO transactions (user_id,copy_ISBN,borrowed_date,return_date) " +
+    public void addTransaction(Transaction transaction) {
+        String sql = "INSERT INTO transactions (user_id, copy_ISBN, borrowed_date, return_date) " +
                 "VALUES (?, ?, ?, ?)";
-        try(PreparedStatement pstmt = con.prepareStatement(sql)){
-            pstmt.setInt(1,transaction.getUserId());
-            pstmt.setString(2,transaction.getISBN());
-            pstmt.setDate(3,transaction.getBorrowedDate());
-            pstmt.setDate(4,transaction.getReturnDate());
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setInt(1, transaction.getUserId());
+            pstmt.setString(2, transaction.getISBN());
+            pstmt.setDate(3, transaction.getBorrowedDate());
+            pstmt.setDate(4, transaction.getReturnDate());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Adds a new transaction with given userId and ISBN.
+     * Automatically sets borrowed date to the current date and return date to 14 days from the current date.
+     *
+     * @param userId the user ID
+     * @param ISBN   the ISBN of the book
+     */
     @Override
     public void addTransaction(int userId, String ISBN) {
-        String sql = "INSERT INTO transactions (user_id,copy_ISBN,borrowed_date,return_date)" +
-                "VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO transactions (user_id, copy_ISBN, borrowed_date, return_date) VALUES (?, ?, ?, ?)";
         String updateStatusSQL = "UPDATE copies SET status = 'Checked Out' WHERE copy_ISBN = ?";
         String updateBorrowedBookSql = "UPDATE client SET borrowed_books = borrowed_books + 1 WHERE user_id = ?";
         LocalDate borrowedDate = LocalDate.now();
-        // Cộng thêm 14 ngày để lấy ngày trả
         LocalDate returnDate = borrowedDate.plusDays(14);
-        try(PreparedStatement pstmt = con.prepareStatement(sql);
-            PreparedStatement updatestmt = con.prepareStatement(updateStatusSQL);
-            PreparedStatement updateBorrowedBookStmt = con.prepareStatement(updateBorrowedBookSql)) {
-            pstmt.setInt(1,userId);
-            pstmt.setString(2,ISBN);
-            pstmt.setDate(3, Date.valueOf(borrowedDate));
-            pstmt.setDate(4,Date.valueOf(returnDate));
-            pstmt.executeUpdate();
-            System.out.println("Add Transaction Successfully with userId: "+ userId +" ISBN: " +ISBN);
 
-            updatestmt.setString(1,ISBN);
-            updatestmt.executeUpdate();
-            System.out.println("Status of Copy with ISBN=" +ISBN + " is changed to Checked Out");
+        try (PreparedStatement pstmt = con.prepareStatement(sql);
+             PreparedStatement updateStatusStmt = con.prepareStatement(updateStatusSQL);
+             PreparedStatement updateBorrowedBookStmt = con.prepareStatement(updateBorrowedBookSql)) {
+
+            pstmt.setInt(1, userId);
+            pstmt.setString(2, ISBN);
+            pstmt.setDate(3, Date.valueOf(borrowedDate));
+            pstmt.setDate(4, Date.valueOf(returnDate));
+            pstmt.executeUpdate();
+
+            System.out.println("Add Transaction Successfully with userId: " + userId + " ISBN: " + ISBN);
+
+            updateStatusStmt.setString(1, ISBN);
+            updateStatusStmt.executeUpdate();
+            System.out.println("Status of Copy with ISBN=" + ISBN + " is changed to Checked Out");
 
             updateBorrowedBookStmt.setInt(1, userId);
             updateBorrowedBookStmt.executeUpdate();
             System.out.println("Updated borrowed_book for userId: " + userId);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Retrieves all transactions for a given user ID.
+     *
+     * @param userId the user ID
+     * @return a list of transactions for the specified user
+     */
     @Override
     public List<Transaction> getTransactionsByUserId(int userId) {
         List<Transaction> transactions = new ArrayList<>();
         String sql = "SELECT * FROM transactions WHERE user_id = ?";
+
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setInt(1, userId);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                if (rs.getDate("actual_return_date") == null) { // Kiểm tra actual_return_date
+                if (rs.getDate("actual_return_date") == null) { // Check if the book is not yet returned
                     Transaction transaction = new Transaction(
                             rs.getInt("transaction_id"),
                             rs.getInt("user_id"),
@@ -82,10 +116,17 @@ public class TransactionDaoImpl implements TransactionDao {
         }
         return transactions;
     }
+
+    /**
+     * Retrieves all transactions in the system.
+     *
+     * @return a list of all transactions
+     */
     @Override
     public List<Transaction> getAllTransaction() {
         List<Transaction> trans = new ArrayList<>();
         String sql = "SELECT * FROM transactions";
+
         try (Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 Transaction transaction = new Transaction(
@@ -98,15 +139,21 @@ public class TransactionDaoImpl implements TransactionDao {
                 );
                 trans.add(transaction);
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return trans;
     }
+
+    /**
+     * Deletes a transaction by its transaction ID.
+     *
+     * @param transactionId the transaction ID
+     */
     @Override
-    public void deleteTransaction(int transactionId){
+    public void deleteTransaction(int transactionId) {
         String sql = "DELETE FROM transactions WHERE transaction_id = ?";
-        try(PreparedStatement pstmt = con.prepareStatement(sql)) {
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setInt(1, transactionId);
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -114,29 +161,23 @@ public class TransactionDaoImpl implements TransactionDao {
         }
     }
 
+    /**
+     * Marks a book as returned by updating the transaction and book status.
+     *
+     * @param userId the user ID
+     * @param ISBN   the ISBN of the book
+     */
     @Override
     public void returnBook(int userId, String ISBN) {
-        // SQL để cập nhật giao dịch trong bảng transactions
-        String updateTransactionSQL =
-                "UPDATE transactions " +
-                        "SET actual_return_date = CURRENT_DATE " +
-                        "WHERE user_id = ? AND copy_ISBN = ? AND actual_return_date IS NULL";
-
-        // SQL để cập nhật trạng thái sách trong bảng copies
-        String updateCopySQL =
-                "UPDATE copies " +
-                        "SET status = 'Available' " +
-                        "WHERE copy_ISBN = ?";
-        String updateUserSql =
-                "UPDATE client " +
-                        "SET borrowed_books = borrowed_books - 1 " +
-                        "WHERE user_id = ?";
+        String updateTransactionSQL = "UPDATE transactions SET actual_return_date = CURRENT_DATE " +
+                "WHERE user_id = ? AND copy_ISBN = ? AND actual_return_date IS NULL";
+        String updateCopySQL = "UPDATE copies SET status = 'Available' WHERE copy_ISBN = ?";
+        String updateUserSql = "UPDATE client SET borrowed_books = borrowed_books - 1 WHERE user_id = ?";
 
         try (PreparedStatement updateTransactionStmt = con.prepareStatement(updateTransactionSQL);
              PreparedStatement updateCopyStmt = con.prepareStatement(updateCopySQL);
              PreparedStatement updateUserStmt = con.prepareStatement(updateUserSql)) {
 
-            // Cập nhật giao dịch
             updateTransactionStmt.setInt(1, userId);
             updateTransactionStmt.setString(2, ISBN);
             int rowsUpdated = updateTransactionStmt.executeUpdate();
@@ -146,11 +187,9 @@ public class TransactionDaoImpl implements TransactionDao {
                 return;
             }
 
-            // Cập nhật trạng thái sách
             updateCopyStmt.setString(1, ISBN);
             updateCopyStmt.executeUpdate();
 
-            // Cập nhật số lượng sách đã mượn
             updateUserStmt.setInt(1, userId);
             updateUserStmt.executeUpdate();
 
@@ -160,5 +199,78 @@ public class TransactionDaoImpl implements TransactionDao {
         }
     }
 
+    /**
+     * Retrieves a transaction by its transaction ID.
+     *
+     * @param transactionId the transaction ID
+     * @return the transaction if found, otherwise null
+     */
+    @Override
+    public Transaction getTransactionById(int transactionId) {
+        String sql = "SELECT * FROM transactions WHERE transaction_id = ?";
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setInt(1, transactionId);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return new Transaction(
+                        rs.getInt("transaction_id"),
+                        rs.getInt("user_id"),
+                        rs.getString("copy_ISBN"),
+                        rs.getDate("borrowed_date"),
+                        rs.getDate("return_date"),
+                        rs.getDate("actual_return_date")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
+    /**
+     * Updates the actual return date of a transaction.
+     *
+     * @param transactionId the transaction ID
+     * @param returnDate    the new return date
+     */
+    @Override
+    public void updateReturnDate(int transactionId, LocalDate returnDate) {
+        String sql = "UPDATE transactions SET actual_return_date = ? WHERE transaction_id = ?";
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setDate(1, Date.valueOf(returnDate));
+            pstmt.setInt(2, transactionId);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Retrieves all overdue transactions.
+     *
+     * @return a list of overdue transactions
+     */
+    @Override
+    public List<Transaction> getOverdueTransactions() {
+        List<Transaction> transactions = new ArrayList<>();
+        String sql = "SELECT * FROM transactions WHERE return_date < CURRENT_DATE AND actual_return_date IS NULL";
+
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                Transaction transaction = new Transaction(
+                        rs.getInt("transaction_id"),
+                        rs.getInt("user_id"),
+                        rs.getString("copy_ISBN"),
+                        rs.getDate("borrowed_date"),
+                        rs.getDate("return_date"),
+                        rs.getDate("actual_return_date")
+                );
+                transactions.add(transaction);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return transactions;
+    }
 }

@@ -33,7 +33,6 @@ public class MainUI extends Application {
         // Create service
         createServices(con);
         EmailService emailService = EmailService.getInstance();
-
         primaryStage = stage;
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Login.fxml"));
@@ -41,7 +40,6 @@ public class MainUI extends Application {
 
         Image logoImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Image/logo.jpg"))); // Đảm bảo đường dẫn đúng
         primaryStage.getIcons().add(logoImage); // Thêm biểu tượng vào cửa sổ
-
         Scene scene = new Scene(root, 1400, 1000);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Book Management Application");

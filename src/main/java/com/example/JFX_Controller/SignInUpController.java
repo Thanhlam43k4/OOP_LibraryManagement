@@ -6,6 +6,7 @@ import com.example.Handlers.Notify;
 import com.example.Model.User;
 import com.example.Service.SessionManager;
 import com.example.Service.UserService;
+import com.example.Handlers.ExtraFunction;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -90,8 +91,6 @@ public class SignInUpController extends Controller {
         final String password = passwordField.getText();
         final String confirmpassword = confirmpassField.getText();
         final String username = userName.getText();
-
-
         AsyncTaskExecutor.executeAsync(
                 // Logic chạy trong luồng nền
                 new Runnable() {
@@ -106,7 +105,8 @@ public class SignInUpController extends Controller {
                         if (!password.equals(confirmpassword)) {
                             throw new IllegalArgumentException("Wrong Password Matching");
                         }
-                        User user = new User(email, password);
+                        String hashedPass = ExtraFunction.encode(password);
+                        User user = new User(email,username, hashedPass);
                         UserService.instance.createUser(user);
                     }
                 },

@@ -88,7 +88,7 @@ class DocumentDaoImplTest {
         // Kiểm tra kết quả
         assertNotNull(copies); // Kiểm tra xem danh sách không null
         assertEquals(2, copies.size()); // Kiểm tra số lượng bản sao (2)
-        assertEquals("1234567890", copies.get(0).getCopyISBN()); // Kiểm tra ISBN bản sao đầu tiên
+        assertEquals("1234567890", copies.get(0).getCopyIsbn()); // Kiểm tra ISBN bản sao đầu tiên
         assertEquals("Checked Out", copies.get(1).getStatus()); // Kiểm tra trạng thái bản sao thứ hai
 
         // Kiểm tra các phương thức JDBC được gọi đúng cách
@@ -214,7 +214,7 @@ class DocumentDaoImplTest {
 
         // Kiểm tra kết quả
         assertNotNull(copy); // Kiểm tra xem bản sao có được trả về hay không
-        assertEquals("1234567890", copy.getCopyISBN()); // Kiểm tra ISBN bản sao
+        assertEquals("1234567890", copy.getCopyIsbn()); // Kiểm tra ISBN bản sao
         assertEquals("Available", copy.getStatus()); // Kiểm tra trạng thái bản sao
         assertEquals(documentId, copy.getDocumentId()); // Kiểm tra documentId
 

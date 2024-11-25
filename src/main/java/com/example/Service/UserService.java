@@ -4,7 +4,8 @@ import com.example.Interface.UserDao;
 import com.example.DAO.UserDaoImpl;
 import com.example.Model.Client;
 import com.example.Model.User;
-
+import org.apache.commons.mail.EmailException;
+import com.example.Handlers.*;
 import java.sql.Connection;
 import java.sql.Date;
 import java.util.List;
@@ -21,6 +22,7 @@ public class UserService {
         userDao.createUser(user);
     }
 
+    public void addUser(User user) { userDao.addUser(user);}
     public User getUserById(int id) {
         return userDao.getUserById(id);
     }
@@ -54,5 +56,33 @@ public class UserService {
     }
     public void updatePassword(int userId,String updatePassword){
         userDao.updatePassword(userId,updatePassword);
+    }
+
+    public String forgotPassword(String email) {
+        String verificationCode = ExtraFunction.generateVerificationCode(email);
+
+        String subject = "Password Reset Request";
+        String htmlContent = "<html>" +
+                "<head>" +
+                "<style>" +
+                "body { font-family: Arial, sans-serif; color: #333; }" +
+                "h3 { font-size: 24px; color: #5cb85c; }" +
+                "</style>" +
+                "</head>" +
+                "<body>" +
+                "<p>Hello,</p>" +
+                "<p>To reset your password, please enter the following verification code:</p>" +
+                "<h3>" + verificationCode + "</h3>" +
+                "<p>Have a nice day!</p>" +
+                "</body>" +
+                "</html>";
+        try {
+            EmailService.getInstance().sendHtmlEmail(email, subject, htmlContent);
+            System.out.println("Email gửi thành công đến: " + email);
+            return verificationCode;
+        } catch (EmailException e) {
+            System.err.println("Lỗi khi gửi email: " + e.getMessage());
+            return "";
+        }
     }
 }

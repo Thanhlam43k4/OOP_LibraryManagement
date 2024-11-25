@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DocumentService {
     public static DocumentService instance;
-    private DocumentDao  documentDao;
+    private final DocumentDao  documentDao;
 
     public DocumentService(Connection con) {
         documentDao = new DocumentDaoImpl(con);
