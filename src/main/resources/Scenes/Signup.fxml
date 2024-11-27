@@ -1,98 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.SignInUpController">
+<StackPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.SignInUpController">
    <children>
-      <Label alignment="CENTER" prefHeight="44.0" prefWidth="282.0" style="-fx-text-fill: linear-gradient( to bottom, #9ba8ab, #11212d);;" text="Sign up" textFill="#8ab95b">
-         <font>
-            <Font name="Segoe Print Bold" size="35.0" />
-         </font>
-         <StackPane.margin>
-            <Insets bottom="380.0" />
-         </StackPane.margin>
-      </Label>
-      <Label prefHeight="28.0" prefWidth="77.0" text="Email" textFill="#2a2b29">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-         <StackPane.margin>
-            <Insets bottom="290.0" right="170.0" />
-         </StackPane.margin>
-      </Label>
-      <Label prefHeight="28.0" prefWidth="77.0" text="Password" textFill="#2a2b29">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-         <StackPane.margin>
-            <Insets bottom="160.0" right="165.0" />
-         </StackPane.margin>
-      </Label>
-      <Label layoutX="182.0" layoutY="151.0" prefHeight="28.0" prefWidth="141.0" text="Confirm Password" textFill="#2a2b29">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-         <StackPane.margin>
-            <Insets bottom="30.0" right="100.0" />
-         </StackPane.margin>
-      </Label>
-      <TextField fx:id="emailField" maxWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" promptText="email@example.com" style="-fx-background-color: #1f1f1f00; -fx-text-fill: #222020; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #2a2b29; -fx-border-width: 2;">
-         <StackPane.margin>
-            <Insets bottom="230.0" />
-         </StackPane.margin>
-      </TextField>
-      <PasswordField fx:id="passwordField" maxWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" promptText="password" style="-fx-background-color: #1f1f1f00; -fx-text-fill: #222020; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #2a2b29; -fx-border-width: 2;">
-         <StackPane.margin>
-            <Insets bottom="100.0" />
-         </StackPane.margin>
-      </PasswordField>
-      <Button mnemonicParsing="false" onAction="#signUp" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: linear-gradient( to right, #4a5c6a, #11212d);; -fx-background-radius: 10;" text="Sign up" textFill="WHITE">
-         <StackPane.margin>
-            <Insets top="290.0" />
-         </StackPane.margin>
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Button>
-      <Button alignment="CENTER" mnemonicParsing="false" onAction="#returnSignIn" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #1f1f1f00;" text="Sign in" textFill="#2a80ae" underline="true">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-         <StackPane.margin>
-            <Insets left="150.0" top="370.0" />
-         </StackPane.margin>
-      </Button>
-      <Label text="Already have account?" textFill="#655d5d">
-         <StackPane.margin>
-            <Insets right="50.0" top="370.0" />
-         </StackPane.margin>
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <PasswordField fx:id="confirmpassField" layoutX="265.0" layoutY="223.0" maxWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" promptText="password" style="-fx-background-color: #1f1f1f00; -fx-text-fill: #222020; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #2a2b29; -fx-border-width: 2;">
-         <StackPane.margin>
-            <Insets top="30.0" />
-         </StackPane.margin>
-      </PasswordField>
-      <PasswordField fx:id="userName" layoutX="265.0" layoutY="258.0" maxWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" promptText="username" style="-fx-background-color: #1f1f1f00; -fx-text-fill: #222020; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #2a2b29; -fx-border-width: 2;">
-         <StackPane.margin>
-            <Insets top="160.0" />
-         </StackPane.margin>
-      </PasswordField>
-      <Label layoutX="265.0" layoutY="231.0" prefHeight="28.0" prefWidth="141.0" text="Username" textFill="#2a2b29">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-         <StackPane.margin>
-            <Insets right="100.0" top="100.0" />
-         </StackPane.margin>
-      </Label>
+      <AnchorPane maxHeight="620.0" maxWidth="500.0" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="60.0" prefWidth="500.0" style="-fx-text-fill: linear-gradient( to bottom, #9ba8ab, #11212d);;" text="Sign up" textFill="#8ab95b">
+               <font>
+                  <Font name="Segoe Print Bold" size="44.0" />
+               </font>
+            </Label>
+            <VBox layoutX="45.0" layoutY="79.0" prefHeight="392.0" prefWidth="410.0" spacing="5.0">
+               <children>
+                  <VBox prefHeight="91.0" prefWidth="410.0">
+                     <children>
+                        <Label prefHeight="28.0" prefWidth="70.0" text="Email" textFill="#2a2b29">
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="emailField" maxWidth="-Infinity" prefHeight="60.0" prefWidth="410.0" promptText="Enter your email" style="-fx-background-color: transparent; -fx-text-fill: #eaeaea; -fx-border-color: #2a2b29; -fx-border-width: 2.7; -fx-border-radius: 25; -fx-text-fill: #222020;">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="10.0" layoutY="193.0" prefHeight="92.0" prefWidth="410.0">
+                     <children>
+                        <Label prefHeight="31.0" prefWidth="122.0" text="Username" textFill="#2a2b29">
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="userName" maxWidth="-Infinity" prefHeight="60.0" prefWidth="410.0" promptText="username" style="-fx-background-color: transparent; -fx-text-fill: #eaeaea; -fx-border-color: #2a2b29; -fx-border-width: 2.7; -fx-border-radius: 25; -fx-text-fill: #222020;">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="92.0" prefWidth="410.0">
+                     <children>
+                        <Label prefHeight="31.0" prefWidth="122.0" text="Password" textFill="#2a2b29">
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                        </Label>
+                        <PasswordField fx:id="passwordField" maxWidth="-Infinity" prefHeight="60.0" prefWidth="410.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #2a2b29; -fx-border-width: 2.7; -fx-border-radius: 25; -fx-text-fill: #222020;">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </PasswordField>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="10.0" layoutY="101.0" prefHeight="92.0" prefWidth="410.0">
+                     <children>
+                        <Label prefHeight="31.0" prefWidth="211.0" text="Confirm password" textFill="#2a2b29">
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                        </Label>
+                        <PasswordField fx:id="confirmpassField" maxWidth="-Infinity" prefHeight="60.0" prefWidth="410.0" promptText="Confirm password" style="-fx-background-color: transparent; -fx-border-color: #2a2b29; -fx-border-width: 2.7; -fx-border-radius: 25; -fx-text-fill: #222020;">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </PasswordField>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <Button layoutX="50.0" layoutY="500.0" mnemonicParsing="false" onAction="#signUp" prefHeight="60.0" prefWidth="400.0" style="-fx-background-color: linear-gradient( to right, #4a5c6a, #11212d); -fx-background-radius: 20;" text="Sign up" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <HBox alignment="CENTER" layoutX="104.0" layoutY="562.0" prefHeight="44.0" prefWidth="292.0">
+               <children>
+                  <Label text="Already have account?">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#returnSignIn" prefHeight="39.0" prefWidth="85.0" style="-fx-background-color: #1f1f1f00;" text="Sign in" textFill="#2a80ae" underline="true">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
    </children>
 </StackPane>

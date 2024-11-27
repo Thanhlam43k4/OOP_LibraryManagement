@@ -2,7 +2,7 @@
 .primary-choice-box {
     -fx-background-color: rgba(185, 185, 185, 0); /* Màu nền */
     -fx-text-fill: rgb(236, 236, 236); /* Màu chữ */
-    -fx-font-size: 13px; /* Kích thước font chữ */
+    -fx-font-size: 17px; /* Kích thước font chữ */
     /* -fx-font-weight: bold; */
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;

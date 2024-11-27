@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.example.Handlers.ExtraFunction;
+import com.example.Handlers.Notify;
 import com.example.JFX_Controller.Admin.AdminController;
 import com.example.Model.Client;
 import com.example.Model.Document;
@@ -11,13 +12,16 @@ import com.example.Model.Transaction;
 import com.example.Service.DocumentService;
 import com.example.Service.TransactionService;
 
+import com.example.Service.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
@@ -26,7 +30,7 @@ import javafx.scene.layout.VBox;
  * It displays user information, allows borrowing of documents, and handles the return process for borrowed documents.
  */
 public class UserRowController {
-
+    @FXML private HBox root;
     @FXML private Label userId;        // Label to display the user's ID
     @FXML private Label userName;      // Label to display the user's name
     @FXML private Label email;         // Label to display the user's email
@@ -70,6 +74,20 @@ public class UserRowController {
     @FXML
     void openReturnDoc(ActionEvent event) {
         addCopyNodes();
+    }
+    @FXML
+    void deleteUser(ActionEvent event) {
+        // ui
+        AdminController.userList.remove(root);
+        // db
+        int userID = Integer.parseInt(userId.getText());
+        int borrowedBook = client.getBorrowedBook();
+        if(borrowedBook == 0) {
+            UserService.instance.deleteUser(userID);
+            Notify.showAlert(Alert.AlertType.INFORMATION, "Notification", "Remove User successful!");
+        }else{
+            Notify.showAlert(Alert.AlertType.ERROR, "Error", "User still has borrowedBooks!! Please return before delete User!!");
+        }
     }
 
     /**

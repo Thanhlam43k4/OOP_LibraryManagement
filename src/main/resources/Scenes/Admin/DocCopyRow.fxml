@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="719.0" style="-fx-background-radius: 10; -fx-background-color: #f5f5f5; -fx-border-radius: 10;" styleClass="second-anchor-card" stylesheets="@../../CSS_Setup/card.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.Document.DocCopyController">
+<HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="719.0" style="-fx-background-radius: 10; -fx-background-color: #f5f5f5; -fx-border-radius: 10; -fx-border-color: #cccccc;" stylesheets="@../../CSS_Setup/card.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.Document.DocCopyController">
    <children>
       <Label fx:id="docId" alignment="CENTER" prefHeight="20.0" prefWidth="89.0" text="#123" textFill="#396c8c">
          <font>

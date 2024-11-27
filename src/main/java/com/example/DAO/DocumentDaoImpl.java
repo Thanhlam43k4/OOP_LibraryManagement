@@ -245,4 +245,21 @@ public class DocumentDaoImpl implements DocumentDao {
         }
         return copy;
     }
+    @Override
+    public boolean isIsbnExist(String ISBN) {
+        final String query = "SELECT COUNT(*) FROM documents WHERE ISBN = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+            pstmt.setString(1, ISBN);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    int count = rs.getInt(1); // Lấy giá trị COUNT(*) từ kết quả
+                    System.out.println("Isbn is existed");// Trả về true nếu ISBN tồn tại
+                    return count > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Ghi lại log lỗi
+        }
+        return false; // ISBN không tồn tại hoặc xảy ra lỗi
+    }
 }

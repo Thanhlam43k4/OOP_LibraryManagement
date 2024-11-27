@@ -59,7 +59,7 @@ public class TransCardController {
 
     @FXML
     void returnDoc(ActionEvent event) {
-        TransactionService.instance.returnBook(tranId);
+       // TransactionService.instance.returnBook(tranId);
         //ui
         ClientController.docelementList.remove(root);
         GridPane mydocGrid = ClientController.instance.mydocGrid;

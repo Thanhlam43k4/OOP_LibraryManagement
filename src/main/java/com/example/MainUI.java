@@ -40,7 +40,7 @@ public class MainUI extends Application {
 
         Image logoImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Image/logo.jpg"))); // Đảm bảo đường dẫn đúng
         primaryStage.getIcons().add(logoImage); // Thêm biểu tượng vào cửa sổ
-        Scene scene = new Scene(root, 1400, 1000);
+        Scene scene = new Scene(root, 1700, 1000);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Book Management Application");
         primaryStage.show();

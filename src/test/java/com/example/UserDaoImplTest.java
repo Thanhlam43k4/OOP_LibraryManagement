@@ -110,7 +110,7 @@ public class UserDaoImplTest {
 
         when(mockPreparedStatement.executeUpdate()).thenReturn(1); // Giả lập update thành công
 
-        userDao.updateUser(userId, username, phoneNumber, dob);
+        userDao.updateUser(userId, username, phoneNumber, age);
 
         verify(mockPreparedStatement, times(1)).setString(1, username);
         verify(mockPreparedStatement, times(1)).setString(2, phoneNumber);

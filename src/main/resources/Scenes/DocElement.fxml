@@ -14,11 +14,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="root" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="165.0" prefWidth="480.0" styleClass="third-anchor-card" stylesheets="@../CSS_Setup/card.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Client.TransCardController">
+<HBox fx:id="root" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="600.0" styleClass="third-anchor-card" stylesheets="@../CSS_Setup/card.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Client.TransCardController">
    <children>
-      <StackPane prefHeight="160.0" prefWidth="132.0">
+      <StackPane prefHeight="230.0" prefWidth="168.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6b6b6b" height="140.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6b6b6b" height="186.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="132.0">
                <effect>
                   <Shadow color="#5b5656" radius="11.4825" width="26.93" />
                </effect>
@@ -26,40 +26,40 @@
                   <Insets right="7.0" top="7.0" />
                </StackPane.margin>
             </Rectangle>
-            <ImageView fx:id="docCover" fitHeight="137.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="docCover" fitHeight="188.0" fitWidth="156.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../DocCover_url/programing%20python.jpg" />
                </image>
             </ImageView>
          </children>
       </StackPane>
-      <VBox prefHeight="136.0" prefWidth="242.0">
+      <VBox prefHeight="230.0" prefWidth="306.0" spacing="10.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="264.0" spacing="10.0">
                <children>
                   <Label fx:id="title" text="Document name" textFill="#3c373a">
                      <font>
-                        <Font name="System Bold" size="19.0" />
+                        <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="20.0" prefHeight="28.0" prefWidth="219.0" spacing="10.0">
                <children>
-                  <FontAwesomeIconView fill="#3c373a" glyphName="PENCIL" size="13" />
+                  <FontAwesomeIconView fill="#3c373a" glyphName="PENCIL" size="18" />
                   <Label fx:id="author" text="Author" textFill="#3c373a">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="20.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="47.0" prefHeight="28.0" prefWidth="219.0" spacing="10.0">
                <children>
-                  <FontAwesomeIconView fill="#3c373a" glyphName="FILTER" size="13" />
+                  <FontAwesomeIconView fill="#3c373a" glyphName="FILTER" size="18" />
                   <Label fx:id="genre" text="Document type" textFill="#3c373a">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="20.0" />
                      </font>
                   </Label>
                </children>
@@ -75,31 +75,34 @@
             <Insets />
          </opaqueInsets>
       </VBox>
-      <VBox alignment="TOP_RIGHT" prefHeight="130.0" prefWidth="156.0">
+      <VBox alignment="TOP_RIGHT" prefHeight="230.0" prefWidth="132.0">
          <children>
-            <MenuButton mnemonicParsing="false" style="-fx-border-width: 0px;" styleClass="second-menubutton" stylesheets="@../CSS_Setup/menubutton.css">
+            <MenuButton alignment="CENTER" mnemonicParsing="false" prefHeight="43.0" prefWidth="43.0" style="-fx-border-width: 0px;" styleClass="second-menubutton" stylesheets="@../CSS_Setup/menubutton.css">
               <items>
-                <MenuItem mnemonicParsing="false" onAction="#goReadDoc" text="read" />
-                <MenuItem mnemonicParsing="false" onAction="#returnDoc" text="return" />
+                <MenuItem mnemonicParsing="false" onAction="#goReadDoc" style="-fx-font-size: 20;" text="read" />
+                <MenuItem mnemonicParsing="false" onAction="#returnDoc" style="-fx-font-size: 20;" text="return" />
               </items>
                <graphic>
-                  <FontAwesomeIconView glyphName="LIST" styleClass="fontawesome-icon" wrappingWidth="3.0" />
+                  <FontAwesomeIconView glyphName="LIST" size="18" styleClass="fontawesome-icon" wrappingWidth="8.0" />
                </graphic>
                <VBox.margin>
                   <Insets right="15.0" />
                </VBox.margin>
             </MenuButton>
-            <HBox alignment="BOTTOM_RIGHT" prefHeight="127.0" prefWidth="150.0" spacing="5.0">
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="168.0" prefWidth="156.0" spacing="5.0">
                <children>
-                  <FontAwesomeIconView fill="#0749bf" glyphName="HOURGLASS_HALF" size="11">
+                  <FontAwesomeIconView fill="#0749bf" glyphName="HOURGLASS_HALF" size="15">
                      <HBox.margin>
                         <Insets bottom="2.0" />
                      </HBox.margin>
                   </FontAwesomeIconView>
-                  <Label fx:id="returnDate" prefHeight="17.0" prefWidth="67.0" text="2024-10-30" textFill="#0749bf" />
+                  <Label fx:id="returnDate" prefHeight="26.0" prefWidth="96.0" text="2024-10-30" textFill="#0749bf">
+                     <font>
+                        <Font size="17.0" />
+                     </font></Label>
                </children>
                <padding>
-                  <Insets bottom="10.0" right="16.0" />
+                  <Insets bottom="10.0" right="10.0" />
                </padding>
             </HBox>
          </children>
@@ -108,7 +111,4 @@
          </padding>
       </VBox>
    </children>
-   <padding>
-      <Insets left="20.0" />
-   </padding>
 </HBox>

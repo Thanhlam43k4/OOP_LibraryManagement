@@ -15,11 +15,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1200.0" style="-fx-background-color: white; -fx-background-color: linear-gradient(to top right , #9ba8ab, #253745);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Client.ReadDocController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1800.0" style="-fx-background-color: white; -fx-background-color: linear-gradient(to top right , #9ba8ab, #253745);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Client.ReadDocController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="90.0" style="-fx-background-color: #ededed;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="40.0" prefWidth="40.0" styleClass="second-button" stylesheets="@../CSS_Setup/button.css">
+            <Button layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="second-button" stylesheets="@../CSS_Setup/button.css">
                <graphic>
                   <FontAwesomeIconView glyphName="ARROW_LEFT" size="20" styleClass="fontawesome-icon" />
                </graphic>
@@ -29,9 +29,9 @@
       </AnchorPane>
       <ScrollPane layoutX="450.0" layoutY="165.0" prefHeight="315.0" prefWidth="700.0" style="-fx-background-color: #f2f2f2; -fx-background-radius: 20;" stylesheets="@../CSS_Setup/scrollpane.css" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="165.0">
          <content>
-            <Label fx:id="content" maxHeight="1.7976931348623157E308" maxWidth="610.0" text="In order to represent real life situations mathematically, we often use symbols to represent unknown quantities. We call these symbols variables. Each mathematical subject requires knowledge of manipulating expressions and equations to solve for a variable. Careers such as automobile accident investigators, quality control engineers, and insurance originators use equations to determine the value of variables. Real numbers are all around us.Introductory Algebra provides a comprehensive introduction of variables, functionsand linear equations and gives students a solid foundation in algebra.This open book is licensed under a Creative Commons License (CC BY-NC-SA). You can download Introductory Algebra ebook for free in PDF format (38.6 MB)." textAlignment="JUSTIFY" wrapText="true">
+            <Label fx:id="content" maxHeight="1.7976931348623157E308" maxWidth="1194.0" prefHeight="250.0" prefWidth="1194.0" text="In order to represent real life situations mathematically, we often use symbols to represent unknown quantities. We call these symbols variables. Each mathematical subject requires knowledge of manipulating expressions and equations to solve for a variable. Careers such as automobile accident investigators, quality control engineers, and insurance originators use equations to determine the value of variables. Real numbers are all around us.Introductory Algebra provides a comprehensive introduction of variables, functionsand linear equations and gives students a solid foundation in algebra.This open book is licensed under a Creative Commons License (CC BY-NC-SA). You can download Introductory Algebra ebook for free in PDF format (38.6 MB)." textAlignment="JUSTIFY" wrapText="true">
                <font>
-                  <Font size="16.0" />
+                  <Font size="21.0" />
                </font>
             </Label>
          </content>
@@ -43,19 +43,19 @@
          <children>
             <Label fx:id="title" lineSpacing="3.0" maxHeight="1.7976931348623157E308" maxWidth="800.0" text="DOC NAME" textFill="#eeeeee" wrapText="true">
                <font>
-                  <Font name="Georgia Bold" size="32.0" />
+                  <Font name="Georgia Bold" size="45.0" />
                </font>
             </Label>
             <HBox prefHeight="20.0" prefWidth="200.0" spacing="7.0">
                <children>
                   <Label text="By:" textFill="#d6d6d6">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="23.0" />
                      </font>
                   </Label>
                   <Label fx:id="author" layoutX="10.0" layoutY="10.0" prefHeight="25.0" text="Bill Gate" textFill="#eeeeee">
                      <font>
-                        <Font name="Georgia Bold" size="18.0" />
+                        <Font name="Georgia Bold" size="23.0" />
                      </font>
                   </Label>
                </children>
@@ -67,12 +67,12 @@
                <children>
                   <Label text="Genre:" textFill="#d6d6d6">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="23.0" />
                      </font>
                   </Label>
                   <Label fx:id="genre" layoutX="10.0" layoutY="10.0" prefHeight="25.0" text="book" textFill="#82c8ee">
                      <font>
-                        <Font name="Georgia Bold" size="18.0" />
+                        <Font name="Georgia Bold" size="23.0" />
                      </font>
                   </Label>
                </children>
@@ -85,7 +85,7 @@
             <Insets top="10.0" />
          </padding>
       </VBox>
-      <StackPane layoutX="150.0" layoutY="20.0" prefHeight="370.0" prefWidth="250.0">
+      <StackPane layoutX="140.0" layoutY="60.0" prefHeight="370.0" prefWidth="250.0" scaleX="1.2" scaleY="1.2">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3a3b3c" height="343.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="238.0">
                <effect>

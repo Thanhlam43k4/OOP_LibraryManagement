@@ -3,7 +3,9 @@ package com.example.JFX_Controller;
 //#region Lib
 
 import com.example.Handlers.Notify;
+import com.example.Handlers.Validate;
 import com.example.Model.User;
+import com.example.Service.EmailService;
 import com.example.Service.SessionManager;
 import com.example.Service.UserService;
 import com.example.Handlers.ExtraFunction;
@@ -12,22 +14,116 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 //#endregion
 
 public class SignInUpController extends Controller {
-    @FXML
-    private TextField emailField;
-    @FXML
-    private PasswordField passwordField;
-    @FXML
-    private PasswordField confirmpassField;
-    @FXML
-    private PasswordField userName;
+    // login & signup
+    @FXML private TextField emailField;
+    @FXML private PasswordField passwordField;
+    @FXML private PasswordField confirmpassField;
+    @FXML private TextField userName;
+    // reset password
+    @FXML  private StackPane forgotPassPane;
+    @FXML private AnchorPane fillCodePane;
+    @FXML private AnchorPane updatePassPane;
+    @FXML private TextField emailToReset;
+    @FXML private TextField codeField;
+    @FXML private PasswordField confirmNewPass;
+    @FXML private PasswordField newPassField;
+    String code;
 
+    // reset password
     @FXML
     void forgotPassword(ActionEvent event) {
+        forgotPassPane.setVisible(true);
+        emailToReset.setText(null);
+    }
+    @FXML
+    void cancelResetPass(ActionEvent event) {
+        forgotPassPane.setVisible(false);
+    }
+    @FXML
+    void sendCode(ActionEvent event) {
+        String email = emailToReset.getText();
+        if(!Validate.isValidEmail(email)){
+            Notify.showAlert(Alert.AlertType.ERROR, "Email Syntax is Wrong!!", "Please fill the right email syntax!");
+        }else if(!UserService.instance.isEmailExists(email)){
+            Notify.showAlert(Alert.AlertType.ERROR, "Email is not existed!", "Please register with your email");
+        }else {
+            fillCodePane.setVisible(true);
+            codeField.setText(null);
+            // Gửi email trong luồng nền
+            AsyncTaskExecutor.executeAsync(
+                    () -> {
+                        // Logic gửi email
+                       code =  UserService.instance.forgotPassword(email);
+                    },
+                    () -> {
+                        // Logic khi gửi thành công, chạy trên UI Thread
+//                      System.out.println("Gui email thanh cong ");
+                    },
+                    () -> {
+                        // Logic khi gửi thất bại, chạy trên UI Thread
+                        //Notify.showAlert(Alert.AlertType.ERROR, "Failed to Send Email", "An error occurred while sending the email.");
+                    }
+            );
+
+        }
+    }
+    @FXML
+    void applyCode(ActionEvent event) {
+
+        String codeFill = codeField.getText();
+        if(!Validate.isValidCode(codeFill)){
+            Notify.showAlert(Alert.AlertType.ERROR, "Code Syntax Error", "Your Code must be number and has length = 6");
+
+        }else if(codeFill.equals(code)){
+            fillCodePane.setVisible(false);
+            updatePassPane.setVisible(true);
+            code = null;
+        }else{
+            Notify.showAlert(Alert.AlertType.ERROR, "Code is not match!!", "Please Check Your Code in Email Again!");
+        }
 
     }
+    @FXML
+    void cancelFillCode(ActionEvent event) {
+        fillCodePane.setVisible(false);
+        code = null;
+    }
+    @FXML
+    void cancelFillPass(ActionEvent event) {
+        forgotPassPane.setVisible(false);
+        updatePassPane.setVisible(false);
+    }
+    @FXML
+    void applyFillPass(ActionEvent event) {
+        String newPass = newPassField.getText();
+        String confirmPass = confirmNewPass.getText();
+        if(!Validate.isValidPassword(newPass)){
+            Notify.showAlert(Alert.AlertType.ERROR, "Password syntax error", "Please fill password that has 6 digest!");
+
+        }else if(newPass.equals(confirmPass)){
+
+            User user = UserService.instance.getUserByEmail(emailToReset.getText());
+            int userId = user.getId();
+            System.out.println(userId);
+            UserService.instance.updatePassword(userId,newPass);
+            Notify.showAlert(Alert.AlertType.INFORMATION, "Update Password Successful", "Please login with your updated Password");
+            forgotPassPane.setVisible(false);
+            updatePassPane.setVisible(false);
+        }else{
+            Notify.showAlert(Alert.AlertType.ERROR, "Password and Confirm are not matched!!", "Please try again");
+            confirmNewPass.setText(null);
+            newPassField.setText(null);
+
+        }
+    }
+
+    //End
+
     @FXML
     void returnSignIn(ActionEvent event) {
         loadScene("Login.fxml");
@@ -48,8 +144,8 @@ public class SignInUpController extends Controller {
         be_signUp();
     }
     private void be_signIn() {
-        final String email = emailField.getText();
-        final String password = passwordField.getText();
+         String email = emailField.getText();
+         String password = passwordField.getText();
 
         AsyncTaskExecutor.executeAsync(
                 // Logic chạy trong luồng nền
@@ -67,7 +163,6 @@ public class SignInUpController extends Controller {
                     public void run() {
                         User user = UserService.instance.getUserByEmail(email);
                         SessionManager.getInstance().setLoggedInUser(user);
-
                         if ("admin".equals(user.getRole())) {
                             System.out.println("Đăng nhập thành công với email: " + email + " với vai trò Admin.");
                             loadScene("Admin.fxml");
@@ -87,10 +182,10 @@ public class SignInUpController extends Controller {
         );
     }
     private void be_signUp() {
-        final String email = emailField.getText();
-        final String password = passwordField.getText();
-        final String confirmpassword = confirmpassField.getText();
-        final String username = userName.getText();
+         String email = emailField.getText();
+         String password = passwordField.getText();
+         String confirmpassword = confirmpassField.getText();
+         String username = userName.getText();
         AsyncTaskExecutor.executeAsync(
                 // Logic chạy trong luồng nền
                 new Runnable() {
@@ -105,6 +200,7 @@ public class SignInUpController extends Controller {
                         if (!password.equals(confirmpassword)) {
                             throw new IllegalArgumentException("Wrong Password Matching");
                         }
+                        System.out.println(password);
                         String hashedPass = ExtraFunction.encode(password);
                         User user = new User(email,username, hashedPass);
                         UserService.instance.createUser(user);

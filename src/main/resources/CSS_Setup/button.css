@@ -5,6 +5,7 @@
     -fx-border-radius: 10px;
     -fx-font-weight: bold;
     -fx-text-fill: #3c373a;
+    -fx-font-size: 18px;
 }
 
 .primary-button .fontawesome-icon {

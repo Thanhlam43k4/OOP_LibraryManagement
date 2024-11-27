@@ -52,14 +52,14 @@ CREATE TABLE copies (
 CREATE TABLE client (
     user_id INT,                                 -- Khóa ngoại tham chiếu đến users
     borrowed_books INT DEFAULT 0,                -- Số sách mượn
-    FOREIGN KEY (user_id) REFERENCES users(id)   -- Khóa ngoại tham chiếu đến users
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE   -- Khóa ngoại tham chiếu đến users
 );
 
 -- Bảng admin với admin_id là AUTO_INCREMENT
 CREATE TABLE admin (
     user_id INT,                                 -- Khóa ngoại tham chiếu đến users
     -- Có thể thêm các thuộc tính riêng của admin tại đây
-    FOREIGN KEY (user_id) REFERENCES users(id)   -- Khóa ngoại tham chiếu đến users
+    FOREIGN KEY (user_id) REFERENCES users(id)  ON DELETE CASCADE  -- Khóa ngoại tham chiếu đến users
 );
 
 

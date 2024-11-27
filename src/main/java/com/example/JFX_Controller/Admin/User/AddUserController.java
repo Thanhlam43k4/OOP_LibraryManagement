@@ -1,9 +1,13 @@
 package com.example.JFX_Controller.Admin.User;
 
+import com.example.JFX_Controller.Admin.Document.DocRowController;
+import com.example.Model.Client;
 import com.example.Model.User;
 import com.example.Service.UserService;
 import com.example.Handlers.ExtraFunction;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 
 import javafx.scene.control.TextField;
@@ -12,6 +16,8 @@ import com.example.Handlers.Notify;
 import com.example.Handlers.Validate;
 import com.example.JFX_Controller.Admin.AdminController;
 import javafx.event.ActionEvent;
+
+import java.io.IOException;
 
 /**
  * Controller class responsible for handling user interactions when adding a new user
@@ -76,6 +82,8 @@ public class AddUserController {
             String password = ExtraFunction.encode("1");
             User user = new User(email_input, userName_input,password, phone_input, age_input);
             UserService.instance.addUser(user);
+            // getClientByEmal
+            //loadUserNode(UserService.instance.getUserByEmail(email_input));
         }
 
         // Remove the Add User pane from the UI after a successful operation
@@ -94,5 +102,17 @@ public class AddUserController {
         // Remove the Add User pane from the UI without adding a new user
         AdminController.instance.userPane.getChildren().remove(addUserRoot);
         addUserRoot = null;
+    }
+
+    void loadUserNode(Client user) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Admin/UserRow.fxml"));
+            Parent userNode = loader.load();
+            UserRowController docRowController = loader.getController();
+            docRowController.setInfo(user);
+            AdminController.userList.add(userNode);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

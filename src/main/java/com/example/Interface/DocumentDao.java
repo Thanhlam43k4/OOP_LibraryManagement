@@ -79,4 +79,7 @@ public interface DocumentDao {
      * @return The available copies for the specified document.
      */
     Copies getAvailCopies(int documentId);
+
+
+    boolean isIsbnExist(String ISBN);
 }

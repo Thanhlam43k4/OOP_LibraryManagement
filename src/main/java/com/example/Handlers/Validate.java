@@ -60,7 +60,10 @@ public class Validate {
         // Kiểm tra tên người dùng có chứa ít nhất 3 ký tự và không chứa ký tự đặc biệt
         return username != null && username.matches("^[A-Za-z0-9_]+$") && username.length() >= 3;
     }
-
+    public static boolean isValidCode(String code) {
+        // Kiểm tra độ dài và toàn bộ ký tự là số
+        return code.length() == 6 && code.matches("\\d+");
+    }
     /**
      * Validates a phone number. The phone number must match a pattern that supports
      * optional country code and contains at least 10 digits.

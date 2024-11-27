@@ -9,12 +9,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <StackPane fx:id="userInfoRoot" prefHeight="401.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.User.UserInfoController">
    <children>
       <Pane prefHeight="314.0" prefWidth="776.0" style="-fx-background-color: #504b4b; -fx-opacity: 0.8; -fx-background-radius: 30;" />
-      <AnchorPane maxHeight="413.0" maxWidth="722.0" prefHeight="722.0" style="-fx-background-color: white; -fx-border-color: #8d8888; -fx-background-radius: 15; -fx-border-radius: 15;">
+      <AnchorPane maxHeight="413.0" maxWidth="722.0" prefHeight="722.0" scaleX="1.4" scaleY="1.4" style="-fx-background-color: white; -fx-border-color: #8d8888; -fx-background-radius: 15; -fx-border-radius: 15;">
          <children>
             <HBox layoutX="34.0" layoutY="14.0" prefHeight="25.0" prefWidth="200.0" spacing="5.0">
                <children>
@@ -38,7 +39,7 @@
                   <FontAwesomeIconView glyphName="TIMES" size="22" style="-fx-fill: #3c373a;" />
                </graphic>
             </Button>
-            <VBox layoutX="120.0" layoutY="60.0" prefHeight="282.0" prefWidth="420.0" spacing="12.0">
+            <VBox layoutX="234.0" layoutY="60.0" prefHeight="282.0" prefWidth="420.0" spacing="12.0">
                <children>
                   <Label fx:id="userName" prefHeight="36.0" prefWidth="349.0" text="trong anh" textFill="#2c2a2a">
                      <font>
@@ -135,6 +136,8 @@
                   </HBox>
                </children>
             </VBox>
+            <Circle fill="#575757" layoutX="134.0" layoutY="150.0" radius="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <FontAwesomeIconView fill="#cfcfcf" glyphName="USER" layoutX="99.0" layoutY="181.0" size="90" />
          </children>
       </AnchorPane>
    </children>

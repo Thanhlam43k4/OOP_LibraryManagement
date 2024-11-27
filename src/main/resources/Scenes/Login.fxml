@@ -10,65 +10,72 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.SignInUpController">
+<AnchorPane prefHeight="800.0" prefWidth="1500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.SignInUpController">
    <children>
-      <StackPane layoutX="190.0" layoutY="87.0" prefHeight="393.0" prefWidth="371.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane prefHeight="800.0" prefWidth="1600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane maxHeight="400.0" maxWidth="300.0" prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane maxHeight="600.0" maxWidth="500.0" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="300.0" style="-fx-text-fill: linear-gradient( to bottom, #9ba8ab, #11212d);;" text="Library App" textFill="#8ab95b">
+                  <Label alignment="CENTER" prefHeight="60.0" prefWidth="500.0" style="-fx-text-fill: linear-gradient( to bottom, #9ba8ab, #11212d);;" text="Library App" textFill="#8ab95b">
                      <font>
-                        <Font name="Segoe Print Bold" size="35.0" />
+                        <Font name="Segoe Print Bold" size="44.0" />
                      </font>
                   </Label>
-                  <VBox layoutX="30.0" layoutY="80.0" prefHeight="200.0" prefWidth="270.0">
+                  <VBox layoutX="45.0" layoutY="79.0" prefHeight="272.0" prefWidth="410.0">
                      <children>
-                        <VBox prefHeight="77.0" prefWidth="270.0">
+                        <VBox prefHeight="91.0" prefWidth="410.0">
                            <children>
                               <Label prefHeight="28.0" prefWidth="70.0" text="Email" textFill="#2a2b29">
                                  <font>
-                                    <Font name="System Bold" size="15.0" />
+                                    <Font name="System Bold" size="21.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="emailField" maxWidth="-Infinity" prefHeight="40.0" prefWidth="240.0" promptText="Enter your email" style="-fx-background-color: transparent; -fx-text-fill: #eaeaea; -fx-border-color: #2a2b29; -fx-border-width: 2; -fx-border-radius: 17; -fx-background-radius: 17; -fx-text-fill: #222020;">
+                              <TextField fx:id="emailField" maxWidth="-Infinity" prefHeight="60.0" prefWidth="410.0" promptText="Enter your email" style="-fx-background-color: transparent; -fx-text-fill: #eaeaea; -fx-border-color: #2a2b29; -fx-border-width: 2.7; -fx-border-radius: 25; -fx-text-fill: #222020;">
                                  <font>
-                                    <Font size="13.0" />
+                                    <Font size="18.0" />
                                  </font>
                               </TextField>
                            </children>
                         </VBox>
-                        <VBox prefHeight="74.0" prefWidth="270.0">
+                        <VBox prefHeight="92.0" prefWidth="410.0">
                            <children>
-                              <Label prefHeight="28.0" prefWidth="77.0" text="Password" textFill="#2a2b29">
+                              <Label prefHeight="31.0" prefWidth="122.0" text="Password" textFill="#2a2b29">
                                  <font>
-                                    <Font name="System Bold" size="15.0" />
+                                    <Font name="System Bold" size="21.0" />
                                  </font>
                               </Label>
-                              <PasswordField fx:id="passwordField" maxWidth="-Infinity" prefHeight="40.0" prefWidth="240.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #2a2b29; -fx-border-width: 2; -fx-background-radius: 17; -fx-border-radius: 17; -fx-text-fill: #222020;">
+                              <PasswordField fx:id="passwordField" maxWidth="-Infinity" prefHeight="60.0" prefWidth="410.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #2a2b29; -fx-border-width: 2.7; -fx-border-radius: 25; -fx-text-fill: #222020;">
                                  <font>
-                                    <Font size="13.0" />
+                                    <Font size="18.0" />
                                  </font>
                               </PasswordField>
                            </children>
                         </VBox>
-                        <Button mnemonicParsing="false" onAction="#forgotPassword" prefHeight="16.0" prefWidth="110.0" style="-fx-background-color: transparent;" text="Forgot Password?" textFill="#464242" underline="true">
+                        <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#forgotPassword" prefHeight="27.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="Forgot Password?" textFill="#2a80ae" underline="true">
                            <VBox.margin>
-                              <Insets left="130.0" />
+                              <Insets left="230.0" />
                            </VBox.margin>
-                        </Button>
-                     </children>
-                  </VBox>
-                  <VBox alignment="TOP_CENTER" layoutX="15.0" layoutY="270.0" prefHeight="127.0" prefWidth="270.0">
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#signIn" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: linear-gradient( to right, #4a5c6a, #11212d);; -fx-background-radius: 10px;" text="Sign in" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
-                        <Label alignment="CENTER" prefHeight="28.0" prefWidth="25.0" text="or" textFill="#797272" />
-                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#goCreateAcc" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #1f1f1f; -fx-background-radius: 10;" text="Register" textFill="WHITE">
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" layoutY="352.0" prefHeight="165.0" prefWidth="500.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#signIn" prefHeight="60.0" prefWidth="400.0" style="-fx-background-color: linear-gradient( to right, #4a5c6a, #11212d); -fx-background-radius: 20;" text="Sign in" textFill="WHITE">
                            <font>
-                              <Font name="System Bold" size="18.0" />
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Button>
+                        <Label alignment="CENTER" prefHeight="36.0" prefWidth="25.0" text="or" textFill="#797272">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#goCreateAcc" prefHeight="60.0" prefWidth="400.0" style="-fx-background-color: #1f1f1f; -fx-background-radius: 20;" text="Register" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
                            </font>
                         </Button>
                      </children>
@@ -77,81 +84,129 @@
             </AnchorPane>
          </children>
       </StackPane>
-      <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane fx:id="forgotPassPane" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane maxHeight="320.0" maxWidth="300.0" prefHeight="351.0" prefWidth="300.0">
+            <AnchorPane maxHeight="500.0" maxWidth="420.0" prefHeight="351.0" prefWidth="300.0">
                <children>
-                  <Label prefHeight="44.0" prefWidth="300.0" style="-fx-text-fill: linear-gradient( to bottom, #9ba8ab, #11212d);;" text="Reset password" textFill="#8ab95b">
+                  <Label prefHeight="60.0" prefWidth="400.0" style="-fx-text-fill: linear-gradient( to bottom, #9ba8ab, #11212d);;" text="Reset password" textFill="#8ab95b">
                      <font>
-                        <Font name="System Bold" size="35.0" />
+                        <Font name="System Bold" size="42.0" />
                      </font>
                   </Label>
-                  <VBox layoutY="135.0" prefHeight="77.0" prefWidth="300.0">
+                  <VBox layoutY="135.0" prefHeight="103.0" prefWidth="400.0">
                      <children>
                         <Label prefHeight="28.0" prefWidth="70.0" text="Email" textFill="#2a2b29">
                            <font>
-                              <Font name="System Bold" size="15.0" />
+                              <Font name="System Bold" size="21.0" />
                            </font>
                         </Label>
-                        <TextField maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Enter your email" style="-fx-background-color: transparent; -fx-text-fill: #eaeaea; -fx-border-color: #2a2b29; -fx-border-width: 2; -fx-border-radius: 17; -fx-background-radius: 17; -fx-text-fill: #222020;">
+                        <TextField fx:id="emailToReset" maxWidth="-Infinity" prefHeight="57.0" prefWidth="400.0" promptText="Enter your email" style="-fx-background-color: transparent; -fx-text-fill: #eaeaea; -fx-border-color: #2a2b29; -fx-border-width: 2.7; -fx-border-radius: 22; -fx-text-fill: #222020;">
                            <font>
-                              <Font size="13.0" />
+                              <Font size="18.0" />
                            </font>
                         </TextField>
                      </children>
                   </VBox>
-                  <Button layoutY="224.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: linear-gradient( to right, #4a5c6a, #11212d);; -fx-background-radius: 10px;" text="Send code" textFill="WHITE">
+                  <Button layoutY="250.0" mnemonicParsing="false" onAction="#sendCode" prefHeight="60.0" prefWidth="400.0" style="-fx-background-color: linear-gradient( to right, #4a5c6a, #11212d); -fx-background-radius: 17;" text="Send code" textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="22.0" />
                      </font>
                   </Button>
-                  <Label layoutY="67.0" maxWidth="300.0" prefHeight="60.0" prefWidth="300.0" text="Enter the email associated with your account and we will send an email with code to reset your password." textAlignment="JUSTIFY" textFill="#656565" wrapText="true">
+                  <Label layoutY="67.0" maxWidth="400.0" prefHeight="60.0" prefWidth="400.0" text="Enter the email associated with your account and we will send an email with code to reset your password." textAlignment="JUSTIFY" textFill="#656565" wrapText="true">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="17.0" />
                      </font>
                   </Label>
+                  <Button layoutY="330.0" mnemonicParsing="false" onAction="#cancelResetPass" prefHeight="60.0" prefWidth="400.0" style="-fx-background-color: #303030; -fx-background-radius: 17;" text="Back" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="235.0" layoutY="100.0" maxHeight="320.0" maxWidth="300.0" prefHeight="351.0" prefWidth="300.0" style="-fx-background-color: white;">
+            <AnchorPane fx:id="fillCodePane" layoutX="550.0" layoutY="160.0" maxHeight="500.0" maxWidth="420.0" prefHeight="351.0" prefWidth="300.0" style="-fx-background-color: white;" visible="false">
                <children>
-                  <Label prefHeight="44.0" prefWidth="300.0" style="-fx-text-fill: linear-gradient( to bottom, #9ba8ab, #11212d);;" text="Reset password" textFill="#8ab95b">
+                  <Label prefHeight="60.0" prefWidth="400.0" style="-fx-text-fill: linear-gradient( to bottom, #9ba8ab, #11212d);;" text="Verify email" textFill="#8ab95b">
                      <font>
-                        <Font name="System Bold" size="35.0" />
+                        <Font name="System Bold" size="42.0" />
                      </font>
                   </Label>
-                  <VBox layoutY="135.0" prefHeight="77.0" prefWidth="300.0">
+                  <VBox layoutY="135.0" prefHeight="103.0" prefWidth="400.0">
                      <children>
-                        <Label prefHeight="28.0" prefWidth="150.0" text="Confirm password" textFill="#2a2b29">
+                        <Label prefHeight="28.0" prefWidth="70.0" text="Code" textFill="#2a2b29">
                            <font>
-                              <Font name="System Bold" size="15.0" />
+                              <Font name="System Bold" size="21.0" />
                            </font>
                         </Label>
-                        <TextField maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Confirm password" style="-fx-background-color: transparent; -fx-text-fill: #eaeaea; -fx-border-color: #2a2b29; -fx-border-width: 2; -fx-border-radius: 17; -fx-background-radius: 17; -fx-text-fill: #222020;">
+                        <TextField fx:id="codeField" maxWidth="-Infinity" prefHeight="57.0" prefWidth="400.0" promptText="Enter your code" style="-fx-background-color: transparent; -fx-text-fill: #eaeaea; -fx-border-color: #2a2b29; -fx-border-width: 2.7; -fx-border-radius: 22; -fx-text-fill: #222020;">
                            <font>
-                              <Font size="13.0" />
+                              <Font size="18.0" />
                            </font>
                         </TextField>
                      </children>
                   </VBox>
-                  <Button layoutX="2.0" layoutY="233.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: linear-gradient( to right, #4a5c6a, #11212d);; -fx-background-radius: 10px;" text="Apply" textFill="WHITE">
+                  <Button layoutY="250.0" mnemonicParsing="false" onAction="#applyCode" prefHeight="60.0" prefWidth="400.0" style="-fx-background-color: linear-gradient( to right, #4a5c6a, #11212d); -fx-background-radius: 17;" text="Update password" textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="22.0" />
                      </font>
                   </Button>
-                  <VBox layoutX="3.0" layoutY="58.0" prefHeight="77.0" prefWidth="300.0">
+                  <Label layoutY="67.0" maxWidth="400.0" prefHeight="60.0" prefWidth="400.0" text="We have send you a code to your email" textAlignment="JUSTIFY" textFill="#656565" wrapText="true">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Button layoutY="330.0" mnemonicParsing="false" onAction="#cancelFillCode" prefHeight="60.0" prefWidth="400.0" style="-fx-background-color: #303030; -fx-background-radius: 17;" text="Back" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="updatePassPane" layoutX="450.0" layoutY="160.0" maxHeight="500.0" maxWidth="420.0" prefHeight="351.0" prefWidth="300.0" style="-fx-background-color: white;" visible="false">
+               <children>
+                  <Label prefHeight="60.0" prefWidth="400.0" style="-fx-text-fill: linear-gradient( to bottom, #9ba8ab, #11212d);;" text="Reset password" textFill="#8ab95b">
+                     <font>
+                        <Font name="System Bold" size="42.0" />
+                     </font>
+                  </Label>
+                  <VBox layoutY="180.0" prefHeight="103.0" prefWidth="400.0">
                      <children>
-                        <Label prefHeight="28.0" prefWidth="150.0" text="New password" textFill="#2a2b29">
+                        <Label prefHeight="31.0" prefWidth="222.0" text="Confirm password" textFill="#2a2b29">
                            <font>
-                              <Font name="System Bold" size="15.0" />
+                              <Font name="System Bold" size="21.0" />
                            </font>
                         </Label>
-                        <TextField maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="New password" style="-fx-background-color: transparent; -fx-text-fill: #eaeaea; -fx-border-color: #2a2b29; -fx-border-width: 2; -fx-border-radius: 17; -fx-background-radius: 17; -fx-text-fill: #222020;">
+                        <PasswordField fx:id="confirmNewPass" prefHeight="57.0" promptText="Confirm password" style="-fx-background-color: transparent; -fx-border-color: #2a2b29; -fx-border-radius: 22; -fx-border-width: 2.7;">
                            <font>
-                              <Font size="13.0" />
+                              <Font size="18.0" />
                            </font>
-                        </TextField>
+                        </PasswordField>
                      </children>
                   </VBox>
+                  <Button layoutY="306.0" mnemonicParsing="false" onAction="#applyFillPass" prefHeight="60.0" prefWidth="400.0" style="-fx-background-color: linear-gradient( to right, #4a5c6a, #11212d); -fx-background-radius: 17;" text="Apply" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Button>
+                  <VBox layoutY="75.0" prefHeight="103.0" prefWidth="400.0">
+                     <children>
+                        <Label prefHeight="31.0" prefWidth="183.0" text="New password" textFill="#2a2b29">
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                        </Label>
+                        <PasswordField fx:id="newPassField" prefHeight="57.0" promptText="Current password" style="-fx-background-color: transparent; -fx-border-color: #2a2b29; -fx-border-radius: 22; -fx-border-width: 2.7;">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </PasswordField>
+                     </children>
+                  </VBox>
+                  <Button layoutY="382.0" mnemonicParsing="false" onAction="#cancelFillPass" prefHeight="60.0" prefWidth="400.0" style="-fx-background-color: #303030; -fx-background-radius: 17;" text="Back" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </children>

@@ -78,7 +78,10 @@ public class AddDocController {
             Notify.showAlert(Alert.AlertType.ERROR, "Error", "Description invalid!");
             return;
         }
-
+        if(DocumentService.instance.isIsbnExist(isbn_input)){
+            Notify.showAlert(Alert.AlertType.ERROR, "Error", "This ISBN is existed!! Please Choose another ISBN");
+            return;
+        }
         // Convert quantity to integer and add document if valid
         int quantity = Integer.parseInt(quantity_input);
         Document doc = new Document(title_input, author_input, genre_input, quantity, isbn_input, imageUrl_input);

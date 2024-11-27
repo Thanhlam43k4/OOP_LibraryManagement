@@ -51,9 +51,8 @@ public interface UserDao {
      * @param userId      The ID of the user to update.
      * @param username    The new username to set.
      * @param phoneNumber The new phone number to set.
-     * @param dob         The new date of birth to set.
      */
-    void updateUser(int userId, String username, String phoneNumber, Date dob);
+    void updateUser(int userId, String username, String phoneNumber,int age);
 
     /**
      * Deletes a user from the system.

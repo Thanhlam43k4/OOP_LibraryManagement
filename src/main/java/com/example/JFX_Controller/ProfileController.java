@@ -1,6 +1,8 @@
 package com.example.JFX_Controller;
 
+import java.net.URL;
 import java.sql.Date;
+import java.util.ResourceBundle;
 
 import com.example.Handlers.Notify;
 import com.example.Handlers.Validate;
@@ -9,17 +11,16 @@ import com.example.Service.SessionManager;
 
 import com.example.Service.UserService;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.application.Platform;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
-public class ProfileController extends Controller {
+public class ProfileController extends Controller implements Initializable  {
     private Parent root;
     @FXML
     private Label userName;
@@ -40,19 +41,26 @@ public class ProfileController extends Controller {
     @FXML
     private TextField phoneField;
     @FXML
-    private DatePicker dobPicker;
+    private TextField ageField;
 
     // Change password
     @FXML
     private StackPane passPane;
     @FXML
-    private TextField oldPassword;
+    private PasswordField oldPassword;
     @FXML
-    private TextField newPassword;
+    private PasswordField newPassword;
     @FXML
-    private TextField confirmNewPassword;
+    private PasswordField confirmNewPassword;
 
     AnchorPane mainRoot;
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        User user = SessionManager.getInstance().getLoggedInUser();
+        userName.setText(user.getUsername());
+        phone.setText(user.getPhoneNumber());
+        age.setText(String.valueOf(user.getAge()));
+    }
 
     @FXML
     void backToMain(ActionEvent event) {
@@ -75,10 +83,11 @@ public class ProfileController extends Controller {
     void applyModify(ActionEvent event) {
         if (validate()) {
             profilePane.setVisible(false);
-
-            //int userId = SessionManager.getInstance().getLoggedInUser().getId();
-            //Date dob = Date.valueOf(dobPicker.getValue());
-            //UserService.instance.updateUser(userId, userNameField.getText(), phoneField.getText(), dob);
+            int userId = SessionManager.getInstance().getLoggedInUser().getId();
+            UserService.instance.updateUser(userId, userNameField.getText(), phoneField.getText(), Integer.parseInt(ageField.getText()));
+            userName.setText(userNameField.getText());
+            phone.setText(phoneField.getText());
+            age.setText(ageField.getText());
         }
 
     }
@@ -97,8 +106,25 @@ public class ProfileController extends Controller {
     @FXML
     void applyChangePass(ActionEvent event) {
         // Check Current password is right use
-        // UserService.instance.isMatchAccount(email,password)
+        String newPass = newPassword.getText();
+        String oldPass = oldPassword.getText();
+        String confirmPass = confirmNewPassword.getText();
 
+        if(!Validate.isValidPassword(newPass)){
+            Notify.showAlert(Alert.AlertType.ERROR, "Password syntax error", "Please fill password that has 6 digest!");
+
+        }else if(!UserService.instance.isMatchAccount(SessionManager.getInstance().getLoggedInUser().getEmail(),oldPass)){
+            Notify.showAlert(Alert.AlertType.ERROR, "Current Password is not match", "Please try again!!!");
+
+        }else if(newPass.equals(confirmPass)){
+            int userId = SessionManager.getInstance().getLoggedInUser().getId();
+            UserService.instance.updatePassword(userId,newPass);
+            Notify.showAlert(Alert.AlertType.INFORMATION, "Update Password Successful", "Please login with your updated Password");
+            passPane.setVisible(false);
+        }else{
+            Notify.showAlert(Alert.AlertType.ERROR, "Password and Confirm are not matched!!", "Please try again");
+
+        }
         // Check password == retype password
 
         // Update new password after checkin
@@ -132,6 +158,10 @@ public class ProfileController extends Controller {
         }
         if (!Validate.isValidPhoneNumber(phoneField.getText())) {
             Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Phone number invalid!");
+            return false;
+        }
+        if (!Validate.isValidAge(ageField.getText())){
+            Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Age number invalid!");
             return false;
         }
         return true;

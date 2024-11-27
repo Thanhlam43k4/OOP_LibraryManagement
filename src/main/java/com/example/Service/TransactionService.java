@@ -20,9 +20,7 @@ public class TransactionService {
     public List<Transaction> getTransactionsByUserId(int userId) {
         return  transactionDao.getTransactionsByUserId(userId);
     }
-    public void returnBook(int transactionId) {
-        transactionDao.deleteTransaction(transactionId);
-    }
+
     public void borrowBook(int userId, String ISBN) {
 
         transactionDao.addTransaction(userId,ISBN);

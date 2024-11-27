@@ -31,8 +31,8 @@ public class UserService {
         return userDao.getAllClients();
     }
 
-    public void updateUser(int userId,String username,String phoneNumber, Date dob) {
-        userDao.updateUser(userId,username,phoneNumber,dob);
+    public void updateUser(int userId,String username,String phoneNumber, int age) {
+        userDao.updateUser(userId,username,phoneNumber,age);
     }
 
     public boolean isEmailExists(String email){
@@ -59,7 +59,7 @@ public class UserService {
     }
 
     public String forgotPassword(String email) {
-        String verificationCode = ExtraFunction.generateVerificationCode(email);
+        String verificationCode = ExtraFunction.generateVerificationCode();
 
         String subject = "Password Reset Request";
         String htmlContent = "<html>" +

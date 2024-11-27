@@ -13,58 +13,58 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="addDocRoot" prefHeight="150.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.Document.AddDocController">
+<StackPane fx:id="addDocRoot" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.Document.AddDocController">
    <children>
       <Pane prefHeight="412.0" prefWidth="776.0" style="-fx-background-color: #504b4b; -fx-opacity: 0.8; -fx-background-radius: 30;" />
-      <AnchorPane maxHeight="413.0" maxWidth="718.0" style="-fx-background-color: white; -fx-background-radius: 15;">
+      <AnchorPane maxHeight="550.0" maxWidth="900.0" style="-fx-background-color: white; -fx-background-radius: 15;">
          <children>
             <Label layoutX="35.0" layoutY="10.0" text="Add Document">
                <font>
-                  <Font name="Arial Bold" size="18.0" />
+                  <Font name="Arial Bold" size="28.0" />
                </font>
             </Label>
-            <VBox layoutX="1.0" layoutY="44.0" prefHeight="153.0" prefWidth="368.0">
+            <VBox layoutX="2.0" layoutY="61.0" prefHeight="176.0" prefWidth="467.0" spacing="10.0">
                <children>
                   <VBox prefHeight="73.0" prefWidth="405.0">
                      <children>
                         <Label text="Title *">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="title" maxWidth="-Infinity" prefHeight="35.0" prefWidth="326.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
+                        <TextField fx:id="title" maxWidth="-Infinity" prefHeight="43.0" prefWidth="424.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
                            <font>
-                              <Font size="13.0" />
+                              <Font size="18.0" />
                            </font>
                         </TextField>
                      </children>
                   </VBox>
-                  <HBox prefHeight="74.0" prefWidth="333.0" spacing="10.0">
+                  <HBox prefHeight="84.0" prefWidth="432.0" spacing="10.0">
                      <children>
-                        <VBox prefHeight="0.0" prefWidth="168.0">
+                        <VBox prefHeight="74.0" prefWidth="216.0">
                            <children>
                               <Label text="Genre *">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="genre" maxWidth="-Infinity" prefHeight="35.0" prefWidth="171.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
+                              <TextField fx:id="genre" maxWidth="-Infinity" prefHeight="44.0" prefWidth="211.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
                                  <font>
-                                    <Font size="13.0" />
+                                    <Font size="18.0" />
                                  </font>
                               </TextField>
                            </children>
                         </VBox>
-                        <VBox prefHeight="0.0" prefWidth="156.0">
+                        <VBox prefHeight="74.0" prefWidth="205.0">
                            <children>
                               <Label text="Quantity *">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="quantity" maxWidth="-Infinity" prefHeight="35.0" prefWidth="146.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
+                              <TextField fx:id="quantity" maxWidth="-Infinity" prefHeight="44.0" prefWidth="196.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
                                  <font>
-                                    <Font size="13.0" />
+                                    <Font size="18.0" />
                                  </font>
                               </TextField>
                            </children>
@@ -76,45 +76,45 @@
                   <Insets left="35.0" />
                </padding>
             </VBox>
-            <Button layoutX="680.0" layoutY="3.0" mnemonicParsing="false" onAction="#cancelAddDoc" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: transparent;" textFill="#e4e0e0">
+            <Button mnemonicParsing="false" onAction="#cancelAddDoc" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: transparent;" textFill="#e4e0e0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
                <graphic>
-                  <FontAwesomeIconView glyphName="TIMES" size="22" style="-fx-fill: #3c373a;" />
+                  <FontAwesomeIconView glyphName="TIMES" size="27" style="-fx-fill: #3c373a;" />
                </graphic>
             </Button>
-            <Button layoutX="18.0" layoutY="362.0" mnemonicParsing="false" onAction="#addDoc" prefHeight="37.0" prefWidth="682.0" style="-fx-background-color: linear-gradient(to right bottom, rgb(19, 168, 57), rgb(115, 160, 12)); -fx-background-radius: 10; -fx-background-color: #262626;" text="Add" textFill="#f2ebeb">
+            <Button layoutX="34.0" layoutY="470.0" mnemonicParsing="false" onAction="#addDoc" prefHeight="57.0" prefWidth="832.0" style="-fx-background-color: linear-gradient(to right bottom, rgb(19, 168, 57), rgb(115, 160, 12)); -fx-background-radius: 15; -fx-background-color: #262626;" text="Add" textFill="#f2ebeb">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="System Bold" size="22.0" />
                </font>
             </Button>
-            <VBox layoutX="35.0" layoutY="281.0" prefHeight="81.0" prefWidth="646.0">
+            <VBox layoutX="34.0" layoutY="375.0" prefHeight="95.0" prefWidth="832.0">
                <children>
                   <Label text="Image URL">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="imageUrl" maxWidth="-Infinity" prefHeight="35.0" prefWidth="639.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
+                  <TextField fx:id="imageUrl" maxWidth="-Infinity" prefHeight="50.0" prefWidth="832.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 15; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
                      <font>
-                        <Font size="13.0" />
+                        <Font size="18.0" />
                      </font>
                   </TextField>
                </children>
             </VBox>
-            <VBox layoutX="340.0" layoutY="44.0" prefHeight="153.0" prefWidth="333.0">
+            <VBox layoutX="483.0" layoutY="61.0" prefHeight="153.0" prefWidth="388.0">
                <children>
                   <VBox prefHeight="73.0" prefWidth="405.0">
                      <children>
                         <Label text="Author *">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="author" maxWidth="-Infinity" prefHeight="35.0" prefWidth="326.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
+                        <TextField fx:id="author" maxWidth="-Infinity" prefHeight="43.0" prefWidth="379.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
                            <font>
-                              <Font size="13.0" />
+                              <Font size="18.0" />
                            </font>
                         </TextField>
                      </children>
@@ -123,31 +123,28 @@
                      <children>
                         <Label text="ISBN *">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="isbn" maxWidth="-Infinity" prefHeight="35.0" prefWidth="326.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
+                        <TextField fx:id="isbn" maxWidth="-Infinity" prefHeight="43.0" prefWidth="379.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
                            <font>
-                              <Font size="13.0" />
+                              <Font size="18.0" />
                            </font>
                         </TextField>
                      </children>
                   </VBox>
                </children>
-               <padding>
-                  <Insets left="35.0" />
-               </padding>
             </VBox>
-            <VBox layoutX="37.0" layoutY="186.0" prefHeight="95.0" prefWidth="639.0">
+            <VBox layoutX="35.0" layoutY="237.0" prefHeight="133.0" prefWidth="832.0">
                <children>
                   <Label text="Description">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="description" prefHeight="73.0" prefWidth="646.0" style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020;" wrapText="true">
+                  <TextArea fx:id="description" prefHeight="95.0" prefWidth="832.0" style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020;" wrapText="true">
                      <font>
-                        <Font size="13.0" />
+                        <Font size="18.0" />
                      </font>
                   </TextArea>
                </children>

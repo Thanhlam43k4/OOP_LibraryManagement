@@ -50,8 +50,8 @@ public class ClientController extends Controller implements Initializable{
     @FXML public GridPane mydocGrid;
 
 //Prop
-    private static final int cardWidth = 200; // Chiều rộng phần tử sách + Hgap
-    private static final int docElementWidth = 495;
+    private static final int cardWidth = 240; // Chiều rộng phần tử sách + Hgap
+    private static final int docElementWidth = 615;
     
     private static ObservableList<Parent> cardList = FXCollections.observableArrayList();
     public static List<Parent> docelementList = new ArrayList<>();
@@ -111,14 +111,14 @@ public class ClientController extends Controller implements Initializable{
             if (newScene != null) {
                 newScene.widthProperty().addListener((obss, oldWidth, newWidth) -> {
                     if(browseScroll.getParent().isVisible()) {
-                        int coll = (int) ((double)newWidth - 223)/cardWidth;
+                        int coll = (int) ((double)newWidth - 350)/cardWidth;
                         if(coll != currentCol) {
                             currentCol = coll;
                             updateGrid(browseGrid, cardList, currentCol);
                         }
                     }
                     else {
-                        int coll = (int) ((double)newWidth - 223)/docElementWidth;
+                        int coll = (int) ((double)newWidth - 350)/docElementWidth;
                         if(coll != currentCol) {
                             currentCol = coll;
                             updateGrid(mydocGrid, docelementList, currentCol);

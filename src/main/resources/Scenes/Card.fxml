@@ -12,11 +12,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="card" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#selectCard" prefHeight="280.0" prefWidth="190.0" styleClass="primary-anchor-card" stylesheets="@../CSS_Setup/card.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Client.CardController">
+<VBox fx:id="card" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#selectCard" prefHeight="330.0" prefWidth="230.0" spacing="5.0" styleClass="primary-anchor-card" stylesheets="@../CSS_Setup/card.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Client.CardController">
    <children>
-      <StackPane alignment="BOTTOM_CENTER" prefHeight="217.0" prefWidth="190.0">
+      <StackPane alignment="BOTTOM_LEFT" prefHeight="249.0" prefWidth="230.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#757373" height="197.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="141.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#757373" height="229.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="165.0">
                <StackPane.margin>
                   <Insets right="14.0" />
                </StackPane.margin>
@@ -24,7 +24,7 @@
                   <Shadow color="#868383" height="41.76" radius="21.119999999999997" width="44.72" />
                </effect>
             </Rectangle>
-            <ImageView fx:id="docCover" fitHeight="198.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="docCover" fitHeight="231.0" fitWidth="194.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../DocCover_url/programing%20python.jpg" />
                </image>
@@ -33,25 +33,26 @@
                </StackPane.margin></ImageView>
          </children>
       </StackPane>
-      <Label fx:id="name" alignment="BOTTOM_LEFT" prefHeight="35.0" prefWidth="149.0" text="python programing" textFill="#464545">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-         <VBox.margin>
-            <Insets left="5.0" />
-         </VBox.margin>
-      </Label>
-      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="26.0" prefWidth="190.0" spacing="5.0">
+      <HBox>
          <children>
-            <FontAwesomeIconView fill="#2e6ea5" glyphName="PENCIL" size="16" />
-            <Label fx:id="genre" text="Author" textFill="#2e6ea5">
+            <Label fx:id="name" maxWidth="180.0" text="python programing" textFill="#464545">
                <font>
-                  <Font size="13.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Label>
          </children>
-         <padding>
-            <Insets left="25.0" />
-         </padding></HBox>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" spacing="5.0">
+         <children>
+            <FontAwesomeIconView fill="#2e6ea5" glyphName="PENCIL" size="18" />
+            <Label fx:id="genre" text="Author" textFill="#2e6ea5">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+         </children></HBox>
    </children>
+   <padding>
+      <Insets left="33.0" />
+   </padding>
 </VBox>

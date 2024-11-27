@@ -16,7 +16,9 @@ import com.example.Service.DocumentService;
 import com.example.Service.SessionManager;
 import com.example.Service.TransactionService;
 import com.example.Service.UserService;
+import com.example.JFX_Controller.AsyncTaskExecutor;
 
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -67,7 +69,7 @@ public class AdminController extends Controller implements Initializable {
     private String[] transSearchOp = {"userId", "docISBN", "returnDate"};
     private String[] currentSearchOp = docSearchOp;
     public static ObservableList<Parent> docList = FXCollections.observableArrayList(); 
-    private static ObservableList<Parent> userList = FXCollections.observableArrayList(); 
+    public static ObservableList<Parent> userList = FXCollections.observableArrayList();
     public static ObservableList<Parent> transList = FXCollections.observableArrayList(); 
     // singleton
     public static AdminController instance;
@@ -76,19 +78,34 @@ public class AdminController extends Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         instance = this;
 
-        userName.setText(SessionManager.getInstance().getLoggedInUser().getUsername());
-        if (userList.isEmpty()) {
-            System.out.println("Add admin node");
-            addUserNodes();
-            addDocNodes();
-            addTranscNodes();
-        }
-        setPane(docPane, docsBut, docFilterList, docSearchOp);
-        
-        docListView.setItems(docFilterList);
-        userListView.setItems(userFilterList);
-        transListView.setItems(transFilterList);
+        // Sử dụng AsyncTaskExecutor để xử lý các tác vụ nền
+        AsyncTaskExecutor.executeAsync(
+                // Tác vụ chạy trong nền
+                () -> {
+                    // Giả lập xử lý nặng như tải danh sách hoặc khởi tạo dữ liệu
+                    if (userList.isEmpty()) {
+                        System.out.println("Add admin node");
+                        addUserNodes();
+                        addDocNodes();
+                        addTranscNodes();
+                    }
+                },
+                // Logic chạy khi tác vụ hoàn thành thành công (cập nhật UI)
+                () -> Platform.runLater(() -> {
+                    // Cập nhật UI sau khi dữ liệu đã được tải
+                    setPane(docPane, docsBut, docFilterList, docSearchOp);
+                    docListView.setItems(docFilterList);
+                    userListView.setItems(userFilterList);
+                    transListView.setItems(transFilterList);
+                }),
+                // Logic chạy khi có lỗi trong quá trình thực thi
+                () -> Platform.runLater(() -> {
+                    // Xử lý lỗi, ví dụ hiển thị thông báo
+                    System.err.println("Error occurred while initializing data.");
+                })
+        );
     }
+
     //#region event handle
     @FXML
     void docsTab(MouseEvent event)       { setPane(docPane, docsBut, docFilterList, docSearchOp); }
@@ -240,6 +257,8 @@ public class AdminController extends Controller implements Initializable {
 
             // set docinfo position
             root.getChildren().add(profileRoot);
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }

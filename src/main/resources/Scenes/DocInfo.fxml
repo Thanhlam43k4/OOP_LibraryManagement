@@ -17,11 +17,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="1200.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Client.DocInfoController">
+<AnchorPane prefHeight="1000.0" prefWidth="1800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Client.DocInfoController">
    <children>
-      <AnchorPane layoutX="224.0" layoutY="42.0" prefHeight="60.0" prefWidth="526.0" stylesheets="@../CSS_Setup/anchorpane.css" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="224.0" layoutY="42.0" prefHeight="60.0" prefWidth="526.0" stylesheets="@../CSS_Setup/anchorpane.css" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="CENTER_RIGHT" layoutX="401.0" layoutY="10.0" prefHeight="40.0" prefWidth="297.0" spacing="7.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+            <HBox alignment="CENTER_RIGHT" layoutX="1094.0" layoutY="11.0" prefHeight="40.0" prefWidth="297.0" scaleX="1.4" scaleY="1.4" spacing="7.0" visible="false" AnchorPane.rightAnchor="59.0" AnchorPane.topAnchor="11.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -37,7 +37,7 @@
                       <MenuItem mnemonicParsing="false" onAction="#signOut" text="Sign out" />
                     </items>
                      <graphic>
-                        <FontAwesomeIconView glyphName="USER" size="20" styleClass="fontawesome-icon" wrappingWidth="8.0" />
+                        <FontAwesomeIconView glyphName="USER" size="20" styleClass="fontawesome-icon" wrappingWidth="5.142852783203125" />
                      </graphic>
                   </MenuButton>
                </children>
@@ -47,7 +47,7 @@
             </HBox>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="500.0" prefWidth="223.0" style="-fx-background-color: linear-gradient( to right bottom, #9ba8ab, #11212d);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: linear-gradient( to right bottom, #9ba8ab, #11212d);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backMain" prefHeight="35.0" prefWidth="36.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="12.0">
                <graphic>
@@ -56,39 +56,39 @@
             </Button>
          </children>
       </AnchorPane>
-      <VBox layoutX="360.0" layoutY="50.0" prefHeight="330.0" prefWidth="812.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="358.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="50.0">
+      <VBox layoutX="636.0" layoutY="90.0" prefHeight="790.0" prefWidth="534.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="636.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="90.0">
          <children>
-            <Label fx:id="title" maxWidth="900.0" text="DOC NAME" textFill="#3c3a3a" wrapText="true">
+            <Label fx:id="title" maxHeight="1.7976931348623157E308" maxWidth="1100.0" text="DOC NAME" textFill="#3c3a3a" wrapText="true">
                <font>
-                  <Font name="Georgia Bold" size="32.0" />
+                  <Font name="Georgia Bold" size="55.0" />
                </font>
             </Label>
             <HBox prefHeight="27.0" prefWidth="277.0" spacing="5.0">
                <children>
                   <Label fx:id="author" text="By:">
                      <font>
-                        <Font size="17.0" />
+                        <Font size="30.0" />
                      </font>
                   </Label>
-                  <Label fx:id="author" text="Author">
+                  <Label fx:id="author" maxWidth="900.0" text="Author">
                      <font>
-                        <Font name="System Bold" size="17.0" />
+                        <Font name="System Bold" size="30.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <ScrollPane fx:id="docScroll" fitToHeight="true" prefHeight="377.0" prefWidth="374.0" stylesheets="@../CSS_Setup/scrollpane.css">
+            <ScrollPane fx:id="docScroll" fitToHeight="true" prefHeight="637.0" prefWidth="1134.0" stylesheets="@../CSS_Setup/scrollpane.css">
                <content>
-                  <AnchorPane prefHeight="510.0" prefWidth="364.0">
+                  <AnchorPane prefHeight="375.0" prefWidth="980.0">
                      <children>
                         <Label layoutY="10.0" text="Description:" underline="true">
                            <font>
-                              <Font name="System Bold" size="20.0" />
+                              <Font name="System Bold" size="33.0" />
                            </font>
                         </Label>
-                        <Label fx:id="description" alignment="TOP_LEFT" layoutY="41.0" prefHeight="465.0" prefWidth="364.0" text="this is document description" textFill="#6b6767" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="41.0">
+                        <Label fx:id="description" alignment="TOP_LEFT" layoutX="7.0" layoutY="56.0" prefHeight="318.0" prefWidth="1043.0" text="this is document description" textFill="#6b6767" wrapText="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="56.0">
                            <font>
-                              <Font size="15.0" />
+                              <Font size="25.0" />
                            </font>
                         </Label>
                      </children>
@@ -97,29 +97,32 @@
             </ScrollPane>
          </children>
       </VBox>
-      <HBox prefHeight="127.0" prefWidth="393.0" spacing="15.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="345.0" AnchorPane.rightAnchor="12.0">
+      <HBox prefHeight="145.0" prefWidth="1438.0" spacing="15.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="12.0">
          <children>
-            <Button fx:id="borrowBut" mnemonicParsing="false" onAction="#borrowDoc" prefHeight="50.0" prefWidth="120.0" styleClass="second-button" stylesheets="@../CSS_Setup/button.css" text=" Borrow">
+            <Button fx:id="borrowBut" mnemonicParsing="false" onAction="#borrowDoc" prefHeight="50.0" prefWidth="120.0" scaleX="1.4" scaleY="1.4" styleClass="second-button" stylesheets="@../CSS_Setup/button.css" text=" Borrow">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
                <graphic>
                   <FontAwesomeIconView glyphName="SHOPPING_CART" size="15" styleClass="fontawesome-icon" />
                </graphic>
+               <HBox.margin>
+                  <Insets left="280.0" />
+               </HBox.margin>
             </Button>
          </children>
          <padding>
             <Insets left="40.0" right="40.0" top="15.0" />
          </padding>
       </HBox>
-      <Label fx:id="stateText" text="You are borrowing this book" textFill="#7c7575" visible="false" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="390.0">
+      <Label fx:id="stateText" text="You are borrowing this book" textFill="#bc5858" visible="false" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="650.0">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <StackPane prefHeight="370.0" prefWidth="250.0" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="80.0">
+      <StackPane layoutX="100.0" layoutY="150.0" prefHeight="693.0" prefWidth="496.0">
          <children>
-            <Rectangle fx:id="shadow" arcHeight="5.0" arcWidth="5.0" fill="#3a3b3c" height="343.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="238.0">
+            <Rectangle fx:id="shadow" arcHeight="5.0" arcWidth="5.0" fill="#3a3b3c" height="670.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="480.0">
                <effect>
                   <Shadow color="#757575" height="34.35" radius="17.785" width="38.79" />
                </effect>
@@ -127,7 +130,7 @@
                   <Insets bottom="15.0" left="15.0" />
                </StackPane.margin>
             </Rectangle>
-            <ImageView fx:id="docCover" fitHeight="355.0" fitWidth="242.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="docCover" fitHeight="674.0" fitWidth="508.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../DocCover_url/programing%20python.jpg" />
                </image>

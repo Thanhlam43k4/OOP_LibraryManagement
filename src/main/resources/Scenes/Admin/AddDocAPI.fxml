@@ -12,51 +12,51 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="addDocRoot" alignment="TOP_CENTER" prefHeight="552.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.Document.AddDocApiController">
+<StackPane fx:id="addDocRoot" alignment="TOP_CENTER" prefHeight="900.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JFX_Controller.Admin.Document.AddDocApiController">
    <children>
       <Pane prefHeight="412.0" prefWidth="776.0" style="-fx-background-color: #504b4b; -fx-opacity: 0.8; -fx-background-radius: 30;" />
-      <AnchorPane maxHeight="510.0" maxWidth="720.0">
+      <AnchorPane maxHeight="800.0" maxWidth="1000.0" prefHeight="800.0" prefWidth="1000.0">
          <children>
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="720.0" style="-fx-background-color: white; -fx-background-radius: 10;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="250.0" prefWidth="720.0" style="-fx-background-color: white; -fx-background-radius: 10;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label layoutX="35.0" layoutY="10.0" text="Add Document with API">
                      <font>
-                        <Font name="Arial Bold" size="18.0" />
+                        <Font name="Arial Bold" size="28.0" />
                      </font>
                   </Label>
-                  <Button layoutX="680.0" layoutY="3.0" mnemonicParsing="false" onAction="#cancelAddDoc" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: transparent;" textFill="#e4e0e0">
+                  <Button layoutX="680.0" layoutY="3.0" mnemonicParsing="false" onAction="#cancelAddDoc" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: transparent;" textFill="#e4e0e0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                      <graphic>
-                        <FontAwesomeIconView glyphName="TIMES" size="22" style="-fx-fill: #3c373a;" />
+                        <FontAwesomeIconView glyphName="TIMES" size="27" style="-fx-fill: #3c373a;" />
                      </graphic>
                   </Button>
-                  <VBox layoutX="38.0" layoutY="35.0" prefHeight="81.0" prefWidth="646.0">
+                  <VBox layoutX="38.0" layoutY="45.0" prefHeight="177.0" prefWidth="934.0">
                      <children>
                         <Label text="Search document title *">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="21.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="searchField" maxWidth="-Infinity" prefHeight="35.0" prefWidth="639.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 10; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
+                        <TextField fx:id="searchField" maxWidth="-Infinity" prefHeight="50.0" prefWidth="937.0" promptText="..." style="-fx-background-color: transparent; -fx-border-color: #8d8888; -fx-border-width: 1.3; -fx-border-radius: 20; -fx-text-fill: #222020; -fx-prompt-text-fill: rgb(165, 157, 157);">
                            <font>
-                              <Font size="13.0" />
+                              <Font size="18.0" />
                            </font>
                         </TextField>
-                        <Button mnemonicParsing="false" onAction="#goSearch" prefHeight="37.0" prefWidth="639.0" style="-fx-background-color: linear-gradient(to right bottom, rgb(19, 168, 57), rgb(115, 160, 12)); -fx-background-radius: 10; -fx-background-color: #262626;" text="Search" textFill="#f2ebeb">
+                        <Button mnemonicParsing="false" onAction="#goSearch" prefHeight="60.0" prefWidth="935.0" style="-fx-background-color: linear-gradient(to right bottom, rgb(19, 168, 57), rgb(115, 160, 12)); -fx-background-radius: 15; -fx-background-color: #262626;" text="Search" textFill="#f2ebeb">
                            <font>
-                              <Font name="System Bold" size="16.0" />
+                              <Font name="System Bold" size="21.0" />
                            </font>
                            <VBox.margin>
-                              <Insets top="15.0" />
+                              <Insets top="25.0" />
                            </VBox.margin>
                         </Button>
                      </children>
                   </VBox>
                </children>
             </AnchorPane>
-            <ListView fx:id="suggestList" prefHeight="180.0" prefWidth="720.0" style="-fx-background-radius: 0 0 10 10; -fx-background-color: white; -fx-border-color: #cfcfcf; -fx-border-width: 1 0 0 0;" styleClass="primary-listview" stylesheets="@../../CSS_Setup/listview.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="170.0">
+            <ListView fx:id="suggestList" layoutY="229.0" prefHeight="500.0" prefWidth="1000.0" style="-fx-background-radius: 0 0 10 10; -fx-background-color: white; -fx-border-color: #cfcfcf; -fx-border-width: 1 0 0 0;" styleClass="primary-listview" stylesheets="@../../CSS_Setup/listview.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="229.0">
                <padding>
                   <Insets left="15.0" top="10.0" />
                </padding>

@@ -107,7 +107,13 @@ public class UserDaoImpl implements UserDao {
             stmt.setString(1, email);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return new User(rs.getInt("id"), rs.getString("email"), rs.getString("username"), rs.getString("role"));
+                User u = new User(rs.getInt("id"),
+                        rs.getString("email"),
+                        rs.getString("username"),
+                        rs.getString("role"));
+                u.setPhoneNumber(rs.getString("phoneNumber"));
+                u.setAge(rs.getInt("age"));
+                return u;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -160,15 +166,14 @@ public class UserDaoImpl implements UserDao {
      * @param userId    The ID of the user to update.
      * @param username  The new username.
      * @param phoneNumber The new phone number.
-     * @param dob       The new date of birth.
      */
     @Override
-    public void updateUser(int userId, String username, String phoneNumber, Date dob) {
-        String sql = "UPDATE users SET username = ?, phoneNumber = ?, dob = ? WHERE id = ?";
+    public void updateUser(int userId, String username, String phoneNumber, int age) {
+        String sql = "UPDATE users SET username = ?, phoneNumber = ?, age = ? WHERE id = ?";
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setString(1, username);
             stmt.setString(2, phoneNumber);
-            stmt.setDate(3, dob);
+            stmt.setInt(3, age);
             stmt.setInt(4, userId);
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -298,9 +303,10 @@ public class UserDaoImpl implements UserDao {
      */
     @Override
     public void updatePassword(int userId, String updatePass) {
-        String query = "UPDATE users SET password = ? WHERE user_id = ?";
+        String hashPass = ExtraFunction.encode(updatePass);
+        String query = "UPDATE users SET password = ? WHERE id = ?";
         try (PreparedStatement pstmt = con.prepareStatement(query)) {
-            pstmt.setString(1, updatePass);
+            pstmt.setString(1, hashPass);
             pstmt.setInt(2, userId);
             pstmt.executeUpdate();
             System.out.println("Password updated successfully!");
@@ -308,4 +314,7 @@ public class UserDaoImpl implements UserDao {
             e.printStackTrace();
         }
     }
+
+
+
 }

@@ -50,4 +50,8 @@ public class DocumentService {
     public Copies getAvailCopies(int documentId) {
         return documentDao.getAvailCopies(documentId);
     }
+
+    public boolean isIsbnExist(String isbn) {
+        return documentDao.isIsbnExist(isbn);
+    }
 }

@@ -23,7 +23,7 @@
 }
 
 .second-anchor-card:hover .label{
-    -fx-font-size: 15px;
+    -fx-font-size: 22px;
     -fx-font-weight: bold;
 }
 

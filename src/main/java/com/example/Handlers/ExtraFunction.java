@@ -28,24 +28,17 @@ public class ExtraFunction {
      * Generates a 6-digit verification code based on the provided email address.
      * The verification code is generated using the hash of the email and a random number generator.
      *
-     * @param email The email address used to generate the verification code.
      * @return A 6-digit string representing the generated verification code.
      */
-    public static String generateVerificationCode(String email) {
-        // Generate a hash code based on the email
-        int hashCode = email.hashCode();
+    public static String generateVerificationCode() {
+        // Tạo một đối tượng Random
+        Random random = new Random();
 
-        // Convert the hash code to a string
-        String hashString = String.valueOf(hashCode);
+        // Sinh một số ngẫu nhiên gồm 6 chữ số
+        int verificationCode = random.nextInt(900000) + 100000; // Đảm bảo số có 6 chữ số (từ 100000 đến 999999)
 
-        // Create a random object based on the email hash code
-        Random random = new Random(hashCode);
-
-        // Generate a 6-digit verification code
-        int verificationCode = random.nextInt(1000000); // 6 digits
-
-        // Format the verification code as a 6-digit string
-        return String.format("%06d", verificationCode);
+        // Trả về mã xác thực dưới dạng chuỗi 6 chữ số
+        return String.valueOf(verificationCode);
     }
 
 
