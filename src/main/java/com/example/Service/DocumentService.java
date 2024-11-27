@@ -37,18 +37,18 @@ public class DocumentService {
     public List<Copies> getAllCopies(int documentId){
         return documentDao.getAllCopies(documentId);
     }
-    public boolean isBookAvailable(String ISBN) {
-        return documentDao.isBookAvailable(ISBN);
+    public boolean isBookAvailable(String copyISBN) {
+        return documentDao.isBookAvailable(copyISBN);
     }
-    public Document getDocumentByISBN(String ISBN) {
-        return documentDao.getDocumentByISBN(ISBN);
+    public Document getDocumentByISBN(String docISBN) {
+        return documentDao.getDocumentByISBN(docISBN);
     }
 
     public boolean isDocAvailable(String isbn) {
         return documentDao.isDocAvailable(isbn);
     }
-    public Copies getAvailCopies(int documentId) {
-        return documentDao.getAvailCopies(documentId);
+    public Copies getAvailCopies(int docId) {
+        return documentDao.getAvailCopies(docId);
     }
 
     public boolean isIsbnExist(String isbn) {

@@ -103,5 +103,5 @@ public interface UserDao {
      */
     void updatePassword(int userId, String updatePass);
 
-    Client getClientByEmail(String emailInput);
+    Client getClientByEmail(String email);
 }

@@ -68,8 +68,9 @@ Các tính năng nổi bật của ứng dụng bao gồm:
 
 ![img.png](src/main/resources/Image/DAO-model.png)
 
+### Service
 
-
+![img.png](src/main/resources/Image/Service-model.png)
 
 
 
