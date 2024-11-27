@@ -316,5 +316,36 @@ public class UserDaoImpl implements UserDao {
     }
 
 
+    /**
+     * Get Client by Email
+     */
+    @Override
+    public Client getClientByEmail(String email){
+        Client client = null;
+        String query = "SELECT * FROM users WHERE email = ? AND role = 'client'";
+        try (PreparedStatement stmt = con.prepareStatement(query)) {
+            // Set the email parameter
+            stmt.setString(1, email);
 
+            // Execute the query
+            ResultSet rs = stmt.executeQuery();
+
+            // Check if a result is returned
+            if (rs.next()) {
+                // Create Client object and map the result set to the Client fields
+                client = new Client();
+                client.setId(rs.getInt("id"));
+                client.setEmail(rs.getString("email"));
+                client.setUsername(rs.getString("username"));
+                client.setAge(rs.getInt("age"));
+                client.setPassword(rs.getString("password"));
+                client.setPhoneNumber(rs.getString("phoneNumber"));
+                client.setRole(rs.getString("role"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return client;  // Return the client object or null if not found
+    }
 }

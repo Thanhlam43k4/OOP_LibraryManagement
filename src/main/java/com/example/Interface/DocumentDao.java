@@ -51,10 +51,10 @@ public interface DocumentDao {
     /**
      * Checks if a book (document) is available based on its ISBN.
      *
-     * @param ISBN The ISBN of the book to check availability for.
+     * @param copyISBN The ISBN of the book to check availability for.
      * @return {@code true} if the book is available, {@code false} otherwise.
      */
-    boolean isBookAvailable(String ISBN);
+    boolean isBookAvailable(String copyISBN);
 
     /**
      * Retrieves a document by its ISBN.

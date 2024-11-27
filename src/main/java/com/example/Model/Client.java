@@ -14,6 +14,11 @@ public class Client extends User {
     public Client(String email, String username, String phoneNumber,int age){
         super(email,username,phoneNumber,age);
     }
+
+    public Client() {
+        super();
+    }
+
     public int getBorrowedBook() {
         return borrowedBook;
     }

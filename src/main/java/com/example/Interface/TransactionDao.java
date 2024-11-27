@@ -27,12 +27,6 @@ public interface TransactionDao {
      */
     public List<Transaction> getTransactionsByUserId(int userId);
 
-    /**
-     * Deletes a transaction from the system.
-     *
-     * @param transactionId The ID of the transaction to delete.
-     */
-    public void deleteTransaction(int transactionId);
 
     /**
      * Adds a transaction for a user borrowing a document identified by its ISBN.
@@ -47,36 +41,14 @@ public interface TransactionDao {
      *
      * @return A list of all transactions.
      */
-    public List<Transaction> getAllTransaction();
+    List<Transaction> getAllTransaction();
 
     /**
      * Marks a document as returned by a user, updating the transaction.
      *
      * @param userId The ID of the user returning the document.
-     * @param ISBN   The ISBN of the document being returned.
+     * @param copyISBN   The ISBN of the document being returned.
      */
-    public void returnBook(int userId, String ISBN);
+    public void returnBook(int userId, String copyISBN);
 
-    /**
-     * Retrieves a transaction by its ID.
-     *
-     * @param transactionId The ID of the transaction to retrieve.
-     * @return The transaction with the specified ID, or {@code null} if not found.
-     */
-    Transaction getTransactionById(int transactionId);
-
-    /**
-     * Updates the return date for a specific transaction.
-     *
-     * @param transactionId The ID of the transaction to update.
-     * @param returnDate   The new return date to set.
-     */
-    void updateReturnDate(int transactionId, LocalDate returnDate);
-
-    /**
-     * Retrieves all overdue transactions where the return date has passed.
-     *
-     * @return A list of overdue transactions.
-     */
-    List<Transaction> getOverdueTransactions();
 }

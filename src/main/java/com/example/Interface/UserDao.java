@@ -102,4 +102,6 @@ public interface UserDao {
      * @param updatePass The new password to set.
      */
     void updatePassword(int userId, String updatePass);
+
+    Client getClientByEmail(String emailInput);
 }

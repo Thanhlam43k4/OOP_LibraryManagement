@@ -100,6 +100,10 @@ public class User {
         this.age = age;
     }
 
+    public User() {
+
+    }
+
     // Getter và Setter cho các thuộc tính
     public int getId() {
         return id;

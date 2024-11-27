@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class TransactionDaoImpl implements TransactionDao {
 
-    private Connection con;
+    private final Connection con;
 
     /**
      * Constructor that initializes the database connection.
@@ -145,21 +145,7 @@ public class TransactionDaoImpl implements TransactionDao {
         return trans;
     }
 
-    /**
-     * Deletes a transaction by its transaction ID.
-     *
-     * @param transactionId the transaction ID
-     */
-    @Override
-    public void deleteTransaction(int transactionId) {
-        String sql = "DELETE FROM transactions WHERE transaction_id = ?";
-        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setInt(1, transactionId);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     /**
      * Marks a book as returned by updating the transaction and book status.
@@ -197,80 +183,5 @@ public class TransactionDaoImpl implements TransactionDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Retrieves a transaction by its transaction ID.
-     *
-     * @param transactionId the transaction ID
-     * @return the transaction if found, otherwise null
-     */
-    @Override
-    public Transaction getTransactionById(int transactionId) {
-        String sql = "SELECT * FROM transactions WHERE transaction_id = ?";
-        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setInt(1, transactionId);
-            ResultSet rs = pstmt.executeQuery();
-            if (rs.next()) {
-                return new Transaction(
-                        rs.getInt("transaction_id"),
-                        rs.getInt("user_id"),
-                        rs.getString("copy_ISBN"),
-                        rs.getDate("borrowed_date"),
-                        rs.getDate("return_date"),
-                        rs.getDate("actual_return_date")
-                );
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    /**
-     * Updates the actual return date of a transaction.
-     *
-     * @param transactionId the transaction ID
-     * @param returnDate    the new return date
-     */
-    @Override
-    public void updateReturnDate(int transactionId, LocalDate returnDate) {
-        String sql = "UPDATE transactions SET actual_return_date = ? WHERE transaction_id = ?";
-        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setDate(1, Date.valueOf(returnDate));
-            pstmt.setInt(2, transactionId);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Retrieves all overdue transactions.
-     *
-     * @return a list of overdue transactions
-     */
-    @Override
-    public List<Transaction> getOverdueTransactions() {
-        List<Transaction> transactions = new ArrayList<>();
-        String sql = "SELECT * FROM transactions WHERE return_date < CURRENT_DATE AND actual_return_date IS NULL";
-
-        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            ResultSet rs = pstmt.executeQuery();
-            while (rs.next()) {
-                Transaction transaction = new Transaction(
-                        rs.getInt("transaction_id"),
-                        rs.getInt("user_id"),
-                        rs.getString("copy_ISBN"),
-                        rs.getDate("borrowed_date"),
-                        rs.getDate("return_date"),
-                        rs.getDate("actual_return_date")
-                );
-                transactions.add(transaction);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return transactions;
     }
 }

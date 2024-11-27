@@ -31,7 +31,6 @@ CREATE TABLE documents (
     year INT,
     genre VARCHAR(255) NOT NULL,
     ISBN VARCHAR(20),
-    content TEXT,
     author VARCHAR(255),
     urlImage VARCHAR(255),
     number_of_copies INT,
@@ -61,8 +60,6 @@ CREATE TABLE admin (
     -- Có thể thêm các thuộc tính riêng của admin tại đây
     FOREIGN KEY (user_id) REFERENCES users(id)  ON DELETE CASCADE  -- Khóa ngoại tham chiếu đến users
 );
-
-
 ### This Trigger is used for whenever user is created, it auto create client with this user_id.
 
 DELIMITER //

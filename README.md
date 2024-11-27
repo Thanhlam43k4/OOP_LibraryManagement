@@ -29,8 +29,8 @@ Các tính năng nổi bật của ứng dụng bao gồm:
 - **Quản lý mượn/trả sách**: Xử lý các yêu cầu mượn sách và trả sách từ người dùng.
 - **Tìm kiếm nâng cao**:
     - Tìm kiếm và thêm sách theo API.
-    - Tìm kiếm sách theo tiêu chí (tên sách, tác gi ả, thể loại,...).
-    - 
+    - Tìm kiếm sách theo tiêu chí (tên sách, tác giả, thể loại,...).
+
 ### 📚 Dành cho Client (Người dùng)
 - **Tìm kiếm sách**:
     - Tìm kiếm sách theo tên, tác giả, hoặc thể loại.
@@ -38,15 +38,42 @@ Các tính năng nổi bật của ứng dụng bao gồm:
 - **Xem lịch sử mượn sách**:
     - Hiển thị danh sách các sách đã mượn và trả.
     - Kiểm tra thời hạn trả sách.
+- **Đăng ký && Đăng nhập tài khoản**:
+    - Đăng ký và đăng nhập tài khoản với email và password.
 
 ---
 
 ## 🏗️ Cấu trúc ứng dụng
 
-### 📦 Models
-Các model chính trong ứng dụng được thể hiện qua UML sau:
+### 📦 Class Model
+
+- `Kiến trúc của APP được thiết kế theo 3 lớp`:
+  - `Data Access Layer (DAL)`: DAO - quản lý truy cập dữ liệu.
+  - `Service`: Chứa logic nghiệp vụ và gọi DAO.
+  - `Controller` : Tiếp nhận sự kiện từ người dùng và gọi service để xử lý.
+
+**Các model chính trong ứng dụng được thể hiện qua UML sau:**
     
+###  Class Model
+
 ![img.png](src/main/resources/Image/uml-model.png)
+
+
+###  Database Model
+
+![img.png](src/main/resources/Image/db-model.png)
+
+
+### DAO Model
+
+![img.png](src/main/resources/Image/DAO-model.png)
+
+
+
+
+
+
+
 
 ### 🧩 Use Cases
 Các trường hợp sử dụng chính:

@@ -84,4 +84,8 @@ public class UserService {
             return "";
         }
     }
+
+    public Client getClientByEmail(String emailInput) {
+        return userDao.getClientByEmail(emailInput);
+    }
 }
