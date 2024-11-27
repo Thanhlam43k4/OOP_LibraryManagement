@@ -78,6 +78,7 @@ public class AdminController extends Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         instance = this;
 
+        userName.setText(SessionManager.getInstance().getLoggedInUser().getUsername());
         // Sử dụng AsyncTaskExecutor để xử lý các tác vụ nền
         AsyncTaskExecutor.executeAsync(
                 // Tác vụ chạy trong nền

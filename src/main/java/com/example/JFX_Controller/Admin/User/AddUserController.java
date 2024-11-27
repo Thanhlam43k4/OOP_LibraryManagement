@@ -82,7 +82,6 @@ public class AddUserController {
             String password = ExtraFunction.encode("1");
             User user = new User(email_input, userName_input,password, phone_input, age_input);
             UserService.instance.addUser(user);
-            // getClientByEmal
             //loadUserNode(UserService.instance.getUserByEmail(email_input));
         }
 
