@@ -1,7 +1,6 @@
 package com.example.JFX_Controller;
 
 import java.net.URL;
-import java.sql.Date;
 import java.util.ResourceBundle;
 
 import com.example.Handlers.Notify;
@@ -11,7 +10,6 @@ import com.example.Service.SessionManager;
 
 import com.example.Service.UserService;
 
-import javafx.application.Platform;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;

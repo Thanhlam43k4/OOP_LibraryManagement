@@ -8,7 +8,6 @@ import java.util.Objects;
 import com.example.Database.DatabaseConnection;
 
 import com.example.Service.DocumentService;
-import com.example.Service.EmailService;
 import com.example.Service.TransactionService;
 import com.example.Service.UserService;
 import javafx.application.Application;
@@ -32,7 +31,6 @@ public class MainUI extends Application {
         }
         // Create service
         createServices(con);
-        EmailService emailService = EmailService.getInstance();
         primaryStage = stage;
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Login.fxml"));

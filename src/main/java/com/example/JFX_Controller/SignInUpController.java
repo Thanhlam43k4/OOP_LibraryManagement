@@ -5,7 +5,6 @@ package com.example.JFX_Controller;
 import com.example.Handlers.Notify;
 import com.example.Handlers.Validate;
 import com.example.Model.User;
-import com.example.Service.EmailService;
 import com.example.Service.SessionManager;
 import com.example.Service.UserService;
 import com.example.Handlers.ExtraFunction;

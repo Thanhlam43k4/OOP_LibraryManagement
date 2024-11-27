@@ -18,6 +18,7 @@ import java.sql.Date;
 import com.example.Handlers.ImageLoader;
 import com.example.Handlers.Notify;
 import com.example.Model.Document;
+import com.example.Service.SessionManager;
 import com.example.Service.TransactionService;
 
 // Controller của từng thẻ Doc đang mượn ở tab MyDoc
@@ -30,9 +31,10 @@ public class TransCardController {
 
     @FXML private HBox root;
 
-    private int tranId;
     private Document doc;
     private Image coverImage;
+
+    String ISBN;
     @FXML
     void goReadDoc(ActionEvent event) {
         try {
@@ -59,7 +61,8 @@ public class TransCardController {
 
     @FXML
     void returnDoc(ActionEvent event) {
-       // TransactionService.instance.returnBook(tranId);
+        int userId = SessionManager.getInstance().getLoggedInUser().getId();
+        TransactionService.instance.returnBook(userId, ISBN);
         //ui
         ClientController.docelementList.remove(root);
         GridPane mydocGrid = ClientController.instance.mydocGrid;
@@ -68,7 +71,7 @@ public class TransCardController {
     }
 
     // set thông tin cho các UI element
-    public void setInfo(Document doc, Date returnDate, int tranId) {
+    public void setInfo(Document doc, Date returnDate, String ISBN) {
         this.doc = doc;
         try {
             Image image = ImageLoader.loadImage(doc.getUrlImage());
@@ -77,7 +80,7 @@ public class TransCardController {
         } catch (Exception e) {
             System.err.println("docElement coverURL invalid! when add DocElementNode");
         }
-        this.tranId = tranId;
+        this.ISBN = ISBN;
         this.title.setText(doc.getTitle());
         this.author.setText(doc.getAuthor());
         this.genre.setText(doc.getGenre());

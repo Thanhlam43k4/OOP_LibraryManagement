@@ -7,7 +7,6 @@ import com.example.Model.User;
 import org.apache.commons.mail.EmailException;
 import com.example.Handlers.*;
 import java.sql.Connection;
-import java.sql.Date;
 import java.util.List;
 
 public class UserService {
