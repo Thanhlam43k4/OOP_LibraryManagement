@@ -23,6 +23,10 @@
 ## ✨ Tính năng
 Các tính năng nổi bật của ứng dụng bao gồm:
 
+### Chung
+
+- Xử lý đa luồng cho các service cần load HTTP từ trên internet và searchDocument theo API && Send Email.
+
 ### 🛠️ Dành cho Admin
 - **Quản lý sách**: Thêm, sửa, xóa thông tin sách.
 - **Quản lý người sử dụng**: Thêm, sửa, xóa thông tin người dùng.
@@ -40,6 +44,8 @@ Các tính năng nổi bật của ứng dụng bao gồm:
     - Kiểm tra thời hạn trả sách.
 - **Đăng ký && Đăng nhập tài khoản**:
     - Đăng ký và đăng nhập tài khoản với email và password.
+    - ResetPassword với Send Code to Email.
+
 
 ---
 
@@ -74,24 +80,28 @@ Các tính năng nổi bật của ứng dụng bao gồm:
 
 
 
-
-
 ### 🧩 Use Cases
 Các trường hợp sử dụng chính:
 
 1. **Quản trị viên**:
     - Thêm, sửa, xóa thông tin sách.
-    - Quản lý danh sách độc giả.
     - Xem lịch sử mượn/trả.
+    - Thêm xóa thông tin người dùng.
 2. **Độc giả**:
     - Tra cứu thông tin sách.
-    - Kiểm tra lịch sử mượn sách của mình.
+    - Kiểm tra lịch sử mượn sách của mình và đọc sách.
+    - Thay đổi thông tin cá nhân.
+    - Đọc sách.
+    - Mượn sách và trả sách.
 
 ### 🛠️ Services
 Các service xử lý logic nghiệp vụ:
-- **BookService**: Quản lý dữ liệu liên quan đến sách.
-- **ReaderService**: Xử lý thông tin độc giả.
-- **BorrowService**: Xử lý các giao dịch mượn và trả sách.
+- **DocumentService**: Quản lý dữ liệu liên quan đến sách.
+- **UserService**: Xử lý thông tin của người dùng.
+- **TransactionService**: Xử lý các giao dịch mượn và trả sách.
+- **SessionManager**: Xử lý các phiên đăng nhập người dùng.
+- **EmailService**: Xử lý sendEmail về việc reset Password.
+- **ApiService**: Xử lý searching Document theo API.
 
 ### 🎛️ Controllers
 Các controller điều khiển giao diện và liên kết logic:
@@ -101,24 +111,22 @@ Các controller điều khiển giao diện và liên kết logic:
 - **BorrowController**: Xử lý giao diện mượn/trả sách.
 
 ---
-
 ## ⚙️ Cài đặt và thiết lập
 1. **Yêu cầu hệ thống**:
-    - JDK 17 hoặc mới hơn.
+    - JDK 1.8 hoặc mới hơn.
     - JavaFX SDK.
     - IDE hỗ trợ Java (IntelliJ IDEA, Eclipse...).
-
 2. **Cài đặt**:
     - Clone repository:
       ```bash
-      git clone https://github.com/your-repo/library-management.git
-      cd library-management
+      git https://github.com/Thanhlam43k4/OOP_LibraryManagement.git
+      cd OOP_LibraryManagement
       ```
     - Cấu hình JavaFX SDK trong IDE.
+    - Thiết lập kết nối DB connection
     - Chạy ứng dụng.
 
 ---
-
 ## 🚀 Hướng dẫn sử dụng
 1. Mở ứng dụng.
 2. Đăng nhập với tài khoản quản trị viên.
@@ -134,8 +142,7 @@ Các controller điều khiển giao diện và liên kết logic:
 ---
 
 ## ✍️ Tác giả
-- **Họ tên**: [Tên của bạn]
-- **Liên hệ**: [Email hoặc mạng xã hội]
-- **GitHub**: [Link GitHub của bạn]
+- **Họ tên**: [Nguyễn Thành Lâm, Đỗ Nhất Anh, Nguyễn Hữu Trọng Anh]
+- **GitHub**: [https://github.com/Thanhlam43k4/OOP_LibraryManagement.git]
 
----
+
