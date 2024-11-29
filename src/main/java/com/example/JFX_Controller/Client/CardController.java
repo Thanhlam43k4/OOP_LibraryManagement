@@ -24,72 +24,97 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 //#endregion
 
-// Controller của từng thẻ Doc trong tab Browse
+
+/**
+ * Controller class for managing Card UI components.
+ * Responsible for displaying card information and handling user interactions.
+ */
 public class CardController extends Controller {
-    @FXML private VBox card;
-    @FXML private ImageView docCover;
-    @FXML private Label name;
-    @FXML private Label genre;
+
+    @FXML
+    private VBox card;
+
+    @FXML
+    private ImageView docCover;
+
+    @FXML
+    private Label name;
+
+    @FXML
+    private Label genre;
 
     private Document doc;
     private Image coverImage;
 
-    boolean canLoad = true;
+    private boolean canLoad = true;
 
+    /**
+     * Handles the selection of a card.
+     * If loading is allowed, it will load the document information.
+     *
+     * @param event The mouse event triggered by clicking the card.
+     */
     @FXML
-    void selectCard(MouseEvent event) {
+    private void selectCard(MouseEvent event) {
         if (canLoad) {
             loadDocInfo();
             canLoad = false;
         }
     }
 
-    // add DocInfo in Client with animation
+    /**
+     * Loads the document information and adds it to the client with animation.
+     * The animation slides the new view into position.
+     */
     private void loadDocInfo() {
         try {
-            // create docinfo
+            // Load DocInfo FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/DocInfo.fxml"));
-            Parent docinfoRoot = loader.load();
+            Parent docInfoRoot = loader.load();
             Scene scene = card.getScene();
 
+            // Configure DocInfoController
             DocInfoController docInfoController = loader.getController();
-            docInfoController.setInfo(doc, docinfoRoot, coverImage);
+            docInfoController.setInfo(doc, docInfoRoot, coverImage);
 
-            // fix docinfo size
-            AnchorPane pane = (AnchorPane) docinfoRoot;
+            // Fix DocInfo size and anchors
+            AnchorPane pane = (AnchorPane) docInfoRoot;
             AnchorPane.setBottomAnchor(pane, 0.0);
             AnchorPane.setLeftAnchor(pane, 0.0);
             AnchorPane.setRightAnchor(pane, 0.0);
             AnchorPane.setTopAnchor(pane, 0.0);
 
-            // set docinfo position
-            docinfoRoot.translateXProperty().set(scene.getWidth());
+            // Set initial position for animation
+            docInfoRoot.translateXProperty().set(scene.getWidth());
             AnchorPane clientRoot = (AnchorPane) scene.getRoot();
-            clientRoot.getChildren().add(docinfoRoot);
+            clientRoot.getChildren().add(docInfoRoot);
 
-            // setup animation
+            // Setup slide-in animation
             Timeline timeline = new Timeline();
-            KeyValue kv = new KeyValue(docinfoRoot.translateXProperty(), 0, Interpolator.EASE_IN);
+            KeyValue kv = new KeyValue(docInfoRoot.translateXProperty(), 0, Interpolator.EASE_IN);
             KeyFrame kf = new KeyFrame(Duration.seconds(0.35), kv);
             timeline.getKeyFrames().add(kf);
-            timeline.setOnFinished(e -> {
-                canLoad = true;
-            });
+
+            timeline.setOnFinished(e -> canLoad = true);
             timeline.play();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Sets the information of the card, including document details and cover image.
+     *
+     * @param doc The document to display in the card.
+     */
     public void setInfo(Document doc) {
         this.doc = doc;
         try {
             Image image = ImageLoader.loadImage(doc.getUrlImage());
             coverImage = image;
             docCover.setImage(image);
-
         } catch (Exception e) {
-            System.err.println("card coverURL invalid! when add CardNode");
+            System.err.println("Card cover URL invalid when adding CardNode.");
         }
         this.name.setText(doc.getTitle());
         this.genre.setText(doc.getGenre());

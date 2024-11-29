@@ -78,7 +78,9 @@ Các tính năng nổi bật của ứng dụng bao gồm:
 
 ![img.png](src/main/resources/Image/Service-model.png)
 
+### Controller 
 
+![img.png](img.png)
 
 ### 🧩 Use Cases
 Các trường hợp sử dụng chính:
@@ -103,12 +105,11 @@ Các service xử lý logic nghiệp vụ:
 - **EmailService**: Xử lý sendEmail về việc reset Password.
 - **ApiService**: Xử lý searching Document theo API.
 
-### 🎛️ Controllers
-Các controller điều khiển giao diện và liên kết logic:
-- **MainController**: Quản lý giao diện chính và điều hướng.
-- **BookController**: Quản lý giao diện và hành động liên quan đến sách.
-- **ReaderController**: Quản lý giao diện và hành động liên quan đến độc giả.
-- **BorrowController**: Xử lý giao diện mượn/trả sách.
+
+
+
+
+
 
 ---
 ## ⚙️ Cài đặt và thiết lập

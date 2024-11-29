@@ -69,16 +69,15 @@ public class DocRowController {
      */
     @FXML
     void deleteDoc(ActionEvent event) {
-
         // Check if the document is available for deletion
-        if (DocumentService.instance.isDocAvailable(doc.getISBN())) {
+        if (!DocumentService.instance.isDocAvailable(doc.getISBN())) {
             Notify.showAlert(Alert.AlertType.ERROR, "Error", "Document cannot be deleted because it is part of an active transaction!");
             return;
         }
-
         // Remove document from the UI and delete it from the service
         AdminController.docList.remove(this.root);
         DocumentService.instance.deleteDocument(doc.getDocumentId());
+        System.out.println("Delete document Sucessfully with id: " + doc.getDocumentId());
         Notify.showAlert(Alert.AlertType.INFORMATION, "Notification", "Document deleted successfully!");
     }
 

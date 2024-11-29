@@ -80,6 +80,10 @@ public interface DocumentDao {
      */
     Copies getAvailCopies(int documentId);
 
-
+    /**
+     *
+     * @param ISBN th ISBN of the Document
+     * @return ${@code true} ISBN is existed
+     */
     boolean isIsbnExist(String ISBN);
 }

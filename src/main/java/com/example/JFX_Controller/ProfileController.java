@@ -7,7 +7,6 @@ import com.example.Handlers.Notify;
 import com.example.Handlers.Validate;
 import com.example.Model.User;
 import com.example.Service.SessionManager;
-
 import com.example.Service.UserService;
 
 import javafx.fxml.Initializable;
@@ -18,8 +17,18 @@ import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
-public class ProfileController extends Controller implements Initializable  {
+/**
+ * Controller for the user profile screen.
+ * This class handles loading and updating the user profile information,
+ * as well as changing the user's password.
+ *
+ * It includes functionality to modify user details like username, phone number,
+ * age, and password. Validations are applied before making any updates.
+ */
+public class ProfileController extends Controller implements Initializable {
+
     private Parent root;
+
     @FXML
     private Label userName;
     @FXML
@@ -29,7 +38,7 @@ public class ProfileController extends Controller implements Initializable  {
     @FXML
     private Label age;
 
-    // Modify pofile
+    // Modify profile
     @FXML
     private StackPane profilePane;
     @FXML
@@ -51,7 +60,14 @@ public class ProfileController extends Controller implements Initializable  {
     @FXML
     private PasswordField confirmNewPassword;
 
-    AnchorPane mainRoot;
+    private AnchorPane mainRoot;
+
+    /**
+     * Initializes the profile screen by loading the current user information.
+     *
+     * @param location  The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resources The resources used to localize the root object, or null if the resources are not available.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         User user = SessionManager.getInstance().getLoggedInUser();
@@ -60,23 +76,44 @@ public class ProfileController extends Controller implements Initializable  {
         age.setText(String.valueOf(user.getAge()));
     }
 
+    /**
+     * Handles the event of going back to the main screen.
+     * Removes the current profile view from the main root.
+     *
+     * @param event The ActionEvent triggered by the back button.
+     */
     @FXML
     void backToMain(ActionEvent event) {
         mainRoot.getChildren().remove(root);
         root = null;
     }
 
-    // Modify event
+    /**
+     * Displays the profile modification pane to allow the user to update their profile information.
+     *
+     * @param event The ActionEvent triggered by the modify button.
+     */
     @FXML
     void goModify(ActionEvent event) {
         setModifyPane();
     }
 
+    /**
+     * Cancels the profile modification and hides the modification pane.
+     *
+     * @param event The ActionEvent triggered by the cancel button.
+     */
     @FXML
     void cancelModify(ActionEvent event) {
         profilePane.setVisible(false);
     }
 
+    /**
+     * Applies the modifications made to the user's profile.
+     * Updates the user details in the system if the validations pass.
+     *
+     * @param event The ActionEvent triggered by the apply button.
+     */
     @FXML
     void applyModify(ActionEvent event) {
         if (validate()) {
@@ -87,50 +124,59 @@ public class ProfileController extends Controller implements Initializable  {
             phone.setText(phoneField.getText());
             age.setText(ageField.getText());
         }
-
     }
 
-    // Change password event
+    /**
+     * Displays the password change pane to allow the user to update their password.
+     *
+     * @param event The ActionEvent triggered by the change password button.
+     */
     @FXML
     void goChangePass(ActionEvent event) {
         passPane.setVisible(true);
     }
 
+    /**
+     * Cancels the password change operation and hides the password pane.
+     *
+     * @param event The ActionEvent triggered by the cancel button in the password change pane.
+     */
     @FXML
     void cancelChangePass(ActionEvent event) {
         passPane.setVisible(false);
     }
 
+    /**
+     * Applies the password change after validating the entered passwords.
+     *
+     * @param event The ActionEvent triggered by the apply password button.
+     */
     @FXML
     void applyChangePass(ActionEvent event) {
-        // Check Current password is right use
         String newPass = newPassword.getText();
         String oldPass = oldPassword.getText();
         String confirmPass = confirmNewPassword.getText();
 
-        if(!Validate.isValidPassword(newPass)){
+        if (!Validate.isValidPassword(newPass)) {
             Notify.showAlert(Alert.AlertType.ERROR, "Password syntax error", "Please fill password that has 6 digest!");
-
-        }else if(!UserService.instance.isMatchAccount(SessionManager.getInstance().getLoggedInUser().getEmail(),oldPass)){
+        } else if (!UserService.instance.isMatchAccount(SessionManager.getInstance().getLoggedInUser().getEmail(), oldPass)) {
             Notify.showAlert(Alert.AlertType.ERROR, "Current Password is not match", "Please try again!!!");
-
-        }else if(newPass.equals(confirmPass)){
+        } else if (newPass.equals(confirmPass)) {
             int userId = SessionManager.getInstance().getLoggedInUser().getId();
-            UserService.instance.updatePassword(userId,newPass);
+            UserService.instance.updatePassword(userId, newPass);
             Notify.showAlert(Alert.AlertType.INFORMATION, "Update Password Successful", "Please login with your updated Password");
             passPane.setVisible(false);
-        }else{
+        } else {
             Notify.showAlert(Alert.AlertType.ERROR, "Password and Confirm are not matched!!", "Please try again");
-
         }
-        // Check password == retype password
-
-        // Update new password after checkin
-        // UserService.instance.updatePassword(userId,updatePassword);
-
-        passPane.setVisible(false);
     }
 
+    /**
+     * Sets the initial information for the profile screen, including loading the user data.
+     *
+     * @param mainRoot   The main root of the application that holds the profile screen.
+     * @param profileRoot The root node of the profile screen.
+     */
     public void setInfo(AnchorPane mainRoot, Parent profileRoot) {
         this.mainRoot = mainRoot;
         this.root = profileRoot;
@@ -141,6 +187,9 @@ public class ProfileController extends Controller implements Initializable  {
         age.setText(String.valueOf(user.getAge()));
     }
 
+    /**
+     * Displays the profile modification pane and pre-fills the fields with current user data.
+     */
     private void setModifyPane() {
         profilePane.setVisible(true);
         User user = SessionManager.getInstance().getLoggedInUser();
@@ -149,17 +198,23 @@ public class ProfileController extends Controller implements Initializable  {
         phoneField.setText(user.getPhoneNumber());
     }
 
+    /**
+     * Validates the user input for profile modification.
+     * Ensures that the username, phone number, and age are in the correct format.
+     *
+     * @return true if all inputs are valid, false otherwise.
+     */
     private boolean validate() {
         if (!Validate.isValidUsername(userNameField.getText())) {
-            Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Username invalid!");
+            Notify.showAlert(Alert.AlertType.ERROR, "Error", "Username invalid!");
             return false;
         }
         if (!Validate.isValidPhoneNumber(phoneField.getText())) {
-            Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Phone number invalid!");
+            Notify.showAlert(Alert.AlertType.ERROR, "Error", "Phone number invalid!");
             return false;
         }
-        if (!Validate.isValidAge(ageField.getText())){
-            Notify.showAlert(Alert.AlertType.ERROR, "Eror", "Age number invalid!");
+        if (!Validate.isValidAge(ageField.getText())) {
+            Notify.showAlert(Alert.AlertType.ERROR, "Error", "Age number invalid!");
             return false;
         }
         return true;

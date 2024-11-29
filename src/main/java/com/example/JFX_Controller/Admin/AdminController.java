@@ -40,7 +40,14 @@ import javafx.scene.layout.VBox;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.Initializable;
 //#endregion
-
+/**
+ * AdminController class manages the admin dashboard functionalities
+ * including user management, document handling, and transactions.
+ * It is an implementation of JavaFX's {@link Initializable} interface.
+ * <p>
+ * Features include switching tabs, searching records, and loading data
+ * for users, documents, and transactions asynchronously.
+ */
 public class AdminController extends Controller implements Initializable {
     @FXML private AnchorPane root;
     @FXML private Label userName;
@@ -74,6 +81,12 @@ public class AdminController extends Controller implements Initializable {
     // singleton
     public static AdminController instance;
 
+    /**
+     * Initializes the controller after the root element has been completely processed.
+     *
+     * @param location  The location used to resolve relative paths for the root object, or null.
+     * @param resources The resources used to localize the root object, or null.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         instance = this;

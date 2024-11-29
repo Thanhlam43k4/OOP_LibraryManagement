@@ -34,7 +34,11 @@ import javafx.scene.control.ScrollPane;
 //#endregion
 import javafx.scene.control.TextField;
 
-public class ClientController extends Controller implements Initializable{
+/**
+ * Controller class for the Client UI.
+ * Handles interactions between the UI and backend services.
+ */
+public class ClientController extends Controller implements Initializable {
 //UI
     @FXML public AnchorPane root;
     @FXML private Label userName;
@@ -51,11 +55,11 @@ public class ClientController extends Controller implements Initializable{
 
 //Prop
     private static final int cardWidth = 240; // Chiều rộng phần tử sách + Hgap
-    private static final int docElementWidth = 615;
-    
+    public static final int docElementWidth = 615;
+
     private static ObservableList<Parent> cardList = FXCollections.observableArrayList();
     public static List<Parent> docelementList = new ArrayList<>();
-    
+
     public int currentCol = 0; // số cột hiện tại của grid
 
     public static ClientController instance;
@@ -73,18 +77,30 @@ public class ClientController extends Controller implements Initializable{
 
         setBrowse(true);
         setMyDoc(false);
-        
+
         widthListener();
         searchFieldListener();
 
         updateGrid.run();
     }
 
+    /**
+     * Switch to the "Browse" tab.
+     *
+     * @param event Mouse event triggered by user interaction.
+     */
+
     @FXML
     void browseTab(MouseEvent event) {
         setBrowse(true);
         setMyDoc(false);
     }
+
+    /**
+     * Switch to the "My Documents" tab.
+     *
+     * @param event Mouse event triggered by user interaction.
+     */
     @FXML
     void mydocTab(MouseEvent event) {
         setBrowse(false);
@@ -93,17 +109,21 @@ public class ClientController extends Controller implements Initializable{
     @FXML
     void showSetting(ActionEvent event) { }
     @FXML
-    void profile(ActionEvent event) { 
+    void profile(ActionEvent event) {
         loadProfile();
     }
     @FXML
-    void signOut(ActionEvent event) { 
-        loadScene("Login.fxml"); 
-        clearNode(); 
+    void signOut(ActionEvent event) {
+        loadScene("Login.fxml");
+        clearNode();
         SessionManager.getInstance().clearSession();
     }
     //#region fe_func
 
+
+    /**
+     * Listener for changes in the scene's width to adjust grid layout dynamically.
+     */
     // catch SceneWidth change
     private void widthListener() {
         // bắt scene mới
@@ -124,11 +144,16 @@ public class ClientController extends Controller implements Initializable{
                             updateGrid(mydocGrid, docelementList, currentCol);
                         }
                     }
-                });        
+                });
             }
         });
     }
 
+    /**
+     * Set visibility for the "Browse" tab.
+     *
+     * @param isActive True to activate, false to deactivate.
+     */
     // bật/tắt Pane
     private void setBrowse(boolean isActive) {
         searchField.setText(null);
@@ -142,8 +167,14 @@ public class ClientController extends Controller implements Initializable{
         int colCnt = (int) (browseScroll.getWidth())/cardWidth;
         updateGrid(browseGrid, cardList, colCnt);
     }
+
+    /**
+     * Set visibility for the "My Documents" tab.
+     *
+     * @param isActive True to activate, false to deactivate.
+     */
     private void setMyDoc(boolean isActive) {
-        mydocScroll.getParent().setVisible(isActive);        
+        mydocScroll.getParent().setVisible(isActive);
         mydocBut.getStyleClass().clear();
         if(!isActive) {
             mydocBut.getStyleClass().add("second-hbox-style");
@@ -154,7 +185,9 @@ public class ClientController extends Controller implements Initializable{
         updateGrid(mydocGrid, docelementList, colCnt);
     }
 
-    // tạo list
+    /**
+     * Adds card nodes to the "Browse" tab.
+     */
     private void addCardNodes() {
         cardList.clear();
         List<Document> docs = DocumentService.instance.getAllDocument();
@@ -162,7 +195,7 @@ public class ClientController extends Controller implements Initializable{
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/Card.fxml"));
                 Parent bookNode = loader.load();
-                
+
                 CardController cardController = loader.getController();
                 cardController.setInfo(document);
                 cardList.add(bookNode);
@@ -171,6 +204,10 @@ public class ClientController extends Controller implements Initializable{
             }
         }
     }
+
+    /**
+     * Adds document elements to the "My Documents" tab.
+     */
     public void addDocElementNodes() {
         docelementList.clear();
         List<Transaction> transactions = TransactionService.instance.getTransactionsByUserId(SessionManager.getInstance().getLoggedInUser().getId());
@@ -190,7 +227,13 @@ public class ClientController extends Controller implements Initializable{
         }
     }
 
-    // thay đổi cột của grid
+    /**
+     * Updates the grid layout with a given number of columns.
+     *
+     * @param grid   The GridPane to update.
+     * @param list   The list of Parent nodes to add to the grid.
+     * @param colCnt The number of columns to display.
+     */
     public void updateGrid(GridPane grid, List<Parent> list, int colCnt) {
         grid.getChildren().clear();
         int row = 0, col = 0;
@@ -203,7 +246,10 @@ public class ClientController extends Controller implements Initializable{
             }
         }
     }
-    
+
+    /**
+     * Loads the profile UI.
+     */
     private void loadProfile() {
         try {
             // create docinfo
@@ -226,11 +272,17 @@ public class ClientController extends Controller implements Initializable{
         }
     }
 
+    /**
+     * Clears all nodes from lists.
+     */
     public void clearNode() {
         docelementList.clear();
         cardList.clear();
     }
 
+    /**
+     * Adds a listener for the search field to filter card nodes.
+     */
     FilteredList<Parent> docFilterList = new FilteredList<>(cardList, s -> true);
     private void searchFieldListener() {
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {

@@ -77,12 +77,11 @@ public class UserRowController {
     }
     @FXML
     void deleteUser(ActionEvent event) {
-        // ui
-        AdminController.userList.remove(root);
-        // db
+        //
         int userID = Integer.parseInt(userId.getText());
         int borrowedBook = client.getBorrowedBook();
         if(borrowedBook == 0) {
+            AdminController.userList.remove(root);
             UserService.instance.deleteUser(userID);
             Notify.showAlert(Alert.AlertType.INFORMATION, "Notification", "Remove User successful!");
         }else{

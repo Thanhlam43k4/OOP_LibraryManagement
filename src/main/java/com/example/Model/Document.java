@@ -1,6 +1,11 @@
 package com.example.Model;
 
-
+/**
+ * The {@code Document} class represents a document in the system.
+ * It contains various attributes such as the document ID, title, author, genre, ISBN,
+ * URL of the image, number of copies, and a description.
+ * Provides constructors to initialize a document in different ways.
+ */
 public class Document {
     private int documentId;
     private String title;
@@ -8,12 +13,26 @@ public class Document {
     private String genre;
     private String ISBN;
     private String author;
-    private String urlImage;  // Thêm thuộc tính urlImage
+    private String urlImage;  // The URL of the image for the document
     private int numberCopy;
     private String description;
-    public Document() {
 
+    /**
+     * Default constructor for the {@code Document} class.
+     */
+    public Document() {
     }
+
+    /**
+     * Constructs a {@code Document} with the specified details.
+     *
+     * @param documentId the document ID
+     * @param title      the title of the document
+     * @param author     the author of the document
+     * @param urlImage   the URL of the document's image
+     * @param genre      the genre of the document
+     * @param description the description of the document
+     */
     public Document(int documentId, String title, String author, String urlImage, String genre, String description) {
         this.documentId = documentId;
         this.title = title;
@@ -22,25 +41,58 @@ public class Document {
         this.genre = genre;
         this.description = description;
     }
-    public Document(int documentId, String title, String author,  String genre,String urlImage) {
+
+    /**
+     * Constructs a {@code Document} with the specified details.
+     *
+     * @param documentId the document ID
+     * @param title      the title of the document
+     * @param author     the author of the document
+     * @param genre      the genre of the document
+     * @param urlImage   the URL of the document's image
+     */
+    public Document(int documentId, String title, String author, String genre, String urlImage) {
         this.documentId = documentId;
         this.title = title;
         this.author = author;
         this.urlImage = urlImage;
         this.genre = genre;
     }
-    public Document(int documentId, String title, String ISBN,String author, String urlImage, String genre,int numberCopy, String description) {
+
+    /**
+     * Constructs a {@code Document} with the specified details, including ISBN, number of copies, and description.
+     *
+     * @param documentId  the document ID
+     * @param title       the title of the document
+     * @param ISBN        the ISBN of the document
+     * @param author      the author of the document
+     * @param urlImage    the URL of the document's image
+     * @param genre       the genre of the document
+     * @param numberCopy  the number of copies of the document
+     * @param description the description of the document
+     */
+    public Document(int documentId, String title, String ISBN, String author, String urlImage, String genre, int numberCopy, String description) {
         this.documentId = documentId;
         this.title = title;
-        this.genre = genre;
         this.ISBN = ISBN;
         this.author = author;
         this.urlImage = urlImage;
+        this.genre = genre;
         this.numberCopy = numberCopy;
         this.description = description;
     }
 
-    public Document(String title, String author, String genre, int numberCopy , String ISBN, String urlImage) {
+    /**
+     * Constructs a {@code Document} with the specified details excluding the document ID.
+     *
+     * @param title       the title of the document
+     * @param author      the author of the document
+     * @param genre       the genre of the document
+     * @param numberCopy  the number of copies of the document
+     * @param ISBN        the ISBN of the document
+     * @param urlImage    the URL of the document's image
+     */
+    public Document(String title, String author, String genre, int numberCopy, String ISBN, String urlImage) {
         this.title = title;
         this.ISBN = ISBN;
         this.author = author;
@@ -48,51 +100,81 @@ public class Document {
         this.genre = genre;
         this.numberCopy = numberCopy;
     }
-    public Document(String title, String author, String ISBN,String description,  String urlImage) {
+
+    /**
+     * Constructs a {@code Document} with the specified details excluding the document ID.
+     *
+     * @param title       the title of the document
+     * @param author      the author of the document
+     * @param ISBN        the ISBN of the document
+     * @param description the description of the document
+     * @param urlImage    the URL of the document's image
+     */
+    public Document(String title, String author, String ISBN, String description, String urlImage) {
         this.title = title;
         this.description = description;
         this.author = author;
         this.urlImage = urlImage;
         this.ISBN = ISBN;
-
     }
 
-
+    /**
+     * Constructs a {@code Document} with the specified document ID and title.
+     *
+     * @param documentId the document ID
+     * @param title      the title of the document
+     */
     public Document(int documentId, String title) {
         this.documentId = documentId;
         this.title = title;
     }
 
-    public Document(int documentId,String title,String author, String genre) {
+    /**
+     * Constructs a {@code Document} with the specified document ID, title, author, and genre.
+     *
+     * @param documentId the document ID
+     * @param title      the title of the document
+     * @param author     the author of the document
+     * @param genre      the genre of the document
+     */
+    public Document(int documentId, String title, String author, String genre) {
         this.documentId = documentId;
         this.title = title;
         this.author = author;
         this.genre = genre;
     }
-    public Document(String title,String author,String ISBN,String urlImage) {
+
+    /**
+     * Constructs a {@code Document} with the specified title, author, ISBN, and URL image.
+     *
+     * @param title     the title of the document
+     * @param author    the author of the document
+     * @param ISBN      the ISBN of the document
+     * @param urlImage  the URL of the document's image
+     */
+    public Document(String title, String author, String ISBN, String urlImage) {
         this.title = title;
         this.author = author;
         this.ISBN = ISBN;
         this.urlImage = urlImage;
     }
+
+    /**
+     * Constructs a {@code Document} with the specified document ID.
+     *
+     * @param documentId the document ID
+     */
     public Document(int documentId) {
         this.documentId = documentId;
     }
 
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-
-
-
+    // Getter and Setter Methods
     public int getDocumentId() {
         return documentId;
+    }
+
+    public void setDocumentId(int documentId) {
+        this.documentId = documentId;
     }
 
     public String getTitle() {
@@ -117,11 +199,6 @@ public class Document {
 
     public void setGenre(String genre) {
         this.genre = genre;
-    }
-
-
-    public void setDocumentId(int documentId) {
-        this.documentId = documentId;
     }
 
     public String getISBN() {
@@ -156,10 +233,26 @@ public class Document {
         this.numberCopy = numberCopy;
     }
 
-    public void getDetails() {
-        System.out.println("DocumentId: " + documentId + " Title: " + title + " Year: " + year + " Genre: "+ genre);
+    public String getDescription() {
+        return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
+     * Prints the details of the document.
+     */
+    public void getDetails() {
+        System.out.println("DocumentId: " + documentId + " Title: " + title + " Year: " + year + " Genre: " + genre);
+    }
+
+    /**
+     * Returns a string representation of the {@code Document} object.
+     *
+     * @return a string representation of the document
+     */
     @Override
     public String toString() {
         return "Document{" +

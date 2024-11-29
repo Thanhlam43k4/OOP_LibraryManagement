@@ -25,26 +25,6 @@ public class TransactionDaoImpl implements TransactionDao {
     }
 
     /**
-     * Adds a new transaction to the database.
-     *
-     * @param transaction the transaction to be added
-     */
-    @Override
-    public void addTransaction(Transaction transaction) {
-        String sql = "INSERT INTO transactions (user_id, copy_ISBN, borrowed_date, return_date) " +
-                "VALUES (?, ?, ?, ?)";
-        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setInt(1, transaction.getUserId());
-            pstmt.setString(2, transaction.getISBN());
-            pstmt.setDate(3, transaction.getBorrowedDate());
-            pstmt.setDate(4, transaction.getReturnDate());
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * Adds a new transaction with given userId and ISBN.
      * Automatically sets borrowed date to the current date and return date to 14 days from the current date.
      *

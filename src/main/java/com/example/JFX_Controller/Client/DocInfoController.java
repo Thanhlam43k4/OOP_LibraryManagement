@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import com.example.Handlers.Notify;
 import com.example.Model.Copies;
 import com.example.Service.DocumentService;
+import com.example.Service.UserService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -58,12 +59,17 @@ public class DocInfoController extends Controller implements Initializable {
     void borrowDoc(ActionEvent event) {
         int userId = SessionManager.getInstance().getLoggedInUser().getId();
         Copies copyDoc = DocumentService.instance.getAvailCopies(docId);
-        if(copyDoc == null){
+        int numberBook = UserService.instance.getUserBooks(userId);
+        if(numberBook >= 8){
+            Notify.showAlert(Alert.AlertType.ERROR, "Error when borrow Book", "This User has exceed number of borrowedBook!!! Please return");
+            return;
+        }else if(copyDoc == null){
             Notify.showAlert(Alert.AlertType.ERROR, "Error when borrow Book", "This Book isn't having available copies now!!! Please choose another Book");
             return;
         }else{
             TransactionService.instance.borrowBook(userId,copyDoc.getCopyIsbn());
             //ui
+
             ClientController.instance.addDocElementNodes();
             borrowBut.setDisable(true);
             stateText.setVisible(true);

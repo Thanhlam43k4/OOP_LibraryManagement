@@ -1,5 +1,6 @@
 package com.example.JFX_Controller.Client;
 
+import com.example.MainUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +21,8 @@ import com.example.Handlers.Notify;
 import com.example.Model.Document;
 import com.example.Service.SessionManager;
 import com.example.Service.TransactionService;
+
+import static com.example.JFX_Controller.Client.ClientController.docElementWidth;
 
 // Controller của từng thẻ Doc đang mượn ở tab MyDoc
 public class TransCardController {
@@ -64,9 +67,12 @@ public class TransCardController {
         int userId = SessionManager.getInstance().getLoggedInUser().getId();
         TransactionService.instance.returnBook(userId, ISBN);
         //ui
+
         ClientController.docelementList.remove(root);
         GridPane mydocGrid = ClientController.instance.mydocGrid;
-        ClientController.instance.updateGrid(mydocGrid, ClientController.docelementList, ClientController.instance.currentCol);
+        int colCnt = (int) (MainUI.primaryStage.getScene().getWidth() - 350)/docElementWidth;
+
+        ClientController.instance.updateGrid(mydocGrid, ClientController.docelementList, colCnt);
         Notify.showAlert(Alert.AlertType.INFORMATION, "Nofication", "Return Document sucess!");
     }
 

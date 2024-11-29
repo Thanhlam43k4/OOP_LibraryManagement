@@ -6,7 +6,7 @@ CREATE TABLE transactions (
     return_date DATE,
     actual_return_date DATE,
     FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (copy_ISBN) REFERENCES copies(copy_ISBN)
+    FOREIGN KEY (copy_ISBN) REFERENCES copies(copy_ISBN) ON DELETE CASCADE
 );
 
 
@@ -118,3 +118,8 @@ END;
 //
 
 DELIMITER ;
+
+
+
+INSERT INTO users(email,password,role)
+VALUES ("admin@gmail.com","1","admin")

@@ -194,28 +194,30 @@ public class DocumentDaoImpl implements DocumentDao {
     }
 
     /**
-     * Kiểm tra xem tài liệu có đang trong giao dịch hay không.
+     * Kiểm tra xem tất cả các bản copy của tài liệu có sẵn hay không.
      *
      * @param isbn ISBN của tài liệu cần kiểm tra.
-     * @return true nếu tài liệu đang trong giao dịch, false nếu không.
+     * @return true nếu tất cả các bản copy đều sẵn sàng (Available), false nếu có ít nhất một bản đang được mượn.
      */
     @Override
     public boolean isDocAvailable(String isbn) {
-        final String query = "SELECT COUNT(*) > 0 AS is_in_transaction " +
+        final String query = "SELECT COUNT(*) > 0 AS has_checked_out " +
                 "FROM copies c " +
                 "JOIN documents d ON c.document_id = d.documentId " +
-                "JOIN transactions t ON c.copy_ISBN = t.copy_ISBN " +
-                "WHERE d.ISBN = ?";
+                "LEFT JOIN transactions t ON c.copy_ISBN = t.copy_ISBN " +
+                "WHERE d.ISBN = ? AND c.status = 'Checked Out'";
         try (PreparedStatement pstmt = connection.prepareStatement(query)) {
             pstmt.setString(1, isbn);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-                    return rs.getBoolean("is_in_transaction");
+                    // Nếu có bản copy ở trạng thái 'Checked Out', trả về false.
+                    return !rs.getBoolean("has_checked_out");
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        // Mặc định trả về false nếu xảy ra lỗi.
         return false;
     }
 

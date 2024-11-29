@@ -13,13 +13,6 @@ import java.util.List;
 public interface TransactionDao {
 
     /**
-     * Adds a new transaction to the system.
-     *
-     * @param transaction The transaction to be added.
-     */
-    public void addTransaction(Transaction transaction);
-
-    /**
      * Retrieves all transactions for a specific user.
      *
      * @param userId The ID of the user to retrieve transactions for.

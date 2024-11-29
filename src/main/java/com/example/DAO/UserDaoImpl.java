@@ -129,34 +129,40 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<Client> getAllClients() {
         List<Client> clients = new ArrayList<>();
-        String sql = "SELECT users.id, users.username, users.email, users.age, " +
-                "users.phoneNumber, client.borrowed_books " +
+        String sql = "SELECT users.id, users.username, users.email, users.age, users.phoneNumber, client.borrowed_books " +
                 "FROM users " +
-                "LEFT JOIN client ON users.id = client.user_id";
+                "INNER JOIN client ON users.id = client.user_id";
 
-        try (Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+        try (PreparedStatement pstmt = con.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+
             while (rs.next()) {
                 int id = rs.getInt("id");
+
                 String username = rs.getString("username");
-                username = (username == null) ? "Unknown" : username;
+                username = (username != null) ? username : "Unknown";
 
                 String email = rs.getString("email");
-                email = (email == null) ? "Unknown" : email;
+                email = (email != null) ? email : "Unknown";
 
                 int age = rs.getInt("age");
+
                 String phoneNumber = rs.getString("phoneNumber");
-                phoneNumber = (phoneNumber == null) ? "Unknown" : phoneNumber;
+                phoneNumber = (phoneNumber != null) ? phoneNumber : "Unknown";
 
                 int borrowedBooks = rs.getInt("borrowed_books");
                 if (rs.wasNull()) {
                     borrowedBooks = 0;
                 }
 
-                clients.add(new Client(id, username, email, age, phoneNumber, borrowedBooks));
+                // Tạo đối tượng Client và thêm vào danh sách
+                Client client = new Client(id, username, email, age, phoneNumber, borrowedBooks);
+                clients.add(client);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // Bạn có thể dùng logger thay vì in ra console
         }
+
         return clients;
     }
 

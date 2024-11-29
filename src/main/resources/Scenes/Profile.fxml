@@ -160,7 +160,7 @@
                               </TextField>
                            </children>
                         </VBox>
-                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="73.0" prefWidth="280.0">
+                        <VBox disable="true" layoutX="10.0" layoutY="10.0" prefHeight="73.0" prefWidth="280.0">
                            <children>
                               <Label text="Email *">
                                  <font>
